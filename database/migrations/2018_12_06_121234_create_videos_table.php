@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->string('description');
             $table->string('videoId');
             $table->string('videoUrl');
-            $table->string('coverId');
+            $table->string('coverId')->nullable();
             $table->string('coverUrl');
             $table->string('slug');
             $table->dateTime('date');

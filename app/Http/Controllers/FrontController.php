@@ -9,11 +9,31 @@ class FrontController extends Controller
 
 {
 
-    public function index()
+    public function index(Request $request, $page = 0)
     {
-        $db_videos = Video::orderBy('date', 'desc')->limit(20)->get();
-        $videos = $this->completeVideoListByMockup($db_videos, 20);
-        return view('index', compact('videos'));
+        $page = (int) $page;
+        $totalVideoCount = Video::count();
+        $wallSize = 17;
+        if ($page > 0) {
+            $skip = $wallSize+($page-1)*$wallSize;
+            $videos = Video::orderBy('date', 'desc')->skip($skip)->take($wallSize)->get();
+            $hasMorePages = ($totalVideoCount > ($skip+$wallSize));
+        } else {
+            $videos = Video::orderBy('date', 'desc')->limit($wallSize)->get();
+            $hasMorePages = ($totalVideoCount > $wallSize);
+        }
+        $css= "index";
+        return view('index', compact('videos', 'css', 'page', 'hasMorePages'));
+    }
+
+    public function getVideoWall(Request $request)
+    {
+      $db_videos = Video::orderBy('date', 'desc')->limit(20)->get();
+      $videos = $this->completeVideoListByMockup($db_videos, 20);
+      $videos = json_encode($videos, JSON_FORCE_OBJECT);
+      $result["items"] = [json_decode($videos)];
+      $result["hasMorePages"] = true;
+      return response($result)->header('AMP-Access-Control-Allow-Source-Origin', $request->getSchemeAndHttpHost());
     }
 
     public function player(Request $request, $slug) {
@@ -23,30 +43,7 @@ class FrontController extends Controller
       }
       $db_videos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
       $suggestedVideos = $this->completeVideoListByMockup($db_videos, 6);
-      return view('player', compact('video'), compact('suggestedVideos'));
-    }
-
-    public function completeVideoListByMockup($collection, $number) {
-      $count = $collection->count();
-      if ($count >= $number) return $collection;
-      $c = collect();
-      for ($i=0; $i<($number-$count); $i++) {
-        $c->push($this->getVideoMockup());
-      }
-      return $collection->concat($c);
-    }
-
-    public function getVideoMockup() {
-      $video = new Video();
-      $video->title = "Lorem Ipsum";
-      $video->description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-      $video->videoUrl = "/video/big_buck_bunny.mp4";
-      $video->coverUrl = "/assets/balloon.jpg";
-      $video->date = "18:38";
-      $video->videoId = "";
-      $video->coverId = "";
-      $video->slug = str_slug($video->title, "-");
-      return $video;
+      return view('player', compact('video', 'suggestedVideos'));
     }
 
 }

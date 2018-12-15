@@ -1,0 +1,29 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: public
+
+# Ensure we skip ".env", which is only for local development
+skip_files:
+  - .env
+
+env_variables:
+  # Put production environment variables here.
+  APP_DEBUG: true
+  APP_LOG: errorlog
+  APP_KEY: base64:K/fTtry6inNLWyRFdKo0ESoFREuQPzw/u/KOY5UT6Xc=
+  STORAGE_DIR: /tmp
+  DB_HOST: localhost
+  DB_DATABASE: poss
+  DB_USERNAME: poss
+  DB_PASSWORD: Svu&LKWemEt7
+  DB_SOCKET: /cloudsql/idyllic-cabinet-225114:europe-west1:poss-db
+  CLOUDINARY_CLOUD_NAME: loopsider
+  CLOUDINARY_API_KEY: 914571311193785
+  CLOUDINARY_API_SECRET: v3If6JzQoj7sNJH80MMITDUh_X0
+
+beta_settings:
+    # for Cloud SQL, set this value to the Cloud SQL connection name,
+    # e.g. "project:region:cloudsql-instance"
+    cloud_sql_instances: "idyllic-cabinet-225114:europe-west1:poss-db"

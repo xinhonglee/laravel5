@@ -1,0 +1,320 @@
+@extends('layouts.front')
+
+@section('content')
+<amp-state id="videoWall"
+  src="/api/videowall">
+</amp-state>
+<amp-state id="video">
+  <script type="application/json">
+    {
+      "moreItemsPageIndex": 0,
+      "hasMorePages": true
+    }
+  </script>
+</amp-state>
+<header class="xs-hide">
+  <amp-carousel height="819" layout="fixed-height" type="carousel" autoplay="" loop="">
+    @php ($i = 0)
+    <article class="slide">
+      <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <span class="time">@{{0.date}}</span>
+        <h2>@{{0.title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+      </div>
+    </article>
+    @php ($i++)
+    <article class="slide">
+      <amp-img src="{{$videos[1]->coverUrl}}" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <span class="time">@{{0.date}}</span>
+        <h2>@{{0.title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+      </div>
+    </article>
+    @php ($i++)
+    <article class="slide">
+      <amp-img src="{{$videos[2]->coverUrl}}" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <span class="time">@{{0.date}}</span>
+        <h2>@{{0.title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+      </div>
+    </article>
+  </amp-carousel>
+</header>
+<header class="sm-hide md-hide lg-hide">
+  <amp-carousel height="497" layout="fixed-height" type="carousel" autoplay="" loop="" class="mobile">
+    @php ($i = 0)
+    <article class="slide">
+      <amp-img src="{{$videos[$i]->coverUrl}}" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <span class="time">@{{0.date}}</span>
+        <h2>@{{0.title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+      </div>
+    </article>
+    @php ($i++)
+    <article class="slide">
+      <amp-img src="{{$videos[$i]->coverUrl}}" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <span class="time">@{{0.date}}</span>
+        <h2>@{{0.title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+      </div>
+    </article>
+    @php ($i++)
+    <article class="slide">
+      <amp-img src="{{$videos[$i]->coverUrl}}" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <span class="time">@{{0.date}}</span>
+        <h2>@{{0.title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+      </div>
+    </article>
+  </amp-carousel>
+</header>
+<h2 class="section">A la une</h2>
+<section class="video-wall">
+  <amp-list src="/api/videowall"
+    [src]="videoWall"
+    width="auto"
+    height="1200"
+    layout="fixed-height"
+    [height]="videoWall.items.length * 1200">
+    <template type="amp-mustache">
+      <div class="clearfix">
+        <div class="lg-col lg-col-3 md-col md-col-6">
+          <a href="{{route('player', $videos[$i]->slug)}}">
+            <article class="video">
+              <amp-img src="@{{0.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <div class="caption">
+                <span class="time">@{{0.date}}</span>
+                <h2 class="small">@{{0.title}}</h2>
+              </div>
+            </article>
+          </a>
+        </div>
+        <div class="lg-col lg-col-3 md-col md-col-6">
+          <a href="{{route('player', $videos[0]->slug)}}">
+            <article class="video">
+              <amp-img src="@{{1.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <div class="caption">
+                <span class="time">@{{1.date}}</span>
+                <h2 class="small">@{{1.title}}</h2>
+              </div>
+            </article>
+          </a>
+        </div>
+        <div class="lg-col lg-col-3 md-col md-col-6">
+          <a href="{{route('player', $videos[0]->slug)}}">
+            <article class="video">
+              <amp-img src="@{{2.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <div class="caption">
+                <span class="time">@{{2.date}}</span>
+                <h2 class="small">@{{2.title}}</h2>
+              </div>
+            </article>
+          </a>
+        </div>
+        <div class="lg-col lg-col-3 md-col md-col-6">
+          <a href="{{route('player', $videos[0]->slug)}}">
+            <article class="video">
+              <amp-img src="@{{3.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <div class="caption">
+                <span class="time">@{{3.date}}</span>
+                <h2 class="small">@{{3.title}}</h2>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="lg-col lg-col-6">
+          <a href="{{route('player', $videos[0]->slug)}}">
+            <article class="video">
+              <amp-img src="@{{4.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <div class="caption">
+                <span class="time">@{{4.date}}</span>
+                <h2>@{{4.title}}</h2>
+              </div>
+            </article>
+          </a>
+        </div>
+        <div class="lg-col lg-col-6">
+          <div class="clearfix">
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{5.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{5.date}}</span>
+                    <h2 class="small">@{{5.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{6.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{6.date}}</span>
+                    <h2 class="small">@{{6.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{7.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{7.date}}</span>
+                    <h2 class="small">@{{7.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{8.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{8.date}}</span>
+                    <h2 class="small">@{{8.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="lg-col lg-col-6">
+          <div class="clearfix">
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{9.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{9.date}}</span>
+                    <h2 class="small">@{{9.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{10.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{10.date}}</span>
+                    <h2 class="small">@{{10.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{11.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{11.date}}</span>
+                    <h2 class="small">@{{11.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+            <div class="md-col md-col-6">
+              <a href="{{route('player', $videos[0]->slug)}}">
+                <article class="video">
+                  <amp-img src="@{{12.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+                  <div class="caption">
+                    <span class="time">@{{12.date}}</span>
+                    <h2 class="small">@{{12.title}}</h2>
+                  </div>
+                </article>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="lg-col lg-col-6">
+          <a href="{{route('player', $videos[0]->slug)}}">
+            <article class="video">
+              <amp-img src="@{{13.coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <div class="caption">
+                <span class="time">@{{13.date}}</span>
+                <h2>@{{13.title}}</h2>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+    </template>
+  </amp-list>
+</section>
+<section class="more">
+  <form method="GET"
+    action="/api/videowall"
+    action-xhr="/api/videowall"
+    target="_top"
+    on="submit-success: AMP.setState({
+              videoWall: {
+                items: videoWall.items.concat(event.response.items)
+              },
+              video: {
+                moreItemsPageIndex: video.moreItemsPageIndex + 1,
+                hasMorePages: event.response.hasMorePages
+              }
+            });">
+    <input type="hidden"
+      name="moreItemsPageIndex"
+      value="0"
+      [value]="video.moreItemsPageIndex">
+    <input type="submit"
+      value="Voir plus"
+      class="ampstart-btn caps m1 show"
+      [class]="(video.hasMorePages == false ? 'hide' : 'ampstart-btn caps m1 mb3 show')">
+  </form>
+</section>
+<section class="social">
+  <h2 class="xs-hide">Retrouvez Loopsider<br />sur les réseaux</h2>
+  <ul>
+    <li>
+      <a href="#">
+        <amp-img src="../assets/facebook_black.png" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
+        <amp-img src="../assets/facebook_green.png" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <amp-img src="../assets/twitter_black.png" media="(min-width: 40.06rem)" width="54" height="45" layout="fixed"></amp-img>
+        <amp-img src="../assets/twitter_green.png" media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <amp-img src="../assets/youtube_black.png" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
+        <amp-img src="../assets/youtube_green.png" media="(max-width: 40rem)" width="34" height="25" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <amp-img src="../assets/insta_black.png" media="(min-width: 40.06rem)" width="47" height="46" layout="fixed"></amp-img>
+        <amp-img src="../assets/insta_green.png" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <amp-img src="../assets/snap_black.png" media="(min-width: 40.06rem)" width="53" height="50" layout="fixed"></amp-img>
+        <amp-img src="../assets/snap_green.png" media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
+      </a>
+    </li>
+  </ul>
+<section>
+@endsection

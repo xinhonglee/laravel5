@@ -13,12 +13,20 @@
 
   Route::get('/', 'FrontController@index');
 
+  Route::get('/page/{page}', 'FrontController@index');
+
   Route::get('/video/{slug}', 'FrontController@player')->name('player');
 
   Route::get('/getvideo/{slug}', 'FrontController@getVideo')->name('getVideo');
+
+  Route::get('api/videowall', 'FrontController@getVideoWall');
 
   Route::get('/backoffice', 'VideoController@list');
 
   Route::post('/backoffice/video', 'VideoController@create');
 
   Route::delete('/backoffice/video/{video}', 'VideoController@delete');
+
+  Route::view('/corporate', 'corporate', ['css' => 'corporate']);
+
+  Route::view('/mentions-legales', 'mentions', ['css' => 'legal']);
