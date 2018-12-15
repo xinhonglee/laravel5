@@ -21,12 +21,14 @@
 
   Route::get('api/videowall', 'FrontController@getVideoWall');
 
-  Route::get('/backoffice', 'VideoController@list');
+  Route::get('/backoffice', 'BackController@list');
 
-  Route::post('/backoffice/video', 'VideoController@create');
+  Route::post('/backoffice/video', 'BackController@create');
 
-  Route::delete('/backoffice/video/{video}', 'VideoController@delete');
+  Route::delete('/backoffice/video/{video}', 'BackController@delete');
 
   Route::view('/corporate', 'corporate', ['css' => 'corporate']);
 
   Route::view('/mentions-legales', 'mentions', ['css' => 'legal']);
+
+  Auth::routes();

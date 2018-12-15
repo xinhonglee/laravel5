@@ -463,6 +463,7 @@
 		<section class="carousel xs-hide sm-hide">
 			<amp-carousel height="400" layout="fixed-height" type="carousel" autoplay="" loop="">
         @php ($i = 0)
+				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
@@ -472,7 +473,9 @@
 						</div>
 					</article>
 				</a>
+				@endif
         @php ($i++)
+				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
@@ -482,7 +485,9 @@
 						</div>
 					</article>
 				</a>
+				@endif
         @php ($i++)
+				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
@@ -492,7 +497,9 @@
 						</div>
 					</article>
 				</a>
+				@endif
         @php ($i++)
+				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
@@ -502,7 +509,9 @@
 						</div>
 					</article>
 				</a>
+				@endif
         @php ($i++)
+				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
@@ -512,7 +521,9 @@
 						</div>
 					</article>
 				</a>
+				@endif
         @php ($i++)
+				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
@@ -522,11 +533,13 @@
 						</div>
 					</article>
 				</a>
+				@endif
 			</amp-carousel>
 		</section>
 		<section class="video-wall md-hide lg-hide">
 				<div class="clearfix">
           @php ($i = 0)
+					@if ($suggestedVideos->count()>=($i+1))
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
@@ -538,7 +551,9 @@
 							</article>
 						</a>
 					</div>
+					@endif
           @php ($i++)
+					@if ($suggestedVideos->count()>=($i+1))
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
@@ -550,7 +565,9 @@
 							</article>
 						</a>
 					</div>
+					@endif
           @php ($i++)
+					@if ($suggestedVideos->count()>=($i+1))
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
@@ -562,7 +579,9 @@
 							</article>
 						</a>
 					</div>
+					@endif
           @php ($i++)
+					@if ($suggestedVideos->count()>=($i+1))
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
@@ -574,6 +593,7 @@
 							</article>
 						</a>
 					</div>
+					@endif
 				</div>
 			</div>
 		</section>

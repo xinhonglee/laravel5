@@ -23,6 +23,9 @@ env_variables:
   CLOUDINARY_API_KEY: cloudinary_api_key
   CLOUDINARY_API_SECRET: cloudinary_api_secret
   CLOUDINARY_USER_NAME: cloudinary_user_name
+  ADMIN_NAME: admin_name
+  ADMIN_EMAIL: admin_email
+  ADMIN_PASSWORD: admin_pass
 
 beta_settings:
     # for Cloud SQL, set this value to the Cloud SQL connection name,

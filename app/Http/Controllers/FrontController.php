@@ -8,19 +8,19 @@ use App\Video;
 class FrontController extends Controller
 
 {
+    var $wallSize = 17;
 
     public function index(Request $request, $page = 0)
     {
         $page = (int) $page;
         $totalVideoCount = Video::count();
-        $wallSize = 17;
         if ($page > 0) {
-            $skip = $wallSize+($page-1)*$wallSize;
-            $videos = Video::orderBy('date', 'desc')->skip($skip)->take($wallSize)->get();
-            $hasMorePages = ($totalVideoCount > ($skip+$wallSize));
+            $skip = $this->wallSize+($page-1)*$this->wallSize;
+            $videos = Video::orderBy('date', 'desc')->skip($skip)->take($this->wallSize)->get();
+            $hasMorePages = ($totalVideoCount > ($skip+$this->wallSize));
         } else {
-            $videos = Video::orderBy('date', 'desc')->limit($wallSize)->get();
-            $hasMorePages = ($totalVideoCount > $wallSize);
+            $videos = Video::orderBy('date', 'desc')->limit($this->wallSize)->get();
+            $hasMorePages = ($totalVideoCount > $this->wallSize);
         }
         $css= "index";
         return view('index', compact('videos', 'css', 'page', 'hasMorePages'));
@@ -28,8 +28,7 @@ class FrontController extends Controller
 
     public function getVideoWall(Request $request)
     {
-      $db_videos = Video::orderBy('date', 'desc')->limit(20)->get();
-      $videos = $this->completeVideoListByMockup($db_videos, 20);
+      $videos = Video::orderBy('date', 'desc')->limit($this->wallSize)->get();
       $videos = json_encode($videos, JSON_FORCE_OBJECT);
       $result["items"] = [json_decode($videos)];
       $result["hasMorePages"] = true;
@@ -41,8 +40,7 @@ class FrontController extends Controller
       if (is_null($video)) {
         $video = $this->getVideoMockup();
       }
-      $db_videos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
-      $suggestedVideos = $this->completeVideoListByMockup($db_videos, 6);
+      $suggestedVideos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
       return view('player', compact('video', 'suggestedVideos'));
     }
 
