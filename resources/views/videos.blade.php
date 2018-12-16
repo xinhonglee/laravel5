@@ -9,7 +9,7 @@
   </div>
   <div class="panel-body">
      <form action="{{ url('backoffice/video') }}" method="POST" class="form-horizontal">
-         {{ csrf_field() }}
+         @csrf
          @if(session()->has('status'))
              <div class="alert alert-info" role="alert">
                  {{session()->get('status')}}
@@ -81,7 +81,7 @@
                 class="cld-video-player">
               </video>
               <form action="{{ url('/backoffice/video/'.$video->id) }}" method="POST">
-            {{ csrf_field() }}
+            @csrf
             {{ method_field('DELETE') }}
 
             <button type="submit" id="delete-video-{{ $video->id }}" class="btn btn-danger">

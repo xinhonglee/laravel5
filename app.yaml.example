@@ -14,6 +14,8 @@ env_variables:
   APP_LOG: errorlog
   APP_KEY: laravel_app_key
   STORAGE_DIR: /tmp
+  CACHE_DRIVER: database
+  SESSION_DRIVER: database
   DB_HOST: localhost
   DB_DATABASE: db_name
   DB_USERNAME: db_user
