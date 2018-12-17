@@ -220,12 +220,14 @@ amp-img.cover img {
   background-size: 75px 75px;
   background-image: url('../assets/next.svg');
   right: 55px;
+  z-index: 100;
 }
 .amp-carousel-button-prev {
   background-color: transparent;
   background-size: 75px 75px;
   background-image: url('../assets/prev.svg');
   left: 55px;
+  z-index: 100;
 }
 #menu {
   width: 100%;
