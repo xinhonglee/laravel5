@@ -79,7 +79,7 @@
 <h2 class="section">A la une</h2>
 <section class="video-wall">
   <div class="clearfix">
-    @php ($i = 0)
+    @php ($i = 3)
     @if ($videos->count()>=($i+1))
     <div class="lg-col lg-col-3 md-col md-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
