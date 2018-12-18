@@ -26,7 +26,8 @@ class BackController extends Controller
          'title' => 'required|max:255',
          'description' => 'required',
          'date' => 'required|date',
-         'videoId' => 'required'
+         'videoId' => 'required',
+         'coverId' => 'required'
         ]);
 
         $this->saveVideo($request);
@@ -43,12 +44,7 @@ class BackController extends Controller
         $video->videoId =  $request->input("videoId");
         $video->videoUrl =  $request->input("videoUrl");
         $video->coverId = $request->input("coverId");
-        if (!is_null($request->input("coverId"))) {
-          $coverUrl = "https://res.cloudinary.com/".env('CLOUDINARY_CLOUD_NAME')."/image/upload/".$request->input("videoId");
-        } else {
-          $coverUrl = "https://res.cloudinary.com/".env('CLOUDINARY_CLOUD_NAME')."/video/upload/".$request->input("videoId").".jpg";
-        }
-        $video->coverUrl = $coverUrl;
+        $video->coverUrl = $request->input("coverUrl");
         $video->date = new \DateTime($request->input("date"));
         $video->slug = str_slug($video->title, "-");
         $video->save();

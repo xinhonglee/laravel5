@@ -9,7 +9,10 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <span class="time">{{$videos[$i]->date}}</span>
+        <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
@@ -20,7 +23,10 @@
     <article class="slide">
       <amp-img src="{{$videos[1]->coverUrl}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <span class="time">{{$videos[$i]->date}}</span>
+        <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
@@ -31,7 +37,10 @@
     <article class="slide">
       <amp-img src="{{$videos[2]->coverUrl}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <span class="time">{{$videos[$i]->date}}</span>
+        <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
@@ -46,7 +55,10 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->coverUrl}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <span class="time">{{$videos[$i]->date}}</span>
+        <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
@@ -57,7 +69,10 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->coverUrl}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <span class="time">{{$videos[$i]->date}}</span>
+        <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
@@ -68,7 +83,10 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->coverUrl}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <span class="time">{{$videos[$i]->date}}</span>
+        <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
@@ -86,7 +104,10 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <span class="time">{{$videos[$i]->date}}</span>
+            <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -100,7 +121,10 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <span class="time">{{$videos[$i]->date}}</span>
+            <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -114,7 +138,10 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <span class="time">{{$videos[$i]->date}}</span>
+            <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -128,7 +155,10 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <span class="time">{{$videos[$i]->date}}</span>
+            <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -144,7 +174,10 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <span class="time">{{$videos[$i]->date}}</span>
+            <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -160,7 +193,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -174,7 +210,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -190,7 +229,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -204,7 +246,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -224,7 +269,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -238,7 +286,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -254,7 +305,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -268,7 +322,10 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <span class="time">{{$videos[$i]->date}}</span>
+                <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -284,7 +341,10 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <span class="time">{{$videos[$i]->date}}</span>
+            <amp-timeago layout="fixed" width="160" class="time"
+    height="30"
+    datetime="{{$videos[$i]->date}}"
+    locale="fr">Il y a 3h</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -304,7 +364,7 @@
     <li>
       <a href="#">
         <amp-img src="../assets/facebook_black.png" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
-        <amp-img src="../assets/facebook_green.png" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
+        <amp-img src="../assets/facebook_green.png" media="(max-width: 40rem)" width="13" height="30" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
@@ -316,7 +376,7 @@
     <li>
       <a href="#">
         <amp-img src="../assets/youtube_black.png" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
-        <amp-img src="../assets/youtube_green.png" media="(max-width: 40rem)" width="34" height="25" layout="fixed"></amp-img>
+        <amp-img src="../assets/youtube_green.png" media="(max-width: 40rem)" width="34" height="30" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
