@@ -12,7 +12,7 @@
         <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
@@ -26,7 +26,7 @@
         <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
@@ -40,7 +40,7 @@
         <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
@@ -58,7 +58,7 @@
         <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
@@ -72,7 +72,7 @@
         <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
@@ -86,7 +86,7 @@
         <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
         <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
@@ -107,7 +107,7 @@
             <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -124,7 +124,7 @@
             <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -141,7 +141,7 @@
             <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -158,7 +158,7 @@
             <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -177,7 +177,7 @@
             <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
         </article>
@@ -196,7 +196,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -213,7 +213,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -232,7 +232,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -249,7 +249,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -272,7 +272,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -289,7 +289,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -308,7 +308,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -325,7 +325,7 @@
                 <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
             </article>
@@ -344,7 +344,7 @@
             <amp-timeago layout="fixed" width="160" class="time"
     height="30"
     datetime="{{$videos[$i]->date}}"
-    locale="fr">Il y a 3h</amp-timeago>
+    locale="fr">{{$videos[$i]->date}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
         </article>
