@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    //
+  public function getISODateAttribute()
+      {
+          return date('c', strtotime($this->date));
+      }
 }
