@@ -17,3 +17,7 @@ yarn-error.log
 .DS_Store
 cloud_sql_proxy
 app.yaml
+bootstrap/cache
+public/css
+public/js
+public/mix-manifest.json
