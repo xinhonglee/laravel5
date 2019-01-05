@@ -1,14 +1,17 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
+// Helpers
+@import "helpers/all";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Layout
+@import "layouts/all";
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Partials
+@import "partials/all";
+
+// Pages
+@import "pages/all";
