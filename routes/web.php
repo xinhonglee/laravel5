@@ -11,6 +11,8 @@
 |
 */
 
+
+
   Route::get('/', 'FrontController@index');
 
   Route::get('/page/{page}', 'FrontController@index');
@@ -20,6 +22,9 @@
   Route::get('/getvideo/{slug}', 'FrontController@getVideo')->name('getVideo');
 
   Route::get('api/videowall', 'FrontController@getVideoWall');
+
+  Route::get('/backoffice/{vue_capture?}', [ 'as' => 'backoffice', 'uses' => 'BackController@list'])
+    ->where('vue_capture', '[\/\w\.-]*');
 
   Route::get('/backoffice', 'BackController@list');
 

@@ -14,8 +14,6 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js" type="text/javascript"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
    <script src="https://media-library.cloudinary.com/global/all.js" type="text/javascript"></script>
-
-</script>
 </head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -38,5 +36,7 @@
      </div>
   </nav>
   @yield('content')
+  {{--<div id="app"></div>--}}
+  <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>
