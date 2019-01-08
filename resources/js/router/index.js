@@ -5,8 +5,8 @@ import Router from 'vue-router'
 import Full from '../containers/Full'
 
 // Views
-import Video from '../views/Video'
-import Story from '../views/Story'
+import Videos from '../views/Videos'
+import Stories from '../views/Stories'
 
 import Page404 from '../views/Errors/page404';
 
@@ -17,19 +17,19 @@ export default new Router({
   routes: [
     {
       path: '/backoffice',
-      redirect: '/backoffice/video',
+      redirect: '/backoffice/videos',
       name: 'BackOffice',
       component: Full,
       children: [
         {
-          path: 'video',
-          name: 'Video',
-          component: Video
+          path: 'videos',
+          name: 'Videos',
+          component: Videos
         },
         {
-          path: 'story',
-          name: 'Story',
-          component: Story
+          path: 'stories',
+          name: 'Stories',
+          component: Stories
         },
         {
           path: '*',
