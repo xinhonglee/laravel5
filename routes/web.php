@@ -23,14 +23,8 @@
 
   Route::get('api/videowall', 'FrontController@getVideoWall');
 
-  Route::get('/backoffice/{vue_capture?}', [ 'as' => 'backoffice', 'uses' => 'BackController@list'])
+  Route::get('/backoffice/{vue_capture?}', [ 'as' => 'backoffice', 'uses' => 'BackController@index'])
     ->where('vue_capture', '[\/\w\.-]*');
-
-  Route::get('/backoffice', 'BackController@list');
-
-  Route::post('/backoffice/video', 'BackController@create');
-
-  Route::delete('/backoffice/video/{video}', 'BackController@delete');
 
   Route::view('/corporate', 'corporate', ['css' => 'corporate']);
 

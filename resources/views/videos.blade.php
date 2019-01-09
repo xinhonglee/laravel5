@@ -136,5 +136,6 @@
     $(function () {
         $('.date').datetimepicker();
     });
+
 </script>
 @endsection

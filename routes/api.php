@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->get('/backoffice/videos', 'api/VideosController@list');
+
+Route::middleware('auth:api')->post('/backoffice/videos', 'api/VideosController@create');
+
+Route::middleware('auth:api')->put('/backoffice/videos', 'api/VideosController@update');
+
+Route::middleware('auth:api')->delete('/backoffice/videos', 'api/VideosController@delete');
