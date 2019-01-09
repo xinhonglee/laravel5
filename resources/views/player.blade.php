@@ -424,16 +424,16 @@
 	</amp-lightbox>
 	<main>
 		<section class="player xs-hide sm-hide">
-			<amp-video height="800" src="{{$video->videoUrl}}"
-				poster="{{$video->coverUrl}}"
+			<amp-video height="800" src="{{$video->video_url}}"
+				poster="{{$video->cover_url}}"
 				layout="fixed-height"
 				controls>
 				<div fallback>
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
-				<source type="video/mp4" src="{{$video->videoUrl}}">
+				<source type="video/mp4" src="{{$video->video_url}}">
 			</amp-video>
-			<amp-img src="{{$video->coverUrl}}" layout="fill" class="cover blur"></amp-img>
+			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
 			<div class="overlay">
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
@@ -443,14 +443,14 @@
 			</div>
 		</section>
 		<section class="player md-hide lg-hide">
-			<amp-video height="800" width="800" src="{{$video->videoUrl}}"
-				poster="{{$video->coverUrl}}"
+			<amp-video height="800" width="800" src="{{$video->video_url}}"
+				poster="{{$video->cover_url}}"
 				layout="responsive"
 				controls>
 				<div fallback>
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
-				<source type="video/mp4" src="{{$video->videoUrl}}">
+				<source type="video/mp4" src="{{$video->video_url}}">
 				<div role="button" aria-label="open share box" on="tap:share" class="share">
 					<amp-img src="../assets/share.svg" layout="fixed" width="18" height="15"></amp-img>
 				</div>
@@ -466,7 +466,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<span class="time">{{$suggestedVideos[$i]->date}}</span>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -478,7 +478,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<span class="time">{{$suggestedVideos[$i]->date}}</span>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -490,7 +490,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<span class="time">{{$suggestedVideos[$i]->date}}</span>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -502,7 +502,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<span class="time">{{$suggestedVideos[$i]->date}}</span>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -514,7 +514,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<span class="time">{{$suggestedVideos[$i]->date}}</span>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -526,7 +526,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<span class="time">{{$suggestedVideos[$i]->date}}</span>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -543,7 +543,7 @@
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
 									<span class="time">{{$suggestedVideos[$i]->date}}</span>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
@@ -557,7 +557,7 @@
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
 									<span class="time">{{$suggestedVideos[$i]->date}}</span>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
@@ -571,7 +571,7 @@
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
 									<span class="time">{{$suggestedVideos[$i]->date}}</span>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
@@ -585,7 +585,7 @@
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->coverUrl}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
 									<span class="time">{{$suggestedVideos[$i]->date}}</span>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>

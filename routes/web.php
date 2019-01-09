@@ -26,6 +26,9 @@
   Route::get('/backoffice/{vue_capture?}', [ 'as' => 'backoffice', 'uses' => 'BackController@index'])
     ->where('vue_capture', '[\/\w\.-]*');
 
+  Route::get('/passport/{vue_capture?}', [ 'as' => 'backoffice', 'uses' => 'BackController@index'])
+    ->where('vue_capture', '[\/\w\.-]*');
+
   Route::view('/corporate', 'corporate', ['css' => 'corporate']);
 
   Route::view('/mentions-legales', 'mentions', ['css' => 'legal']);

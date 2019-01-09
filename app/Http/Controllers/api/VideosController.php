@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Video\CreateRequest;
 use App\Http\Controllers\Controller;
 use App\Video;
 
@@ -22,23 +23,15 @@ class VideosController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(CreateRequest $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'date' => 'required|date',
-            'videoId' => 'required',
-            'coverId' => 'required'
-        ]);
-
         $video = new Video();
         $video->title = $request->input("title");
         $video->description = $request->input("description");
-        $video->videoId = $request->input("videoId");
-        $video->videoUrl = $request->input("videoUrl");
-        $video->coverId = $request->input("coverId");
-        $video->coverUrl = $request->input("coverUrl");
+        $video->video_id = $request->input("video_id");
+        $video->video_url = $request->input("video_url");
+        $video->cover_id = $request->input("cover_id");
+        $video->cover_url = $request->input("cover_url");
         $video->date = new \DateTime($request->input("date"));
         $video->slug = str_slug($video->title, "-");
 
@@ -51,23 +44,15 @@ class VideosController extends Controller
 
     public function update(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'date' => 'required|date',
-            'videoId' => 'required',
-            'coverId' => 'required'
-        ]);
-
         $video = Video::where('id', $request->input("id"))->firstOrFail();
 
         $result = $video->update([
             "title" => $request->input("title"),
             "description" => $request->input("description"),
-            "videoId" => $request->input("videoId"),
-            "videoUrl" => $request->input("videoUrl"),
-            "coverId" => $request->input("coverId"),
-            "coverUrl" => $request->input("coverUrl"),
+            "video_id" => $request->input("video_id"),
+            "video_url" => $request->input("video_url"),
+            "cover_id" => $request->input("cover_id"),
+            "cover_url" => $request->input("cover_url"),
             "date" => new \DateTime($request->input("date")),
             "slug" => str_slug($video->title, "-")
         ]);

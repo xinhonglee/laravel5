@@ -15,15 +15,18 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('title');
             $table->string('description');
-            $table->string('videoId');
-            $table->string('videoUrl');
-            $table->string('coverId')->nullable();
-            $table->string('coverUrl');
+            $table->string('video_id');
+            $table->string('video_url');
+            $table->string('cover_id')->nullable();
+            $table->string('cover_url');
             $table->string('slug');
             $table->dateTime('date');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -32,8 +35,16 @@ class CreateVideosTable extends Migration
      *
      * @return void
      */
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::table('videos', function (Blueprint $table) {
+            $table->dropForeign('videos_user_id_foreign');
+        });
+        Schema::drop('videos');
     }
 }

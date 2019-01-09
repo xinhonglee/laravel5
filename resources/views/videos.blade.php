@@ -45,8 +45,8 @@
          <div class="form-group">
             <label for="cover" class="col-sm-3 control-label">Cover (img)</label>
             <div class="col-sm-6">
-             <input type="hidden" name="coverId" id="coverId" value="">
-             <input type="hidden" name="coverUrl" id="coverUrl" value="">
+             <input type="hidden" name="cover_id" id="coverId" value="">
+             <input type="hidden" name="cover_url" id="coverUrl" value="">
              <img src="" style="visibility:hidden; height:100px;" id="coverVignette" value="">
              <button type="button" class="btn btn-default" id="upload_cover">Open Media Library</button>
             </div>
@@ -66,7 +66,7 @@
       @foreach($videos as $video)
           <div class="col-md-3">
               <span>{{$video->title}} - {{$video->date}}</span>
-              <img src="{{$video->coverUrl}}" class="img-responsive">
+              <img src="{{$video->cover_url}}" class="img-responsive">
               <form action="{{ url('/backoffice/video/'.$video->id) }}" method="POST">
             @csrf
             {{ method_field('DELETE') }}
