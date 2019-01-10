@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,17 +12,17 @@ class StoriesController extends Controller
 
     }
 
-    public function create(Request $request)
+    public function create()
     {
 
     }
 
-    public function update(Request $request)
+    public function update()
     {
 
     }
 
-    public function delete(Request $request, Video $video)
+    public function delete()
     {
 
     }

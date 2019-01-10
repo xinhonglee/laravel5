@@ -12,17 +12,28 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['namespace' => 'API'], function(){
+
+    Route::post('/user/login', 'UserController@login');
+
+    Route::post('/user/register', 'UserController@register');
+
 });
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('/backoffice/videos', 'api/VideosController@list');
+Route::group(['namespace' => 'API', 'middleware' => 'auth:api'], function(){
 
-    Route::post('/backoffice/videos', 'api/VideosController@create');
+    Route::post('/user/details', 'UserController@details');
 
-    Route::put('/backoffice/videos', 'api/VideosController@update');
+    Route::get('/videos/list', 'VideosController@list');
 
-    Route::delete('/backoffice/videos', 'api/VideosController@delete');
+    Route::post('/videos/create', 'VideosController@create');
+
+    Route::put('/videos/update', 'VideosController@update');
+
+    Route::delete('/videos/delete', 'VideosController@delete');
 });
