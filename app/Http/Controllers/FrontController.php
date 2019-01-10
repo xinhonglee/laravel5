@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Video;
+use App\Models\Video;
 
 class FrontController extends Controller
 

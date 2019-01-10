@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Video;
+use App\Models\Video;
 use Validator;
 
 class VideosController extends Controller
@@ -14,6 +14,11 @@ class VideosController extends Controller
     public $errorCode = 500;
     public $validationCode = 401;
 
+    /**
+     * Videos List
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function list()
     {
         try {
@@ -31,6 +36,12 @@ class VideosController extends Controller
         }
     }
 
+    /**
+     * Create Video
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -47,15 +58,16 @@ class VideosController extends Controller
         }
 
         try {
+            $input = $request->all();
             $video = new Video();
-            $video->title = $request->input("title");
-            $video->description = $request->input("description");
+            $video->title = $input["title"];
+            $video->description = $input["description"];
             $video->user_id = Auth::user()->id;
-            $video->video_id = $request->input("video_id");
-            $video->video_url = $request->input("video_url");
-            $video->cover_id = $request->input("cover_id");
-            $video->cover_url = $request->input("cover_url");
-            $video->date = new \DateTime($request->input("date"));
+            $video->video_id = $input["video_id"];
+            $video->video_url = $input["video_url"];
+            $video->cover_id = $input["cover_id"];
+            $video->cover_url = $input["cover_url"];
+            $video->date = new \DateTime($input["date"]);
             $video->slug = str_slug($video->title, "-");
 
             $result = $video->save();
@@ -67,6 +79,12 @@ class VideosController extends Controller
 
     }
 
+    /**
+     * Update Video
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -83,16 +101,19 @@ class VideosController extends Controller
         }
 
         try {
-            $video = Video::where('id', $request->input("id"))->firstOrFail();
+            $input = $request->all();
+            $video = Video::where('id', $input["id"])
+                ->where('user_id', Auth::user()->id)
+                ->firstOrFail();
 
             $result = $video->update([
-                "title" => $request->input("title"),
-                "description" => $request->input("description"),
-                "video_id" => $request->input("video_id"),
-                "video_url" => $request->input("video_url"),
-                "cover_id" => $request->input("cover_id"),
-                "cover_url" => $request->input("cover_url"),
-                "date" => new \DateTime($request->input("date")),
+                "title" => $input["title"],
+                "description" => $input["description"],
+                "video_id" => $input["video_id"],
+                "video_url" => $input["video_url"],
+                "cover_id" => $input["cover_id"],
+                "cover_url" => $input["cover_url"],
+                "date" => new \DateTime($input["date"]),
                 "slug" => str_slug($video->title, "-")
             ]);
 
@@ -102,6 +123,13 @@ class VideosController extends Controller
         }
     }
 
+    /**
+     * Delete Video
+     *
+     * @param Request $request
+     * @param Video $video
+     * @return \Illuminate\Http\Response
+     */
     public function delete(Request $request, Video $video)
     {
         try {
@@ -112,6 +140,12 @@ class VideosController extends Controller
         }
     }
 
+    /**
+     * Create Video
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function genCloudinaryAuthSignature()
     {
         $timestamp = time();

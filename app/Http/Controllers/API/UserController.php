@@ -5,7 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
+use App\Models\Role;
 use Validator;
 
 class UserController extends Controller
@@ -16,11 +17,20 @@ class UserController extends Controller
     public $unAuthorizedCode = 403;
     public $appKey;
 
+    /**
+     * User Controller Constructor
+     */
     public function __construct()
     {
-        $this->appKey = env('APP_KEY');
+
     }
 
+    /**
+     * User Login
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -36,6 +46,7 @@ class UserController extends Controller
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = Auth::user();
                 $success['token'] = $user->createToken($this->appKey)->accessToken;
+
                 return response()->json(['success' => $success], $this->successCode);
             } else {
                 return response()->json(['error' => 'Unauthorised'], $this->unAuthorizedCode);
@@ -43,10 +54,14 @@ class UserController extends Controller
         } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], $this->errorCode);
         }
-
-
     }
 
+    /**
+     * User Register
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -63,20 +78,32 @@ class UserController extends Controller
             $input = $request->all();
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
+
+            $role = Role::where('name', '=', 'author')->get()->first();
+            $user->attachRole($role);
+
             $success['token'] = $user->createToken($this->appKey)->accessToken;
             $success['name'] = $user->name;
+
             return response()->json(['success' => $success], $this->successCode);
         } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], $this->errorCode);
         }
     }
 
+    /**
+     * User Details
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function details()
     {
         try {
             $user = Auth::user();
+
             return response()->json(['success' => $user], $this->successCode);
         } catch (\Exception $exception) {
+
             return response()->json(['error' => $exception->getMessage()], $this->errorCode);
         }
     }

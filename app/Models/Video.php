@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class Video extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'date', 'video_id', 'cover_id'
+        'title', 'date', 'video_id', 'cover_id', 'video_url', 'cover_url'
     ];
 
     public function getISODateAttribute()
