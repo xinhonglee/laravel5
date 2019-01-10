@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Video\CreateRequest;
+use App\Http\Requests\Video\UpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Video;
 
@@ -42,7 +43,7 @@ class VideosController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(UpdateRequest $request)
     {
         $video = Video::where('id', $request->input("id"))->firstOrFail();
 
