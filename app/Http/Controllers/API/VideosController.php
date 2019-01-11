@@ -70,9 +70,9 @@ class VideosController extends Controller
             $video->date = new \DateTime($input["date"]);
             $video->slug = str_slug($video->title, "-");
 
-            $result = $video->save();
+            $video->save();
 
-            return response()->json(['payload' => $result], $this->successCode);
+            return response()->json(['payload' => $video], $this->successCode);
         } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], $this->errorCode);
         }

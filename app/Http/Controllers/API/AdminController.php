@@ -32,7 +32,7 @@ class AdminController extends Controller
     public function listUsers(Request $request)
     {
         try {
-            $users = User::all();
+            $users = User::with('role')->get();
 
             return response()->json(['payload' => $users], $this->successCode);
         } catch (\Exception $exception) {
@@ -48,9 +48,10 @@ class AdminController extends Controller
     public function updateUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
             'name' => 'required',
             'email' => 'required|email',
-            'role' => 'required',
+            'role_id' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], $this->validationCode);
@@ -65,8 +66,7 @@ class AdminController extends Controller
                 "email" => $input["email"],
             ]);
 
-            $role = Role::where('name', '=', $input['user_role'])->get()->first();
-            $user->updateRole($role);
+            $user->roles()->sync($input['role_id']);
 
             return response()->json(['payload' => $result], $this->successCode);
         } catch (\Exception $exception) {
@@ -81,6 +81,13 @@ class AdminController extends Controller
      */
     public function deleteUser(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], $this->validationCode);
+        }
+
         try {
             $user = User::where('id', $request->input("user_id"))->firstOrFail();
             $result = $user->delete();

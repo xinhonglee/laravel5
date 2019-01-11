@@ -1,0 +1,24 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Loopsider",
+        "description": "API description",
+        "contact": {
+            "email": "milos.tosic@webtails.fr"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/sample": {
+            "get": {
+                "summary": "Sample",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

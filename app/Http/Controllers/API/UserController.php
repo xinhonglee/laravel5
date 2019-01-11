@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -45,9 +46,10 @@ class UserController extends Controller
         try {
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = Auth::user();
-                $success['token'] = $user->createToken($this->appKey)->accessToken;
+                $result['token'] = $user->createToken($this->appKey)->accessToken;
+                $result['admin'] = $user->hasRole('admin');
 
-                return response()->json(['success' => $success], $this->successCode);
+                return response()->json(['payload' => $result], $this->successCode);
             } else {
                 return response()->json(['error' => 'Unauthorised'], $this->unAuthorizedCode);
             }
@@ -82,10 +84,10 @@ class UserController extends Controller
             $role = Role::where('name', '=', 'author')->get()->first();
             $user->attachRole($role);
 
-            $success['token'] = $user->createToken($this->appKey)->accessToken;
-            $success['name'] = $user->name;
+            $result['token'] = $user->createToken($this->appKey)->accessToken;
+            $result['name'] = $user->name;
 
-            return response()->json(['success' => $success], $this->successCode);
+            return response()->json(['payload' => $result], $this->successCode);
         } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], $this->errorCode);
         }
@@ -100,10 +102,34 @@ class UserController extends Controller
     {
         try {
             $user = Auth::user();
+            $user['admin'] = $user->hasRole('admin');
 
-            return response()->json(['success' => $user], $this->successCode);
+            return response()->json(['payload' => $user], $this->successCode);
         } catch (\Exception $exception) {
 
+            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+        }
+    }
+
+    /**
+     * User Logout
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        try {
+            $accessToken = Auth::user()->token();
+            DB::table('oauth_refresh_tokens')
+                ->where('access_token_id', $accessToken->id)
+                ->update([
+                    'revoked' => true
+                ]);
+
+            $accessToken->revoke();
+            return response()->json(['payload' => "success"], $this->successCode);
+        } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], $this->errorCode);
         }
     }

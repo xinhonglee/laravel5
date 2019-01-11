@@ -17,23 +17,41 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::group(['namespace' => 'API'], function(){
+Route::group(['namespace' => 'API'], function () {
 
-    Route::post('/user/login', 'UserController@login');
+    Route::group(['prefix' => 'user'], function () {
 
-    Route::post('/user/register', 'UserController@register');
+        Route::post('/login', 'UserController@login');
 
+        Route::post('/register', 'UserController@register');
+
+        Route::get('/details', ['uses' => 'UserController@details', 'middleware' => 'auth:api']);
+
+        Route::get('/logout', ['uses' => 'UserController@logout', 'middleware' => 'auth:api']);
+
+    });
+
+    Route::group(['prefix' => 'videos', 'middleware' => 'auth:api'], function () {
+
+        Route::get('/list', 'VideosController@list');
+
+        Route::post('/create', 'VideosController@create');
+
+        Route::put('/update', 'VideosController@update');
+
+        Route::delete('/delete', 'VideosController@delete');
+    });
+
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth:api', 'role:admin']], function () {
+
+        Route::get('/list-users', 'AdminController@listUsers');
+
+        Route::put('/update-user', 'AdminController@updateUser');
+
+        Route::delete('/delete-user', 'AdminController@deleteUser');
+
+        Route::get('/list-roles', 'AdminController@listRoles');
+
+    });
 });
 
-Route::group(['namespace' => 'API', 'middleware' => 'auth:api'], function(){
-
-    Route::post('/user/details', 'UserController@details');
-
-    Route::get('/videos/list', 'VideosController@list');
-
-    Route::post('/videos/create', 'VideosController@create');
-
-    Route::put('/videos/update', 'VideosController@update');
-
-    Route::delete('/videos/delete', 'VideosController@delete');
-});
