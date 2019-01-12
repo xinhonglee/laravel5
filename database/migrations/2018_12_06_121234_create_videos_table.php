@@ -20,6 +20,7 @@ class CreateVideosTable extends Migration
             $table->string('description');
             $table->string('video_id');
             $table->string('video_url');
+            $table->unsignedInteger('video_category_id');
             $table->string('cover_id')->nullable();
             $table->string('cover_url');
             $table->string('slug');
@@ -27,14 +28,16 @@ class CreateVideosTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('video_category_id')->references('id')->on('video_categories')->onDelete('cascade');
+        });
+
+        Schema::create('video_categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('description')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     /**
      * Reverse the migrations.
      *
@@ -44,6 +47,7 @@ class CreateVideosTable extends Migration
     {
         Schema::table('videos', function (Blueprint $table) {
             $table->dropForeign('videos_user_id_foreign');
+            $table->dropForeign('videos_video_category_id_foreign');
         });
         Schema::drop('videos');
     }
