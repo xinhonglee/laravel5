@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'FrontController@index')->name('player');
+Route::get('/', 'FrontController@index')->name('home');
 
 Route::get('/video/{slug}', 'FrontController@player')->name('player');
 

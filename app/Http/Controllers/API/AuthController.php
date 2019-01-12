@@ -10,7 +10,7 @@ use App\Models\User;
 use App\Models\Role;
 use Validator;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
     public $successCode = 200;
     public $errorCode = 500;

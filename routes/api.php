@@ -12,22 +12,18 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
 Route::group(['namespace' => 'API'], function () {
 
-    Route::group(['prefix' => 'user'], function () {
+    Route::group(['prefix' => 'auth'], function () {
 
-        Route::post('/login', 'UserController@login');
+        Route::post('/login', 'AuthController@login');
 
-        Route::post('/register', 'UserController@register');
+        Route::post('/register', 'AuthController@register');
 
-        Route::get('/details', ['uses' => 'UserController@details', 'middleware' => 'auth:api']);
+        Route::get('/details', ['uses' => 'AuthController@details', 'middleware' => 'auth:api']);
 
-        Route::get('/logout', ['uses' => 'UserController@logout', 'middleware' => 'auth:api']);
+        Route::get('/logout', ['uses' => 'AuthController@logout', 'middleware' => 'auth:api']);
 
     });
 
@@ -42,16 +38,15 @@ Route::group(['namespace' => 'API'], function () {
         Route::delete('/delete', 'VideosController@delete');
     });
 
-    Route::group(['prefix' => 'admin', 'middleware' => ['auth:api', 'role:admin']], function () {
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth:api', 'role:admin']], function () {
 
-        Route::get('/list-users', 'AdminController@listUsers');
+        Route::get('/list-users', 'UsersController@list');
 
-        Route::put('/update-user', 'AdminController@updateUser');
+        Route::put('/update-user', 'UsersController@update');
 
-        Route::delete('/delete-user', 'AdminController@deleteUser');
+        Route::delete('/delete-user', 'UsersController@delete');
 
-        Route::get('/list-roles', 'AdminController@listRoles');
-
+        Route::get('/list-roles', 'RolesController@list');
     });
 });
 

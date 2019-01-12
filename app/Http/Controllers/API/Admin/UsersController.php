@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Role;
+
 use Validator;
 
-class AdminController extends Controller
+class UsersController extends Controller
 {
 
     public $successCode = 200;
@@ -29,7 +29,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function listUsers(Request $request)
+    public function list(Request $request)
     {
         try {
             $users = User::with('role')->get();
@@ -45,7 +45,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateUser(Request $request)
+    public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
@@ -79,7 +79,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function deleteUser(Request $request)
+    public function delete(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
@@ -98,22 +98,5 @@ class AdminController extends Controller
         }
     }
 
-    /**
-     * Role List
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function listRoles(Request $request)
-    {
-        try {
-            $roles = Role::all();
 
-            return response()->json(
-                ['payload' => [
-                    'roles' => $roles,
-                ]], $this->successCode);
-        } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
-        }
-    }
 }
