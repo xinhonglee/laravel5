@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController;
 
-class StoriesController extends Controller
+class StoriesController extends BaseController
 {
     public function list()
     {

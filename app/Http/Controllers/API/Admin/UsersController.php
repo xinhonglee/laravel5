@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Admin;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController;
 use App\Models\User;
-
 use Validator;
 
-class UsersController extends Controller
+class UsersController extends BaseController
 {
 
-    public $successCode = 200;
-    public $errorCode = 500;
-    public $validationCode = 401;
 
     /**
      * Admin Controller Constructor
@@ -27,76 +22,77 @@ class UsersController extends Controller
     /**
      * User List
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function list(Request $request)
     {
-        try {
-            $users = User::with('role')->get();
 
-            return response()->json(['payload' => $users], $this->successCode);
+        try {
+            $result = User::with('role')->get();
+
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
     /**
      * Update User
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'name' => 'required',
             'email' => 'required|email',
             'role_id' => 'required',
         ]);
+
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], $this->validationCode);
+            return $this->sendValidationError($validator->errors());
         }
 
         try {
             $input = $request->all();
-
             $user = User::where('id', $input["user_id"])->firstOrFail();
             $result = $user->update([
                 "name" => $input["name"],
                 "email" => $input["email"],
             ]);
-
             $user->roles()->sync($input['role_id']);
 
-            return response()->json(['payload' => $result], $this->successCode);
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
     /**
      * Delete User
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function delete(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
         ]);
+
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], $this->validationCode);
+            return $this->sendValidationError($validator->errors());
         }
 
         try {
             $user = User::where('id', $request->input("user_id"))->firstOrFail();
             $result = $user->delete();
-            return response()->json(['payload' => $result], $this->successCode);
 
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
-
-
 }

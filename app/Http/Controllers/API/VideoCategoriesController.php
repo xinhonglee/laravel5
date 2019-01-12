@@ -3,36 +3,25 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController;
 use App\Models\VideoCategory;
 
-class VideoCategoriesController extends Controller
+class VideoCategoriesController extends BaseController
 {
-
-    public $successCode = 200;
-    public $errorCode = 500;
-    public $validationCode = 401;
 
     /**
      * Role List
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function list(Request $request)
     {
         try {
             $categories = VideoCategory::all();
 
-            return response()->json(
-                ['payload' =>
-                    [
-                        'categories' => $categories,
-                    ]
-                ],
-                $this->successCode
-            );
+            return $this->sendResponse(['payload' => $categories]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 }

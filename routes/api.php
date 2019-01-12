@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::group(['namespace' => 'API'], function () {
 
-    Route::group(['prefix' => 'auth'], function () {
+    Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
         Route::post('/login', 'AuthController@login');
 
@@ -36,6 +36,8 @@ Route::group(['namespace' => 'API'], function () {
         Route::put('/update', 'VideosController@update');
 
         Route::delete('/delete', 'VideosController@delete');
+
+        Route::get('/category', 'VideoCategoriesController@list');
     });
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth:api', 'role:admin']], function () {

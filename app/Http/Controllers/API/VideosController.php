@@ -4,35 +4,30 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController;
 use App\Models\Video;
 use Validator;
 
-class VideosController extends Controller
+class VideosController extends BaseController
 {
-    public $successCode = 200;
-    public $errorCode = 500;
-    public $validationCode = 401;
-
     /**
      * Videos List
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function list()
     {
         try {
             $videos = Video::all();
             list($timestamp, $signature) = $this->genCloudinaryAuthSignature();
+            $result = [
+                'videos' => $videos,
+                'timestamp' => $timestamp,
+                'signature' => $signature];
 
-            return response()->json(
-                ['payload' => [
-                    'videos' => $videos,
-                    'timestamp' => $timestamp,
-                    'signature' => $signature
-                ]], $this->successCode);
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
@@ -40,7 +35,7 @@ class VideosController extends Controller
      * Create Video
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create(Request $request)
     {
@@ -54,27 +49,26 @@ class VideosController extends Controller
             'cover_url' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return $this->sendValidationError($validator->errors());
         }
 
         try {
             $input = $request->all();
-            $video = new Video();
-            $video->title = $input["title"];
-            $video->description = $input["description"];
-            $video->user_id = Auth::user()->id;
-            $video->video_id = $input["video_id"];
-            $video->video_url = $input["video_url"];
-            $video->cover_id = $input["cover_id"];
-            $video->cover_url = $input["cover_url"];
-            $video->date = new \DateTime($input["date"]);
-            $video->slug = str_slug($video->title, "-");
+            $video = Video::create([
+                'title' => $input["title"],
+                'description' => $input["description"],
+                'user_id' => Auth::user()->id,
+                'video_id' => $input["video_id"],
+                'video_url' => $input["video_url"],
+                'cover_id' => $input["cover_id"],
+                'cover_url ' => $input["cover_url"],
+                'date' => new \DateTime($input["date"]),
+                'slug' => str_slug($input["title"], "-"),
+            ]);
 
-            $video->save();
-
-            return response()->json(['payload' => $video], $this->successCode);
+            return $this->sendResponse(['payload' => $video]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
 
     }
@@ -83,7 +77,7 @@ class VideosController extends Controller
      * Update Video
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request)
     {
@@ -97,7 +91,7 @@ class VideosController extends Controller
             'cover_url' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return $this->sendValidationError($validator->errors());
         }
 
         try {
@@ -117,9 +111,9 @@ class VideosController extends Controller
                 "slug" => str_slug($video->title, "-")
             ]);
 
-            return response()->json(['payload' => $result], $this->successCode);
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
@@ -128,15 +122,15 @@ class VideosController extends Controller
      *
      * @param Request $request
      * @param Video $video
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function delete(Request $request, Video $video)
     {
         try {
             $result = $video->delete();
-            return response()->json(['payload' => $result], $this->successCode);
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
@@ -144,7 +138,7 @@ class VideosController extends Controller
      * Create Video
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function genCloudinaryAuthSignature()
     {

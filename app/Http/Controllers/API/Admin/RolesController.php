@@ -3,36 +3,24 @@
 namespace App\Http\Controllers\API\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController;
 use App\Models\Role;
 
-class RolesController extends Controller
+class RolesController extends BaseController
 {
-
-    public $successCode = 200;
-    public $errorCode = 500;
-    public $validationCode = 401;
-
     /**
      * Role List
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function list(Request $request)
     {
         try {
             $roles = Role::all();
 
-            return response()->json(
-                ['payload' =>
-                    [
-                        'roles' => $roles,
-                    ]
-                ],
-                $this->successCode
-            );
+            return $this->sendResponse(['payload' => $roles]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 }

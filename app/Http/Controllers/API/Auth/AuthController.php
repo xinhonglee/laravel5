@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController;
 use App\Models\User;
 use App\Models\Role;
 use Validator;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
-    public $successCode = 200;
-    public $errorCode = 500;
-    public $validationCode = 401;
-    public $unAuthorizedCode = 403;
     public $appKey;
 
     /**
@@ -30,7 +26,7 @@ class AuthController extends Controller
      * User Login
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
@@ -40,7 +36,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], $this->validationCode);
+            return $this->sendValidationError($validator->errors());
         }
 
         try {
@@ -49,12 +45,12 @@ class AuthController extends Controller
                 $result['token'] = $user->createToken($this->appKey)->accessToken;
                 $result['admin'] = $user->hasRole('admin');
 
-                return response()->json(['payload' => $result], $this->successCode);
+                return $this->sendResponse(['payload' => $result]);
             } else {
-                return response()->json(['error' => 'Unauthorised'], $this->unAuthorizedCode);
+                return $this->sendUnauthorizedError();
             }
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
@@ -62,7 +58,7 @@ class AuthController extends Controller
      * User Register
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
@@ -73,7 +69,7 @@ class AuthController extends Controller
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], $this->validationCode);
+            return $this->sendValidationError($validator->errors());
         }
 
         try {
@@ -87,27 +83,26 @@ class AuthController extends Controller
             $result['token'] = $user->createToken($this->appKey)->accessToken;
             $result['name'] = $user->name;
 
-            return response()->json(['payload' => $result], $this->successCode);
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
     /**
      * User Details
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function details()
     {
         try {
-            $user = Auth::user();
-            $user['admin'] = $user->hasRole('admin');
+            $result = Auth::user();
+            $result['admin'] = $result->hasRole('admin');
 
-            return response()->json(['payload' => $user], $this->successCode);
+            return $this->sendResponse(['payload' => $result]);
         } catch (\Exception $exception) {
-
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 
@@ -115,7 +110,7 @@ class AuthController extends Controller
      * User Logout
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function logout(Request $request)
     {
@@ -128,9 +123,10 @@ class AuthController extends Controller
                 ]);
 
             $accessToken->revoke();
-            return response()->json(['payload' => "success"], $this->successCode);
+
+            return $this->sendResponse([], "logout success");
         } catch (\Exception $exception) {
-            return response()->json(['error' => $exception->getMessage()], $this->errorCode);
+            return $this->sendInternalError($exception->getMessage());
         }
     }
 }
