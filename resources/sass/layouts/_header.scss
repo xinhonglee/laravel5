@@ -1,4 +1,19 @@
-.navbar-laravel {
-  background-color: #fff;
+.app-header {
+  background-color: $light-gray;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+  .navbar-brand {
+    img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .app-dropdown-account {
+    .md-avatar-icon {
+      background-color: $light-blue !important;
+    }
+  }
 }
+
+

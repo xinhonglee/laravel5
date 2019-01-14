@@ -4,10 +4,14 @@ import './bootstrap';
 import Vue from 'vue'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+
 import Index from './Index'
 import router from './router'
 
 Vue.use(BootstrapVue);
+Vue.use(VueMaterial)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -37,12 +37,6 @@ export default new Router({
           component: Page404,
         }
       ]
-    },
-    {
-      path: '/passport',
-      name: 'Passport',
-      component: Passport,
     }
-
   ]
 })

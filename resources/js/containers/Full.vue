@@ -1,14 +1,19 @@
 <template>
   <div class="app">
-    <div class="container">
+    <app-header></app-header>
+    <div class="container-fluid">
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+  import AppHeader from "../components/Header/Header";
   export default {
-    name: "Full"
+    name: "Full",
+    components: {
+      AppHeader
+    }
   }
 </script>
 
