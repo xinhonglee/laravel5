@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 // Containers
 import Full from '../containers/Full'
-import Passport from '../containers/Passport'
 
 // Views
 import Videos from '../views/Videos'
