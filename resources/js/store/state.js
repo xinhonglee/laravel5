@@ -4,6 +4,14 @@
 export const STORAGE_KEY = 'poss';
 
 let syncedData = {
+  token: null,
+  userInfo: {
+    email: "",
+    firstName: "",
+    lastName: "",
+    role: "",
+    expire: null,
+  },
 };
 
 const notSyncedData = {

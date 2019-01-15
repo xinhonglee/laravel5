@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController;
 use App\Models\User;
 use App\Models\Role;
+use Carbon\Carbon;
 use Validator;
 
 class AuthController extends BaseController
@@ -42,10 +43,21 @@ class AuthController extends BaseController
         try {
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = Auth::user();
-                $result['token'] = $user->createToken($this->appKey)->accessToken;
-                $result['admin'] = $user->hasRole('admin');
 
-                return $this->sendResponse(['payload' => $result]);
+                $tokenResult = $user->createToken('Personal Access Token');
+                $token = $tokenResult->token;
+                if ($request->remember_me)
+                    $token->expires_at = Carbon::now()->addWeeks(1);
+                $token->save();
+
+                return $this->sendResponse(['payload' => [
+                    'access_token' => $tokenResult->accessToken,
+                    'token_type' => 'Bearer',
+                    'expires_at' => Carbon::parse(
+                        $tokenResult->token->expires_at
+                    )->toDateTimeString(),
+                    'admin' => $user->hasRole('admin')
+                ]]);
             } else {
                 return $this->sendUnauthorizedError();
             }
@@ -80,10 +92,17 @@ class AuthController extends BaseController
             $role = Role::where('name', '=', 'author')->get()->first();
             $user->attachRole($role);
 
-            $result['token'] = $user->createToken($this->appKey)->accessToken;
-            $result['name'] = $user->name;
+            $tokenResult = $user->createToken('Personal Access Token');
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse(['payload' => [
+                'name' => $user->name,
+                'access_token' => $tokenResult->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse(
+                    $tokenResult->token->expires_at
+                )->toDateTimeString(),
+            ]]);
+
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
