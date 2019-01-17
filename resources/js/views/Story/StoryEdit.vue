@@ -1,10 +1,12 @@
 <template>
-  
+  <div>
+    edit
+  </div>
 </template>
 
 <script>
   export default {
-    name: "auth-container"
+    name: "story-edit"
   }
 </script>
 

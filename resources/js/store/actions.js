@@ -9,3 +9,7 @@ export const logout = ({ commit }) => {
 export const updateUserInfo = ({ commit }, userInfo) => {
   commit('UPDATE_USER_INFO', userInfo);
 };
+
+export const updateAppTitle = ({ commit }, title) => {
+  commit('UPDATE_APP_TITLE', title);
+};

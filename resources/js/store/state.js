@@ -15,7 +15,9 @@ let syncedData = {
 };
 
 const notSyncedData = {
-
+  app: {
+    title: ''
+  }
 };
 
 // Sync with local storage.

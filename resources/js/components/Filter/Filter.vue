@@ -1,61 +1,40 @@
 <template>
   <div class="app-filter md-elevation-4">
-    <b-row>
-      <b-col md="8">
-        <md-tabs class="md-transparent">
-          <md-tab id="all" md-label="ALL"></md-tab>
-          <md-tab id="by-me" md-label="OWNED BY ME"></md-tab>
-        </md-tabs>
-      </b-col>
-      <b-col md="4">
-        <div class="tool-box md-transparent">
-          <div class="search">
-            <md-field class="m-0 md-transparent">
-              <md-icon>search</md-icon>
-              <label>Search</label>
-              <md-input></md-input>
-            </md-field>
-          </div>
-          <div class="sort">
-            <md-icon>sort_by_alpha</md-icon>
-          </div>
-        </div>
-      </b-col>
-    </b-row>
+    <div class="tab-navigation">
+      <md-tabs class="md-transparent">
+        <md-tab id="all" md-label="ALL" @click="selectedUser('all')"></md-tab>
+        <md-tab id="by-me" md-label="OWNED BY ME" @click="selectedUser('me')"></md-tab>
+      </md-tabs>
+    </div>
+    <div class="tool-box md-transparent">
+      <div class="search">
+        <md-field class="m-0 md-transparent">
+          <md-icon>search</md-icon>
+          <label>Search</label>
+          <md-input></md-input>
+        </md-field>
+      </div>
+      <div class="sort">
+        <md-icon>sort_by_alpha</md-icon>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "app-filter"
+    name: "app-filter",
+    methods: {
+      selectedUser(userName) {
+        if(userName !== 'all') {
+          userName = 'Admin'; // temporary name, it should be come from Vue Store
+        }
+        Vue.$emit('user:select', userName);
+      }
+    }
   }
 </script>
 
 <style scoped lang="scss">
-  .app-filter {
-    background: #eeeeee;
-    padding-bottom: 10px;
-  }
 
-  .tool-box {
-    display: flex;
-  }
-
-  .search {
-    flex: 4;
-    .md-icon:after {
-      background: none;
-    }
-  }
-
-  .sort {
-    flex: 1;
-    width: 100%;
-    margin-left: 10px;
-    min-height: 48px;
-    padding-top: 16px;
-    display: -webkit-box;
-    position: relative;
-    font-family: inherit
-  }
 </style>

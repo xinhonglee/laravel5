@@ -1,10 +1,12 @@
 <template>
-  
+  <div>
+    view
+  </div>
 </template>
 
 <script>
   export default {
-    name: "auth-container"
+    name: "story-view"
   }
 </script>
 

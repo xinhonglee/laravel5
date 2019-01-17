@@ -14,6 +14,28 @@
       background-color: $light-blue !important;
     }
   }
+
+  .editable-header-title {
+    flex: 5;
+    input {
+      background: transparent;
+      outline: none;
+      border: none;
+      font-size: 20px;
+      width: 100%;
+    }
+  }
+
+  .editable-tools {
+    flex: 1;
+    text-align: right;
+    .icon-group {
+      i {
+        height: 48px;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 

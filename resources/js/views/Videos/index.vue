@@ -1,59 +1,81 @@
 <template>
   <div>
-    <md-table v-model="users" md-sort="name" md-sort-order="asc" md-card>
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="ID" md-numeric>{{ item.id }}</md-table-cell>
-        <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Email" md-sort-by="email">{{ item.email }}</md-table-cell>
-        <md-table-cell md-label="Gender" md-sort-by="gender">{{ item.gender }}</md-table-cell>
-        <md-table-cell md-label="Job Title" md-sort-by="title">{{ item.title }}</md-table-cell>
+    <md-table v-model="videos" md-sort="name" md-sort-order="asc" md-card>
+      <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToVideo(item)">
+        <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>
+        <md-table-cell md-label="Owner" md-sort-by="owner">{{ item.owner }}</md-table-cell>
+        <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
 </template>
 
 <script>
+  const data = [
+    {
+      id: 1,
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      owner: 'Lisa Freeman',
+      last_update: 'Jan 10, 2019',
+    },
+    {
+      id: 2,
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      owner: 'Lisa Freeman',
+      last_update: 'Jan 10, 2019',
+    },
+    {
+      id: 3,
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      owner: 'Admin',
+      last_update: 'Jan 10, 2019',
+    },
+    {
+      id: 4,
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      owner: 'Admin',
+      last_update: 'Jan 10, 2019',
+    },
+    {
+      id: 5,
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      owner: 'Admin',
+      last_update: 'Jan 10, 2019',
+    }
+  ];
+
   export default {
     name: "videos",
-    data: () => ({
-      users: [
-        {
-          id: 1,
-          name: 'Shawna Dubbin',
-          email: 'sdubbin0@geocities.com',
-          gender: 'Male',
-          title: 'Assistant Media Planner'
-        },
-        {
-          id: 2,
-          name: 'Odette Demageard',
-          email: 'odemageard1@spotify.com',
-          gender: 'Female',
-          title: 'Account Coordinator'
-        },
-        {
-          id: 3,
-          name: 'Lonnie Izkovitz',
-          email: 'lizkovitz3@youtu.be',
-          gender: 'Female',
-          title: 'Operator'
-        },
-        {
-          id: 4,
-          name: 'Thatcher Stave',
-          email: 'tstave4@reference.com',
-          gender: 'Male',
-          title: 'Software Test Engineer III'
-        },
-        {
-          id: 5,
-          name: 'Clarinda Marieton',
-          email: 'cmarietonh@theatlantic.com',
-          gender: 'Female',
-          title: 'Paralegal'
+    data () {
+      return {
+        videos: data,
+        backVideos: data,
+      }
+    },
+    methods: {
+      filterdByUser(userName) {
+        if(userName !== 'all') {
+          this.videos = this.backVideos.filter((video)=> {
+            return video.owner === userName
+          })
+        } else {
+          this.videos = this.backVideos;
         }
-      ]
-    })
+      },
+      redirectToVideo(video) {
+        this.$store.dispatch('updateAppTitle', video.title);
+        this.$router.push(`/backoffice/video/${video.id}`);
+      }
+    },
+    mounted() {
+      this.$store.dispatch('updateAppTitle', 'Videos');
+      Vue.$on('user:select', (userName) => {
+        this.filterdByUser(userName);
+      });
+    },
+    beforeDestroy () {
+      Vue.$off('user:select');
+    }
   }
 </script>
 

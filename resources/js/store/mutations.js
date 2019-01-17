@@ -10,3 +10,7 @@ export const LOG_OUT = (state) => {
   state.token = null;
   state.userInfo = {};
 };
+
+export const UPDATE_APP_TITLE = (state, title) => {
+  state.app.title = title;
+};

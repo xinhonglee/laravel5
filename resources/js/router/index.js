@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Containers
-import FullContainer from '../containers/FullContainer';
+import MainContainer from '../containers/MainContainer';
 import AuthContainer from '../containers/AuthContainer';
 
 // Views
@@ -10,6 +10,8 @@ import Videos from '../views/Videos'
 import Stories from '../views/Stories'
 import Video from '../views/Video'
 import Story from '../views/Story'
+import Admin from '../views/Admin'
+import Analytics from '../views/Analytics'
 
 // Auth
 import Login from '../views/Auth/Login';
@@ -27,9 +29,9 @@ export default new Router({
   routes: [
     {
       path: '/backoffice',
-      redirect: '/backoffice/videos',
+      redirect: '/backoffice/stories',
       name: 'BackOffice',
-      component: FullContainer,
+      component: MainContainer,
       children: [
         {
           path: 'videos',
@@ -43,13 +45,23 @@ export default new Router({
         },
         {
           path: 'video/:id',
-          name: 'video',
+          name: 'Video',
           component: Video
         },
         {
           path: 'story/:id',
-          name: 'story',
+          name: 'Story',
           component: Story
+        },
+        {
+          path: 'analytics',
+          name: 'Analytics',
+          component: Analytics
+        },
+        {
+          path: 'admin',
+          name: 'Admin',
+          component: Admin
         },
       ]
     },
@@ -83,11 +95,6 @@ export default new Router({
           name: 'EmailConfirmation',
           component: VerifyEmail,
         },
-        {
-          path: '/auth/email-confirmation/:token',
-          name: 'EmailConfirmation',
-          component: VerifyEmail,
-        }
       ]
     },
     {

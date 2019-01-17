@@ -2,7 +2,8 @@
   position: absolute;
   left: 0;
   margin-top: 50px;
-  width: 220px;
+  width: $sidebar-width;
+  padding-left: 20px;
 
   .md-list {
     background: none !important;
