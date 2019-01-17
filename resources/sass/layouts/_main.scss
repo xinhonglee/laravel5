@@ -1,0 +1,10 @@
+body {
+  background-color: $dark-gray;
+}
+
+.app-content {
+  width: calc(100vw - 220px);
+  position: absolute;
+  left: 220px;
+  margin: 50px 50px;
+}
