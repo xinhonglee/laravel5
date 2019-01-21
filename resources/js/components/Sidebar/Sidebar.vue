@@ -13,7 +13,7 @@
           <md-icon>bar_chart</md-icon>
           <span class="md-list-item-text">Analytics</span>
         </md-list-item>
-        <md-list-item to="/backoffice/admin">
+        <md-list-item to="/backoffice/admin" v-if="this.$store.state.userInfo.role === 'admin'">
           <md-icon>settings</md-icon>
           <span class="md-list-item-text">Admin</span>
         </md-list-item>
@@ -23,7 +23,18 @@
 
 <script>
   export default {
-    name: "app-sidebar"
+    name: "app-sidebar",
+    data() {
+      return {
+
+      }
+    },
+    mounted() {
+
+    },
+    methods: {
+
+    },
   }
 </script>
 
