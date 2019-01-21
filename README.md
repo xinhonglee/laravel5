@@ -1,6 +1,11 @@
 ## POSS System
 
-### 1. Environment (.env)
+### 1. Composer Install
+<code>
+composer install
+</code>
+
+### 2. Additional Environment (.env)
 
 CLOUDINARY_CLOUD_NAME=<br>
 CLOUDINARY_API_KEY=<br>
@@ -14,7 +19,7 @@ ADMIN_NAME=<br>
 ADMIN_EMAIL=<br>
 ADMIN_PASSWORD=<br>
 
-### 2. Database Setup
+### 3. Database Setup
 <code>
 php artisan migrate
 </code>
@@ -23,9 +28,18 @@ php artisan migrate
 php artisan db:seed
 </code>
 
-### 3. Passport Setup
+### 4. Passport Setup
 <code>
 php artisan passport:client --personal
 </code>
 
-###
+### 5. NPM Setup
+
+<code>
+npm install
+</code>
+<br>
+
+<code>
+npm run watch
+</code>
