@@ -4,6 +4,7 @@
    <meta name="viewport" content="width=device-width">
    <title>POSS</title>
    <meta name="description" content="POSS: Publisher Open Source Stories">
+   <link rel="icon" type="image/png" href="/assets/logo.png">
    <link rel="stylesheet" href="{{asset('css/app.css')}}">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">

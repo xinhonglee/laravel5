@@ -22,4 +22,7 @@ Route::get('api/videowall', 'FrontController@getVideoWall');
 Route::get('/backoffice/{vue_capture?}', ['as' => 'backoffice', 'uses' => 'BackController@index'])
     ->where('vue_capture', '[\/\w\.-]*');
 
+Route::get('/auth/{vue_capture?}', ['as' => 'auth', 'uses' => 'BackController@index'])
+    ->where('vue_capture', '[\/\w\.-]*');
+
 //Auth::routes();

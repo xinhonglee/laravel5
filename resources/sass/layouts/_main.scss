@@ -50,3 +50,9 @@ body {
     font-family: inherit
   }
 }
+
+@include media-breakpoint-down(md) {
+  .app-content {
+    padding: 10px;
+  }
+}

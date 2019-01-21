@@ -5,12 +5,15 @@ export const STORAGE_KEY = 'poss';
 
 let syncedData = {
   token: null,
+  tokenExpiresIn: null, // timestamp
+  refreshTokenExpiresIn: null, // timestamp
+  refreshTokenAlreadyExpired: false,
   userInfo: {
+    id: "",
     email: "",
-    firstName: "",
-    lastName: "",
+    name: "",
     role: "",
-    expire: null,
+    verifiedAt: null,
   },
 };
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\API\Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\API\BaseController;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\Role;
 use Carbon\Carbon;
@@ -50,14 +52,14 @@ class AuthController extends BaseController
                     $token->expires_at = Carbon::now()->addWeeks(1);
                 $token->save();
 
-                return $this->sendResponse(['payload' => [
+                return $this->sendResponse([
+                    'user' => new UserResource($user),
                     'access_token' => $tokenResult->accessToken,
                     'token_type' => 'Bearer',
                     'expires_at' => Carbon::parse(
                         $tokenResult->token->expires_at
                     )->toDateTimeString(),
-                    'admin' => $user->hasRole('admin')
-                ]]);
+                ]);
             } else {
                 return $this->sendUnauthorizedError();
             }
@@ -89,19 +91,21 @@ class AuthController extends BaseController
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
 
+            event(new Registered($user));
+
             $role = Role::where('name', '=', 'author')->get()->first();
             $user->attachRole($role);
 
             $tokenResult = $user->createToken('Personal Access Token');
 
-            return $this->sendResponse(['payload' => [
-                'name' => $user->name,
+            return $this->sendResponse([
+                'user' => new UserResource($user),
                 'access_token' => $tokenResult->accessToken,
                 'token_type' => 'Bearer',
                 'expires_at' => Carbon::parse(
                     $tokenResult->token->expires_at
-                )->toDateTimeString(),
-            ]]);
+                )->toDateTimeString()
+            ]);
 
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
@@ -119,7 +123,7 @@ class AuthController extends BaseController
             $result = Auth::user();
             $result['admin'] = $result->hasRole('admin');
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -143,7 +147,7 @@ class AuthController extends BaseController
 
             $accessToken->revoke();
 
-            return $this->sendResponse([], "logout success");
+            return $this->sendResponse("logout success");
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }

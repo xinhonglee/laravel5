@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.18",
+        "block-ui": "^2.70.1",
         "bootstrap": "^4.0.0",
         "bootstrap-vue": "^2.0.0-rc.11",
         "cross-env": "^5.1",
@@ -21,12 +22,15 @@
         "sweetalert": "^2.1.2",
         "url-loader": "^1.1.2",
         "vue": "^2.5.17",
-        "vue-router": "3.0.1",
+        "vue-analytics": "^5.16.2",
+        "vue-axios": "^2.1.4",
         "vue-loader": "13.7.0",
+        "vue-router": "3.0.1",
         "vue-style-loader": "3.0.3",
         "vuex": "^3.0.1"
     },
     "dependencies": {
-        "vue-material": "^1.0.0-beta-10.2"
+        "vue-material": "^1.0.0-beta-10.2",
+        "vuelidate": "^0.7.4"
     }
 }

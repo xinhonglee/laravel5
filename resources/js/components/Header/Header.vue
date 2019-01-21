@@ -4,9 +4,9 @@
       <img src="/assets/logo.png"/>
     </b-link>
     <div class="navbar-title">
-      <h4 class="m-0">POSS | {{ title }}</h4>
+      <h4 class="m-0">POSS {{ title ? '|' : '' }} {{ title }}</h4>
     </div>
-    <b-navbar-nav class="ml-auto">
+    <b-navbar-nav v-if="userName" class="ml-auto">
       <HeaderDropdownAccnt/>
     </b-navbar-nav>
   </header>
@@ -31,11 +31,19 @@
     computed: {
       title() {
           return this.$store.state.app.title;
+      },
+      userName() {
+        if(this.$store.state.userInfo.name) {
+          return this.$store.state.userInfo.name.charAt(0).toUpperCase();
+        }
+        return '';
       }
     },
   }
 </script>
 
 <style scoped>
-
+  .navbar-title {
+    margin-right: auto !important;
+  }
 </style>

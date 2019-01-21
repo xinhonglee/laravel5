@@ -21,9 +21,18 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::post('/register', 'AuthController@register');
 
-        Route::get('/details', ['uses' => 'AuthController@details', 'middleware' => 'auth:api']);
+        Route::middleware(['auth:api'])->group(function () {
 
-        Route::get('/logout', ['uses' => 'AuthController@logout', 'middleware' => 'auth:api']);
+            Route::get('/details', 'AuthController@details');
+
+            Route::get('/logout', 'AuthController@logout');
+
+            // Email Verification Routes...
+            Route::post('/email/verify/{id}', 'VerificationController@verify')->name('verification.verify');
+
+            Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
+
+        });
 
     });
 

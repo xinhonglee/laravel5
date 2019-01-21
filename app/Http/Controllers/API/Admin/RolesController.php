@@ -18,7 +18,7 @@ class RolesController extends BaseController
         try {
             $roles = Role::all();
 
-            return $this->sendResponse(['payload' => $roles]);
+            return $this->sendResponse($roles);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }

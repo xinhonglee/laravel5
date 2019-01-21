@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {ifAuthenticated, ifNotAuthenticated} from '../utils/auth';
 
 // Containers
 import MainContainer from '../containers/MainContainer';
@@ -63,7 +64,8 @@ export default new Router({
           name: 'Admin',
           component: Admin
         },
-      ]
+      ],
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/auth',
@@ -71,29 +73,34 @@ export default new Router({
       component: AuthContainer,
       children: [
         {
-          path: '/auth/login',
+          path: 'login',
           name: 'Login',
           component: Login,
+          beforeEnter: ifNotAuthenticated
         },
         {
-          path: '/auth/signup',
+          path: 'register',
           name: 'SignUp',
           component: SignUp,
+          beforeEnter: ifNotAuthenticated
         },
         {
-          path: '/auth/forgot-password',
+          path: 'forgot-password',
           name: 'ForgotPassword',
           component: ForgotPassword,
+          beforeEnter: ifNotAuthenticated
         },
         {
-          path: '/auth/reset-password/:token',
+          path: 'reset-password/:token',
           name: 'ResetPassword',
           component: ResetPassword,
+          beforeEnter: ifNotAuthenticated
         },
         {
-          path: '/auth/verify-email',
+          path: 'verify-email',
           name: 'EmailConfirmation',
           component: VerifyEmail,
+          // beforeEnter: ifAuthenticated
         },
       ]
     },

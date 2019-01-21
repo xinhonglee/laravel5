@@ -3,15 +3,28 @@
 import './bootstrap';
 import Vue from 'vue'
 import store from './store'
+import VueAxios from 'vue-axios'
+import axios from './axios'
 import BootstrapVue from 'bootstrap-vue'
+import VueAnalytics from 'vue-analytics'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
+import AlertBoxMixin from './components/common/mixins/AlertBox';
 
 import Index from './Index'
 import router from './router'
 
 Vue.use(BootstrapVue);
-Vue.use(VueMaterial)
+Vue.use(VueAxios, axios);
+Vue.use(VueMaterial);
+
+Vue.use(VueAnalytics, {
+  id: 'UA-131939849-1',
+  router,
+  debug: {
+    sendHitTask: false
+  }
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -21,8 +34,10 @@ new Vue({
   },
   router,
   store,
+  axios,
   template: '<Index/>',
   components: {
     Index
-  }
+  },
+  mixins: [AlertBoxMixin]
 })

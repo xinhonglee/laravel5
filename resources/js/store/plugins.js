@@ -4,6 +4,9 @@ const localStoragePlugin = store => {
   store.subscribe((mutation, state) => {
     const syncedData = {
       token: state.token,
+      tokenExpiresIn: state.tokenExpiresIn,
+      refreshTokenExpiresIn: state.refreshTokenExpiresIn,
+      refreshTokenAlreadyExpired: state.refreshTokenAlreadyExpired,
       userInfo: state.userInfo,
     };
 

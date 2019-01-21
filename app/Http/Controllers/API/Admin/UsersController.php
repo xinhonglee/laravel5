@@ -30,7 +30,7 @@ class UsersController extends BaseController
         try {
             $result = User::with('role')->get();
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -64,7 +64,7 @@ class UsersController extends BaseController
             ]);
             $user->roles()->sync($input['role_id']);
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -90,7 +90,7 @@ class UsersController extends BaseController
             $user = User::where('id', $request->input("user_id"))->firstOrFail();
             $result = $user->delete();
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
