@@ -1,7 +1,7 @@
 import axios from 'axios';
 import store from './store';
 
-const API_URL = 'http://local.poss.com/api';
+const API_URL = '/api';
 
 let bearHeader = '';
 const token = store.state.token;
