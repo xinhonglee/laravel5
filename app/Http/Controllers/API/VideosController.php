@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\API\BaseController;
 use App\Models\Video;
 use Validator;
 
@@ -18,14 +17,36 @@ class VideosController extends BaseController
     public function list()
     {
         try {
-            $videos = Video::all();
+            $videos = Video::with(['category:id,name', 'user:id,name'])->get();
             list($timestamp, $signature) = $this->genCloudinaryAuthSignature();
             $result = [
                 'videos' => $videos,
                 'timestamp' => $timestamp,
                 'signature' => $signature];
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
+    }
+
+    /**
+     * Get Video by Id
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getVideoById(Request $request)
+    {
+        try {
+            $video_id = $request->route('id');
+
+            $result = Video::where('id', $video_id)
+                ->firstOrFail()
+                ->with(['user:id,name', 'category:id,name'])
+                ->get();
+
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -47,26 +68,30 @@ class VideosController extends BaseController
             'video_url' => 'required',
             'cover_id' => 'required',
             'cover_url' => 'required',
+            'video_category_id' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendValidationError($validator->errors());
         }
 
+        $user = Auth::user();
         try {
             $input = $request->all();
-            $video = Video::create([
+            $insert = [
                 'title' => $input["title"],
                 'description' => $input["description"],
-                'user_id' => Auth::user()->id,
+                'user_id' => $user->id,
                 'video_id' => $input["video_id"],
                 'video_url' => $input["video_url"],
                 'cover_id' => $input["cover_id"],
-                'cover_url ' => $input["cover_url"],
+                'cover_url' => $input["cover_url"],
                 'date' => new \DateTime($input["date"]),
+                'video_category_id' => $input["video_category_id"],
                 'slug' => str_slug($input["title"], "-"),
-            ]);
+            ];
+            $video = Video::create($insert);
 
-            return $this->sendResponse(['payload' => $video]);
+            return $this->sendResponse($video);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -111,7 +136,7 @@ class VideosController extends BaseController
                 "slug" => str_slug($video->title, "-")
             ]);
 
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }

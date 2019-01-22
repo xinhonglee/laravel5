@@ -7,6 +7,9 @@
         <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-fab md-primary btn-poss-new-item">
+      <md-icon>add</md-icon>
+    </md-button>
   </div>
 </template>
 
