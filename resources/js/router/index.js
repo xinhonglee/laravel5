@@ -50,6 +50,11 @@ export default new Router({
           component: Video
         },
         {
+          path: 'video',
+          name: 'Video',
+          component: Video
+        },
+        {
           path: 'story/:id',
           name: 'Story',
           component: Story

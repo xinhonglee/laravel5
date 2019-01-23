@@ -17,16 +17,15 @@
     components: { StoryView, StoryEdit },
     data() {
       return {
-        editable: false
       }
     },
     mounted() {
-      Vue.$on('content:edit', (editable) => {
-        this.editable = editable;
-      })
+      this.$store.dispatch('updateAppEditable', false);
     },
-    beforeDestroy() {
-      Vue.$off('content:edit');
+    computed: {
+      editable() {
+        return this.$store.state.app.editable;
+      }
     }
   }
 </script>

@@ -13,3 +13,7 @@ export const updateUserInfo = ({ commit }, userInfo) => {
 export const updateAppTitle = ({ commit }, title) => {
   commit('UPDATE_APP_TITLE', title);
 };
+
+export const updateAppEditable = ({ commit }, editable) => {
+  commit('UPDATE_APP_EDITABLE', editable);
+};

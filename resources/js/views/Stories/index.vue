@@ -19,60 +19,70 @@
       id: 1,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Lisa Freeman',
+      owner_id: 2,
       last_update: 'Jan 10, 2019',
     },
     {
       id: 2,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Lisa Freeman',
+      owner_id: 2,
       last_update: 'Jan 10, 2019',
     },
     {
       id: 3,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Admin',
+      owner_id: 1,
       last_update: 'Jan 10, 2019',
     },
     {
       id: 4,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Admin',
+      owner_id: 1,
       last_update: 'Jan 10, 2019',
     },
     {
       id: 5,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Admin',
+      owner_id: 1,
       last_update: 'Jan 10, 2019',
     },
     {
       id: 6,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Lisa Freeman',
+      owner_id: 2,
       last_update: 'Jan 10 2019',
     },
     {
       id: 7,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Lisa Freeman',
+      owner_id: 2,
       last_update: 'Jan 10 2019',
     },
     {
       id: 8,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Admin',
+      owner_id: 1,
       last_update: 'Jan 10 2019',
     },
     {
       id: 9,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Admin',
+      owner_id: 2,
       last_update: 'Jan 10 2019',
     },
     {
       id: 10,
       title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       owner: 'Admin',
+      owner_id: 1,
       last_update: 'Jan 10 2019',
     }
   ];
@@ -89,7 +99,7 @@
       filterdByUser(userName) {
         if(userName !== 'all') {
           this.stories = this.backStories.filter((story)=> {
-            return story.owner === userName
+            return story.owner_id === this.$store.state.userInfo.id;
           })
         } else {
           this.stories = this.backStories;

@@ -18,13 +18,7 @@ class VideosController extends BaseController
     {
         try {
             $videos = Video::with(['category:id,name', 'user:id,name'])->get();
-            list($timestamp, $signature) = $this->genCloudinaryAuthSignature();
-            $result = [
-                'videos' => $videos,
-                'timestamp' => $timestamp,
-                'signature' => $signature];
-
-            return $this->sendResponse($result);
+            return $this->sendResponse($videos);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -41,10 +35,8 @@ class VideosController extends BaseController
         try {
             $video_id = $request->route('id');
 
-            $result = Video::where('id', $video_id)
-                ->firstOrFail()
-                ->with(['user:id,name', 'category:id,name'])
-                ->get();
+            $result = Video::find($video_id)
+                ->load(['user:id,name', 'category:id,name']);
 
             return $this->sendResponse($result);
         } catch (\Exception $exception) {
@@ -114,6 +106,7 @@ class VideosController extends BaseController
             'video_url' => 'required',
             'cover_id' => 'required',
             'cover_url' => 'required',
+            'video_category_id' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendValidationError($validator->errors());
@@ -125,18 +118,19 @@ class VideosController extends BaseController
                 ->where('user_id', Auth::user()->id)
                 ->firstOrFail();
 
-            $result = $video->update([
+            $video->update([
                 "title" => $input["title"],
                 "description" => $input["description"],
                 "video_id" => $input["video_id"],
                 "video_url" => $input["video_url"],
                 "cover_id" => $input["cover_id"],
                 "cover_url" => $input["cover_url"],
+                "video_category_id" => $input["video_category_id"],
                 "date" => new \DateTime($input["date"]),
                 "slug" => str_slug($video->title, "-")
             ]);
 
-            return $this->sendResponse($result);
+            return $this->sendResponse($video);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
@@ -153,22 +147,31 @@ class VideosController extends BaseController
     {
         try {
             $result = $video->delete();
-            return $this->sendResponse(['payload' => $result]);
+            return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
     }
 
     /**
-     * Create Video
+     *  Get Cloudinary Information
      *
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function genCloudinaryAuthSignature()
-    {
-        $timestamp = time();
-        $string = "cloud_name=" . env('CLOUDINARY_CLOUD_NAME') . "&timestamp=" . time() . "&username=" . env('CLOUDINARY_USER_NAME') . env('CLOUDINARY_API_SECRET');
-        return [$timestamp, hash('sha256', $string)];
+    public function getCloudinaryInformation () {
+        try {
+            $string = "cloud_name=" . env('CLOUDINARY_CLOUD_NAME') . "&timestamp=" . time() . "&username=" . env('CLOUDINARY_USER_NAME') . env('CLOUDINARY_API_SECRET');
+            $result = [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'timestamp' => time(),
+                'user_name' => env('CLOUDINARY_USER_NAME'),
+                'api_key' => env('CLOUDINARY_API_KEY'),
+                'signature' => hash('sha256', $string),
+
+            ];
+            return $this->sendResponse($result);
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
     }
 }

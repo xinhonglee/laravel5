@@ -8,8 +8,8 @@
     </div>
     <div class="editable-tools mr-3">
       <span class="icon-group">
-          <md-icon v-if="editable">settings</md-icon>
-          <md-icon>publish</md-icon>
+          <span v-if="editable" @click="setting"><md-icon>settings</md-icon></span>
+          <span v-if="editable" @click="publish"><md-icon>publish</md-icon></span>
       </span>
       <md-button class="md-raised" @click="toggleEdit">
         <md-icon>{{ editable ? 'visibility' : 'edit' }}</md-icon>
@@ -28,9 +28,7 @@
   export default {
     name: "app-editable-header",
     data () {
-      return {
-        editable: false,
-      }
+      return {}
     },
 
     components: {
@@ -39,9 +37,16 @@
 
     methods: {
       toggleEdit () {
-        this.editable = !this.editable;
-        Vue.$emit('content:edit', this.editable);
-      }
+        this.$store.dispatch('updateAppEditable', !this.editable);
+      },
+      publish () {
+        console.log("[app:publish] action trigger ...");
+        Vue.$emit('app:publish');
+      },
+      setting () {
+        console.log("[app:setting] action trigger ...");
+        Vue.$emit('app:setting');
+      },
     },
     computed: {
       title: {
@@ -52,6 +57,9 @@
           this.$store.dispatch('updateAppTitle', value);
         }
       },
+      editable () {
+        return this.$store.state.app.editable;
+      }
     }
   }
 </script>

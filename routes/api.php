@@ -50,6 +50,8 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::delete('/delete', 'VideosController@delete');
 
+        Route::get('/cloud', 'VideosController@getCloudinaryInformation');
+
         Route::get('/category', 'VideoCategoriesController@list');
     });
 
