@@ -12,11 +12,29 @@ class Video extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'date', 'video_id', 'cover_id', 'video_url', 'cover_url'
+        'user_id',
+        'title',
+        'description',
+        'video_id',
+        'cover_id',
+        'video_url',
+        'cover_url',
+        'video_category_id',
+        'date',
+        'slug'
     ];
 
     public function getISODateAttribute()
     {
         return date('c', strtotime($this->date));
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\VideoCategory', 'video_category_id', 'id');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
     }
 }

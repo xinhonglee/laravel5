@@ -22,3 +22,7 @@ export const LOG_OUT = (state) => {
 export const UPDATE_APP_TITLE = (state, title) => {
   state.app.title = title;
 };
+
+export const UPDATE_APP_EDITABLE = (state, editable) => {
+  state.app.editable = editable;
+};

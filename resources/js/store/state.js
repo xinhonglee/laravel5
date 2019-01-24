@@ -19,7 +19,8 @@ let syncedData = {
 
 const notSyncedData = {
   app: {
-    title: ''
+    title: '',
+    editable: false,
   }
 };
 

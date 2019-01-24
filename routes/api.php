@@ -36,15 +36,21 @@ Route::group(['namespace' => 'API'], function () {
 
     });
 
-    Route::group(['prefix' => 'videos', 'middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'video', 'middleware' => 'auth:api'], function () {
 
         Route::get('/list', 'VideosController@list');
+
+        Route::pattern('id', '[0-9]+');
+
+        Route::get('/{id}', 'VideosController@getVideoById');
 
         Route::post('/create', 'VideosController@create');
 
         Route::put('/update', 'VideosController@update');
 
         Route::delete('/delete', 'VideosController@delete');
+
+        Route::get('/cloud', 'VideosController@getCloudinaryInformation');
 
         Route::get('/category', 'VideoCategoriesController@list');
     });

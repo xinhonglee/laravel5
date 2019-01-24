@@ -7,67 +7,59 @@
         <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-fab md-primary btn-poss-new-item" @click="redirectToCreateVideo">
+      <md-icon>add</md-icon>
+    </md-button>
   </div>
 </template>
 
 <script>
-  const data = [
-    {
-      id: 1,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Lisa Freeman',
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 2,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Lisa Freeman',
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 3,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 4,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 5,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      last_update: 'Jan 10, 2019',
-    }
-  ];
-
   export default {
     name: "videos",
     data () {
       return {
-        videos: data,
-        backVideos: data,
+        videos: [],
+        backVideos: [],
       }
     },
     methods: {
-      filterdByUser(userName) {
-        if(userName !== 'all') {
-          this.videos = this.backVideos.filter((video)=> {
-            return video.owner === userName
+      filterdByUser (userName) {
+        if (userName !== 'all') {
+          this.videos = this.backVideos.filter((video) => {
+            return video.owner_id === this.$store.state.userInfo.id;
           })
         } else {
           this.videos = this.backVideos;
         }
       },
-      redirectToVideo(video) {
-        this.$store.dispatch('updateAppTitle', video.title);
+      redirectToVideo (video) {
         this.$router.push(`/backoffice/video/${video.id}`);
-      }
+      },
+      redirectToCreateVideo() {
+        this.$router.push('/backoffice/video');
+      },
+      loadVideos () {
+        Vue.block();
+        this.$http.get('/video/list').then((response) => {
+          Vue.unBlock();
+          this.videos = response.data.map((video) => {
+            return {
+              'id': video.id,
+              'title': video.title,
+              'owner': video.user.name,
+              'owner_id': video.user.id,
+              'last_update': video.updated_at ? video.updated_at : '',
+            }
+          });
+          this.backVideos = this.videos;
+        }, (error) => {
+          Vue.unBlock();
+        }).catch(Vue.handleClientError);
+      },
+
     },
-    mounted() {
+    mounted () {
+      this.loadVideos();
       this.$store.dispatch('updateAppTitle', 'Videos');
       Vue.$on('user:select', (userName) => {
         this.filterdByUser(userName);
