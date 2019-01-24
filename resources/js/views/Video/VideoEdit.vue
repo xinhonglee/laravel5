@@ -25,7 +25,7 @@
             <div class="mt-4">
               <p v-if="video_id"><strong>ID: &nbsp;&nbsp;&nbsp;{{ video_id }}</strong></p>
               <p v-if="video_url"><strong>URL:</strong> {{ video_url }}</p>
-              <img v-if="video_url" class="md-elevation-3" :src="video_url"/>
+              <img v-if="videoVignette" class="md-elevation-3" :src="videoVignette"/>
             </div>
           </b-col>
           <b-col md="6">
@@ -34,7 +34,7 @@
             <div class="mt-4">
               <p v-if="cover_id"><strong>ID: &nbsp;&nbsp;&nbsp;{{ cover_id }}</strong></p>
               <p v-if="cover_url"><strong>URL:</strong> {{ cover_url }}</p>
-              <img v-if="cover_url" class="md-elevation-3" :src="cover_url"/>
+              <img v-if="coverVignette" class="md-elevation-3" :src="coverVignette"/>
             </div>
           </b-col>
         </b-row>
@@ -55,6 +55,8 @@
         video_url: '',
         cover_id: '',
         cover_url: '',
+        videoVignette: '',
+        coverVignette: '',
         video_category_id: '',
         video_categories: [],
         cloudinary_cloud_name: '',
@@ -79,6 +81,8 @@
           this.cover_id = data.cover_id;
           this.cover_url = data.cover_url;
           this.video_category_id = data.category.id;
+          this.videoVignette = data.video_url.substr(0, data.video_url.lastIndexOf(".")) + ".jpg";
+          this.coverVignette = data.cover_url.substr(0, data.cover_url.lastIndexOf(".")) + ".jpg";
 
           this.$store.dispatch('updateAppTitle', data.title);
 
@@ -173,6 +177,7 @@
               let result = data.assets[0];
               vm.video_id = result.public_id;
               vm.video_url = result.secure_url;
+              vm.videoVignette = result.secure_url.substr(0, result.secure_url.lastIndexOf(".")) + ".jpg";
             }
           },
           document.getElementById("upload_video")
@@ -196,6 +201,7 @@
               let result = data.assets[0];
               vm.cover_id = result.public_id;
               vm.cover_url = result.secure_url;
+              vm.coverVignette = result.secure_url.substr(0, result.secure_url.lastIndexOf(".")) + ".jpg";
             }
           },
           document.getElementById("upload_cover")
@@ -241,5 +247,8 @@
 <style scoped>
   p {
     word-break: break-all;
+  }
+  textarea {
+    height: 100px !important;
   }
 </style>
