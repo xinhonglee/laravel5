@@ -432,7 +432,7 @@
 	</amp-lightbox>
 	<main>
 		<section class="player xs-hide sm-hide">
-			<amp-video height="800" src="{{$video->video_url}}"
+			<amp-video autoplay height="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="fixed-height"
 				controls>
@@ -451,7 +451,7 @@
 			</div>
 		</section>
 		<section class="player md-hide lg-hide">
-			<amp-video height="800" width="800" src="{{$video->video_url}}"
+			<amp-video autoplay height="800" width="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="responsive"
 				controls>
