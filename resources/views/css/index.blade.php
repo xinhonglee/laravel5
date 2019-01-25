@@ -1,23 +1,23 @@
 @font-face {
   font-family: 'rationalextra_bold';
-  src: url('../assets/rational-extrabold-webfont.woff2') format('woff2'),
-     url('../assets/rational-extrabold-webfont.woff') format('woff');
+  src: url('/assets/rational-extrabold-webfont.woff2') format('woff2'),
+     url('/assets/rational-extrabold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'rationalsemi_bold';
-  src: url('../assets/rational-semibold-webfont.woff2') format('woff2'),
-     url('../assets/rational-semibold-webfont.woff') format('woff');
+  src: url('/assets/rational-semibold-webfont.woff2') format('woff2'),
+     url('/assets/rational-semibold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'rationalbook_bold';
-  src: url('../assets/rational-bookbold-webfont.woff2') format('woff2'),
-     url('../assets/rational-bookbold-webfont.woff') format('woff');
+  src: url('/assets/rational-bookbold-webfont.woff2') format('woff2'),
+     url('/assets/rational-bookbold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -27,6 +27,11 @@ body {
   background-color: #5feb98;
   color: #262626;
 }
+
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: normal;
+}
+		
 a, a:visited, a:hover {
   text-decoration: none;
 }

@@ -27,6 +27,9 @@ body {
   background-color: #5feb98;
   color: #262626;
 }
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: normal;
+}
 a, a:visited, a:hover {
   text-decoration: none;
 }
