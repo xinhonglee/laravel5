@@ -187,7 +187,27 @@ amp-img.cover img {
   display: inline-block;
   margin-bottom: 16px;
   margin-top: 16px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
 }
+.slide .caption a.btn:hover {
+	color: #262626;
+	background-color: #5feb98;
+}
+.slide .caption a.btn .up {
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+}
+.slide .caption a.btn:hover .up {
+	filter: grayscale(1) brightness(0.1);
+}
+
 @media (max-width:40rem) {
   .slide .caption a.btn,.slide .caption a.btn:hover,.slide .caption a.btn:focus,.slide .caption a.btn:visited {
     border: solid 3px #5feb98;
