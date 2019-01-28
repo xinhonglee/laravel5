@@ -28,7 +28,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
     </article>
     @endif
@@ -42,7 +42,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
     </article>
     @endif
@@ -60,7 +60,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
     </article>
     @endif
@@ -74,7 +74,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
     </article>
     @endif
@@ -88,7 +88,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
     </article>
     @endif
@@ -110,6 +110,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -127,6 +128,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -144,6 +146,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -161,6 +164,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -180,6 +184,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -199,6 +204,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -216,6 +222,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -235,6 +242,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -252,6 +260,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -275,6 +284,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -292,6 +302,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -311,6 +322,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -328,6 +340,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -347,6 +360,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>

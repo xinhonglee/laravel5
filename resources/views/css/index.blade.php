@@ -94,7 +94,6 @@ main {
   max-width: none;
 }
 .video {
-  border-top: ;
   position: relative;
 }
 main header article.slide {
@@ -121,6 +120,65 @@ amp-img.cover img {
 }
 .video {
   border: solid 2px #262626;
+  background-color: #000;
+}
+@media (min-width:40.04rem) {
+	.video amp-img {
+		opacity: 0.45;
+		-o-transition:.5s;
+		-ms-transition:.5s;
+		-moz-transition:.5s;
+		-webkit-transition:.5s;
+		transition:.5s;
+	}
+	.video:hover amp-img {
+		opacity: 1;
+	}
+	.video .caption {
+		-o-transition:.5s;
+		-ms-transition:.5s;
+		-moz-transition:.5s;
+		-webkit-transition:.5s;
+		transition:.5s;
+	}
+	.video:hover .caption {
+		bottom: 100px;
+	}
+	.video .btn {
+		z-index: 100;
+		position: absolute;
+		bottom: 40px;
+		left: 55px;
+		width: 80px;
+		height: 40px;
+		border: solid 3px #5feb98;
+		visibility: hidden;
+		-o-transition:0s;
+		-ms-transition:0s;
+		-moz-transition:0s;
+		-webkit-transition:0s;
+		transition:0s;
+		-o-transition-delay:0s;
+		-ms-transition-delay:0s;
+		-moz-transition-delay:0s;
+		-webkit-transition-delay:0s;
+		transition-delay:0s;
+		background: url('assets/play_up.svg') no-repeat center;
+		background-size: 12px 12px;
+	}
+	.video:hover .btn {
+		visibility: visible;
+		-o-transition:.5s;
+		-ms-transition:.5s;
+		-moz-transition:.5s;
+		-webkit-transition:.5s;
+		transition:.5s;
+		-o-transition-delay:.3s;
+		-ms-transition-delay:.3s;
+		-moz-transition-delay:.3s;
+		-webkit-transition-delay:.3s;
+		transition-delay:.3s;
+	}
 }
 @media (max-width:40rem) {
   .video {
@@ -345,6 +403,7 @@ amp-img.cover img {
   text-align: center;
 }
 .more a {
+  border: solid 5px #5feb98;
   background-color: #5feb98;
   display: block;
   width: 100%;
@@ -352,7 +411,17 @@ amp-img.cover img {
   font-family: 'rationalextra_bold';
   font-size: 32px;
   line-height: 90px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
 }
+.more a:hover {
+  background-color: #262626;
+  color: #5feb98;
+}
+
 @media (max-width:40rem) {
   .more {
     padding: 0;
