@@ -20,6 +20,7 @@
 	<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
 	<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+	<script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
@@ -110,6 +111,11 @@
 			width: 80%;
 			white-space: normal;
 			z-index: 100;
+			-o-transition:.5s;
+			-ms-transition:.5s;
+			-moz-transition:.5s;
+			-webkit-transition:.5s;
+			transition:.5s;
 		}
 		@media (max-width:40rem) {
 			.slide-video .caption {
@@ -137,6 +143,44 @@
 		}
 		.slide-video .caption .time {
 			font-size: 18px;
+		}
+		.slide-video:hover .caption {
+			bottom: 90px;
+		}
+		.slide-video .btn {
+			z-index: 100;
+			position: absolute;
+			bottom: 25px;
+			left: 25px;
+			width: 80px;
+			height: 40px;
+			border: solid 3px #5feb98;
+			visibility: hidden;
+			-o-transition:0s;
+			-ms-transition:0s;
+			-moz-transition:0s;
+			-webkit-transition:0s;
+			transition:0s;
+			-o-transition-delay:0s;
+			-ms-transition-delay:0s;
+			-moz-transition-delay:0s;
+			-webkit-transition-delay:0s;
+			transition-delay:0s;
+			background: url('../assets/play_up.svg') no-repeat center;
+			background-size: 12px 12px;
+		}
+		.slide-video:hover .btn {
+			visibility: visible;
+			-o-transition:.5s;
+			-ms-transition:.5s;
+			-moz-transition:.5s;
+			-webkit-transition:.5s;
+			transition:.5s;
+			-o-transition-delay:.3s;
+			-ms-transition-delay:.3s;
+			-moz-transition-delay:.3s;
+			-webkit-transition-delay:.3s;
+			transition-delay:.3s;
 		}
 		@media (max-width:40rem) {
 			.slide-video .caption .time {
@@ -209,6 +253,12 @@
 			z-index: 10;
 			color: #e4e5e6;
 			width: 30%;
+			opacity: 0;
+			-o-transition:1s;
+			-ms-transition:1s;
+			-moz-transition:1s;
+			-webkit-transition:1s;
+			transition:1s;
 		}
 		.player .overlay h2 {
 			font-family: 'rationalbook_bold';
@@ -223,10 +273,22 @@
 		}
 		.player .share {
 			position: absolute;
-			bottom: 110px;
-			right: 50px;
+			bottom: 100px;
+			right: 40px;
 			z-index: 10;
 			cursor: pointer;
+			opacity: 0;
+			-o-transition:1s;
+			-ms-transition:1s;
+			-moz-transition:1s;
+			-webkit-transition:1s;
+			transition:1s;
+		}
+		.hoverzone:hover ~ .overlay, .hoverzone:hover ~ .share, .share:hover { 
+			opacity: 1;
+		}
+		.share:hover ~ .overlay {
+			opacity: 1;
 		}
 		@media (max-width:60rem) {
 			.player {
@@ -238,6 +300,7 @@
 				padding: 30px;
 				font-size: 18px;
 				width: 100%;
+				opacity: 1;
 			}
 			.player .overlay h2 {
 				font-size: 24px;
@@ -247,6 +310,7 @@
 			.player .share {
 				bottom: 60px;
 				right: 15px;
+				opacity: 1;
 			}
 		}
 		.back {
@@ -432,7 +496,7 @@
 	</amp-lightbox>
 	<main>
 		<section class="player xs-hide sm-hide">
-			<amp-video autoplay height="800" src="{{$video->video_url}}"
+			<amp-video class="hoverzone" autoplay height="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="fixed-height"
 				controls>
@@ -441,14 +505,15 @@
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
 			</amp-video>
-			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
+			<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
+				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
+			</div>
 			<div class="overlay">
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
 			</div>
-			<div role="button" aria-label="open share box" on="tap:share" class="share">
-				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
-			</div>
+			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>			
+			
 		</section>
 		<section class="player md-hide lg-hide">
 			<amp-video autoplay height="800" width="800" src="{{$video->video_url}}"
@@ -459,10 +524,10 @@
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
-				<div role="button" aria-label="open share box" on="tap:share" class="share">
+				<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
 					<amp-img src="../assets/share.svg" layout="fixed" width="18" height="15"></amp-img>
 				</div>
-			</amp-video>
+			</amp-video>			
 			<div class="overlay">
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
@@ -476,9 +541,13 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<span class="time">{{$suggestedVideos[$i]->date}}</span>
+							<amp-timeago layout="fixed" width="160" class="time"
+								height="30"
+								datetime="{{$suggestedVideos[$i]->ISODate}}"
+								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
 						</div>
+						<div class="btn"></div>
 					</article>
 				</a>
 				@endif
@@ -488,9 +557,13 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<span class="time">{{$suggestedVideos[$i]->date}}</span>
+							<amp-timeago layout="fixed" width="160" class="time"
+								height="30"
+								datetime="{{$suggestedVideos[$i]->ISODate}}"
+								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
 						</div>
+						<div class="btn"></div>
 					</article>
 				</a>
 				@endif
@@ -500,9 +573,13 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<span class="time">{{$suggestedVideos[$i]->date}}</span>
+							<amp-timeago layout="fixed" width="160" class="time"
+								height="30"
+								datetime="{{$suggestedVideos[$i]->ISODate}}"
+								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
 						</div>
+						<div class="btn"></div>
 					</article>
 				</a>
 				@endif
@@ -512,9 +589,13 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<span class="time">{{$suggestedVideos[$i]->date}}</span>
+							<amp-timeago layout="fixed" width="160" class="time"
+								height="30"
+								datetime="{{$suggestedVideos[$i]->ISODate}}"
+								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
 						</div>
+						<div class="btn"></div>
 					</article>
 				</a>
 				@endif
@@ -524,9 +605,13 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<span class="time">{{$suggestedVideos[$i]->date}}</span>
+							<amp-timeago layout="fixed" width="160" class="time"
+								height="30"
+								datetime="{{$suggestedVideos[$i]->ISODate}}"
+								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
 						</div>
+						<div class="btn"></div>
 					</article>
 				</a>
 				@endif
@@ -536,9 +621,13 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<span class="time">{{$suggestedVideos[$i]->date}}</span>
+							<amp-timeago layout="fixed" width="160" class="time"
+								height="30"
+								datetime="{{$suggestedVideos[$i]->ISODate}}"
+								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
 						</div>
+						<div class="btn"></div>
 					</article>
 				</a>
 				@endif
@@ -553,7 +642,10 @@
 							<article class="video">
 								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
-									<span class="time">{{$suggestedVideos[$i]->date}}</span>
+									<amp-timeago layout="fixed" width="160" class="time"
+										height="30"
+										datetime="{{$suggestedVideos[$i]->ISODate}}"
+										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
 								</div>
 							</article>
@@ -567,7 +659,10 @@
 							<article class="video">
 								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
-									<span class="time">{{$suggestedVideos[$i]->date}}</span>
+									<amp-timeago layout="fixed" width="160" class="time"
+										height="30"
+										datetime="{{$suggestedVideos[$i]->ISODate}}"
+										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
 								</div>
 							</article>
@@ -581,7 +676,10 @@
 							<article class="video">
 								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
-									<span class="time">{{$suggestedVideos[$i]->date}}</span>
+									<amp-timeago layout="fixed" width="160" class="time"
+										height="30"
+										datetime="{{$suggestedVideos[$i]->ISODate}}"
+										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
 								</div>
 							</article>
@@ -595,7 +693,10 @@
 							<article class="video">
 								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
-									<span class="time">{{$suggestedVideos[$i]->date}}</span>
+									<amp-timeago layout="fixed" width="160" class="time"
+										height="30"
+										datetime="{{$suggestedVideos[$i]->ISODate}}"
+										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
 								</div>
 							</article>

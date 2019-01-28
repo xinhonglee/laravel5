@@ -100,9 +100,20 @@ main header article.slide {
   margin: 0px;
   position: relative;
 }
+main header.xs-hide amp-carousel {
+  border-top: solid 30px #262626;
+  border-bottom: solid 30px #262626;
+}
+main header.xs-hide article.slide:first-of-type {
+  border-left: solid 30px #262626;
+}
+main header.xs-hide article.slide:last-of-type {
+  border-right: solid 30px #262626;
+}
 main header.xs-hide article.slide {
   width: 819px;
   height: 819px;
+  border: solid 12px #262626;
 }
 main header.sm-hide article.slide, main header.md-hide article.slide, main header.lg-hide article.slide {
   width: 80%;
@@ -115,11 +126,11 @@ amp-img.cover img {
   object-fit: cover;
 }
 .video-wall {
-  border-top: solid 2px #262626;
-  border-bottom: solid 2px #262626;
+  border: solid 30px #262626;
+  background-color: #262626;
 }
 .video {
-  border: solid 2px #262626;
+  border: solid 11px #262626;
   background-color: #000;
 }
 @media (min-width:40.04rem) {
