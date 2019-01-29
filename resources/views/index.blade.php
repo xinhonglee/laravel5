@@ -369,7 +369,7 @@
 </section>
 @if ($hasMorePages)
 <section class="more">
-  <a href="/page/{{ $page+1 }}" class="">Voir plus</a>
+  <a href="/page/{{ $page+1 }}" class="">Toutes les vidéos</a>
 </section>
 @endif
 <section class="social">

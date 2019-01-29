@@ -51,18 +51,35 @@
 	</header>
 
 	<!-- Start Sidebar -->
-	<amp-lightbox id="menu" layout="nodisplay">
+	<amp-lightbox id="menu" layout="nodisplay" scrollable>
+		<amp-img class="cover xs-hide sm-hide " layout="fill" src="/assets/banner1.jpg"></amp-img>
+		<amp-img src="/assets/logo.png" media="(min-width: 52.02rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
 		<div role="button" aria-label="close menu" on="tap:menu.close" tabindex="0" class="close">
-			<span class="md-hide lg-hide">Fermer</span>
+			<span>Fermer</span>
 		</div>
-		<nav class="">
+		<nav class="dark">
 			<ul class="">
-				<li><a href="/">Accueil</a></li>
-				<li><a href="/corporate">A propos</a></li>
+				<li><a href="#">A propos</a></li>
+				<li><a href="#">Annonceurs</a></li>
 				<li><a href="#">Contact</a></li>
+				<li><a href="#">Mentions légales</a></li>
+			</ul>
+		</nav>		
+		<nav class="category">
+			<h4 class="md-hide lg-hide">Catégories</h4>
+			<ul class="">	
+				<li><a href="#">Environnement</a></li>
+				<li><a href="#">Monde</a></li>
+				<li><a href="#">Société</a></li>
+				<li><a href="#">Identités</a></li>
+				<li><a href="#">Voyage + Food</a></li>
+				<li><a href="#">Culture</a></li>
+				<li><a href="#">Insolite</a></li>
+				<li><a href="#">VoxPop</a></li>
+				<li><a href="#">Tribune</a></li>
 			</ul>
 		</nav>
-		<div class="menu-social md-hide lg-hide">
+		<div class="menu-social">
 			<ul>
 				<li>
 					<a href="#">
