@@ -22,7 +22,9 @@
 	<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
 	<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
 	<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+	@if ($css=="index")
 	<script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
+	@endif
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
@@ -53,7 +55,7 @@
 	<!-- Start Sidebar -->
 	<amp-lightbox id="menu" layout="nodisplay" scrollable>
 		<amp-img class="cover xs-hide sm-hide " layout="fill" src="/assets/banner1.jpg"></amp-img>
-		<amp-img src="/assets/logo.png" media="(min-width: 52.02rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
+		<amp-img src="/assets/logo.png" media="(min-width: 52.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
 		<div role="button" aria-label="close menu" on="tap:menu.close" tabindex="0" class="close">
 			<span>Fermer</span>
 		</div>
@@ -83,27 +85,32 @@
 			<ul>
 				<li>
 					<a href="#">
-						<amp-img src="/assets/facebook_black.png" width="13" height="25" layout="fixed"></amp-img>
+						<amp-img src="/assets/facebook_black.svg"  media="(max-width: 52rem)" width="13" height="25" layout="fixed"></amp-img>
+						<amp-img src="/assets/facebook_green.svg"  media="(min-width: 52.06rem)" width="13" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<amp-img src="/assets/twitter_black.png" width="27" height="23" layout="fixed"></amp-img>
+						<amp-img src="/assets/twitter_black.svg"  media="(max-width: 52rem)" width="27" height="23" layout="fixed"></amp-img>
+						<amp-img src="/assets/twitter_green.svg"  media="(min-width: 52.06rem)" width="27" height="23" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<amp-img src="/assets/youtube_black.png" width="34" height="25" layout="fixed"></amp-img>
+						<amp-img src="/assets/youtube_black.svg"  media="(max-width: 52rem)" width="34" height="25" layout="fixed"></amp-img>
+						<amp-img src="/assets/youtube_green.svg"  media="(min-width: 52.06rem)" width="34" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<amp-img src="/assets/insta_black.png" width="24" height="24" layout="fixed"></amp-img>
+						<amp-img src="/assets/instagram_black.svg"  media="(max-width: 52rem)" width="24" height="24" layout="fixed"></amp-img>
+						<amp-img src="/assets/instagram_green.svg"  media="(min-width: 52.06rem)" width="24" height="24" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<amp-img src="/assets/snap_black.png" width="27" height="26" layout="fixed"></amp-img>
+						<amp-img src="/assets/snapchat_black.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
+						<amp-img src="/assets/snapchat_green.svg"  media="(min-width: 52.06rem)" width="27" height="26" layout="fixed"></amp-img>
 					</a>
 				</li>
 			</ul>
@@ -123,6 +130,6 @@
 			</ul>
 		</nav>
 		<span>Loopsider &copy;2018</span>
-		<a href="/mentions-legales" class="right">Mentions légales</span>
+		<a href="/mentions-legales" class="right">Mentions légales</span></a>
 	</footer>
 </body>

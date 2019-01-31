@@ -76,12 +76,24 @@
 		amp-img.cover img {
 			object-fit: cover;
 		}
+		.carousel {
+			border-top: solid 3px transparent;
+			border-bottom: solid 3px transparent;
+			background-color:#000;
+		}
 		.slide-video {
 			position: relative;
 			width: 400px;
 			height: 400px;
 			margin: 0;
 			filter: brightness(55%);
+			border: solid 3px transparent;
+		}
+		.slide-video:first-of-type {
+			border-left: solid 6px transparent;
+		}
+		.slide-video:last-of-type {
+			border-right: solid 6px transparent;
 		}
 		.slide-video:hover {
 			filter: brightness(100%);

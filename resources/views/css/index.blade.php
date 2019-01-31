@@ -108,19 +108,22 @@ main header article.slide {
   position: relative;
 }
 main header.xs-hide amp-carousel {
-  border-top: solid 25px #262626;
-  border-bottom: solid 30px #262626;
+  border-top: solid 25px transparent;
+  border-bottom: solid 30px transparent;
 }
 main header.xs-hide article.slide:first-of-type {
-  border-left: solid 30px #262626;
+  border-left: solid 30px transparent;
 }
 main header.xs-hide article.slide:last-of-type {
-  border-right: solid 30px #262626;
+  border-right: solid 30px transparent;
 }
 main header.xs-hide article.slide {
   width: 819px;
   height: 819px;
-  border: solid 12px #262626;
+  border: solid 12px transparent;
+}
+main header.xs-hide {
+	background-color: #262626;
 }
 main header.sm-hide article.slide, main header.md-hide article.slide, main header.lg-hide article.slide {
   width: 80%;
@@ -238,10 +241,12 @@ amp-img.cover img {
 .video .caption h2 {
   font-size: 42px;
   line-height: 44px;
+  margin-top: 6px;
 }
 .video .caption h2.small {
   font-size: 24px;
   line-height: 30px;
+  margin-top: 0px;
 }
 @media (max-width:40rem) {
   .slide .caption h2, .video .caption h2 {
@@ -362,11 +367,7 @@ amp-img.cover img {
 #menu nav ul li a, #menu nav ul li a:visited, #menu nav ul li a:hover {
   text-decoration: none;
 }
-#menu .menu-social {
-  width: 100%;
-  text-align: center;
-  margin-top: 50px;
-}
+
 #menu .menu-social ul {
   list-style-type: none;
   margin: 0;
@@ -374,7 +375,6 @@ amp-img.cover img {
 }
 #menu .menu-social ul li {
   display: inline-block;
-  width: 15%;
   margin: 0;
   padding: 0;
 }
@@ -412,6 +412,15 @@ amp-img.cover img {
 	  padding-top: 40px;
 	  padding-bottom: 10px;
   }
+  #menu .menu-social {
+	  margin-bottom: 30px;
+	  width: 100%;
+	  text-align: center;
+	  margin-top: 50px;
+	}
+  #menu .menu-social ul li {
+	  width: 15%;
+  }
 }
 @media (min-width:52.02rem) {
   #menu amp-img.cover img {
@@ -438,6 +447,8 @@ amp-img.cover img {
 	position: absolute;
     bottom: 45px;
 	left: 55px;
+	padding: 0;
+	margin: 0;
   }
   #menu nav.dark ul li {
     display:inline;
@@ -462,10 +473,12 @@ amp-img.cover img {
 	border-bottom: solid 10px #5feb98; 
   }
   #menu .menu-social {
-	width: 25%;
 	position: absolute;
-    bottom: 45px;
+    bottom: 52px;
 	right: 55px;
+  }
+  #menu .menu-social ul li {
+	margin-left: 50px;
   }
 }
 .more {
@@ -477,7 +490,6 @@ amp-img.cover img {
   border: solid 5px #5feb98;
   background-color: #5feb98;
   display: block;
-  width: 100%;
   padding: 20px;
   font-family: 'rationalextra_bold';
   font-size: 32px;
@@ -487,6 +499,9 @@ amp-img.cover img {
   -moz-transition:.5s;
   -webkit-transition:.5s;
   transition:.5s;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .more a:hover {
   background-color: #262626;
@@ -498,21 +513,38 @@ amp-img.cover img {
     padding: 0;
   }
   .more a {
+    width: 100%;
     font-size: 26px;
     padding: 0;
   }
 }
 .social {
-  text-align: center;
-  padding-top: 250px;
-  padding-bottom: 250px;
+  padding-top: 500px;
+  padding-bottom: 500px;
+  background-color: #262626;
+  width: 100%;
 }
 .social h2 {
+  text-align: center;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 10;
   font-family: 'rationalextra_bold';
-  font-size: 110px;
-  line-height: 130px;
+  font-size: 42px;
+  line-height: 110px;
+  color: #fff;
 }
 .social ul {
+  position: absolute;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 10;
   padding: 0;
   margin-top: 165px;
 }
@@ -524,20 +556,36 @@ amp-img.cover img {
 }
 @media (max-width:40rem) {
   .social {
-    background-color: #262626;
     padding-top: 25px;
     padding-bottom: 10px;
   }
   .social ul {
+	position: relative;
     margin-top: 0;
     padding: 0;
   }
   .social ul li {
     display: inline-block;
-    width: 15%;
+    width: 19%;
     margin: 0;
     padding: 0;
   }
+}
+.footer-img {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	opacity: .15;
+	background: #262626;
+	mix-blend-mode: luminosity;
+}
+.footer-img .gradient {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 360px;
+  background-image: linear-gradient(to bottom, #262626, rgba(38, 38, 38, 0));
 }
 footer {
   padding: 55px;
