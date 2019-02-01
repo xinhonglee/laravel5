@@ -2,7 +2,10 @@
 
 @section('content')
 
-<h2 class="section">Toutes les vidéos</h2>
+<section class="header">
+  <h2>Toutes les vidéos</h2>
+</section>
+
 <section class="video-wall">
   <div class="clearfix">
     @php ($i = 0)
@@ -280,43 +283,4 @@
   <a href="/page/{{ $page+1 }}" class="">Toutes les vidéos</a>
 </section>
 @endif
-<section class="social">
-  <h2 class="xs-hide">Retrouvez Loopsider sur les réseaux</h2>
-  <ul>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/facebook_green.svg" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
-        <amp-img src="../assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="30" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/twitter_green.svg" media="(min-width: 40.06rem)" width="54" height="45" layout="fixed"></amp-img>
-        <amp-img src="../assets/twitter_green.svg" media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/youtube_green.svg" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
-        <amp-img src="../assets/youtube_green.svg" media="(max-width: 40rem)" width="34" height="30" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/instagram_green.svg" media="(min-width: 40.06rem)" width="47" height="46" layout="fixed"></amp-img>
-        <amp-img src="../assets/instagram_green.svg" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/snapchat_green.svg" media="(min-width: 40.06rem)" width="53" height="50" layout="fixed"></amp-img>
-        <amp-img src="../assets/snapchat_green.svg" media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
-      </a>
-    </li>
-  </ul>
-  <div class="footer-img xs-hide">
-	<div class="gradient"></div>
-	<amp-img class="xs-hide" layout="responsive" width="1680" height="994" src="/assets/background_footer.jpg"></amp-img>
-  </div>
-</section>
 @endsection

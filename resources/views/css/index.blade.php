@@ -60,6 +60,59 @@ h2.section {
   }
 }
 
+.header {
+	height: 260px;
+	background-color: #262626;
+	text-align: center;
+}
+.header h2 {
+	font-family: 'rationalextra_bold';
+	font-size: 110px;
+	line-height: 90px;
+	color: #fff;
+	border-bottom: solid 10px #5feb98;
+	display: inline-block;
+	margin-top: 110px;
+	position: absolute;
+	z-index: 10;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%)
+}
+.header-img {
+	width: 100%;
+	height: 800px;
+	position: absolute;
+	top: 0;
+	opacity: .35;
+	background: #262626;
+}
+.header-img .gradient {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: 360px;
+  background-image: linear-gradient(to top, #262626, rgba(38, 38, 38, 0));
+}
+
+@media (max-width:40rem) {
+	.header {
+		height: 240px;
+	}
+	.category {
+		height: 380px;
+	}
+	.header h2 {
+		font-size: 36px;
+		line-height: 40px;
+		margin-top: 140px;
+	}
+	.category h2 {
+		margin-top: 170px;
+	}
+}
+
 .ampstart-headerbar {
   z-index: 200;
   background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%); /* W3C */
@@ -103,6 +156,7 @@ main {
 .video {
   position: relative;
 }
+
 main header article.slide {
   margin: 0px;
   position: relative;
@@ -125,6 +179,10 @@ main header.xs-hide article.slide {
 main header.xs-hide {
 	background-color: #262626;
 }
+main header.sm-hide, main header.md-hide, main header.lg-hide {
+  border-top: solid 4px #000;
+  border-bottom: solid 4px #000;
+}
 main header.sm-hide article.slide, main header.md-hide article.slide, main header.lg-hide article.slide {
   width: 80%;
   height: 497px;
@@ -141,8 +199,10 @@ amp-img.cover img {
   background-color: #262626;
 }
 .video {
-  border: solid 11px #262626;
-  background-color: #000;
+  border: solid 11px transparent;
+}
+.video .bg {
+  background-color: #262626;
 }
 @media (min-width:40.04rem) {
 	.video amp-img {
