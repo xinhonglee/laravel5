@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2 class="section">Toutes les vidéos</h2>
+<h2 class="section">{{ $category->name }} </h2>
 <section class="video-wall">
   <div class="clearfix">
     @php ($i = 0)
