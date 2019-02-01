@@ -8,32 +8,42 @@
 	  <ul class="social">
         <li>
 			<a href="#">
-				<amp-img src="/assets/facebook_green.svg" media="(max-width: 52rem)" width="13" height="25" layout="fixed"></amp-img>
-				<amp-img src="/assets/facebook_green.svg" media="(min-width: 52.06rem)" width="34" height="66" layout="fixed"></amp-img>				
+				<amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="20" height="38" layout="fixed"></amp-img>
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="27" height="52" layout="fixed"></amp-img>
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 64.06rem)" width="34" height="66" layout="fixed"></amp-img>				
 			</a>
 		</li>
         <li>
 			<a href="#">
-				<amp-img src="/assets/twitter_green.svg"  media="(max-width: 52rem)" width="27" height="23" layout="fixed"></amp-img>
-				<amp-img src="/assets/twitter_green.svg" media="(min-width: 52.06rem)" width="75" height="64" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg"  media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="43" height="37" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="59" height="50" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg" media="(min-width: 64.06rem)" width="75" height="64" layout="fixed"></amp-img>
 			</a>
 		</li>
         <li>
 			<a href="#">
-				<amp-img src="/assets/youtube_green.svg"  media="(max-width: 52rem)" width="34" height="25" layout="fixed"></amp-img>
-				<amp-img src="/assets/youtube_green.svg" media="(min-width: 52.06rem)" width="92" height="66" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg"  media="(max-width: 40rem)" width="34" height="25" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="53" height="39" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="73" height="54" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg" media="(min-width: 64.06rem)" width="92" height="66" layout="fixed"></amp-img>
 			</a>
 		</li>
         <li>
 			<a href="#">
-				<amp-img src="/assets/instagram_green.svg"  media="(max-width: 52rem)" width="24" height="24" layout="fixed"></amp-img>
-				<amp-img src="/assets/instagram_green.svg" media="(min-width: 52.06rem)" width="65" height="65" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="38" height="38" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="52" height="52" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(min-width: 64.06rem)" width="65" height="65" layout="fixed"></amp-img>
 			</a>
 		</li>
         <li>
 			<a href="#">
-				<amp-img src="/assets/snapchat_green.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
-				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 52.06rem)" width="71" height="67" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg"  media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="43" height="35" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="59" height="49" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 64.06rem)" width="71" height="67" layout="fixed"></amp-img>
 			</a>
 		</li>
       </ul>
@@ -46,17 +56,16 @@
       <div class="sm-col sm-col-8 px2 mt4">
         <h3>Des images pour écrire un monde en mouvement.</h3>
         <p>Conçu pour les écrans et les réseaux sociaux, Loopsider raconte et décrypte en images les histoires qui font l’actualité. Celles qui vous touchent et qui vous inspirent, celles qui vous rendent curieux et qui vous connectent aux autres. Ici. Maintenant.</p>
-
       </div>
 	  <div class="sm-col sm-col-4 px2 center mt2">
-        <amp-img src="/assets/phone.png" width="263" height="714" layout="fixed"></amp-video>
+        <amp-img src="/assets/phone.png" width="263" height="714" layout="responsive"></amp-video>
       </div>
   </section>
 
   <section class="chiffres">
 	<div class="content">
 		<h2>En chiffres</h2>
-		<p class="subtitle">La plus forte croissance d'un média sur facebook en 2018.</p>
+		<p class="subtitle">La plus forte croissance d'un média<br class="xs-hide"/>sur facebook en 2018.</p>
 		<div class="clearfix border">
 			<div class="sm-col sm-col-3 border">
 				<div class="number">
@@ -109,7 +118,7 @@
 		<p class="center tagline">
 			un enjeu
 		</p>
-		<p class="subtitle">
+		<p class="subtitle center">
 			De l’attention à l’engagement,
 			<br />
 			de l’engagement au partage
@@ -148,7 +157,7 @@
   <section class="work">
 	<h2>Comment travailler ensemble ?</h2>
 	<div class="clearfix table">
-		<div class="sm-col sm-col-6">	
+		<div class="lg-col lg-col-6">	
 			<div class="cell-header">
 				<p class="center">Média</p>
 			</div>
@@ -160,7 +169,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="sm-col sm-col-6">	
+		<div class="lg-col lg-col-6">	
 			<div class="cell-header">
 				<p class="center">Marque Blanche</p>
 			</div>

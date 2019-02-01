@@ -295,12 +295,12 @@ footer nav ul {
 
 .banner .title h1 {
   font-family: 'rationalextra_bold';
-  font-size: 60px;
+  font-size: 3.57vw;
   line-height: 1.13;
   color: #fff;
 }
 
-@media (max-width:40rem) {
+@media (max-width:52rem) {
   .banner {
     height: 600px;
   }
@@ -329,7 +329,7 @@ footer nav ul {
 }
 
 section {
-  padding: 85px 290px 85px 290px;
+  padding: 85px 17.26vw 85px 17.26vw;
 }
 
 @media (max-width:52rem) {
@@ -343,7 +343,7 @@ section.chiffres {
 }
 
 section.chiffres .content {
-  padding: 85px 290px 260px 290px;
+  padding: 85px 17.26vw 260px 17.26vw;
 }
 
 @media (max-width:52rem) {
@@ -354,8 +354,8 @@ section.chiffres .content {
 
 section h2 {
   font-family: 'rationalextra_bold';
-  font-size: 80px;
-  line-height: 90px;
+  font-size: 4.76vw;
+  line-height: 5.56vw;
   border-bottom: solid 20px #5feb98;
   margin-top: 100px;
   margin-bottom: 100px;
@@ -363,30 +363,30 @@ section h2 {
 
 section h3 {
   font-family: 'rationalextra_bold';
-  font-size: 60px;
-  line-height: 64px;
-  margin-top: 135px;
-  margin-bottom: 20px;
+  font-size: 3.57vw;
+  line-height: 3.8vw;
+  margin-top: 8vw;
+  margin-bottom: 1.2vw;
 }
 
 section h4 {
   font-family: 'rationalextra_bold';
-  font-size: 40px;
-  line-height: 30px;
+  font-size: 2.38vw;
+  line-height: 1.79vw;
   margin-top: 50px;
   margin-bottom: 20px;
 }
 
 section p {
   font-family: 'rationalsemi_bold';
-  font-size: 30px;
-  line-height: 42px;
+  font-size: 1.79vw;
+  line-height: 2.5vw;
 }
 
 section p.subtitle {
   font-family: 'rationalmedium';
-  font-size: 42px;
-  line-height: 56px;
+  font-size: 2.5vw;
+  line-height: 3.33vw;
   text-align: center;
   margin-bottom: 80px;
 }
@@ -403,7 +403,7 @@ section p.subtitle {
   section h3 {
     font-size: 30px;
     line-height: 34px;
-	margin-top: 10px;
+	margin-top: 8vw;
     margin-bottom: 20px;
   }
 
@@ -422,7 +422,6 @@ section p.subtitle {
   section p.subtitle {
 	  font-size: 22px;
 	  line-height: 32px;
-	  text-align: left;
 	  margin-bottom: 20px;
 	}
 }
@@ -442,31 +441,31 @@ section p.subtitle {
 }
 
 .chiffres .number {
-  font-size: 130px;
+  font-size: 7.74vw;
   line-height: 1;
   color: #5feb98;
   font-family: 'rationalextra_bold';
   text-align: center;
-  padding-top: 100px;
+  padding-top: 6vw;
 }
 
 .chiffres .unit {
   color: #5feb98;
-  font-size: 30px;
+  font-size: 1.79vw;
   line-height: 0.4;
   font-family: 'rationalsemi_bold';
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 6vw;
   border-bottom: solid 2px #4c4c4c;
 }
 
 .chiffres .comment {
   color: #e4e5e6;
-  font-size: 19px;
+  font-size: 22px;
   font-family: 'rationalsemi_bold';
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
 }
 
 .chiffres .footer-img {
@@ -487,16 +486,16 @@ section p.subtitle {
 }
 
 .chiffres .tagline-green {
-  font-size: 80px;
-  line-height: 84px;
+  font-size: 4.76vw;
+  line-height: 5vw;
   font-family: 'rationalextra_bold';
   margin-top: 250px;
 }
 
 .chiffres .tagline {
   color: #5feb98;
-  font-size: 80px;
-  line-height: 84px;
+  font-size: 4.76vw;
+  line-height: 5vw;
   font-family: 'rationalsemi_bold';
   margin-bottom: 20px;
 }
@@ -504,7 +503,7 @@ section p.subtitle {
 @media (max-width:52rem) {
 
   .chiffres .number {
-    font-size: 110px;
+    font-size: 100px;
 	padding-top: 30px;
   }
   
@@ -539,8 +538,8 @@ section p.subtitle {
 }
 .contents .cell {
 	border: solid 5px #262626;
-	height: 368px;
-	padding: 58px 50px 20px 50px;
+	min-height: 368px;
+	padding: 3.45vw 2.98vw 1.19vw 2.98vw;
 	text-align: center;
 }
 .contents .cell p {
@@ -676,12 +675,14 @@ section p.subtitle {
 		margin: 0;
 	}
 	.team h4 {
-		font-size: 28px;
-		line-height: 32px;
+		font-size: 1.66vw;
+		line-height: 1.90vw;
+		margin-top: 2vw;
+		margin-bottom: 1.19vw;
 	}
 	.team p {
-		font-size: 22px;
-		line-height: 30px;
+		font-size: 1.31vw;
+		line-height: 1.79vw;
 	}
 	.team .cover {
 		z-index: -1;
@@ -736,7 +737,7 @@ section p.subtitle {
   margin-top: 10px;
   padding: 36px 0px 30px 0px;
   list-style-type: none;
-  font-size: 30px;
+  font-size: 1.79vw;
   font-family: 'rationalsemi_bold';
   border-bottom: solid 5px #5feb98;
   background: url('/assets/arrow_green.svg') no-repeat right center;
@@ -773,7 +774,7 @@ section p.subtitle {
   margin-top: 10px;
   padding: 36px 20px 30px 20px;
   list-style-type: none;
-  font-size: 30px;
+  font-size: 1.79vw;
   font-family: 'rationalsemi_bold';
   background: #5feb98 url('/assets/arrow_black.svg') no-repeat right 20px center;
 }
