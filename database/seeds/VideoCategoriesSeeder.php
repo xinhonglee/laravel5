@@ -14,44 +14,54 @@ class VideoCategoriesSeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Environment',
-                'description' => ''
+                'name' => 'Environnement',
+                'description' => '',
+                'slug' => 'environement'
             ],
             [
-                'name' => 'World',
-                'description' => ''
+                'name' => 'Monde',
+                'description' => '',
+                'slug' => 'world'
             ],
             [
-                'name' => 'Society',
-                'description' => ''
+                'name' => 'Société',
+                'description' => '',
+                'slug' => 'society'
             ],
             [
-                'name' => 'Future',
-                'description' => ''
+                'name' => 'Futur',
+                'description' => '',
+                'slug' => 'future'
             ],
             [
-                'name' => 'Identities',
-                'description' => ''
+                'name' => 'Identités',
+                'description' => '',
+                'slug' => 'identities'
             ],
             [
-                'name' => 'Travel + Food',
-                'description' => ''
+                'name' => 'Voyage + Food',
+                'description' => '',
+                'slug' => 'travel+food'
             ],
             [
                 'name' => 'Culture',
-                'description' => ''
+                'description' => '',
+                'slug' => 'culture'
             ],
             [
-                'name' => 'Unusual',
-                'description' => ''
+                'name' => 'Insolite',
+                'description' => '',
+                'slug' => 'unusual'
             ],
             [
                 'name' => 'VoxPop',
-                'description' => ''
+                'description' => '',
+                'slug' => 'voxpop'
             ],
             [
                 'name' => 'Tribune',
-                'description' => ''
+                'description' => '',
+                'slug' => 'tribune'
             ],
 
         ];

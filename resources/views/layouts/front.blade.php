@@ -6,11 +6,11 @@
 	<meta charset="utf-8">
 	<title>Loopsider</title>
 	<link rel="canonical" href="#">
-	
+
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-	
+
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 	<script async="" src="https://cdn.ampproject.org/v0.js"></script>
@@ -61,24 +61,24 @@
 		</div>
 		<nav class="dark">
 			<ul class="">
-				<li><a href="#">A propos</a></li>
-				<li><a href="#">Annonceurs</a></li>
-				<li><a href="#">Contact</a></li>
-				<li><a href="#">Mentions légales</a></li>
+				<li><a href="/corporate">A propos</a></li>
+				<li><a href="/annonceurs">Annonceurs</a></li>
+				<li><a href="/contact">Contact</a></li>
+				<li><a href="/mentions-legales">Mentions légales</a></li>
 			</ul>
-		</nav>		
+		</nav>
 		<nav class="category">
 			<h4 class="md-hide lg-hide">Catégories</h4>
-			<ul class="">	
-				<li><a href="#">Environnement</a></li>
-				<li><a href="#">Monde</a></li>
-				<li><a href="#">Société</a></li>
-				<li><a href="#">Identités</a></li>
-				<li><a href="#">Voyage + Food</a></li>
-				<li><a href="#">Culture</a></li>
-				<li><a href="#">Insolite</a></li>
-				<li><a href="#">VoxPop</a></li>
-				<li><a href="#">Tribune</a></li>
+			<ul class="">
+				<li><a href="/environment">Environnement</a></li>
+				<li><a href="/world">Monde</a></li>
+				<li><a href="/society">Société</a></li>
+				<li><a href="/identities">Identités</a></li>
+				<li><a href="/travel+food">Voyage + Food</a></li>
+				<li><a href="/culture">Culture</a></li>
+				<li><a href="/unusual">Insolite</a></li>
+				<li><a href="/voxpop">VoxPop</a></li>
+				<li><a href="/tribune">Tribune</a></li>
 			</ul>
 		</nav>
 		<div class="menu-social">
