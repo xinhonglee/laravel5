@@ -14,7 +14,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
     </article>
     @endif
@@ -28,7 +28,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
     </article>
     @endif
@@ -42,7 +42,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
       </div>
     </article>
     @endif
@@ -60,7 +60,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
     </article>
     @endif
@@ -74,7 +74,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
     </article>
     @endif
@@ -88,7 +88,7 @@
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
         <h2>{{$videos[$i]->title}}</h2>
-        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img src="../assets/play_hover.png" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="10" height="13" style="top:2px;"></amp-img></a>
       </div>
     </article>
     @endif
@@ -110,6 +110,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -127,6 +128,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -144,6 +146,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -161,6 +164,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -180,6 +184,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -199,6 +204,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -216,6 +222,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -235,6 +242,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -252,6 +260,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -275,6 +284,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -292,6 +302,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -311,6 +322,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -328,6 +340,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
+			  <div class="btn"></div>
             </article>
           </a>
         </div>
@@ -347,6 +360,7 @@
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
           </div>
+		  <div class="btn"></div>
         </article>
       </a>
     </div>
@@ -355,42 +369,46 @@
 </section>
 @if ($hasMorePages)
 <section class="more">
-  <a href="/page/{{ $page+1 }}" class="">Voir plus</a>
+  <a href="/page/{{ $page+1 }}" class="">Toutes les vidéos</a>
 </section>
 @endif
 <section class="social">
-  <h2 class="xs-hide">Retrouvez Loopsider<br />sur les réseaux</h2>
+  <h2 class="xs-hide">Retrouvez Loopsider sur les réseaux</h2>
   <ul>
     <li>
       <a href="#">
-        <amp-img src="../assets/facebook_black.png" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
-        <amp-img src="../assets/facebook_green.png" media="(max-width: 40rem)" width="13" height="30" layout="fixed"></amp-img>
+        <amp-img src="../assets/facebook_green.svg" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
+        <amp-img src="../assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="30" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
       <a href="#">
-        <amp-img src="../assets/twitter_black.png" media="(min-width: 40.06rem)" width="54" height="45" layout="fixed"></amp-img>
-        <amp-img src="../assets/twitter_green.png" media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
+        <amp-img src="../assets/twitter_green.svg" media="(min-width: 40.06rem)" width="54" height="45" layout="fixed"></amp-img>
+        <amp-img src="../assets/twitter_green.svg" media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
       <a href="#">
-        <amp-img src="../assets/youtube_black.png" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
-        <amp-img src="../assets/youtube_green.png" media="(max-width: 40rem)" width="34" height="30" layout="fixed"></amp-img>
+        <amp-img src="../assets/youtube_green.svg" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
+        <amp-img src="../assets/youtube_green.svg" media="(max-width: 40rem)" width="34" height="30" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
       <a href="#">
-        <amp-img src="../assets/insta_black.png" media="(min-width: 40.06rem)" width="47" height="46" layout="fixed"></amp-img>
-        <amp-img src="../assets/insta_green.png" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
+        <amp-img src="../assets/instagram_green.svg" media="(min-width: 40.06rem)" width="47" height="46" layout="fixed"></amp-img>
+        <amp-img src="../assets/instagram_green.svg" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
       <a href="#">
-        <amp-img src="../assets/snap_black.png" media="(min-width: 40.06rem)" width="53" height="50" layout="fixed"></amp-img>
-        <amp-img src="../assets/snap_green.png" media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
+        <amp-img src="../assets/snapchat_green.svg" media="(min-width: 40.06rem)" width="53" height="50" layout="fixed"></amp-img>
+        <amp-img src="../assets/snapchat_green.svg" media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
       </a>
     </li>
   </ul>
-<section>
+  <div class="footer-img xs-hide">
+	<div class="gradient"></div>
+	<amp-img class="xs-hide" layout="responsive" width="1680" height="994" src="/assets/background_footer.jpg"></amp-img>
+  </div>
+</section>
 @endsection
