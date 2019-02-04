@@ -77,7 +77,8 @@ h2.section {
 	z-index: 10;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%)
+	transform: translateX(-50%);
+	white-space: nowrap;
 }
 .header-img {
 	width: 100%;
@@ -100,7 +101,7 @@ h2.section {
 	.header {
 		height: 240px;
 	}
-	.category {
+	.cat {
 		height: 380px;
 	}
 	.header h2 {

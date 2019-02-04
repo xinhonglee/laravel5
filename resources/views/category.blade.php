@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="header category">
+<section class="header cat">
   <h2>{{ $category->name }}</h2>
 </section>
 
