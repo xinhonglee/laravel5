@@ -337,9 +337,12 @@
 		}
 		@media (max-width:40rem) {
 			.back {
-				top: 20px;
-				left: 20px;
 				font-size: 18px;
+				height: 80px;
+				line-height: 80px;
+				position: static;
+				text-align: right;
+				padding-right: 30px;
 			}
 		}
 
@@ -547,7 +550,8 @@
 		</section>
 		<section class="carousel xs-hide sm-hide">
 			<amp-carousel height="400" layout="fixed-height" type="carousel" autoplay="" loop="">
-        @php ($i = 0)
+				@php ($i = 0)
+				@for ($k = 0; $k < 5; $k++)
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
@@ -563,91 +567,14 @@
 					</article>
 				</a>
 				@endif
-        @php ($i++)
-				@if ($suggestedVideos->count()>=($i+1))
-				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
-					<article>
-						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
-						<div class="caption">
-							<amp-timeago layout="fixed" width="160" class="time"
-								height="30"
-								datetime="{{$suggestedVideos[$i]->ISODate}}"
-								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-							<h2>{{$suggestedVideos[$i]->title}}</h2>
-						</div>
-						<div class="btn"></div>
-					</article>
-				</a>
-				@endif
-        @php ($i++)
-				@if ($suggestedVideos->count()>=($i+1))
-				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
-					<article>
-						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
-						<div class="caption">
-							<amp-timeago layout="fixed" width="160" class="time"
-								height="30"
-								datetime="{{$suggestedVideos[$i]->ISODate}}"
-								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-							<h2>{{$suggestedVideos[$i]->title}}</h2>
-						</div>
-						<div class="btn"></div>
-					</article>
-				</a>
-				@endif
-        @php ($i++)
-				@if ($suggestedVideos->count()>=($i+1))
-				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
-					<article>
-						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
-						<div class="caption">
-							<amp-timeago layout="fixed" width="160" class="time"
-								height="30"
-								datetime="{{$suggestedVideos[$i]->ISODate}}"
-								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-							<h2>{{$suggestedVideos[$i]->title}}</h2>
-						</div>
-						<div class="btn"></div>
-					</article>
-				</a>
-				@endif
-        @php ($i++)
-				@if ($suggestedVideos->count()>=($i+1))
-				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
-					<article>
-						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
-						<div class="caption">
-							<amp-timeago layout="fixed" width="160" class="time"
-								height="30"
-								datetime="{{$suggestedVideos[$i]->ISODate}}"
-								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-							<h2>{{$suggestedVideos[$i]->title}}</h2>
-						</div>
-						<div class="btn"></div>
-					</article>
-				</a>
-				@endif
-        @php ($i++)
-				@if ($suggestedVideos->count()>=($i+1))
-				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
-					<article>
-						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
-						<div class="caption">
-							<amp-timeago layout="fixed" width="160" class="time"
-								height="30"
-								datetime="{{$suggestedVideos[$i]->ISODate}}"
-								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-							<h2>{{$suggestedVideos[$i]->title}}</h2>
-						</div>
-						<div class="btn"></div>
-					</article>
-				</a>
-				@endif
+				@php ($i++)
+				@endfor
 			</amp-carousel>
 		</section>
 		<section class="video-wall md-hide lg-hide">
 				<div class="clearfix">
-          @php ($i = 0)
+					@php ($i = 0)
+					@for ($k = 0; $k < 5; $k++)
 					@if ($suggestedVideos->count()>=($i+1))
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
@@ -664,57 +591,8 @@
 						</a>
 					</div>
 					@endif
-          @php ($i++)
-					@if ($suggestedVideos->count()>=($i+1))
-					<div class="lg-col lg-col-3 md-col md-col-6">
-						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
-							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-								<div class="caption">
-									<amp-timeago layout="fixed" width="160" class="time"
-										height="30"
-										datetime="{{$suggestedVideos[$i]->ISODate}}"
-										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
-								</div>
-							</article>
-						</a>
-					</div>
-					@endif
-          @php ($i++)
-					@if ($suggestedVideos->count()>=($i+1))
-					<div class="lg-col lg-col-3 md-col md-col-6">
-						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
-							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-								<div class="caption">
-									<amp-timeago layout="fixed" width="160" class="time"
-										height="30"
-										datetime="{{$suggestedVideos[$i]->ISODate}}"
-										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
-								</div>
-							</article>
-						</a>
-					</div>
-					@endif
-          @php ($i++)
-					@if ($suggestedVideos->count()>=($i+1))
-					<div class="lg-col lg-col-3 md-col md-col-6">
-						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
-							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-								<div class="caption">
-									<amp-timeago layout="fixed" width="160" class="time"
-										height="30"
-										datetime="{{$suggestedVideos[$i]->ISODate}}"
-										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
-									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>
-								</div>
-							</article>
-						</a>
-					</div>
-					@endif
+					@php ($i++)
+					@endfor
 				</div>
 			</div>
 		</section>
