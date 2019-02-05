@@ -205,7 +205,20 @@ amp-img.cover img {
 .video .bg {
   background-color: #262626;
 }
-@media (min-width:40.04rem) {
+@media (max-width:40rem) {
+	.video .btn {
+		z-index: 100;
+		position: absolute;
+		bottom: 20px;
+		left: 20px;
+		width: 80px;
+		height: 40px;
+		border: solid 3px #5feb98;
+		background: url('assets/play_up.svg') no-repeat center;
+		background-size: 12px 12px;
+	}
+}
+@media (min-width:40.06rem) {
 	.video amp-img {
 		opacity: 0.45;
 		-o-transition:.5s;
@@ -313,6 +326,7 @@ amp-img.cover img {
   .slide .caption h2, .video .caption h2 {
     font-size: 30px;
     line-height: 34px;
+	margin-bottom: 20px;
   }
 }
 .slide .caption .time, .video .caption .time {
@@ -514,11 +528,13 @@ amp-img.cover img {
   #menu nav.dark ul li {
     display:inline;
 	font-family: 'rationalsemi_bold';
-    border-bottom: solid 2px #5feb98;
     font-size: 1.19vw; /* 20px */
 	line-height: 42px;
     margin-right: 20px;
 	color: #e4e5e6;
+  }
+  #menu nav.dark ul li a:hover{
+      border-bottom: solid 2px #5feb98;
   }
   #menu nav.category ul {
 	position: absolute;
@@ -540,6 +556,9 @@ amp-img.cover img {
   }
   #menu .menu-social ul li {
 	margin-left: 50px;
+  }
+  #menu .menu-social ul li a:hover {
+	filter: brightness(0) invert(1);
   }
 }
 .more {
@@ -614,6 +633,9 @@ amp-img.cover img {
   list-style-type: none;
   margin-left: 50px;
   margin-right: 50px;
+}
+.social ul li a:hover {
+  filter: brightness(0) invert(1);
 }
 @media (max-width:40rem) {
   .social {

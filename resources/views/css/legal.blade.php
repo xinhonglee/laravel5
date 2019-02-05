@@ -216,11 +216,13 @@ amp-img.cover img {
   #menu nav.dark ul li {
     display:inline;
 	font-family: 'rationalsemi_bold';
-    border-bottom: solid 2px #5feb98;
     font-size: 1.19vw; /* 20px */
 	line-height: 42px;
     margin-right: 20px;
 	color: #e4e5e6;
+  }
+  #menu nav.dark ul li a:hover{
+      border-bottom: solid 2px #5feb98;
   }
   #menu nav.category ul {
 	position: absolute;
@@ -242,6 +244,9 @@ amp-img.cover img {
   }
   #menu .menu-social ul li {
 	margin-left: 50px;
+  }
+  #menu .menu-social ul li a:hover {
+	filter: brightness(0) invert(1);
   }
 }
 
