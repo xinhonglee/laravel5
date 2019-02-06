@@ -1,12 +1,19 @@
 <template>
   <div>
-    view
   </div>
 </template>
 
 <script>
+
   export default {
-    name: "story-view"
+    name: "story-view",
+    components: {
+    },
+    data() {
+      return {
+
+      }
+    }
   }
 </script>
 
