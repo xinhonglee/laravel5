@@ -19,7 +19,7 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <amp-timeago layout="fixed" width="160" class="time"
+        <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -40,7 +40,7 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->cover_url}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <amp-timeago layout="fixed" width="160" class="time"
+        <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -66,7 +66,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -88,7 +88,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -110,7 +110,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -133,7 +133,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -160,7 +160,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -183,7 +183,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -205,7 +205,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>

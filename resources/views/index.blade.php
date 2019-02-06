@@ -10,7 +10,7 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <amp-timeago layout="fixed" width="160" class="time"
+        <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -31,7 +31,7 @@
     <article class="slide">
       <amp-img src="{{$videos[$i]->cover_url}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
-        <amp-timeago layout="fixed" width="160" class="time"
+        <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -57,7 +57,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -79,7 +79,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -101,7 +101,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -124,7 +124,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -151,7 +151,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -174,7 +174,7 @@
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -196,7 +196,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -218,35 +218,45 @@
   <h2 class="xs-hide">Retrouvez Loopsider sur les réseaux</h2>
   <ul>
     <li>
-      <a href="#">
-        <amp-img src="../assets/facebook_green.svg" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
-        <amp-img src="../assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="30" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/twitter_green.svg" media="(min-width: 40.06rem)" width="54" height="45" layout="fixed"></amp-img>
-        <amp-img src="../assets/twitter_green.svg" media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/youtube_green.svg" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
-        <amp-img src="../assets/youtube_green.svg" media="(max-width: 40rem)" width="34" height="30" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/instagram_green.svg" media="(min-width: 40.06rem)" width="47" height="46" layout="fixed"></amp-img>
-        <amp-img src="../assets/instagram_green.svg" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <amp-img src="../assets/snapchat_green.svg" media="(min-width: 40.06rem)" width="53" height="50" layout="fixed"></amp-img>
-        <amp-img src="../assets/snapchat_green.svg" media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
-      </a>
-    </li>
+			<a href="https://www.facebook.com/Loopsider/" target="_blank">
+				<amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="20" height="38" layout="fixed"></amp-img>
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="27" height="52" layout="fixed"></amp-img>
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 64.06rem)" width="34" height="66" layout="fixed"></amp-img>				
+			</a>
+		</li>
+        <li>
+			<a href="https://twitter.com/Loopsidernews" target="_blank">
+				<amp-img src="/assets/twitter_green.svg"  media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="43" height="37" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="59" height="50" layout="fixed"></amp-img>
+				<amp-img src="/assets/twitter_green.svg" media="(min-width: 64.06rem)" width="75" height="64" layout="fixed"></amp-img>
+			</a>
+		</li>
+        <li>
+			<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank">
+				<amp-img src="/assets/youtube_green.svg"  media="(max-width: 40rem)" width="34" height="25" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="53" height="39" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="73" height="54" layout="fixed"></amp-img>
+				<amp-img src="/assets/youtube_green.svg" media="(min-width: 64.06rem)" width="92" height="66" layout="fixed"></amp-img>
+			</a>
+		</li>
+        <li>
+			<a href="https://www.instagram.com/loopsider/" target="_blank">
+				<amp-img src="/assets/instagram_green.svg" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="38" height="38" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="52" height="52" layout="fixed"></amp-img>
+				<amp-img src="/assets/instagram_green.svg" media="(min-width: 64.06rem)" width="65" height="65" layout="fixed"></amp-img>
+			</a>
+		</li>
+        <li>
+			<a href="#">
+				<amp-img src="/assets/snapchat_green.svg"  media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="43" height="35" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="59" height="49" layout="fixed"></amp-img>
+				<amp-img src="/assets/snapchat_green.svg" media="(min-width: 64.06rem)" width="71" height="67" layout="fixed"></amp-img>
+			</a>
+		</li>
   </ul>
   <div class="footer-img xs-hide">
 	<div class="gradient"></div>

@@ -61,9 +61,9 @@
 		</div>
 		<nav class="dark">
 			<ul class="">
-				<li><a href="/corporate">A propos</a></li>
-				<li><a href="/annonceurs">Annonceurs</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li><a href="/corporate#apropos">A propos</a></li>
+				<li><a href="/corporate#services">Annonceurs</a></li>
+				<li><a href="/corporate#contact">Contact</a></li>
 				<li><a href="/mentions-legales">Mentions légales</a></li>
 			</ul>
 		</nav>
@@ -84,31 +84,31 @@
 		<div class="menu-social">
 			<ul>
 				<li>
-					<a href="#">
+					<a href="https://www.facebook.com/Loopsider/" target="_blank">
 						<amp-img src="/assets/facebook_black.svg"  media="(max-width: 52rem)" width="13" height="25" layout="fixed"></amp-img>
 						<amp-img src="/assets/facebook_green.svg"  media="(min-width: 52.06rem)" width="13" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="https://twitter.com/Loopsidernews" target="_blank">
 						<amp-img src="/assets/twitter_black.svg"  media="(max-width: 52rem)" width="27" height="23" layout="fixed"></amp-img>
 						<amp-img src="/assets/twitter_green.svg"  media="(min-width: 52.06rem)" width="27" height="23" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank">
 						<amp-img src="/assets/youtube_black.svg"  media="(max-width: 52rem)" width="34" height="25" layout="fixed"></amp-img>
 						<amp-img src="/assets/youtube_green.svg"  media="(min-width: 52.06rem)" width="34" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="https://www.instagram.com/loopsider/" target="_blank">
 						<amp-img src="/assets/instagram_black.svg"  media="(max-width: 52rem)" width="24" height="24" layout="fixed"></amp-img>
 						<amp-img src="/assets/instagram_green.svg"  media="(min-width: 52.06rem)" width="24" height="24" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="#" target="_blank">
 						<amp-img src="/assets/snapchat_black.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
 						<amp-img src="/assets/snapchat_green.svg"  media="(min-width: 52.06rem)" width="27" height="26" layout="fixed"></amp-img>
 					</a>
@@ -125,7 +125,7 @@
 	<footer class="clearfix">
 		<nav>
 			<ul>
-				<li><a href="/corporate#apropros">A propos</a></li>
+				<li><a href="/corporate#apropos">A propos</a></li>
 				<li><a href="/corporate#services">Annonceurs</a></li>
 				<li><a href="/corporate#contact">Contact</a></li>
 				<li class="xs-hide"><a href="/mentions-legales">Mentions légales</a></li>

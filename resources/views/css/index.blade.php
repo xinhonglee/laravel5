@@ -102,7 +102,7 @@ h2.section {
 		height: 240px;
 	}
 	.cat {
-		height: 380px;
+		height: 300px;
 	}
 	.header h2 {
 		font-size: 36px;
@@ -620,8 +620,8 @@ amp-img.cover img {
   }
 }
 .social {
-  padding-top: 500px;
-  padding-bottom: 500px;
+  padding-top: 360px;
+  padding-bottom: 360px;
   background-color: #262626;
   width: 100%;
 }
@@ -670,7 +670,7 @@ amp-img.cover img {
   }
   .social ul li {
     display: inline-block;
-    width: 19%;
+    width: 18%;
     margin: 0;
     padding: 0;
   }

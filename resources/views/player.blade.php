@@ -577,7 +577,7 @@
 					<article>
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
-							<amp-timeago layout="fixed" width="160" class="time"
+							<amp-timeago layout="fixed" width="300" class="time"
 								height="30"
 								datetime="{{$suggestedVideos[$i]->ISODate}}"
 								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
@@ -601,7 +601,7 @@
 							<article class="video">
 								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
-									<amp-timeago layout="fixed" width="160" class="time"
+									<amp-timeago layout="fixed" width="300" class="time"
 										height="30"
 										datetime="{{$suggestedVideos[$i]->ISODate}}"
 										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>

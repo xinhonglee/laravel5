@@ -6,34 +6,18 @@
   <h2>Toutes les vidéos</h2>
 </section>
 
+@php ($i=0)
 <section class="video-wall">
   <div class="clearfix">
-    @php ($i = 0)
+	{{-- 4 small videos --}}
+	@for ($k = 0; $k < 4; $k++)
     @if ($videos->count()>=($i+1))
     <div class="lg-col lg-col-3 md-col md-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
-              height="30"
-              datetime="{{$videos[$i]->ISODate}}"
-              locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-            <h2 class="small">{{$videos[$i]->title}}</h2>
-          </div>
-		      <div class="btn"></div>
-        </article>
-      </a>
-    </div>
-    @endif
-    @php ($i++)
-    @if ($videos->count()>=($i+1))
-    <div class="lg-col lg-col-3 md-col md-col-6">
-      <a href="{{route('player', $videos[$i]->slug)}}">
-        <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-          <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -45,51 +29,17 @@
     </div>
     @endif
     @php ($i++)
-    @if ($videos->count()>=($i+1))
-    <div class="lg-col lg-col-3 md-col md-col-6">
-      <a href="{{route('player', $videos[$i]->slug)}}">
-        <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-          <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
-    height="30"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-            <h2 class="small">{{$videos[$i]->title}}</h2>
-          </div>
-		  <div class="btn"></div>
-        </article>
-      </a>
-    </div>
-    @endif
-    @php ($i++)
-    @if ($videos->count()>=($i+1))
-    <div class="lg-col lg-col-3 md-col md-col-6">
-      <a href="{{route('player', $videos[$i]->slug)}}">
-        <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-          <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
-    height="30"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-            <h2 class="small">{{$videos[$i]->title}}</h2>
-          </div>
-		  <div class="btn"></div>
-        </article>
-      </a>
-    </div>
-    @endif
+	@endfor
   </div>
   <div class="clearfix">
-    @php ($i++)
+	{{-- 1 big video --}}
     @if ($videos->count()>=($i+1))
     <div class="lg-col lg-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -99,17 +49,19 @@
         </article>
       </a>
     </div>
+	@php ($i++)
     @endif
     <div class="lg-col lg-col-6">
       <div class="clearfix">
-        @php ($i++)
+	    {{-- 2 small videos --}}
+		@for ($k = 0; $k < 2; $k++)
         @if ($videos->count()>=($i+1))
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -121,33 +73,18 @@
         </div>
         @endif
         @php ($i++)
-        @if ($videos->count()>=($i+1))
-        <div class="md-col md-col-6">
-          <a href="{{route('player', $videos[$i]->slug)}}">
-            <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-              <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
-    height="30"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-                <h2 class="small">{{$videos[$i]->title}}</h2>
-              </div>
-			  <div class="btn"></div>
-            </article>
-          </a>
-        </div>
+        @endfor
       </div>
-      @endif
       <div class="clearfix">
-        @php ($i++)
+		{{-- 2 small videos --}}
+        @for ($k = 0; $k < 2; $k++)
         @if ($videos->count()>=($i+1))
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -159,37 +96,22 @@
         </div>
         @endif
         @php ($i++)
-        @if ($videos->count()>=($i+1))
-        <div class="md-col md-col-6">
-          <a href="{{route('player', $videos[$i]->slug)}}">
-            <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-              <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
-    height="30"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-                <h2 class="small">{{$videos[$i]->title}}</h2>
-              </div>
-			  <div class="btn"></div>
-            </article>
-          </a>
-        </div>
-        @endif
+        @endfor
       </div>
     </div>
   </div>
   <div class="clearfix">
     <div class="lg-col lg-col-6">
       <div class="clearfix">
-        @php ($i++)
+        {{-- 2 small videos --}}
+		@for ($k = 0; $k < 2; $k++)
         @if ($videos->count()>=($i+1))
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -201,33 +123,18 @@
         </div>
         @endif
         @php ($i++)
-        @if ($videos->count()>=($i+1))
-        <div class="md-col md-col-6">
-          <a href="{{route('player', $videos[$i]->slug)}}">
-            <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-              <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
-    height="30"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-                <h2 class="small">{{$videos[$i]->title}}</h2>
-              </div>
-			  <div class="btn"></div>
-            </article>
-          </a>
-        </div>
-        @endif
+		@endfor
       </div>
       <div class="clearfix">
-        @php ($i++)
+        {{-- 2 small videos --}}
+		@for ($k = 0; $k < 2; $k++)
         @if ($videos->count()>=($i+1))
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
+                <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
@@ -239,25 +146,9 @@
         </div>
         @endif
         @php ($i++)
-        @if ($videos->count()>=($i+1))
-        <div class="md-col md-col-6">
-          <a href="{{route('player', $videos[$i]->slug)}}">
-            <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
-              <div class="caption">
-                <amp-timeago layout="fixed" width="160" class="time"
-    height="30"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
-                <h2 class="small">{{$videos[$i]->title}}</h2>
-              </div>
-			  <div class="btn"></div>
-            </article>
-          </a>
-        </div>
+		@endfor
       </div>
     </div>
-    @endif
     @php ($i++)
     @if ($videos->count()>=($i+1))
     <div class="lg-col lg-col-6">
@@ -265,7 +156,7 @@
         <article class="video">
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
-            <amp-timeago layout="fixed" width="160" class="time"
+            <amp-timeago layout="fixed" width="300" class="time"
     height="30"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
