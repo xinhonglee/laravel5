@@ -30,6 +30,16 @@
   font-style: normal;
 }
 
+@media (min-width:52.06rem) {
+	.flex-stretch-responsive-grid {
+		display: flex;
+		-webkit-box-align: stretch;
+		-webkit-align-items: stretch;
+		-ms-flex-align: stretch;
+		align-items: stretch;
+	}
+}
+
 body {
   background-color: #5feb98;
   color: #262626;
@@ -263,17 +273,41 @@ footer {
     font-size: 14px;
   }
 }
-footer nav {
-  border-top: solid 10px #5feb98;
-  color: #5feb98;
-  font-family: 'rationalsemi_bold';
-  font-size: 18px;
-  line-height: 36px;
+@media (min-width:40.06rem) {
+	footer nav {
+	  position: absolute;
+	  right: 55px;
+	  bottom: 55px;
+	  color: #e4e5e6;
+	  font-family: 'rationalsemi_bold';
+	  font-size: 20px;
+	}
+	footer nav ul {
+		margin: 0;
+		padding: 0;
+	}
+	footer nav ul li {
+	  list-style-type: none;
+	  display: inline;
+	  margin-left: 60px;
+	}
+	footer nav ul li a:hover {
+		text-decoration: underline;
+	}
 }
-footer nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px 0 20px 0;
+@media (max-width:40rem) {
+	footer nav {
+	  border-top: solid 10px #5feb98;
+	  color: #5feb98;
+	  font-family: 'rationalsemi_bold';
+	  font-size: 18px;
+	  line-height: 36px;
+	}
+	footer nav ul {
+	  list-style-type: none;
+	  padding: 0;
+	  margin: 20px 0 20px 0;
+	}
 }
 
 .banner {
@@ -286,6 +320,32 @@ footer nav ul {
 
 .banner .cover {
   opacity: 0.5;
+}
+
+.banner .submenu {
+  position: absolute;
+  top: 40px;
+  left: 200px; 
+  right: 200px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  z-index: 500;  
+}
+
+.banner .submenu ul {
+	padding: 0;
+	margin: 0;
+}
+
+.banner .submenu ul li {
+	list-style-type: none;
+	display: inline-block;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #5feb98;
+	font-family: 'rationalsemi_bold';
+	font-size: 22px;
+	line-height: 36px;
 }
 
 .banner .title {
@@ -543,9 +603,9 @@ section p.subtitle {
 }
 .contents .cell {
 	border: solid 5px #262626;
-	min-height: 368px;
-	padding: 3.45vw 2.98vw 1.19vw 2.98vw;
+	padding: 3.45vw 2.98vw 3.45vw 2.98vw;
 	text-align: center;
+	height: 100%;
 }
 .contents .cell p {
 	margin-top: 25px;
@@ -560,8 +620,7 @@ section p.subtitle {
 		margin-bottom: 40px;
 	}
 	.contents .cell {
-		height: auto;
-		min-height: 288px;
+		height: 100%;
 		margin-bottom: 30px;
 	}
 	.contents .cell p {
@@ -591,7 +650,7 @@ section p.subtitle {
 .work .cell {
 	border: solid 3px #4c4c4c;
 	padding: 40px;
-	min-height: 400px;
+	height: calc(100% - 90px);
 }
 .work .cell ul {
 	padding: 0;
@@ -617,7 +676,7 @@ section p.subtitle {
 		margin-bottom: 35px;
 		border-top: 0;
 		padding: 20px;
-		min-height: 0;
+		height: auto;
 	}
 	.work .cell ul li {
 		font-size: 19px;

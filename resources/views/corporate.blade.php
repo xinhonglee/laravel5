@@ -3,6 +3,14 @@
 @section('content')
   <header class="banner">
     <amp-img class="cover" layout="fill" src="/assets/banner1.jpg"></amp-img>
+	<div class="submenu xs-hide ">
+	  <ul>
+		<li><a href="#apropos">A propos</a></li>
+		<li><a href="#services">Services</a></li>
+		<li><a href="#equipe">L'équipe</a></li>
+		<li><a href="#contact">Contact</a></li>
+	  </ul>
+	</div>
     <div class="title">
       <h1>Regarder. Comprendre. Partager.</h1>
 	  <ul class="social">
@@ -49,12 +57,12 @@
       </ul>
 	</div>
   </header>
-
+  
+  <a id="apropos">
   <section class="intro">
     <div class="clearfix mxn2 ">
-      
       <div class="sm-col sm-col-8 px2 mt4">
-        <h3>Des images pour écrire un monde en mouvement.</h3>
+        <h3></a>Des images pour écrire un monde en mouvement.</h3>
         <p>Conçu pour les écrans et les réseaux sociaux, Loopsider raconte et décrypte en images les histoires qui font l’actualité. Celles qui vous touchent et qui vous inspirent, celles qui vous rendent curieux et qui vous connectent aux autres. Ici. Maintenant.</p>
       </div>
 	  <div class="sm-col sm-col-4 px2 center mt2">
@@ -66,7 +74,7 @@
 	<div class="content">
 		<h2>En chiffres</h2>
 		<p class="subtitle">La plus forte croissance d'un média<br class="xs-hide"/>sur facebook en 2018.</p>
-		<div class="clearfix border">
+		<div class="clearfix border flex-stretch-responsive-grid">
 			<div class="sm-col sm-col-3 border">
 				<div class="number">
 					30 
@@ -132,31 +140,32 @@
   
   <section class="contents">
 	<h3 class="center">Nous produisons des contenus qui créent la conversation chez les Millenials</h3>
-	<div class="clearfix mxn2">
+	<div class="clearfix mxn2 flex-stretch-responsive-grid">
 		<div class="sm-col sm-col-4 px2">	
 			<div class="cell">
-				<amp-img layout="fixed" width="56" height="56" src="/assets/facebook_black.svg"></amp-img>
+				<amp-img layout="fixed" width="59" height="56" src="/assets/content.svg"></amp-img>
 				<p>Notre équipe crée et produit des contenus pour les marques.</p>
 			</div>
 		</div>
 		<div class="sm-col sm-col-4 px2">	
 			<div class="cell">
-				<amp-img layout="fixed" width="57" height="56" src="/assets/facebook_black.svg"></amp-img>
+				<amp-img layout="fixed" width="57" height="56" src="/assets/sound.svg"></amp-img>
 				<p>Via ces contenus, nous permettons aux marques d’avoir une voix dans cette conversation.</p>
 			</div>
 		</div>
 		<div class="sm-col sm-col-4 px2">	
 			<div class="cell">
-				<amp-img layout="fixed" width="56" height="56" src="/assets/facebook_black.svg"></amp-img>
+				<amp-img layout="fixed" width="56" height="56" src="/assets/storytelling.svg"></amp-img>
 				<p>Nous mettons notre expertise du storytelling visuel au service de nos partenaires pour générer de l’engagement au meilleur coût.</p>
 			</div>
 		</div>
 	</div>
   </section>
   
+  <a id="services"></a>
   <section class="work">
 	<h2>Comment travailler ensemble ?</h2>
-	<div class="clearfix table">
+	<div class="clearfix table flex-stretch-responsive-grid">
 		<div class="lg-col lg-col-6">	
 			<div class="cell-header">
 				<p class="center">Média</p>
@@ -188,10 +197,11 @@
 		<li><amp-img layout="fixed" width="56" height="56" src="/assets/facebook_green.svg"></amp-img></li>
 	</ul>
 	<div class="center">
-		<a href="#" class="btn">Nous contacter</a>
+		<a href="#contact" class="btn">Nous contacter</a>
 	</div>
   </section>  
 
+  <a id="equipe"></a>
   <section class="team">
 	<amp-img class="cover xs-hide sm-hide" layout="fill" src="/assets/banner1.jpg"></amp-img>
 	<div class="white">
@@ -228,12 +238,13 @@
     </ul>
   </section>
 
+  <a id="contact"></a>
   <section class="contact">
     <h2>Contact</h2>
     <ul>
-      <a href="mailto:exemple@gmail.com"><li>Vous êtes un annonceur</li></a>
-      <a href="mailto:exemple@gmail.com"><li>Vous souhaitez postuler</li></a>
-      <a href="mailto:exemple@gmail.com"><li>Vous souhaitez nous envoyer une vidéo</li></a>
+      <a href="mailto:contact@loopsider.com?subject=Advertising" target="_blank"><li>Vous êtes un annonceur</li></a>
+      <a href="mailto:contact@loopsider.com?subject=Job" target="_blank"><li>Vous souhaitez postuler</li></a>
+      <a href="mailto:contact@loopsider.com?subject=Video" target="_blank"><li>Vous souhaitez nous envoyer une vidéo</li></a>
     </ul>
   </section>
 @endsection
