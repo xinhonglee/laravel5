@@ -338,6 +338,9 @@ amp-img.cover img {
 .video .caption .time {
   font-size: 18px;
 }
+.slide .caption .time::first-letter, .video .caption .time::first-letter {
+	text-transform: uppercase;
+}
 @media (max-width:40rem) {
   .slide .caption .time, .video .caption .time {
     font-size: 16px;
@@ -400,6 +403,7 @@ amp-img.cover img {
 .amp-carousel-button {
   height: 75px;
   width: 75px;
+  cursor: pointer;
 }
 @media (max-width:40rem) {
   .amp-carousel-button {
@@ -412,6 +416,7 @@ amp-img.cover img {
   background-image: url('../assets/next.svg');
   right: 55px;
   z-index: 100;
+  
 }
 .amp-carousel-button-prev {
   background-color: transparent;
@@ -419,6 +424,22 @@ amp-img.cover img {
   background-image: url('../assets/prev.svg');
   left: 55px;
   z-index: 100;
+}
+.amp-carousel-button-next:hover {
+  right: 45px;
+  -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
+  transition:.3s;
+}
+.amp-carousel-button-prev:hover {
+  left: 45px;
+  -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
+  transition:.3s;
 }
 #menu {
   width: 100%;
@@ -683,15 +704,39 @@ footer {
     font-size: 14px;
   }
 }
-footer nav {
-  border-top: solid 10px #5feb98;
-  color: #5feb98;
-  font-family: 'rationalsemi_bold';
-  font-size: 18px;
-  line-height: 36px;
+@media (min-width:40.06rem) {
+	footer nav {
+	  position: absolute;
+	  right: 55px;
+	  bottom: 55px;
+	  color: #e4e5e6;
+	  font-family: 'rationalsemi_bold';
+	  font-size: 20px;
+	}
+	footer nav ul {
+		margin: 0;
+		padding: 0;
+	}
+	footer nav ul li {
+	  list-style-type: none;
+	  display: inline;
+	  margin-left: 60px;
+	}
+	footer nav ul li a:hover {
+		text-decoration: underline;
+	}
 }
-footer nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px 0 20px 0;
+@media (max-width:40rem) {
+	footer nav {
+	  border-top: solid 10px #5feb98;
+	  color: #5feb98;
+	  font-family: 'rationalsemi_bold';
+	  font-size: 18px;
+	  line-height: 36px;
+	}
+	footer nav ul {
+	  list-style-type: none;
+	  padding: 0;
+	  margin: 20px 0 20px 0;
+	}
 }

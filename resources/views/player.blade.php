@@ -156,6 +156,9 @@
 		.slide-video .caption .time {
 			font-size: 18px;
 		}
+		.slide-video .caption .time::first-letter {
+			text-transform: uppercase;
+		}
 		.slide-video:hover .caption {
 			bottom: 90px;
 		}
@@ -202,6 +205,7 @@
 		.amp-carousel-button {
 			height: 75px;
 			width: 75px;
+			cursor: pointer;
 		}
 		@media (max-width:40rem) {
 			.amp-carousel-button {
@@ -219,6 +223,22 @@
 			background-size: 75px 75px;
 			background-image: url('../assets/prev.svg');
 			left: 55px;
+		}
+		.amp-carousel-button-next:hover {
+		  right: 45px;
+		  -o-transition:.3s;
+		  -ms-transition:.3s;
+		  -moz-transition:.3s;
+		  -webkit-transition:.3s;
+		  transition:.3s;
+		}
+		.amp-carousel-button-prev:hover {
+		  left: 45px;
+		  -o-transition:.3s;
+		  -ms-transition:.3s;
+		  -moz-transition:.3s;
+		  -webkit-transition:.3s;
+		  transition:.3s;
 		}
 
 		footer {

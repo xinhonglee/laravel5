@@ -123,13 +123,15 @@
     @yield('content')
 	</main>
 	<footer class="clearfix">
-		<nav class="sm-hide md-hide lg-hide">
+		<nav>
 			<ul>
-				<li><a href="/corporate">A propos</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/corporate#apropros">A propos</a></li>
+				<li><a href="/corporate#services">Annonceurs</a></li>
+				<li><a href="/corporate#contact">Contact</a></li>
+				<li class="xs-hide"><a href="/mentions-legales">Mentions légales</a></li>
 			</ul>
 		</nav>
 		<span>Loopsider &copy;2018</span>
-		<a href="/mentions-legales" class="right">Mentions légales</span></a>
+		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide">Mentions légales</span></a>
 	</footer>
 </body>

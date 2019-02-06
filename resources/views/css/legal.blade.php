@@ -263,17 +263,41 @@ footer {
     font-size: 14px;
   }
 }
-footer nav {
-  border-top: solid 10px #5feb98;
-  color: #5feb98;
-  font-family: 'rationalsemi_bold';
-  font-size: 18px;
-  line-height: 36px;
+@media (min-width:40.06rem) {
+	footer nav {
+	  position: absolute;
+	  right: 55px;
+	  bottom: 55px;
+	  color: #e4e5e6;
+	  font-family: 'rationalsemi_bold';
+	  font-size: 20px;
+	}
+	footer nav ul {
+		margin: 0;
+		padding: 0;
+	}
+	footer nav ul li {
+	  list-style-type: none;
+	  display: inline;
+	  margin-left: 60px;
+	}
+	footer nav ul li a:hover {
+		text-decoration: underline;
+	}
 }
-footer nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px 0 20px 0;
+@media (max-width:40rem) {
+	footer nav {
+	  border-top: solid 10px #5feb98;
+	  color: #5feb98;
+	  font-family: 'rationalsemi_bold';
+	  font-size: 18px;
+	  line-height: 36px;
+	}
+	footer nav ul {
+	  list-style-type: none;
+	  padding: 0;
+	  margin: 20px 0 20px 0;
+	}
 }
 
 .banner {
