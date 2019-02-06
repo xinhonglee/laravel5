@@ -6,6 +6,11 @@
 	<meta charset="utf-8">
 	<title>Loopsider</title>
 	<link rel="canonical" href="#">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 	<script async="" src="https://cdn.ampproject.org/v0.js"></script>
@@ -17,7 +22,9 @@
 	<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
 	<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
 	<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+	@if ($css=="index")
 	<script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
+	@endif
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
@@ -46,42 +53,64 @@
 	</header>
 
 	<!-- Start Sidebar -->
-	<amp-lightbox id="menu" layout="nodisplay">
+	<amp-lightbox id="menu" layout="nodisplay" scrollable>
+		<amp-img class="cover xs-hide sm-hide " layout="fill" src="/assets/banner1.jpg"></amp-img>
+		<amp-img src="/assets/logo.png" media="(min-width: 52.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
 		<div role="button" aria-label="close menu" on="tap:menu.close" tabindex="0" class="close">
-			<span class="md-hide lg-hide">Fermer</span>
+			<span>Fermer</span>
 		</div>
-		<nav class="">
+		<nav class="dark">
 			<ul class="">
-				<li><a href="/">Accueil</a></li>
-				<li><a href="/corporate">A propos</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/corporate#apropos">A propos</a></li>
+				<li><a href="/corporate#services">Annonceurs</a></li>
+				<li><a href="/corporate#contact">Contact</a></li>
+				<li><a href="/mentions-legales">Mentions légales</a></li>
 			</ul>
 		</nav>
-		<div class="menu-social md-hide lg-hide">
+		<nav class="category">
+			<h4 class="md-hide lg-hide">Catégories</h4>
+			<ul class="">
+				<li><a href="/environment">Environnement</a></li>
+				<li><a href="/world">Monde</a></li>
+				<li><a href="/society">Société</a></li>
+				<li><a href="/identities">Identités</a></li>
+				<li><a href="/travel+food">Voyage + Food</a></li>
+				<li><a href="/culture">Culture</a></li>
+				<li><a href="/unusual">Insolite</a></li>
+				<li><a href="/voxpop">VoxPop</a></li>
+				<li><a href="/tribune">Tribune</a></li>
+			</ul>
+		</nav>
+		<div class="menu-social">
 			<ul>
 				<li>
-					<a href="#">
-						<amp-img src="/assets/facebook_black.png" width="13" height="25" layout="fixed"></amp-img>
+					<a href="https://www.facebook.com/Loopsider/" target="_blank">
+						<amp-img src="/assets/facebook_black.svg"  media="(max-width: 52rem)" width="13" height="25" layout="fixed"></amp-img>
+						<amp-img src="/assets/facebook_green.svg"  media="(min-width: 52.06rem)" width="13" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<amp-img src="/assets/twitter_black.png" width="27" height="23" layout="fixed"></amp-img>
+					<a href="https://twitter.com/Loopsidernews" target="_blank">
+						<amp-img src="/assets/twitter_black.svg"  media="(max-width: 52rem)" width="27" height="23" layout="fixed"></amp-img>
+						<amp-img src="/assets/twitter_green.svg"  media="(min-width: 52.06rem)" width="27" height="23" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<amp-img src="/assets/youtube_black.png" width="34" height="25" layout="fixed"></amp-img>
+					<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank">
+						<amp-img src="/assets/youtube_black.svg"  media="(max-width: 52rem)" width="34" height="25" layout="fixed"></amp-img>
+						<amp-img src="/assets/youtube_green.svg"  media="(min-width: 52.06rem)" width="34" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<amp-img src="/assets/insta_black.png" width="24" height="24" layout="fixed"></amp-img>
+					<a href="https://www.instagram.com/loopsider/" target="_blank">
+						<amp-img src="/assets/instagram_black.svg"  media="(max-width: 52rem)" width="24" height="24" layout="fixed"></amp-img>
+						<amp-img src="/assets/instagram_green.svg"  media="(min-width: 52.06rem)" width="24" height="24" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<amp-img src="/assets/snap_black.png" width="27" height="26" layout="fixed"></amp-img>
+					<a href="#" target="_blank">
+						<amp-img src="/assets/snapchat_black.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
+						<amp-img src="/assets/snapchat_green.svg"  media="(min-width: 52.06rem)" width="27" height="26" layout="fixed"></amp-img>
 					</a>
 				</li>
 			</ul>
@@ -94,13 +123,15 @@
     @yield('content')
 	</main>
 	<footer class="clearfix">
-		<nav class="sm-hide md-hide lg-hide">
+		<nav>
 			<ul>
-				<li><a href="/corporate">A propos</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/corporate#apropos">A propos</a></li>
+				<li><a href="/corporate#services">Annonceurs</a></li>
+				<li><a href="/corporate#contact">Contact</a></li>
+				<li class="xs-hide"><a href="/mentions-legales">Mentions légales</a></li>
 			</ul>
 		</nav>
 		<span>Loopsider &copy;2018</span>
-		<a href="/mentions-legales" class="right">Mentions légales</span>
+		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide">Mentions légales</span></a>
 	</footer>
 </body>

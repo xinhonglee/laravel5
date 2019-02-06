@@ -25,4 +25,12 @@ Route::get('/backoffice/{vue_capture?}', ['as' => 'backoffice', 'uses' => 'BackC
 Route::get('/auth/{vue_capture?}', ['as' => 'auth', 'uses' => 'BackController@index'])
     ->where('vue_capture', '[\/\w\.-]*');
 
+Route::view('/corporate', 'corporate', ['css' => 'corporate']);
+
+Route::get('/videos/{slug?}', 'FrontController@getVideos')->name('videos');
+
+Route::get('/{slug}', 'FrontController@getByCategory')->name('category');
+
+https://www.marfeel.com/
+
 //Auth::routes();
