@@ -1,6 +1,7 @@
 .app-header {
   background-color: $light-gray;
   border-bottom: 1px solid #8a8a8a;
+  height: $header-height;
 
   .navbar-brand {
     img {
@@ -46,6 +47,7 @@
   background: $light-gray;
   padding-bottom: 3px;
   display: flex;
+  height: $toolbar-height;
 
   .tab-navigation {
     flex: 2;
@@ -79,7 +81,7 @@
   background: $light-gray;
   display: flex;
   align-items: center;
-  height: 50px;
+  height: $toolbar-height;
   padding: 0 20px;
 
   .page-index {

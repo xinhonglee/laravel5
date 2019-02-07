@@ -1,37 +1,42 @@
 .story {
   .story-view {
-    width: 360px;
-    height: 600px;
-    margin: 0 auto;
     background-color: blue;
+    height: $amp-height;
+    margin: 0 auto;
+    width: $amp-width;
   }
 
   .story-left-sidebar {
-    position: absolute;
-    width: 350px;
-    z-index: 10;
     background: $light-gray;
+    height: calc(100vh - #{$header-height + $toolbar-height});
     left: 0;
-    top: 0;
-    //bottom: 0;
     padding: 20px;
+    position: absolute;
+    top: 0;
+    width: $amp-sidebar-width;
+    z-index: 10;
+
     .template-list {
-      position: relative;
       margin-top: 20px;
       margin-left: 19px;
-      &::before {
-        border-right: 3px dotted gray;
-        bottom: 0;
-        content: '';
-        display: block;
-        left: 6px;
-        position: absolute;
-        top: 0;
-        width: 5px;
-        z-index: -1;
-      }
+      max-height: calc(100vh - #{$header-height + $toolbar-height + 160px});
+      overflow-y: auto;
+      overflow-x: hidden;
 
       .page-layer {
+        position: relative;
+        &::before {
+          border-right: 3px dotted gray;
+          bottom: 0;
+          content: '';
+          display: block;
+          left: 6px;
+          position: absolute;
+          top: 0;
+          width: 5px;
+          z-index: -1;
+        }
+
         .layer-property {
           img.property-icon {
             width: 20px;
@@ -43,8 +48,8 @@
           }
         }
         .layer-elements {
-          margin-left: 70px;
           font-size: 13px;
+          margin-left: 70px;
           .element {
             cursor: pointer;
             .element-name {
@@ -59,19 +64,19 @@
       }
     }
     .md-button {
-      width: 40px !important;
       height: 40px !important;
+      width: 40px !important;
     }
   }
 
   .story-right-sidebar {
-    position: absolute;
-    width: 350px;
-    z-index: 10;
     background: $light-gray;
+    height: calc(100vh - #{$header-height + $toolbar-height});
     right: 0;
-    top: 0;
-    //bottom: 0;
     padding: 20px;
+    position: absolute;
+    top: 0;
+    width: $amp-sidebar-width;
+    z-index: 10;
   }
 }

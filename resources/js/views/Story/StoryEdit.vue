@@ -2,7 +2,7 @@
   <div>
     <story-left-side-bar></story-left-side-bar>
     <div class="story-view">
-
+        <!-- iframe interface -->
     </div>
     <story-right-side-bar></story-right-side-bar>
   </div>

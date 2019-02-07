@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- iframe interface -->
   </div>
 </template>
 
