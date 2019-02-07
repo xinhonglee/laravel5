@@ -28,18 +28,26 @@ class FrontController extends Controller
     }
 
     public function getVideosPerPage($page) {
-        return $this->getVideos(null, $page);
+        return $this->getVideos(null, $page, "videos");
     }
 
     public function getVideosPerCategory($category) {
-        return $this->getVideos($category, 0);
+        return $this->getVideos($category, 0, "videos");
     }
 
     public function getVideosPerCategoryAndPage($category, $page) {
-        return $this->getVideos($category, $page);
+        return $this->getVideos($category, $page, "videos");
     }
 
-    public function getVideos($categorySlug = null, $page = 0) {
+    public function getCategory($category) {
+        return $this->getVideos($category, 0, "category");
+    }
+
+    public function getCategoryPerPage($category, $page) {
+        return $this->getVideos($category, $page, "category");
+    }
+
+    public function getVideos($categorySlug = null, $page = 0, $template) {
         $skip = ($page > 0) ? $this->wallSize+($page-1)*$this->wallSize : 0;
         if (is_null($categorySlug)) {
             $videos = Video::orderBy('date', 'desc')->skip($skip)->limit($this->wallSize)->get();
@@ -64,9 +72,9 @@ class FrontController extends Controller
         $hasMorePages = ($totalVideoCount > ($skip+$this->wallSize));
         $css= "index";
         if (isset($category)) {
-            return view('category', compact('videos', 'category', 'css', 'page', 'hasMorePages'));
+            return view($template, compact('videos', 'category', 'css', 'page', 'hasMorePages'));
         } else {
-            return view('videos', compact('videos', 'css', 'page', 'hasMorePages'));
+            return view($template, compact('videos', 'css', 'page', 'hasMorePages'));
         }
 
     }
