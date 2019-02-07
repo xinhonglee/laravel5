@@ -1,16 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\VideoCategory;
-
 class FrontController extends Controller
-
 {
     var $wallSize = 17;
-
     public function index(Request $request, $page = 0)
     {
         $page = (int) $page;
@@ -26,15 +21,12 @@ class FrontController extends Controller
         $css= "index";
         return view('index', compact('videos', 'css', 'page', 'hasMorePages'));
     }
-
     public function getVideosPerPage($page) {
         return $this->getVideos(null, $page, "videos");
     }
-
     public function getVideosPerCategory($category) {
         return $this->getVideos($category, 0, "videos");
     }
-
     public function getVideosPerCategoryAndPage($category, $page) {
         return $this->getVideos($category, $page, "videos");
     }
@@ -70,15 +62,14 @@ class FrontController extends Controller
             }
         }
         $hasMorePages = ($totalVideoCount > ($skip+$this->wallSize));
+		$nbPages = ceil($totalVideoCount / $this->wallSize);
         $css= "index";
         if (isset($category)) {
             return view($template, compact('videos', 'category', 'css', 'page', 'hasMorePages'));
         } else {
             return view($template, compact('videos', 'css', 'page', 'hasMorePages'));
         }
-
     }
-
     public function getVideoWall(Request $request)
     {
       $videos = Video::orderBy('date', 'desc')->limit($this->wallSize)->get();
@@ -87,11 +78,9 @@ class FrontController extends Controller
       $result["hasMorePages"] = true;
       return response($result)->header('AMP-Access-Control-Allow-Source-Origin', $request->getSchemeAndHttpHost());
     }
-
     public function player(Request $request, $slug) {
       $video = Video::where('slug', $slug)->first();
       $suggestedVideos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
       return view('player', compact('video', 'suggestedVideos'));
     }
-
 }

@@ -21,3 +21,6 @@ bootstrap/cache
 public/css
 public/js
 public/mix-manifest.json
+package-lock.json
+composer.lock
+package-lock.json
