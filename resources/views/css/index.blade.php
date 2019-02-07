@@ -43,12 +43,12 @@ a, a:visited, a:hover {
   text-decoration: none;
 }
 h2.section {
-  margin: 80px 170px 80px 170px;
+  margin: 4.76vw 10.12vw 4.76vw 10.12vw;
   font-family: 'rationalextra_bold';
-  font-size: 110px;
-  line-height: 90px;
+  font-size: 4.76vw;
+  line-height: 5.36vw;
   display: block;
-  border-bottom: solid 20px #262626;
+  border-bottom: solid 1.19vw #262626;
 }
 @media (max-width:40rem) {
   h2.section {
@@ -67,8 +67,8 @@ h2.section {
 }
 .header h2 {
 	font-family: 'rationalextra_bold';
-	font-size: 110px;
-	line-height: 90px;
+	font-size: 4.29vw;
+	line-height: 1;
 	color: #fff;
 	border-bottom: solid 10px #5feb98;
 	display: inline-block;
@@ -79,6 +79,7 @@ h2.section {
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 	white-space: nowrap;
+	z-index: 200;
 }
 .header-img {
 	width: 100%;
@@ -238,13 +239,13 @@ amp-img.cover img {
 		transition:.5s;
 	}
 	.video:hover .caption {
-		bottom: 100px;
+		bottom: 80px;
 	}
 	.video .btn {
 		z-index: 100;
 		position: absolute;
-		bottom: 40px;
-		left: 55px;
+		bottom: 1.19vw;
+		left: 1.19vw;
 		width: 80px;
 		height: 40px;
 		border: solid 3px #5feb98;
@@ -290,10 +291,19 @@ amp-img.cover img {
 	border-bottom: solid 4px #000;
   }
 }
-.slide .caption, .video .caption {
+.slide .caption {
   bottom: 80px;
-  padding-left: 55px;
-  padding-right: 20px;
+  padding-left: 3.57vw;
+  padding-right: 3.57vw;
+  position: absolute;
+  width: 80%;
+  white-space: normal;
+  z-index: 100;
+}
+.video .caption {
+  bottom: 1.19vw;
+  padding-left: 1.19vw;
+  padding-right: 1.19vw;
   position: absolute;
   width: 80%;
   white-space: normal;
@@ -313,26 +323,34 @@ amp-img.cover img {
   margin-top: 16px;
 }
 .video .caption h2 {
-  font-size: 42px;
-  line-height: 44px;
-  margin-top: 6px;
+  font-size: 2.5vw;
+  line-height: 2.62vw;
+  margin-top: 0px;
 }
 .video .caption h2.small {
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 1.43vw;
+  line-height: 1.67vw;
   margin-top: 0px;
 }
 @media (max-width:40rem) {
   .slide .caption h2, .video .caption h2 {
     font-size: 30px;
     line-height: 34px;
+	margin-top: 0px;
+  }
+  .video .caption h2 {
 	margin-bottom: 20px;
   }
+  .video .caption h2.small {
+	  font-size: 30px;
+	  line-height: 34px;
+	  margin-top: 0px;
+	}
 }
 .slide .caption .time, .video .caption .time {
   font-family: 'rationalsemi_bold';
   color: #5feb98;
-  font-size: 20px;
+  font-size: 1.20vw;
   padding-bottom: 16px;
 }
 .video .caption .time {
@@ -634,8 +652,8 @@ amp-img.cover img {
   right: 0;
   z-index: 10;
   font-family: 'rationalextra_bold';
-  font-size: 42px;
-  line-height: 110px;
+  font-size: 2.5vw;
+  line-height: 6.55vw;
   color: #fff;
 }
 .social ul {
@@ -647,7 +665,7 @@ amp-img.cover img {
   right: 0;
   z-index: 10;
   padding: 0;
-  margin-top: 165px;
+  margin-top: 7.82vw;
 }
 .social ul li {
   display:inline;
@@ -739,4 +757,24 @@ footer {
 	  padding: 0;
 	  margin: 20px 0 20px 0;
 	}
+}
+.pagination {
+	background-color: #262626;
+	text-align: center;
+	font-family: 'rationalsemi_bold';
+	font-size: 20px;
+	line-height: 20px;
+}
+.pagination .current {
+	padding-left: 40px;
+	color: #5feb98;
+}
+.pagination .total {
+	padding-right: 40px;
+	color: #e4e5e6;
+}
+.pagination .disabled {
+	visibility: hidden;
+	pointer-events: none;
+	cursor: default;
 }
