@@ -1,21 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\VideoCategory;
-
 class FrontController extends Controller
-
 {
     var $wallSize = 17;
-
     public function index(Request $request, $page = 0)
     {
         $page = (int) $page;
         $totalVideoCount = Video::count();
-		$nbPages = ceil($totalVideoCount/$this->wallSize);
         if ($page > 0) {
             $skip = $this->wallSize+($page-1)*$this->wallSize;
             $videos = Video::orderBy('date', 'desc')->skip($skip)->take($this->wallSize)->get();
@@ -25,61 +19,47 @@ class FrontController extends Controller
             $hasMorePages = ($totalVideoCount > $this->wallSize);
         }
         $css= "index";
-        return view('index', compact('videos', 'css', 'page', 'hasMorePages', 'nbPages'));
+        return view('index', compact('videos', 'css', 'page', 'hasMorePages'));
     }
-
-    public function getVideos($slug = null, $page = 0) {
-        $page = (int) $page;
+    public function getVideosPerPage($page) {
+        return $this->getVideos(null, $page);
+    }
+    public function getVideosPerCategory($category) {
+        return $this->getVideos($category, 0);
+    }
+    public function getVideosPerCategoryAndPage($category, $page) {
+        return $this->getVideos($category, $page);
+    }
+    public function getVideos($categorySlug = null, $page = 0) {
         $skip = ($page > 0) ? $this->wallSize+($page-1)*$this->wallSize : 0;
-        if (is_null($slug)) {
+        if (is_null($categorySlug)) {
             $videos = Video::orderBy('date', 'desc')->skip($skip)->limit($this->wallSize)->get();
             $totalVideoCount = Video::count();
         } else {
             // get category name and slug
-            $category = VideoCategory::where('slug', $slug)->first();
-            // get videos within category
-            $videos = Video::orderBy('date', 'desc')
-              ->where('video_category_id','=',$category->id)
-              ->skip($skip)
-              ->limit($this->wallSize)
-              ->get();
-            $totalVideoCount = Video::orderBy('date', 'desc')
-              ->where('video_category_id','=',$category->id)
-              ->count();
+            $category = VideoCategory::where('slug', $categorySlug)->first();
+            if ($category) {
+              // get videos within category
+              $videos = Video::orderBy('date', 'desc')
+                ->where('video_category_id','=',$category->id)
+                ->skip($skip)
+                ->limit($this->wallSize)
+                ->get();
+              $totalVideoCount = Video::orderBy('date', 'desc')
+                ->where('video_category_id','=',$category->id)
+                ->count();
+            } else {
+              abort(404);
+            }
         }
-		$nbPages = ceil($totalVideoCount/$this->wallSize);
         $hasMorePages = ($totalVideoCount > ($skip+$this->wallSize));
         $css= "index";
-        return view('videos', compact('videos', 'css', 'page', 'hasMorePages', 'nbPages'));
-    }
-
-    public function getByCategory($slug = null, $page = 0) {
-        // get category name and slug
-        $category = VideoCategory::where('slug', $slug)->first();
-        // handle pagination
-        $page = (int) $page;
-        $skip = ($page > 0) ? $this->wallSize+($page-1)*$this->wallSize : 0;
-        // all videos
-        if (is_null($category)) {
-            $videos = Video::orderBy('date', 'desc')->skip($skip)->limit($this->wallSize)->get();
-            $totalVideoCount = Video::count();
-        // all videos within category
+        if (isset($category)) {
+            return view('category', compact('videos', 'category', 'css', 'page', 'hasMorePages'));
         } else {
-            $videos = Video::orderBy('date', 'desc')
-              ->where('video_category_id','=',$category->id)
-              ->skip($skip)
-              ->limit($this->wallSize)
-              ->get();
-            $totalVideoCount = Video::orderBy('date', 'desc')
-              ->where('video_category_id','=',$category->id)
-              ->count();
+            return view('videos', compact('videos', 'css', 'page', 'hasMorePages'));
         }
-		$nbPages = ceil($totalVideoCount/$this->wallSize);
-        $hasMorePages = ($totalVideoCount > ($skip+$this->wallSize));
-        $css= "index";
-        return view('category', compact('videos', 'category', 'css', 'page', 'hasMorePages', 'nbPages'));
     }
-
     public function getVideoWall(Request $request)
     {
       $videos = Video::orderBy('date', 'desc')->limit($this->wallSize)->get();
@@ -88,11 +68,9 @@ class FrontController extends Controller
       $result["hasMorePages"] = true;
       return response($result)->header('AMP-Access-Control-Allow-Source-Origin', $request->getSchemeAndHttpHost());
     }
-
     public function player(Request $request, $slug) {
       $video = Video::where('slug', $slug)->first();
       $suggestedVideos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
       return view('player', compact('video', 'suggestedVideos'));
     }
-
 }
