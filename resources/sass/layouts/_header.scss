@@ -86,15 +86,22 @@
 
   .page-index {
     width: 400px;
-   .md-button {
-     min-width: 30px;
-     font-weight: bold;
-   }
+    overflow-x: auto;
+    overflow-y: hidden;
+    .md-button {
+      min-width: 30px;
+      font-weight: bold;
+      height: 30px;
+      margin: 0 7px;
+    }
+    .md-ripple {
+      padding: 0 8px;
+    }
   }
   .page-tools {
     flex: 1;
     li:not(:last-child) {
-      border-right: 1px solid rgba(0,0,0,0.54);
+      border-right: 1px solid rgba(0, 0, 0, 0.54);
       padding-right: 20px;
     }
     li {
