@@ -66,7 +66,12 @@
         <p>Conçu pour les écrans et les réseaux sociaux, Loopsider raconte et décrypte en images les histoires qui font l’actualité. Celles qui vous touchent et qui vous inspirent, celles qui vous rendent curieux et qui vous connectent aux autres. Ici. Maintenant.</p>
       </div>
 	  <div class="sm-col sm-col-4 px2 center mt2">
-        <amp-img src="/assets/phone.png" width="263" height="714" layout="responsive"></amp-video>
+        <amp-video autoplay width="400" height="768" layout="responsive" poster="/assets/phone-fallback.png">
+			<source src="/assets/phone.mp4" type="video/mp4" />
+			<div fallback>
+				<p>This browser does not support the video element.</p>
+			</div>
+		</amp-video>
       </div>
   </section>
 

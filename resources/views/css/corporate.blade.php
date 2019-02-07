@@ -495,6 +495,10 @@ section p.subtitle {
   background-color: #262626;
 }
 
+.intro {
+	background-color: rgb(83, 217, 152);
+}
+
 .chiffres {
   background: #262626;
   color: #fff;
