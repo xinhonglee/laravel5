@@ -33,4 +33,3 @@ Route::get('/videos/{category}', 'FrontController@getVideosPerCategory')->where(
 Route::get('/videos/{category}/page/{page}', 'FrontController@getVideosPerCategoryAndPage')->where(['category' => '[A-Za-z]+', 'page' => '[0-9]+']);
 
 Route::get('/{category}', 'FrontController@getCategory')->where('category', '[A-Za-z]+');
-Route::get('/{category}/page/{page}', 'FrontController@getCategoryPerPage')->where(['category' => '[A-Za-z]+', 'page' => '[0-9]+']);

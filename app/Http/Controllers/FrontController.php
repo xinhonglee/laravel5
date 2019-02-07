@@ -35,10 +35,6 @@ class FrontController extends Controller
         return $this->getVideos($category, 0, "category");
     }
 
-    public function getCategoryPerPage($category, $page) {
-        return $this->getVideos($category, $page, "category");
-    }
-
     public function getVideos($categorySlug = null, $page = 0, $template) {
         $skip = ($page > 0) ? $this->wallSize+($page-1)*$this->wallSize : 0;
         if (is_null($categorySlug)) {
