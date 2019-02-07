@@ -27,10 +27,10 @@ Route::get('/auth/{vue_capture?}', ['as' => 'auth', 'uses' => 'BackController@in
 
 Route::view('/corporate', 'corporate', ['css' => 'corporate']);
 
-Route::get('/videos/{slug?}', 'FrontController@getVideos')->name('videos');
+Route::get('/videos', 'FrontController@getVideos');
+Route::get('/videos/page/{page}', 'FrontController@getVideosPerPage')->where('page', '[0-9]+');
+Route::get('/videos/{category}', 'FrontController@getVideosPerCategory')->where('category', '[A-Za-z]+');
+Route::get('/videos/{category}/page/{page}', 'FrontController@getVideosPerCategoryAndPage')->where(['category' => '[A-Za-z]+', 'page' => '[0-9]+']);
 
-Route::get('/{slug}', 'FrontController@getByCategory')->name('category');
-
-https://www.marfeel.com/
-
-//Auth::routes();
+Route::get('/{category}', 'FrontController@getVideosPerCategory')->where('category', '[A-Za-z]+');
+Route::get('/{category}/page/{page}', 'FrontController@getVideosPerCategoryAndPage')->where(['category' => '[A-Za-z]+', 'page' => '[0-9]+']);
