@@ -5,7 +5,7 @@ use App\Models\Video;
 use App\Models\VideoCategory;
 class FrontController extends Controller
 {
-    var $wallSize = 17;
+    var $wallSize = 19;
     public function index(Request $request, $page = 0)
     {
         $page = (int) $page;
@@ -21,7 +21,7 @@ class FrontController extends Controller
         $css= "index";
         return view('index', compact('videos', 'css', 'page', 'hasMorePages'));
     }
-    public function getVideosPerPage($page) {
+    public function getVideosPerPage($page) {		
         return $this->getVideos(null, $page, "videos");
     }
     public function getVideosPerCategory($category) {
@@ -36,6 +36,9 @@ class FrontController extends Controller
     }
 
     public function getVideos($categorySlug = null, $page = 0, $template = "videos") {
+		if ($template == "videos") {
+			$this->wallSize = 14; // no carousel on video template
+		}
         $skip = ($page > 0) ? $this->wallSize+($page-1)*$this->wallSize : 0;
         if (is_null($categorySlug)) {
             $videos = Video::orderBy('date', 'desc')->skip($skip)->limit($this->wallSize)->get();
@@ -61,9 +64,9 @@ class FrontController extends Controller
 		$nbPages = ceil($totalVideoCount / $this->wallSize);
         $css= "index";
         if (isset($category)) {
-            return view($template, compact('videos', 'category', 'css', 'page', 'hasMorePages'));
+            return view($template, compact('videos', 'category', 'css', 'page', 'hasMorePages', 'nbPages'));
         } else {
-            return view($template, compact('videos', 'css', 'page', 'hasMorePages'));
+            return view($template, compact('videos', 'css', 'page', 'hasMorePages', 'nbPages'));
         }
     }
     public function getVideoWall(Request $request)

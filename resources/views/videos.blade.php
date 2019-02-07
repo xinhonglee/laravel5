@@ -170,11 +170,13 @@
   </div>
 </section>
 <section class="pagination">
-  <a href="/videos/page/{{ $page-1 }}" class="@if ($page==0) disabled @endif">
+  @php ($url='/videos/')
+  @if (isset($category)) @php($url=$url.$category->slug.'/') @endif
+  <a href="{{ $url }}page/{{ $page-1 }}" class="@if ($page==0) disabled @endif">
     <amp-img src="/assets/prev.svg" width="42" height="15" layout="fixed"></amp-img>
   </a>
   <span class="current">{{ $page+1 }}</span><span class="total"> / {{ $nbPages }}</span>
-  <a href="/videos/page/{{ $page+1 }}" class="@if (!$hasMorePages) disabled @endif">
+  <a href="{{ $url }}page/{{ $page+1 }}" class="@if (!$hasMorePages) disabled @endif">
 	<amp-img src="/assets/next.svg" width="42" height="15" layout="fixed"></amp-img>
   </a>
 </section>

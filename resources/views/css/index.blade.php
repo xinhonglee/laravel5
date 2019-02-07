@@ -74,7 +74,7 @@ h2.section {
 	display: inline-block;
 	margin-top: 110px;
 	position: absolute;
-	z-index: 10;
+	z-index: 300;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
@@ -214,7 +214,7 @@ amp-img.cover img {
 		width: 80px;
 		height: 40px;
 		border: solid 3px #5feb98;
-		background: url('assets/play_up.svg') no-repeat center;
+		background: url('/assets/play_up.svg') no-repeat center;
 		background-size: 12px 12px;
 	}
 }
@@ -259,7 +259,7 @@ amp-img.cover img {
 		-moz-transition-delay:0s;
 		-webkit-transition-delay:0s;
 		transition-delay:0s;
-		background: url('assets/play_up.svg') no-repeat center;
+		background: url('/assets/play_up.svg') no-repeat center;
 		background-size: 12px 12px;
 	}
 	.video:hover .btn {
@@ -413,7 +413,7 @@ amp-img.cover img {
 .amp-carousel-button-next {
   background-color: transparent;
   background-size: 75px 75px;
-  background-image: url('../assets/next.svg');
+  background-image: url('/assets/next.svg');
   right: 55px;
   z-index: 100;
   
@@ -421,7 +421,7 @@ amp-img.cover img {
 .amp-carousel-button-prev {
   background-color: transparent;
   background-size: 75px 75px;
-  background-image: url('../assets/prev.svg');
+  background-image: url('/assets/prev.svg');
   left: 55px;
   z-index: 100;
 }
@@ -739,4 +739,23 @@ footer {
 	  padding: 0;
 	  margin: 20px 0 20px 0;
 	}
+}
+.pagination {
+	background-color: #262626;
+	font-family: 'rationalsemi_bold';
+	font-size: 20px;
+	text-align: center;
+}
+.pagination .current {
+	color: #5feb98;
+	padding-left: 40px;
+}
+.pagination .total {
+	color: #e4e5e6;
+	padding-right: 40px;
+}
+.pagination .disabled {
+	visibility: hidden;
+	pointer-events: none;
+    cursor: default;
 }

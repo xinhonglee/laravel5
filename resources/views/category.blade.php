@@ -220,7 +220,7 @@
 </section>
 @if ($hasMorePages)
 <section class="more">
-  <a href="/page/{{ $page+1 }}" class="">Toutes les vidéos</a>
+  <a href="/videos/{{ $category->slug }}/" class="">Toutes les vidéos</a>
 </section>
 @endif
 <section class="social sm-hide md-hide lg-hide">
