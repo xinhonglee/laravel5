@@ -215,7 +215,7 @@ amp-img.cover img {
 		width: 80px;
 		height: 40px;
 		border: solid 3px #5feb98;
-		background: url('assets/play_up.svg') no-repeat center;
+		background: url('/assets/play_up.svg') no-repeat center;
 		background-size: 12px 12px;
 	}
 }
@@ -260,7 +260,7 @@ amp-img.cover img {
 		-moz-transition-delay:0s;
 		-webkit-transition-delay:0s;
 		transition-delay:0s;
-		background: url('assets/play_up.svg') no-repeat center;
+		background: url('/assets/play_up.svg') no-repeat center;
 		background-size: 12px 12px;
 	}
 	.video:hover .btn {
@@ -431,7 +431,7 @@ amp-img.cover img {
 .amp-carousel-button-next {
   background-color: transparent;
   background-size: 75px 75px;
-  background-image: url('../assets/next.svg');
+  background-image: url('/assets/next.svg');
   right: 55px;
   z-index: 100;
   
@@ -439,7 +439,7 @@ amp-img.cover img {
 .amp-carousel-button-prev {
   background-color: transparent;
   background-size: 75px 75px;
-  background-image: url('../assets/prev.svg');
+  background-image: url('/assets/prev.svg');
   left: 55px;
   z-index: 100;
 }

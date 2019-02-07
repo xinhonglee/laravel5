@@ -53,11 +53,12 @@ class FrontController extends Controller
             }
         }
         $hasMorePages = ($totalVideoCount > ($skip+$this->wallSize));
+		$nbPages = ceil($totalVideoCount / $this->wallSize);
         $css= "index";
         if (isset($category)) {
-            return view('category', compact('videos', 'category', 'css', 'page', 'hasMorePages'));
+            return view('category', compact('videos', 'category', 'css', 'page', 'hasMorePages', 'nbPages'));
         } else {
-            return view('videos', compact('videos', 'css', 'page', 'hasMorePages'));
+            return view('videos', compact('videos', 'css', 'page', 'hasMorePages', 'nbPages'));
         }
     }
     public function getVideoWall(Request $request)
