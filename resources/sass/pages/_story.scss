@@ -1,0 +1,100 @@
+.story {
+  .story-slide-view {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(100vh - #{$header-height});
+    width: 100%;
+  }
+  .story-page-view {
+    background-color: blue;
+    height: $amp-height;
+    margin: 0 auto;
+    width: $amp-width;
+  }
+
+  .story-left-sidebar {
+    background: $light-gray;
+    height: calc(100vh - #{$header-height + $toolbar-height});
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: $amp-sidebar-width;
+    z-index: 10;
+
+    .template-list {
+      margin-top: 20px;
+      margin-left: 19px;
+      max-height: calc(100vh - #{$header-height + $toolbar-height + 160px});
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      .page-layer {
+        position: relative;
+        &::before {
+          border-right: 3px dotted gray;
+          bottom: 0;
+          content: '';
+          display: block;
+          left: 6px;
+          position: absolute;
+          top: 0;
+          width: 5px;
+          z-index: -1;
+        }
+
+        .layer-property {
+          img.property-icon {
+            width: 20px;
+          }
+
+          .property-name {
+            display: inline-block;
+            margin-left: 20px;
+          }
+        }
+        .layer-elements {
+          font-size: 13px;
+          margin-left: 70px;
+          .element {
+            cursor: pointer;
+            .element-name {
+              cursor: pointer;
+            }
+            .element-type {
+              padding: 10px;
+              cursor: pointer;
+            }
+          }
+        }
+        .layer-setting {
+          position: absolute;
+          right: 10px;
+          top: 0;
+          .setting-pane {
+            background: white;
+            padding: 10px;
+            position: absolute;
+            right: 0;
+          }
+        }
+      }
+    }
+    .md-button {
+      height: 40px !important;
+      width: 40px !important;
+    }
+  }
+
+  .story-right-sidebar {
+    background: $light-gray;
+    height: calc(100vh - #{$header-height + $toolbar-height});
+    right: 0;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: $amp-sidebar-width;
+    z-index: 10;
+  }
+}

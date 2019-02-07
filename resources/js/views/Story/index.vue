@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="story">
     <template v-if="editable">
       <story-edit></story-edit>
     </template>
@@ -13,7 +13,7 @@
   import StoryEdit from "./StoryEdit";
   import StoryView from "./StoryView";
   export default {
-    name: "stories",
+    name: "story",
     components: { StoryView, StoryEdit },
     data() {
       return {

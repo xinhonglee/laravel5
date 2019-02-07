@@ -14,6 +14,7 @@
    <script src="https://unpkg.com/cloudinary-core/cloudinary-core-shrinkwrap.min.js" type="text/javascript"></script>
    <script src="https://unpkg.com/cloudinary-video-player/dist/cld-video-player.min.js" type="text/javascript"></script>
    <script src="https://media-library.cloudinary.com/global/all.js" type="text/javascript"></script>
+   <script async src="https://cdn.ampproject.org/shadow-v0.js"></script>
 </head>
 <body>
   <div id="app"></div>

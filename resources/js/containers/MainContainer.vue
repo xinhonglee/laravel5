@@ -10,10 +10,13 @@
       <template v-if="showAppFilter">
         <app-filter></app-filter>
       </template>
-      <template v-if="showAppSiderbar">
+      <template v-if="showAppToolbar">
+        <app-toolbar></app-toolbar>
+      </template>
+      <template v-if="showAppSidebar">
         <app-sidebar></app-sidebar>
       </template>
-      <div class="app-content" :class="showAppSiderbar ? 'sidebar' : ''">
+      <div class="app-content" :class="showAppSidebar ? 'sidebar' : ''">
         <router-view></router-view>
       </div>
     </div>
@@ -25,10 +28,12 @@
   import AppFilter from "../components/Filter/Filter";
   import AppSidebar from "../components/Sidebar/Sidebar";
   import AppEditableHeader from "../components/Header/EditableHeader";
+  import AppToolbar from "../components/ToolBar/ToolBar";
 
   export default {
     name: "main-container",
     components: {
+      AppToolbar,
       AppEditableHeader,
       AppHeader,
       AppSidebar,
@@ -41,13 +46,16 @@
           'Stories'
         ].includes(this.$route.name);
       },
+      showAppToolbar() {
+        return this.$route.name === 'Story' && this.$store.state.app.editable;
+      },
       showEditableHeader() {
         return [
           'Video',
           'Story'
         ].includes(this.$route.name);
       },
-      showAppSiderbar() {
+      showAppSidebar() {
         return [
           'Videos',
           'Stories',
@@ -55,7 +63,10 @@
           'Analytics'
         ].includes(this.$route.name);
       },
-    }
+      editable() {
+        return this.$store.state.app.editable;
+      }
+    },
   }
 </script>
 
