@@ -34,4 +34,4 @@ Route::get('/videos/{category}/page/{page}', 'FrontController@getVideosPerCatego
 
 Route::get('/{category}', 'FrontController@getCategory')->where('category', '[A-Za-z]+');
 
-Route::post('/subscribe', 'NewsletterController@subscribe');)
+Route::post('/subscribe', 'NewsletterController@subscribe');
