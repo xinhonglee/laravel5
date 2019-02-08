@@ -21,6 +21,28 @@
 	<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
+	
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "VideoObject",
+	  "name": "{{$video->title}}",
+	  "description": "{{$video->description}}",
+	  "thumbnailUrl": "{{$video->cover_url}}",
+	  "uploadDate": "{{$video->ISODate}}",
+	  "publisher": {
+		"@type": "Organization",
+		"name": "Loopsider",
+		"logo": {
+		  "@type": "ImageObject",
+		  "url": "{{ URL::to('/') }}/assets/logo.png",
+		  "width": 210,
+		  "height": 210
+		}
+	  },
+	  "contentUrl": "{{$video->video_url}}"
+	}
+	</script>
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
