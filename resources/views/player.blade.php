@@ -470,15 +470,23 @@
 		}
 		@media (max-width:40rem) {
 			#share .box {
+				position: absolute;
 				width: 100%;
-				height: 100vw;
+				height: 270px;
 				margin-top: 0;
-				padding: 80px 28px 28px 28px;
+				padding: 20px 28px 20px 28px;
 				bottom: 0px;
 			}
 			#share .close {
-				top: 20px;
-				right: 20px;
+				font-size: 16px;
+				line-height: 60px;
+				left: 0;
+				right: 0;
+				top: auto;
+				bottom: 0px;
+				background-color: #262626;
+				color: #fff;
+				text-align: center;
 			}
 		}
 
