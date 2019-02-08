@@ -67,8 +67,8 @@ h2.section {
 }
 .header h2 {
 	font-family: 'rationalextra_bold';
-	font-size: 110px;
-	line-height: 90px;
+	font-size: 6.55vw;
+	line-height: 5.36vw;
 	color: #fff;
 	border-bottom: solid 10px #5feb98;
 	display: inline-block;
@@ -322,14 +322,34 @@ amp-img.cover img {
   margin-top: 5px;
 }
 .video .caption h2 {
-  font-size: 42px;
-  line-height: 44px;
+  font-size: 2.5vw;
+  line-height: 2.74vw;
   margin-top: 6px;
 }
 .video .caption h2.small {
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 1.43vw;
+  line-height: 1.55vw;
   margin-top: 0px;
+}
+@media (min-width:40.06rem) and (max-width:52rem) {
+  .video .caption h2.small {
+    font-size: 6.76vw;
+    line-height: 7.73vw;	
+  }
+  .video .caption h2 {
+    font-size: 6.76vw;
+    line-height: 7.73vw;
+  } 
+}
+@media (min-width:52.06rem) and (max-width:64rem) {
+  .video .caption h2.small {
+    font-size: 2.5vw;
+    line-height: 2.74vw;	
+  }
+  .video .caption h2 {
+    font-size: 6.76vw;
+    line-height: 7.73vw;
+  }  
 }
 @media (max-width:40rem) {
   .slide .caption h2, .video .caption h2, .video .caption h2.small {
@@ -484,7 +504,7 @@ amp-img.cover img {
   padding: 0;
 }
 
-@media (max-width:52.02rem) {
+@media (max-width:52.06rem) {
   #menu .close {
 	  color: #fff;
   }
@@ -501,8 +521,8 @@ amp-img.cover img {
   #menu nav ul li {
     width: 100%;
     border-bottom: solid 1px #aaa;
-    font-size: 25px;
-    line-height: 72px;
+    font-size: 22px;
+    line-height: 60px;
 	padding-left: 30px;
   }
   #menu nav ul.dark li {
@@ -527,7 +547,7 @@ amp-img.cover img {
 	  width: 15%;
   }
 }
-@media (min-width:52.02rem) {
+@media (min-width:52.06rem) {
   #menu amp-img.cover img {
 	object-fit: cover;
 	opacity: .35;
@@ -643,10 +663,17 @@ amp-img.cover img {
   right: 0;
   z-index: 10;
   font-family: 'rationalextra_bold';
-  font-size: 42px;
-  line-height: 110px;
+  font-size: 2.5vw;
+  line-height: 6.55vw;
   color: #fff;
 }
+
+@media (min-width:40.06rem) and (max-width:64rem) {
+	.social h2 {
+		 font-size: 4vw;
+	}
+}
+
 .social ul {
   position: absolute;
   text-align: center;
@@ -656,7 +683,7 @@ amp-img.cover img {
   right: 0;
   z-index: 10;
   padding: 0;
-  margin-top: 165px;
+  margin-top: 9vw;
 }
 .social ul li {
   display:inline;
@@ -704,7 +731,7 @@ footer {
   padding: 55px;
   background-color: #262626;
   color: #e4e5e6;
-  font-size: 20px;
+  font-size: 1.7vw;
   font-family: 'rationalsemi_bold';
 }
 @media (max-width:40rem) {
@@ -720,7 +747,7 @@ footer {
 	  bottom: 55px;
 	  color: #e4e5e6;
 	  font-family: 'rationalsemi_bold';
-	  font-size: 20px;
+	  font-size: 1.7vw;
 	}
 	footer nav ul {
 		margin: 0;
@@ -729,7 +756,7 @@ footer {
 	footer nav ul li {
 	  list-style-type: none;
 	  display: inline;
-	  margin-left: 60px;
+	  margin-left: 3.5vw;
 	}
 	footer nav ul li a:hover {
 		text-decoration: underline;

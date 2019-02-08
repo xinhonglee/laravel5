@@ -340,7 +340,7 @@
 				color: #5feb98;
 			}
 			.player .share {
-				bottom: 60px;
+				bottom: 70px;
 				right: 15px;
 				opacity: 1;
 			}
@@ -380,7 +380,7 @@
 			border-bottom: solid 2px #262626;
 		}
 		.video {
-			border: solid 2px #262626;
+			border: solid 4px #262626;
 			border-left: 0;
 			border-right: 0;
 			position: relative;
@@ -531,7 +531,7 @@
 	</amp-lightbox>
 	<main>
 		<section class="player xs-hide sm-hide">
-			<amp-video class="hoverzone" autoplay height="800" src="{{$video->video_url}}"
+			<amp-video class="hoverzone" height="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="fixed-height"
 				controls>
@@ -551,7 +551,7 @@
 			
 		</section>
 		<section class="player md-hide lg-hide">
-			<amp-video autoplay height="800" width="800" src="{{$video->video_url}}"
+			<amp-video height="800" width="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="responsive"
 				controls>
