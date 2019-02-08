@@ -139,7 +139,7 @@
 			font-family: 'rationalbook_bold';
 			font-size: 24px;
 			line-height: 28px;
-			margin-top: 16px;
+			margin-top: 5px;
 		}
 		@media (max-width:40rem) {
 			.slide-video .caption h2 {
@@ -407,7 +407,7 @@
 			font-family: 'rationalbook_bold';
 			font-size: 52px;
 			line-height: 54px;
-			margin-top: 16px;
+			margin-top: 5px;
 		}
 		.video .caption h2 {
 			font-size: 42px;
@@ -578,7 +578,7 @@
 						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<amp-timeago layout="fixed" width="300" class="time"
-								height="30"
+								height="25"
 								datetime="{{$suggestedVideos[$i]->ISODate}}"
 								locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 							<h2>{{$suggestedVideos[$i]->title}}</h2>
@@ -602,7 +602,7 @@
 								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
 									<amp-timeago layout="fixed" width="300" class="time"
-										height="30"
+										height="25"
 										datetime="{{$suggestedVideos[$i]->ISODate}}"
 										locale="fr">{{$suggestedVideos[$i]->ISODate}}</amp-timeago>
 									<h2 class="small">{{$suggestedVideos[$i]->title}}</h2>

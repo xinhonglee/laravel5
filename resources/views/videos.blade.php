@@ -18,7 +18,7 @@
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
@@ -40,7 +40,7 @@
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
@@ -62,7 +62,7 @@
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
@@ -85,7 +85,7 @@
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
@@ -112,7 +112,7 @@
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
@@ -135,7 +135,7 @@
               <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
@@ -157,7 +157,7 @@
           <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
-    height="30"
+    height="25"
     datetime="{{$videos[$i]->ISODate}}"
     locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2>{{$videos[$i]->title}}</h2>
@@ -185,7 +185,7 @@
     <li>
       <a href="#">
         <amp-img src="/assets/facebook_green.svg" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
-        <amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="30" layout="fixed"></amp-img>
+        <amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
       </a>
     </li>
     <li>
@@ -197,7 +197,7 @@
     <li>
       <a href="#">
         <amp-img src="/assets/youtube_green.svg" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
-        <amp-img src="/assets/youtube_green.svg" media="(max-width: 40rem)" width="34" height="30" layout="fixed"></amp-img>
+        <amp-img src="/assets/youtube_green.svg" media="(max-width: 40rem)" width="34" height="25" layout="fixed"></amp-img>
       </a>
     </li>
     <li>

@@ -30,7 +30,7 @@
   font-style: normal;
 }
 
-@media (min-width:52.06rem) {
+@media (min-width:40.06rem) {
 	.flex-stretch-responsive-grid {
 		display: flex;
 		-webkit-box-align: stretch;
@@ -481,7 +481,7 @@ section p.subtitle {
   section h4 {
     font-size: 30px;
     line-height: 34px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 5px;
   }
 
@@ -630,7 +630,6 @@ section p.subtitle {
 		margin-bottom: 40px;
 	}
 	.contents .cell {
-		height: 100%;
 		margin-bottom: 30px;
 	}
 	.contents .cell p {
@@ -686,12 +685,16 @@ section p.subtitle {
 		margin-bottom: 35px;
 		border-top: 0;
 		padding: 20px;
-		height: auto;
 	}
 	.work .cell ul li {
 		font-size: 19px;
 		line-height: 24px;
 		background-position: left 5px;
+	}
+}
+@media (max-width:40rem) {
+	.work .cell {
+		height: auto;
 	}
 }
 
@@ -771,7 +774,7 @@ section p.subtitle {
 		border-bottom: solid 10px #262626;
 	}
 	.team .photo {
-		min-height: 300px;
+		min-height: 340px;
 	}
 	.team h4 {
 		font-size: 18px;

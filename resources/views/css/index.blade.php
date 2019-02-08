@@ -43,12 +43,12 @@ a, a:visited, a:hover {
   text-decoration: none;
 }
 h2.section {
-  margin: 80px 170px 80px 170px;
+  margin: 4.76vw 10.12vw 4.76vw 10.12vw;
   font-family: 'rationalextra_bold';
-  font-size: 110px;
-  line-height: 90px;
+  font-size: 6.55vw;
+  line-height: 5.36vw;
   display: block;
-  border-bottom: solid 20px #262626;
+  border-bottom: solid 1.19vw #262626;
 }
 @media (max-width:40rem) {
   h2.section {
@@ -238,13 +238,13 @@ amp-img.cover img {
 		transition:.5s;
 	}
 	.video:hover .caption {
-		bottom: 100px;
+		bottom: 80px;
 	}
 	.video .btn {
 		z-index: 100;
 		position: absolute;
-		bottom: 40px;
-		left: 55px;
+		bottom: 20px;
+		left: 20px;
 		width: 80px;
 		height: 40px;
 		border: solid 3px #5feb98;
@@ -290,9 +290,18 @@ amp-img.cover img {
 	border-bottom: solid 4px #000;
   }
 }
-.slide .caption, .video .caption {
+.slide .caption {
   bottom: 80px;
   padding-left: 55px;
+  padding-right: 20px;
+  position: absolute;
+  width: 80%;
+  white-space: normal;
+  z-index: 100;
+}
+.video .caption {
+  bottom: 20px;
+  padding-left: 20px;
   padding-right: 20px;
   position: absolute;
   width: 80%;
@@ -310,7 +319,7 @@ amp-img.cover img {
   font-family: 'rationalbook_bold';
   font-size: 52px;
   line-height: 54px;
-  margin-top: 16px;
+  margin-top: 5px;
 }
 .video .caption h2 {
   font-size: 42px;
@@ -323,9 +332,9 @@ amp-img.cover img {
   margin-top: 0px;
 }
 @media (max-width:40rem) {
-  .slide .caption h2, .video .caption h2 {
-    font-size: 30px;
-    line-height: 34px;
+  .slide .caption h2, .video .caption h2, .video .caption h2.small {
+    font-size: 25px;
+    line-height: 32px;
 	margin-bottom: 20px;
   }
 }
