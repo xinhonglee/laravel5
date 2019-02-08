@@ -108,6 +108,7 @@ h2.section {
 		font-size: 36px;
 		line-height: 40px;
 		margin-top: 140px;
+		z-index: 150;
 	}
 	.category h2 {
 		margin-top: 170px;
