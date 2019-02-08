@@ -19,7 +19,7 @@
 				<amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
 				<amp-img src="/assets/facebook_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="20" height="38" layout="fixed"></amp-img>
 				<amp-img src="/assets/facebook_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="27" height="52" layout="fixed"></amp-img>
-				<amp-img src="/assets/facebook_green.svg" media="(min-width: 64.06rem)" width="34" height="66" layout="fixed"></amp-img>				
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 64.06rem)" width="34" height="66" layout="fixed"></amp-img>
 			</a>
 		</li>
         <li>
@@ -57,7 +57,7 @@
       </ul>
 	</div>
   </header>
-  
+
   <a id="apropos">
   <section class="intro">
     <div class="clearfix mxn2 ">
@@ -82,7 +82,7 @@
 		<div class="clearfix border flex-stretch-responsive-grid">
 			<div class="sm-col sm-col-3 border">
 				<div class="number">
-					30 
+					30
 				</div>
 				<div class="unit">
 					millions
@@ -142,23 +142,23 @@
 		<amp-img layout="responsive" width="1680" height="994" src="/assets/background_footer.jpg"></amp-img>
 	</div>
   </section>
-  
+
   <section class="contents">
 	<h3 class="center">Nous produisons des contenus qui créent la conversation chez les Millenials</h3>
 	<div class="clearfix mxn2 flex-stretch-responsive-grid">
-		<div class="sm-col sm-col-4 px2">	
+		<div class="sm-col sm-col-4 px2">
 			<div class="cell">
 				<amp-img layout="fixed" width="59" height="56" src="/assets/content.svg"></amp-img>
 				<p>Notre équipe crée et produit des contenus pour les marques.</p>
 			</div>
 		</div>
-		<div class="sm-col sm-col-4 px2">	
+		<div class="sm-col sm-col-4 px2">
 			<div class="cell">
 				<amp-img layout="fixed" width="57" height="56" src="/assets/sound.svg"></amp-img>
 				<p>Via ces contenus, nous permettons aux marques d’avoir une voix dans cette conversation.</p>
 			</div>
 		</div>
-		<div class="sm-col sm-col-4 px2">	
+		<div class="sm-col sm-col-4 px2">
 			<div class="cell">
 				<amp-img layout="fixed" width="56" height="56" src="/assets/storytelling.svg"></amp-img>
 				<p>Nous mettons notre expertise du storytelling visuel au service de nos partenaires pour générer de l’engagement au meilleur coût.</p>
@@ -166,12 +166,12 @@
 		</div>
 	</div>
   </section>
-  
+
   <a id="services"></a>
   <section class="work">
 	<h2>Comment travailler ensemble ?</h2>
 	<div class="clearfix table flex-stretch-responsive-grid">
-		<div class="lg-col lg-col-6">	
+		<div class="lg-col lg-col-6">
 			<div class="cell-header">
 				<p class="center">Média</p>
 			</div>
@@ -183,7 +183,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="lg-col lg-col-6">	
+		<div class="lg-col lg-col-6">
 			<div class="cell-header">
 				<p class="center">Marque Blanche</p>
 			</div>
@@ -204,7 +204,7 @@
 	<div class="center">
 		<a href="#contact" class="btn">Nous contacter</a>
 	</div>
-  </section>  
+  </section>
 
   <a id="equipe"></a>
   <section class="team">
@@ -238,8 +238,10 @@
 
   <section class="newsletter">
     <h2>Newsletter</h2>
-	<form class="newsletter-form" action-xhr="https://loopsider.us17.list-manage.com/subscribe/post?u=5c7255b39a1e010463ccfa29d&amp;id=544abd0a31" method="post">
-		<input type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="exemple@mail.com"> 
+	<form class="newsletter-form" action-xhr="/subscribe" method="post">
+		<input type="email" value="" name="mce-EMAIL" id="mce-EMAIL" placeholder="exemple@mail.com">
+    <input type="hidden" name="u" value="5c7255b39a1e010463ccfa29d">
+    <input type="hidden" name="id" value="544abd0a31">
 		<button id="submit" type="submit" value="Submit">
 			<amp-img src="/assets/arrow_green.svg" media="(max-width: 40rem)" layout="fixed" width="38" height="11"></amp-img>
 			<amp-img src="/assets/arrow_green.svg" media="(min-width: 40.06rem)" layout="fixed" width="64" height="21" ></amp-img>
