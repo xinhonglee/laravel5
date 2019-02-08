@@ -347,6 +347,9 @@ footer {
 	font-size: 22px;
 	line-height: 36px;
 }
+.banner .submenu ul li a:hover{
+	color: #fff;
+}
 
 .banner .title {
   position: absolute;
@@ -386,6 +389,9 @@ footer {
   display: inline-block;
   text-align: center;
   padding: 0 6vw 0 6vw;
+}
+.banner .title  li a:hover {
+  filter: brightness(0) invert(1);
 }
 @media (max-width:52rem) {
 	.banner .title .social li {
@@ -797,18 +803,37 @@ section p.subtitle {
   margin-bottom: 10px;
 }
 
-.newsletter ul {
-  padding: 0;
+
+.newsletter .newsletter-form {
+	position: relative;
 }
 
-.newsletter ul li {
+.newsletter .newsletter-form #mce-EMAIL {
+  border: 0;
+  color: #fff;
+  background-color: transparent;
+  width: 100%;
   margin-top: 10px;
   padding: 36px 0px 30px 0px;
-  list-style-type: none;
   font-size: 1.79vw;
   font-family: 'rationalsemi_bold';
   border-bottom: solid 5px #5feb98;
-  background: url('/assets/arrow_green.svg') no-repeat right center;
+}
+
+.newsletter .newsletter-form #mce-EMAIL:focus {
+  outline: none;
+}
+
+.newsletter .newsletter-form #submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  margin-top: 10px;
+  padding: 40px 0px 30px 0px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 @media (max-width:52rem) {
@@ -816,17 +841,20 @@ section p.subtitle {
     border-bottom: solid 10px #5feb98;
   }
 
-  .newsletter ul {
+  .newsletter .newsletter-form {
     margin-top: 20px;
   }
 
-  .newsletter ul li {
+  .newsletter .newsletter-form #mce-EMAIL {
     margin-top: 5px;
     padding: 10px 0px 10px 0px;
     font-size: 17px;
     border-bottom: solid 3px #5feb98;
-	background-size: 38px 12px;
   }
+  .newsletter .newsletter-form #submit {
+	  margin-top: 5px;
+	  padding: 10px 0px 10px 0px;
+	}
 }
 
 .contact h2, .chiffres h2, .work h2 {

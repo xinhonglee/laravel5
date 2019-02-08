@@ -238,9 +238,13 @@
 
   <section class="newsletter">
     <h2>Newsletter</h2>
-    <ul>
-      <a href="mailto:exemple@gmail.com"><li>exemple@gmail.com</li></a>
-    </ul>
+	<form class="newsletter-form" action-xhr="https://loopsider.us17.list-manage.com/subscribe/post?u=5c7255b39a1e010463ccfa29d&amp;id=544abd0a31" method="post">
+		<input type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="exemple@mail.com"> 
+		<button id="submit" type="submit" value="Submit">
+			<amp-img src="/assets/arrow_green.svg" media="(max-width: 40rem)" layout="fixed" width="38" height="11"></amp-img>
+			<amp-img src="/assets/arrow_green.svg" media="(min-width: 40.06rem)" layout="fixed" width="64" height="21" ></amp-img>
+		</button>
+	</form>
   </section>
 
   <a id="contact"></a>
