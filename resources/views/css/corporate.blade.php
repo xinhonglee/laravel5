@@ -891,3 +891,66 @@ section p.subtitle {
 	background-size: 38px 12px;
   }
 }
+
+.footer-social {
+  padding-top: 360px;
+  padding-bottom: 360px;
+  background-color: #262626;
+  width: 100%;
+}
+.footer-social h2 {
+  text-align: center;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  font-family: 'rationalextra_bold';
+  font-size: 2.5vw;
+  line-height: 6.55vw;
+  color: #fff;
+}
+
+@media (min-width:40.06rem) and (max-width:64rem) {
+	.footer-social h2 {
+		 font-size: 4vw;
+	}
+}
+.footer-social ul {
+  position: absolute;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0;
+  margin-top: 9vw;
+}
+.footer-social ul li {
+  display:inline;
+  list-style-type: none;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.footer-social ul li a:hover {
+  filter: brightness(0) invert(1);
+}
+@media (max-width:40rem) {
+  .footer-social {
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+  .footer-social ul {
+	position: relative;
+    margin-top: 0;
+    padding: 0;
+  }
+  .footer-social ul li {
+    display: inline-block;
+    width: 18%;
+    margin: 0;
+    padding: 0;
+  }
+}

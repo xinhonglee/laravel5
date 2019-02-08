@@ -36,4 +36,4 @@ Route::get('/{category}', 'FrontController@getCategory')->where('category', '[A-
 
 Route::post('/subscribe', 'NewsletterController@subscribe');
 
-Route::view('/mentions-legales', 'mentions', ['css' => 'corporate']);
+Route::view('/mentions-legales', 'mentions', ['css' => 'legal']);

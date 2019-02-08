@@ -40,4 +40,38 @@
 
   <p class="mt2">Design by <a href="">Upian</a></p>
 </article>
+<section class="social sm-hide md-hide lg-hide">
+  <ul>
+    <li>
+      <a href="https://www.facebook.com/Loopsider/" target="_blank">
+        <amp-img src="/assets/facebook_green.svg" media="(min-width: 40.06rem)" width="25" height="49" layout="fixed"></amp-img>
+        <amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/Loopsidernews" target="_blank">
+        <amp-img src="/assets/twitter_green.svg" media="(min-width: 40.06rem)" width="54" height="45" layout="fixed"></amp-img>
+        <amp-img src="/assets/twitter_green.svg" media="(max-width: 40rem)" width="27" height="23" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank">
+        <amp-img src="/assets/youtube_green.svg" media="(min-width: 40.06rem)" width="68" height="48" layout="fixed"></amp-img>
+        <amp-img src="/assets/youtube_green.svg" media="(max-width: 40rem)" width="34" height="25" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/loopsider/" target="_blank">
+        <amp-img src="/assets/instagram_green.svg" media="(min-width: 40.06rem)" width="47" height="46" layout="fixed"></amp-img>
+        <amp-img src="/assets/instagram_green.svg" media="(max-width: 40rem)" width="24" height="24" layout="fixed"></amp-img>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <amp-img src="/assets/snapchat_green.svg" media="(min-width: 40.06rem)" width="53" height="50" layout="fixed"></amp-img>
+        <amp-img src="/assets/snapchat_green.svg" media="(max-width: 40rem)" width="27" height="26" layout="fixed"></amp-img>
+      </a>
+    </li>
+  </ul>
+</section>
 @endsection

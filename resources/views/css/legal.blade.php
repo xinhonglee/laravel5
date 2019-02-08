@@ -254,7 +254,7 @@ footer {
   padding: 55px;
   background-color: #262626;
   color: #e4e5e6;
-  font-size: 20px;
+  font-size: 1.7vw;
   font-family: 'rationalsemi_bold';
 }
 @media (max-width:40rem) {
@@ -270,7 +270,7 @@ footer {
 	  bottom: 55px;
 	  color: #e4e5e6;
 	  font-family: 'rationalsemi_bold';
-	  font-size: 20px;
+	  font-size: 1.7vw;
 	}
 	footer nav ul {
 		margin: 0;
@@ -279,7 +279,7 @@ footer {
 	footer nav ul li {
 	  list-style-type: none;
 	  display: inline;
-	  margin-left: 60px;
+	  margin-left: 3.5vw;
 	}
 	footer nav ul li a:hover {
 		text-decoration: underline;
@@ -308,20 +308,20 @@ footer {
 
 .banner .title {
   position: absolute;
-  left: 290px;
-  right: 290px;
+  left: 17.26vw;
+  right: 17.26vw;
   top: 245px;
-  border-bottom: solid 20px #5feb98;
+  border-bottom: solid 1.19vw #5feb98;
 }
 
 .banner .title h1 {
   font-family: 'rationalextra_bold';
-  font-size: 110px;
-  line-height: 120px;
+  font-size: 3.57vw;
+  line-height: 1.13;
   color: #ffffff;
 }
 
-@media (max-width:60rem) {
+@media (max-width:52rem) {
   .banner {
     height: 360px;
   }
@@ -336,44 +336,108 @@ footer {
   .banner .title h1 {
     font-size: 44px;
     line-height: 50px;
+	z-index:
   }
 
 }
 
 .content {
-  margin: 85px 290px 85px 290px;
+  margin: 85px 17.26vw 85px 17.26vw;
 }
 
 .content h4 {
   font-family: 'rationalbook_bold';
-  font-size: 28px;
+  font-size: 1.67vw;
   margin-top: 30px;
-  line-height: 40px;
+  line-height: 2.38vw;
 }
 
 .content p {
   font-family: 'rationalsemi_bold';
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 1.67vw;
+  line-height: 2.38vw;
 }
 
 .content a {
   text-decoration: underline
 }
 
-@media (max-width:60rem) {
+@media (max-width:52rem) {
   .content {
     margin: 45px 30px 45px 30px;
   }
 
   .content h4 {
-    font-size: 28px;
+    font-size: 22px;
     margin-top: 20px;
-    line-height: 34px;
+    line-height: 26px;
   }
 
   .content p {
-    font-size: 28px;
-    line-height: 34px;
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+.social {
+  padding-top: 360px;
+  padding-bottom: 360px;
+  background-color: #262626;
+  width: 100%;
+}
+.social h2 {
+  text-align: center;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  font-family: 'rationalextra_bold';
+  font-size: 2.5vw;
+  line-height: 6.55vw;
+  color: #fff;
+}
+
+@media (min-width:40.06rem) and (max-width:64rem) {
+	.social h2 {
+		 font-size: 4vw;
+	}
+}
+.social ul {
+  position: absolute;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0;
+  margin-top: 9vw;
+}
+.social ul li {
+  display:inline;
+  list-style-type: none;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.social ul li a:hover {
+  filter: brightness(0) invert(1);
+}
+@media (max-width:40rem) {
+  .social {
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+  .social ul {
+	position: relative;
+    margin-top: 0;
+    padding: 0;
+  }
+  .social ul li {
+    display: inline-block;
+    width: 18%;
+    margin: 0;
+    padding: 0;
   }
 }

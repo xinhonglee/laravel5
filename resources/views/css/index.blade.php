@@ -309,9 +309,13 @@ amp-img.cover img {
   z-index: 100;
 }
 @media (max-width:40rem) {
-  .slide .caption, .video .caption {
+  .video .caption {
     padding-left: 20px;
 	bottom: 50px;
+  }
+  .slide .caption {
+    padding-left: 20px;
+	bottom: 20px;
   }
 }
 .slide .caption h2, .video .caption h2 {
@@ -352,10 +356,15 @@ amp-img.cover img {
   }  
 }
 @media (max-width:40rem) {
-  .slide .caption h2, .video .caption h2, .video .caption h2.small {
+  .video .caption h2, .video .caption h2.small {
     font-size: 25px;
     line-height: 32px;
 	margin-bottom: 20px;
+  }
+  .slide .caption h2 {
+	font-size: 25px;
+    line-height: 32px;
+	margin-bottom: 0px;
   }
 }
 .slide .caption .time, .video .caption .time {
@@ -410,6 +419,7 @@ amp-img.cover img {
   .slide .caption a.btn,.slide .caption a.btn:hover,.slide .caption a.btn:focus,.slide .caption a.btn:visited {
     border: solid 3px #5feb98;
     padding: 0px 45px 0px 45px;
+	margin-bottom: 0;
   }
 }
 .slide:before, .video:before {
@@ -781,6 +791,7 @@ footer {
 	font-family: 'rationalsemi_bold';
 	font-size: 20px;
 	text-align: center;
+	padding: 10px;
 }
 .pagination .current {
 	color: #5feb98;
