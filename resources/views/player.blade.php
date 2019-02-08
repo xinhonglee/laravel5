@@ -305,16 +305,30 @@
 		}
 		.player .share {
 			position: absolute;
-			bottom: 100px;
-			right: 40px;
+			bottom: 70px;
+			right: 15px;
 			z-index: 10;
 			cursor: pointer;
-			opacity: 0;
+			opacity: 1;
 			-o-transition:1s;
 			-ms-transition:1s;
 			-moz-transition:1s;
 			-webkit-transition:1s;
 			transition:1s;
+		}
+		@media (min-width:741px) and (max-width:52rem) {
+			.player .share {
+				bottom: 85px;
+				right: 35px;
+				opacity: 1;
+			}
+		}
+		@media (min-width:52.06rem) {
+			.player .share {
+				top: 680px;
+				right: 35px;
+				opacity: 0;
+			}
 		}
 		.hoverzone:hover ~ .overlay, .hoverzone:hover ~ .share, .share:hover { 
 			opacity: 1;
@@ -322,7 +336,7 @@
 		.share:hover ~ .overlay {
 			opacity: 1;
 		}
-		@media (max-width:60rem) {
+		@media (max-width:64rem) {
 			.player {
 				height: auto;
 			}
@@ -338,11 +352,6 @@
 				font-size: 24px;
 				line-height: 28px;
 				color: #5feb98;
-			}
-			.player .share {
-				bottom: 70px;
-				right: 15px;
-				opacity: 1;
 			}
 		}
 		.back {
@@ -568,7 +577,8 @@
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
 				<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
-					<amp-img src="../assets/share.svg" layout="fixed" width="18" height="15"></amp-img>
+					<amp-img src="/assets/share.svg" media="(max-width: 740px)" layout="fixed" width="18" height="15"></amp-img>
+					<amp-img src="/assets/share.svg" media="(min-width: 741px)" layout="fixed" width="26" height="22"></amp-img>
 				</div>
 			</amp-video>			
 			<div class="overlay">
