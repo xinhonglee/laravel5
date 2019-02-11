@@ -16,18 +16,33 @@ const elementTypes = [
   {slug: 'fit-text', name: 'Fit Text'},
 ];
 
-const elementAnimations = [
+const animations = [
   {slug: 'animate-in', name: 'Animate In'},
   {slug: 'animate-in-duration', name: 'Animate In Duration'},
   {slug: 'animate-in-delay', name: 'Animate In Delay'},
   {slug: 'animate-in-after', name: 'Animate In After'},
 ];
 
-const imageTypes = ['.jpg', '.png', '.gif'];
+const imageFilters = ['.jpg', '.png', '.gif'];
+
+const ctaTypes = ['img', 'richtext', 'timeago', 'fit-text'];
+
+const gridAreas = [
+  {
+    template: 'thirds',
+    areas: [
+      { slug: 'lower-third', name: 'Lower Third'},
+      { slug: 'middle-third', name: 'Middle Third'},
+      { slug: 'upper-third', name: 'Upper Third'}
+    ]
+  }
+];
 
 export default {
   layerTemplates,
   elementTypes,
-  elementAnimations,
-  imageTypes
+  animations,
+  imageFilters,
+  ctaTypes,
+  gridAreas
 }
