@@ -34,6 +34,10 @@ class Video extends Model
         return $this->belongsTo('App\Models\VideoCategory', 'video_category_id', 'id');
     }
 
+    public function setVideoCategoryIdAttribute($value) {
+        $this->attributes['video_category_id'] = $value ?: null;
+    }
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
