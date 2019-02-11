@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateVideoCategoriesTable extends Migration
+class UpdateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateVideoCategoriesTable extends Migration
      */
     public function up()
     {
-      Schema::table('video_categories', function (Blueprint $table) {
-          $table->string('slug')->nullable();
+      Schema::table('users', function (Blueprint $table) {
+          $table->softDeletes();
       });
     }
 
@@ -25,8 +25,8 @@ class UpdateVideoCategoriesTable extends Migration
      */
     public function down()
     {
-      Schema::table('video_categories', function (Blueprint $table) {
-          $table->dropColumn('slug');
+      Schema::table('users', function (Blueprint $table) {
+          $table->dropColumn('delete_at');
       });
     }
 }
