@@ -378,8 +378,8 @@
 		}
 		.back {
 			position: fixed;
-			top: 40px;
-			left: 55px;
+			top: 45px;
+			right: 55px;
 			z-index: 100;
 			font-family: 'rationalextra_bold';
 			font-size: 22px;
@@ -389,8 +389,8 @@
 		@media (max-width:40rem) {
 			.back {
 				font-size: 18px;
-				height: 80px;
-				line-height: 80px;
+				height: 60px;
+				line-height: 60px;
 				position: static;
 				text-align: right;
 				padding-right: 30px;
