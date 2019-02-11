@@ -80,7 +80,7 @@
           this.video_url = data.video_url;
           this.cover_id = data.cover_id;
           this.cover_url = data.cover_url;
-          this.video_category_id = data.category.id;
+          this.video_category_id = data.category ? data.category.id : '';
           this.videoVignette = data.video_url.substr(0, data.video_url.lastIndexOf(".")) + ".jpg";
           this.coverVignette = data.cover_url.substr(0, data.cover_url.lastIndexOf(".")) + ".jpg";
 
