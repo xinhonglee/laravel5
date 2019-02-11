@@ -21,7 +21,34 @@ const notSyncedData = {
   app: {
     title: '',
     editable: false,
-  }
+  },
+  story: {
+    id: '',
+    pages: [
+      {
+        layers: [
+          {
+            template: '',
+            icon: '',
+            styles: {},
+            elements: [
+              {
+                slug: '',
+                data: null,
+                styles: {},
+                animation: {},
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    selected: {
+      page: null,
+      children: null,
+      element: null,
+    }
+  },
 };
 
 // Sync with local storage.
