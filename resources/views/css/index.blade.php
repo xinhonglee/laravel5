@@ -685,6 +685,10 @@ amp-img.cover img {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 5;
+  left: 0;
+  right: 0;
 }
 .more a:hover {
   background-color: #262626;
