@@ -35,7 +35,7 @@ class Video extends Model
     }
 
     public function setVideoCategoryIdAttribute($value) {
-        $this->attributes['video_category_id'] = $value ?: null;
+        $this->attributes['video_category_id'] = empty($value) ? null : $value;
     }
 
     public function user() {
