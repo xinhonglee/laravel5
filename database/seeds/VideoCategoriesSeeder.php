@@ -16,7 +16,7 @@ class VideoCategoriesSeeder extends Seeder
             [
                 'name' => 'Environnement',
                 'description' => '',
-                'slug' => 'environement'
+                'slug' => 'environment'
             ],
             [
                 'name' => 'Monde',
@@ -41,7 +41,7 @@ class VideoCategoriesSeeder extends Seeder
             [
                 'name' => 'Voyage + Food',
                 'description' => '',
-                'slug' => 'travel+food'
+                'slug' => 'travel-food'
             ],
             [
                 'name' => 'Culture',
