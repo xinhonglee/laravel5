@@ -14,13 +14,6 @@ class CreateVideosTable extends Migration
     public function up()
     {
 
-        Schema::create('video_categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
-
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
@@ -34,9 +27,7 @@ class CreateVideosTable extends Migration
             $table->string('slug');
             $table->dateTime('date');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('video_category_id')->references('id')->on('video_categories')->onDelete('cascade');
         });
     }
 
@@ -49,7 +40,6 @@ class CreateVideosTable extends Migration
     {
         Schema::table('videos', function (Blueprint $table) {
             $table->dropForeign('videos_user_id_foreign');
-            $table->dropForeign('videos_video_category_id_foreign');
         });
         Schema::drop('videos');
     }
