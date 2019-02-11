@@ -77,7 +77,7 @@
 				<li><a href="/world">Monde</a></li>
 				<li><a href="/society">Société</a></li>
 				<li><a href="/identities">Identités</a></li>
-				<li><a href="/travel+food">Voyage + Food</a></li>
+				<li><a href="/travel-food">Voyage + Food</a></li>
 				<li><a href="/culture">Culture</a></li>
 				<li><a href="/unusual">Insolite</a></li>
 				<li><a href="/voxpop">VoxPop</a></li>
