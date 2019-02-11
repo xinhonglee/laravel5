@@ -18,38 +18,23 @@ let syncedData = {
 };
 
 const notSyncedData = {
-  app: {
-    title: '',
-    editable: false,
-  },
-  story: {
-    id: '',
-    pages: [
-      {
-        layers: [
-          {
-            template: '',
-            icon: '',
-            styles: {},
-            elements: [
-              {
-                slug: '',
-                data: null,
-                styles: {},
-                animation: {},
-              }
-            ]
-          }
-        ]
+    app: {
+      title: '',
+      editable: false,
+    },
+    story: {
+      "publisher": "Publisher",
+      "publisher-logo-src": "logo image url",
+      "poster-portrait-src": "portrait poster image url",
+      "supports-landscape": true,
+      "background-audio": "audio url",
+      "poster-square-src": "image url",
+      "poster-landscape-src": "image url",
+      "pages": [],
+      selected: {
       }
-    ],
-    selected: {
-      page: null,
-      children: null,
-      element: null,
-    }
-  },
-};
+    },
+  };
 
 // Sync with local storage.
 if (localStorage.getItem(STORAGE_KEY)) {
