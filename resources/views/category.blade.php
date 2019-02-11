@@ -198,7 +198,6 @@
 		@endfor
       </div>
     </div>
-    @php ($i++)
     @if ($videos->count()>=($i+1))
     <div class="lg-col lg-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
