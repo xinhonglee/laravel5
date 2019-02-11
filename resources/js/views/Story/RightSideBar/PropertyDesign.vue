@@ -1,5 +1,7 @@
 <template>
-  
+  <div class="property-design">
+    test
+  </div>
 </template>
 
 <script>

@@ -21,7 +21,7 @@
 
 <script>
   export default {
-    name: "page-layer",
+    name: "page-layers",
     props: {
       layer: Object
     },

@@ -27,16 +27,6 @@
           {id: '6', name: 'test'},
           {id: '7', name: 'test'},
           {id: '8', name: 'test'},
-        //   {id: '9', name: 'test'},
-        //   {id: '10', name: 'test'},
-        //   {id: '11', name: 'test'},
-        //   {id: '12', name: 'test'},
-        //   {id: '13', name: 'test'},
-        //   {id: '14', name: 'test'},
-        //   {id: '15', name: 'test'},
-        //   {id: '16', name: 'test'},
-        //   {id: '17', name: 'test'},
-        //   {id: '18', name: 'test'},
          ],
       }
     }

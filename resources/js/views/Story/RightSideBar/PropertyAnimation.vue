@@ -1,5 +1,7 @@
 <template>
-  
+  <div class="property-animation">
+    test
+  </div>
 </template>
 
 <script>

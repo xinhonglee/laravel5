@@ -72,5 +72,9 @@
 </script>
 
 <style scoped>
-
+  .md-table {
+    max-height: calc(100vh - 220px);
+    overflow: hidden;
+    overflow-y: auto;
+  }
 </style>
