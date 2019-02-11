@@ -159,6 +159,32 @@ main {
   position: relative;
 }
 
+@media (min-width:52.06rem) {
+	.small-screen {
+		display: none;
+	}
+}
+@media (max-width:52rem){
+	.medium-screen {
+		display: none;
+	}			
+}
+@media (min-width:100.06rem) {
+	.medium-screen {
+		display: none;
+	}
+}
+@media (max-width:100rem) {
+	.large-screen {
+		display: none;
+	}
+}
+@media (min-width:100.06rem) {
+	.small-medium-screen {
+		display: none;
+	}
+}
+		
 main header article.slide {
   margin: 0px;
   position: relative;
@@ -173,9 +199,14 @@ main header.xs-hide article.slide:first-of-type {
 main header.xs-hide article.slide:last-of-type {
   border-right: solid 30px transparent;
 }
-main header.xs-hide article.slide {
+main header.xs-hide.large-screen article.slide {
   width: 819px;
   height: 819px;
+  border: solid 12px transparent;
+}
+main header.xs-hide.small-medium-screen article.slide {
+  width: 569px;
+  height: 569px;
   border: solid 12px transparent;
 }
 main header.xs-hide {
@@ -440,6 +471,17 @@ amp-img.cover img {
   background: linear-gradient(to bottom,  rgba(0,0,0,0) 60%,rgba(0,0,0,0.60) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 }
+
+.small-medium-screen .slide .caption h2 {
+	font-size: 32px;
+	line-height: 40px;
+}
+.small-medium-screen .slide a.btn, .small-medium-screen .slide a.btn:hover, .small-medium-screen .slide a.btn:focus, .small-medium-screen .slide a.btn:visited {
+	font-size: 16px;
+	padding: 22px 60px 22px 60px;
+	border: solid 3px #5feb98;
+}
+
 .amp-carousel-button {
   height: 75px;
   width: 75px;

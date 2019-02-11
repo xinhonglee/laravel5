@@ -288,11 +288,37 @@
 			padding: 0;
 			margin: 20px 0 20px 0;
 		}
+		
+		@media (min-width:52.06rem) {
+			.small-screen {
+				display: none;
+			}
+		}
+		@media (max-width:52rem){
+			.medium-screen {
+				display: none;
+			}			
+		}
+		@media (min-width:100.06rem) {
+			.medium-screen {
+				display: none;
+			}
+		}
+		@media (max-width:100rem) {
+			.large-screen {
+				display: none;
+			}
+		}
 
 		.player {
 			position: relative;
 			width: 100%;
-			height: 800px;
+		}
+		.player.medium-screen {
+			height: 600px; /** player height ***/
+		}
+		.player.large-screen {
+			height: 800px; /** player height ***/
 		}
 		.player amp-img.blur {
 			filter: blur(32px) brightness(35%);
@@ -347,9 +373,14 @@
 		}
 		@media (min-width:52.06rem) {
 			.player .share {
-				top: 680px;
 				right: 35px;
 				opacity: 0;
+			}
+			.player.medium-screen .share {
+				top: 480px;  /** player height - 120 px **/
+			}
+			.player.large-screen .share {
+				top: 680px;  /** player height - 120 px **/
 			}
 		}
 		.hoverzone:hover ~ .overlay, .hoverzone:hover ~ .share, .share:hover { 
@@ -569,7 +600,7 @@
 		</div>
 	</amp-lightbox>
 	<main>
-		<section class="player xs-hide sm-hide">
+		<section class="player large-screen">
 			<amp-video class="hoverzone" height="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="fixed-height"
@@ -586,10 +617,28 @@
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
 			</div>
-			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>			
-			
+			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
 		</section>
-		<section class="player md-hide lg-hide">
+		<section class="player medium-screen">
+			<amp-video class="hoverzone" height="600" src="{{$video->video_url}}"
+				poster="{{$video->cover_url}}"
+				layout="fixed-height"
+				controls>
+				<div fallback>
+					<p>Your browser doesn't support HTML5 video.</p>
+				</div>
+				<source type="video/mp4" src="{{$video->video_url}}">
+			</amp-video>
+			<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
+				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
+			</div>
+			<div class="overlay">
+				<h2>{{$video->title}}</h2>
+				<span class="description">{{$video->description}}</span>
+			</div>
+			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
+		</section>
+		<section class="player small-screen">
 			<amp-video height="800" width="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="responsive"

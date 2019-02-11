@@ -12,12 +12,33 @@
 </div>
 
 @php ($i = 0)
-<header class="xs-hide">
+<header class="xs-hide large-screen">
   <amp-carousel height="819" layout="fixed-height" type="carousel" autoplay="" loop="">
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
       <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+      <div class="caption">
+        <amp-timeago layout="fixed" width="300" class="time"
+    height="25"
+    datetime="{{$videos[$i]->ISODate}}"
+    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
+        <h2>{{$videos[$i]->title}}</h2>
+        <a href="{{route('player', $videos[$i]->slug)}}" class="btn"><amp-img class="up" src="../assets/play_up.svg" layout="fixed" width="17" height="22" style="margin-right:10px;top:4px;"></amp-img> Voir la vidéo</a>
+      </div>
+    </article>
+    @endif
+    @php ($i++)
+    @endfor
+  </amp-carousel>
+</header>
+@php ($i = 0)
+<header class="xs-hide small-medium-screen">
+  <amp-carousel height="569" layout="fixed-height" type="carousel" autoplay="" loop="">
+	@for ($k = 0; $k < 5; $k++)
+    @if ($videos->count()>=($i+1))
+    <article class="slide">
+      <amp-img src="{{$videos[$i]->cover_url}}" width="569" height="569" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
