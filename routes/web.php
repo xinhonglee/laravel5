@@ -31,9 +31,7 @@ Route::get('/videos', 'FrontController@getVideos');
 Route::get('/videos/page/{page}', 'FrontController@getVideosPerPage')->where('page', '[0-9]+');
 Route::get('/videos/{category}', 'FrontController@getVideosPerCategory')->where('category', '[A-Za-z]+');
 Route::get('/videos/{category}/page/{page}', 'FrontController@getVideosPerCategoryAndPage')->where(['category' => '[A-Za-z]+', 'page' => '[0-9]+']);
-
-Route::get('/{category}', 'FrontController@getCategory')->where('category', '[A-Za-z]+');
-
+Route::get('/story', 'FrontController@getStory');
 Route::post('/subscribe', 'NewsletterController@subscribe');
-
 Route::view('/mentions-legales', 'mentions', ['css' => 'legal']);
+Route::get('/{category}', 'FrontController@getCategory')->where('category', '[A-Za-z]+');
