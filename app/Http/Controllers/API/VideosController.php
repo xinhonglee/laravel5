@@ -99,6 +99,7 @@ class VideosController extends BaseController
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'id' => 'required',
             'title' => 'required|max:255',
             'description' => 'required',
             'date' => 'required|date',
@@ -143,9 +144,20 @@ class VideosController extends BaseController
      * @param Video $video
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request, Video $video)
+    public function delete(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendValidationError($validator->errors());
+        }
         try {
+            $input = $request->all();
+            $video = Video::where('id', $input["id"])
+                ->where('user_id', Auth::user()->id)
+                ->firstOrFail();
+
             $result = $video->delete();
             return $this->sendResponse($result);
         } catch (\Exception $exception) {

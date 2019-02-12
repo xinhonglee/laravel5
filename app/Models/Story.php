@@ -15,8 +15,6 @@ class Story extends Model
         'user_id',
         'name',
         'status',
-        'start_publication_date',
-        'end_publication_date',
         'data',
     ];
 
