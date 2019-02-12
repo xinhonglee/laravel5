@@ -55,6 +55,22 @@ Route::group(['namespace' => 'API'], function () {
         Route::get('/category', 'VideoCategoriesController@list');
     });
 
+    Route::group(['prefix' => 'story', 'middleware' => 'auth:api'], function () {
+
+        Route::get('/list', 'StoriesController@list');
+
+        Route::pattern('id', '[0-9]+');
+
+        Route::get('/{id}', 'StoriesController@getStoryById');
+
+        Route::post('/create', 'StoriesController@create');
+
+        Route::put('/update', 'StoriesController@update');
+
+        Route::delete('/delete', 'StoriesController@delete');
+
+    });
+
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth:api', 'role:admin']], function () {
 
         Route::get('/list-users', 'UsersController@list');
