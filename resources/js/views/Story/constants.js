@@ -38,11 +38,23 @@ const gridAreas = [
   }
 ];
 
+const elementLayouts = [
+  {slug: 'fill', name:'Fill'},
+  {slug: 'fixed', name:'Fixed'},
+  {slug: 'fixed-height', name:'Fixed Height'},
+  {slug: 'flex-item', name:'Flex Item'},
+  {slug: 'intrinsic', name:'Intrinsic'},
+  {slug: 'nodisplay', name:'No display'},
+  {slug: 'responsive', name:'Responsive'},
+];
+
+
 export default {
   layerTemplates,
   elementTypes,
   animations,
   imageFilters,
   ctaTypes,
-  gridAreas
+  gridAreas,
+  elementLayouts
 }

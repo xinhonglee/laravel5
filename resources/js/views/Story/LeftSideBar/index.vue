@@ -42,6 +42,8 @@
     ]
   };
 
+  import AMP from '../constants';
+
   export default {
     name: "story-left-side-bar",
     components: { PageLayer },
@@ -57,11 +59,12 @@
     methods: {
       addLayer () {
         this.pageLayers.push(tempLayer);
+
         return false;
       },
       removeLayer () {
         return false;
-      }
+      },
     }
   }
 </script>
