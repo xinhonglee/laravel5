@@ -264,7 +264,7 @@ footer {
   padding: 55px;
   background-color: #262626;
   color: #e4e5e6;
-  font-size: 20px;
+  font-size: 1.7vw;
   font-family: 'rationalsemi_bold';
 }
 @media (max-width:40rem) {
@@ -280,7 +280,7 @@ footer {
 	  bottom: 55px;
 	  color: #e4e5e6;
 	  font-family: 'rationalsemi_bold';
-	  font-size: 20px;
+	  font-size: 1.7vw;
 	}
 	footer nav ul {
 		margin: 0;
@@ -289,7 +289,7 @@ footer {
 	footer nav ul li {
 	  list-style-type: none;
 	  display: inline;
-	  margin-left: 60px;
+	  margin-left: 3.5vw;
 	}
 	footer nav ul li a:hover {
 		text-decoration: underline;
