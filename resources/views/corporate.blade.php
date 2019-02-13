@@ -197,9 +197,41 @@
 	</div>
 	<h4 class="center">Nos clients</h4>
 	<ul class="customers">
-		<li><amp-img layout="fixed" width="56" height="56" src="/assets/facebook_green.svg"></amp-img></li>
-		<li><amp-img layout="fixed" width="56" height="56" src="/assets/facebook_green.svg"></amp-img></li>
-		<li><amp-img layout="fixed" width="56" height="56" src="/assets/facebook_green.svg"></amp-img></li>
+		<li>
+			<amp-img layout="fixed" width="74" height="19" media="(max-width: 40rem)" src="/assets/veolia.png"></amp-img>
+			<amp-img layout="fixed" width="113" height="28" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/veolia.png"></amp-img>
+			<amp-img layout="fixed" width="153" height="38" media="(min-width: 52.06rem)" src="/assets/veolia.png"></amp-img>
+		</li>
+		<li>
+			<amp-img layout="fixed" width="84" height="24" media="(max-width: 40rem)" src="/assets/vinci.png"></amp-img>
+			<amp-img layout="fixed" width="122" height="33" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/vinci.png"></amp-img>
+			<amp-img layout="fixed" width="160" height="42" media="(min-width: 52.06rem)" src="/assets/vinci.png"></amp-img>
+		</li>
+		<li>
+			<amp-img layout="fixed" width="56" height="18" media="(max-width: 40rem)" src="/assets/google.png"></amp-img>
+			<amp-img layout="fixed" width="108" height="35" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/google.png"></amp-img>
+			<amp-img layout="fixed" width="160" height="53" media="(min-width: 52.06rem)" src="/assets/google.png"></amp-img>
+		</li>
+		<li>
+			<amp-img layout="fixed" width="71" height="16" media="(max-width: 40rem)" src="/assets/deezer.png"></amp-img>
+			<amp-img layout="fixed" width="120" height="27" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/deezer.png"></amp-img>
+			<amp-img layout="fixed" width="170" height="38" media="(min-width: 52.06rem)" src="/assets/deezer.png"></amp-img>
+		</li>
+		<li>
+			<amp-img layout="fixed" width="27" height="27" media="(max-width: 40rem)" src="/assets/wb.png"></amp-img>
+			<amp-img layout="fixed" width="50" height="52" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/wb.png"></amp-img>
+			<amp-img layout="fixed" width="74" height="77" media="(min-width: 52.06rem)" src="/assets/wb.png"></amp-img>
+		</li>
+		<li>
+			<amp-img layout="fixed" width="76" height="16" media="(max-width: 40rem)" src="/assets/citeo.png"></amp-img>
+			<amp-img layout="fixed" width="144" height="31" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/citeo.png"></amp-img>
+			<amp-img layout="fixed" width="213" height="47" media="(min-width: 52.06rem)" src="/assets/citeo.png"></amp-img>
+		</li>
+		<li>
+			<amp-img layout="fixed" width="40" height="20" media="(max-width: 40rem)" src="/assets/roche.png"></amp-img>
+			<amp-img layout="fixed" width="76" height="39" media="(min-width: 40.06rem) and (max-width: 52rem)" src="/assets/roche.png"></amp-img>
+			<amp-img layout="fixed" width="112" height="59" media="(min-width: 52.06rem)" src="/assets/roche.png"></amp-img>
+		</li>
 	</ul>
 	<div class="center">
 		<a href="#contact" class="btn">Nous contacter</a>

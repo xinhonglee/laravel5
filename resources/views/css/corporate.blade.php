@@ -706,7 +706,17 @@ section p.subtitle {
 .work ul.customers  li {
   list-style-type: none;
   display: inline-block;
-  padding: 20px;
+  padding: 20px 4.2vw 20px 4.2vw;
+}
+@media (max-width:52rem) and (min-width:40.06rem) {
+	.work ul.customers  li {
+	  padding: 15px 30px 15px 30px;
+	}
+}
+@media (max-width:40rem) {
+	.work ul.customers  li {
+	  padding: 15px 10px 15px 10px;
+	}
 }
 
 .work a.btn,.slide .work a.btn:hover, .work a.btn:visited {
