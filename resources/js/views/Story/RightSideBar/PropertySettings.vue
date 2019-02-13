@@ -1,7 +1,6 @@
 <template>
   <div class="property-settings">
-    <settings-text></settings-text>
-    <!--<settings-heading></settings-heading>-->
+    <settings-rich-text></settings-rich-text>
     <!--<settings-image></settings-image>-->
     <!--<settings-video></settings-video>-->
     <!--<settings-audio></settings-audio>-->
@@ -9,8 +8,7 @@
 </template>
 
 <script>
-  import SettingsText from "./Settings/SettingsText";
-  import SettingsHeading from "./Settings/SettingsHeading";
+  import SettingsRichText from "./Settings/SettingsRichText";
   import SettingsImage from "./Settings/SettingsImage";
   import SettingsVideo from "./Settings/SettingsVideo";
   import SettingsAudio from "./Settings/SettingsAudio";
@@ -20,8 +18,7 @@
       SettingsAudio,
       SettingsVideo,
       SettingsImage,
-      SettingsHeading,
-      SettingsText
+      SettingsRichText
     },
     methods: {
       isSelected(param = '') {

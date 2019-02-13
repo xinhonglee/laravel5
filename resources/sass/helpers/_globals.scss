@@ -15,3 +15,11 @@
 iframe {
   height: 100% !important;
 }
+
+md-tabs.md-no-animation md-tab-content {
+  transition: none !important;
+}
+
+md-tabs.md-no-animation md-ink-bar {
+  transition: none !important;
+}

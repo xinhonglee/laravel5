@@ -10,6 +10,7 @@ import VueAnalytics from 'vue-analytics'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import AlertBoxMixin from './components/common/mixins/AlertBox';
+import CKEditor from '@ckeditor/ckeditor5-vue';
 
 import Index from './Index'
 import router from './router'
@@ -17,7 +18,7 @@ import router from './router'
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 Vue.use(VueMaterial);
-
+Vue.use( CKEditor );
 Vue.use(VueAnalytics, {
   id: 'UA-131939849-1',
   router,

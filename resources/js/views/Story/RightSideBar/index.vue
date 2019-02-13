@@ -2,7 +2,7 @@
   <div class="story-right-sidebar md-elevation-3">
     <h4>{{ propertyName }} Properties</h4>
     <md-divider></md-divider>
-    <md-tabs class="md-transparent" md-alignment="centered">
+    <md-tabs class="md-transparent md-no-animation" md-alignment="centered" md-dynamic-height md-border-bottom md-no-ink-bar>
       <md-tab id="tab-story-setting" md-label="SETTINGS">
         <property-settings></property-settings>
       </md-tab>
@@ -25,7 +25,7 @@
     components: { PropertyAnimation, PropertyDesign, PropertySettings },
     data() {
       return {
-        propertyName: 'Rich Text'
+        propertyName: 'Rich Text',
       }
     }
   }

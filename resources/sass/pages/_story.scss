@@ -98,5 +98,15 @@
     top: 0;
     width: $amp-sidebar-width;
     z-index: 10;
+
+    .md-content {
+      height: calc(100vh - #{$header-height + $toolbar-height} - 120px) !important;
+      overflow: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  .ck-editor {
+    width: 100% !important;
   }
 }
