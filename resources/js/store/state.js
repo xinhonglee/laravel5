@@ -23,16 +23,17 @@ const notSyncedData = {
       editable: false,
     },
     story: {
-      "publisher": "Publisher",
-      "publisher-logo-src": "logo image url",
-      "poster-portrait-src": "portrait poster image url",
-      "supports-landscape": true,
-      "background-audio": "audio url",
-      "poster-square-src": "image url",
-      "poster-landscape-src": "image url",
-      "pages": [],
-      selected: {
-      }
+      id: '',
+      data: {
+        publisher: "Publisher",
+        publisherLogoSrc: "logo image url",
+        posterPortraitSrc: "portrait poster image url",
+        supportsLandscape: true,
+        backgroundAudio: "audio url",
+        posterSquareSrc: "image url",
+        posterLandscapeSrc: "image url",
+        pages: [],
+      },
     },
   };
 

@@ -8,9 +8,9 @@
       <label>Class</label>
       <md-input></md-input>
     </md-field>
-    <md-field>
-      <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
-    </md-field>
+    <br>
+    <p style="color:#6d6d6d">[ HTML ]</p>
+    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
   </div>
 </template>
 

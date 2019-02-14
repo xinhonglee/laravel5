@@ -6,10 +6,22 @@
       </md-tabs>
     </div>
     <ul class="page-tools">
-      <li>+ Add a new page</li>
+      <li @click="addNewPage">+ Add a new page</li>
       <li>Page structure...</li>
       <li>Save current page as model</li>
     </ul>
+    <md-dialog :md-active.sync="showDialog">
+      <md-dialog-title>Add a new page</md-dialog-title>
+
+      <div>
+        test
+      </div>
+
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="showDialog = false">Close</md-button>
+        <md-button class="md-primary" @click="showDialog = false">Save</md-button>
+      </md-dialog-actions>
+    </md-dialog>
   </div>
 </template>
 
@@ -28,6 +40,13 @@
           {id: '7', name: 'test'},
           {id: '8', name: 'test'},
          ],
+        showDialog: false
+      }
+    },
+    methods: {
+      addNewPage() {
+        this.showDialog = true;
+        return false;
       }
     }
   }

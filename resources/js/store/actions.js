@@ -17,3 +17,11 @@ export const updateAppTitle = ({ commit }, title) => {
 export const updateAppEditable = ({ commit }, editable) => {
   commit('UPDATE_APP_EDITABLE', editable);
 };
+
+export const updateAMPStory = ({ commit }, story) => {
+  commit('UPDATE_AMP_STORY', story);
+};
+
+export const saveAMPStory = ({ commit }, story) => {
+  commit('SAVE_AMP_STORY', story);
+};

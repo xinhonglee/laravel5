@@ -20,7 +20,7 @@
       }
     },
     mounted() {
-      this.$store.dispatch('updateAppEditable', false);
+      this.$store.dispatch('updateAppEditable', true);
     },
     computed: {
       editable() {
