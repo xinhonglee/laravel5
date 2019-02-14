@@ -16,8 +16,9 @@
 
       <md-dialog-content>
         <div class="page-templates">
-          <div class="page-template" v-for="(template, index) in pageTemplates" :key="index">
-            <div class="page-template-image" :style="{backgroundImage: 'url(' + template.image_url + ')'}"></div>
+          <div class="page-template" v-for="(template, index) in pageTemplates" :key="index" @click="selectedPage = index">
+            <div class="page-template-image" :class="selectedPage === index ? 'selected md-elevation-4' : ''"
+                 :style="{backgroundImage: 'url(' + template.image_url + ')'}"></div>
             <p>{{ template.name }}</p>
           </div>
         </div>
@@ -37,28 +38,40 @@
     data () {
       return {
         pageTemplates: [
-          {id: '1', name: 'Blank', image_url: ''},
-          {id: '2', name: 'Title', image_url: ''},
-          {id: '3', name: 'Video + Text + Context', image_url: ''},
-          {id: '4', name: 'Video + Text', image_url: ''},
-          {id: '5', name: 'Video + Context', image_url: ''},
-          {id: '6', name: 'Video + Quote', image_url: ''}
+          { id: '1', name: 'Blank', image_url: '', data: [] },
+          { id: '2', name: 'Title', image_url: '', data: [] },
+          { id: '3', name: 'Video + Text + Context', image_url: '', data: [] },
+          { id: '4', name: 'Video + Text', image_url: '', data: [] },
+          { id: '5', name: 'Video + Context', image_url: '', data: [] },
+          { id: '6', name: 'Video + Quote', image_url: '', data: [] }
         ],
-        showDialog: false
+        showDialog: false,
+        selectedPage: -1,
       }
     },
     methods: {
       addNewPage () {
         this.showDialog = false;
-      },
+        if(this.selectedPage < 0) {
+          Vue.alertBox({
+            title: 'Template Selection Error',
+            text: "Please select one of the existing templates!",
+            type: 'error'
+          });
+        }
+        let insert = this.story;
+        insert.data.pages.push(this.pageTemplates[this.selectedPage].data);
 
+        this.$store.dispatch('saveAMPStory', insert);
+
+        this.selectedPage = -1;
+      },
     },
     computed: {
       story () {
         if (!_.isNil(this.$store.state.story)) {
           return this.$store.state.story;
         }
-        return false;
       }
     }
   }
@@ -68,6 +81,7 @@
   .page-templates {
     display: flex;
   }
+
   .page-template {
     display: inline-block;
     float: left;
@@ -84,5 +98,14 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  .page-template-image.selected {
+    border: 1px solid red;
+    opacity: 0.8;
+  }
+
+  .page-template-image:hover {
+    border: 1px solid red;
   }
 </style>

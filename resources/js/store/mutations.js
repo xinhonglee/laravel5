@@ -54,6 +54,9 @@ export const SAVE_AMP_STORY = (state, story) => {
       "pages": story.data.pages,
     }
   };
+  console.log('=======INSERT DATA========');
+  console.log(data);
+  console.log('==========================');
 
   const api = Vue.$store.state.story.id ? 'update' : 'create';
 
