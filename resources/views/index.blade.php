@@ -26,11 +26,11 @@
 </header> 
 <header class="xs-hide small-medium-screen">
   @php ($i = 0)
-  <amp-carousel height="569" layout="fixed-height" type="carousel" autoplay="" loop="" class="">
+  <amp-carousel height="615" layout="fixed-height" type="carousel" autoplay="" loop="" class="">
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" width="569" height="569" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover_url}}" width="615" height="615" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"

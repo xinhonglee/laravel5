@@ -43,12 +43,12 @@ a, a:visited, a:hover {
   text-decoration: none;
 }
 h2.section {
-  margin: 4.76vw 10.12vw 4.76vw 10.12vw;
+  margin: 3.17vw 6.75vw 3.17vw 6.75vw;
   font-family: 'rationalextra_bold';
-  font-size: 6.55vw;
-  line-height: 5.36vw;
+  font-size: 4.37vw;
+  line-height: 3.57vw;
   display: block;
-  border-bottom: solid 1.19vw #262626;
+  border-bottom: solid 0.79vw #262626;
 }
 @media (max-width:40rem) {
   h2.section {
@@ -205,8 +205,8 @@ main header.xs-hide.large-screen article.slide {
   border: solid 12px transparent;
 }
 main header.xs-hide.small-medium-screen article.slide {
-  width: 569px;
-  height: 569px;
+  width: 615px;
+  height: 615px;
   border: solid 12px transparent;
 }
 main header.xs-hide {
@@ -473,12 +473,12 @@ amp-img.cover img {
 }
 
 .small-medium-screen .slide .caption h2 {
-	font-size: 32px;
-	line-height: 40px;
+	font-size: 34px;
+	line-height: 44px;
 }
 .small-medium-screen .slide a.btn, .small-medium-screen .slide a.btn:hover, .small-medium-screen .slide a.btn:focus, .small-medium-screen .slide a.btn:visited {
-	font-size: 16px;
-	padding: 22px 60px 22px 60px;
+	font-size: 18px;
+	padding: 24px 65px 24px 65px;
 	border: solid 3px #5feb98;
 }
 
@@ -487,22 +487,23 @@ amp-img.cover img {
   width: 75px;
   cursor: pointer;
 }
+.amp-carousel-button:focus {outline:0;}
 @media (max-width:40rem) {
   .amp-carousel-button {
     display: none;
   }
 }
 .amp-carousel-button-next {
-  background-color: transparent;
-  background-size: 75px 75px;
+  background-color: #262626;
+  background-size: 55px 55px;
   background-image: url('/assets/next.svg');
   right: 55px;
   z-index: 100;
   
 }
 .amp-carousel-button-prev {
-  background-color: transparent;
-  background-size: 75px 75px;
+  background-color: #262626;
+  background-size: 55px 55px;
   background-image: url('/assets/prev.svg');
   left: 55px;
   z-index: 100;
@@ -573,14 +574,14 @@ amp-img.cover img {
   }
   #menu nav ul li {
     width: 100%;
-    border-bottom: solid 1px #aaa;
+    border-bottom: solid 1px #515151;
     font-size: 22px;
     line-height: 60px;
 	padding-left: 30px;
   }
-  #menu nav ul.dark li {
-	font-size: 21px;
-	border-bottom: solid 1px #ccc;
+  #menu nav.dark ul li {
+	font-size: 18px;
+	line-height: 50px;
   }
   #menu h4 {
 	  font-family: 'rationalsemi_bold';
@@ -666,7 +667,7 @@ amp-img.cover img {
 }
 .more {
   background-color: #262626;
-  padding: 75px 175px 75px 175px;
+  padding: 30px 175px 30px 175px;
   text-align: center;
 }
 .more a {
@@ -676,7 +677,7 @@ amp-img.cover img {
   padding: 20px;
   font-family: 'rationalextra_bold';
   font-size: 32px;
-  line-height: 90px;
+  line-height: 60px;
   -o-transition:.5s;
   -ms-transition:.5s;
   -moz-transition:.5s;

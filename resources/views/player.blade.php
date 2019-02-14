@@ -181,6 +181,9 @@
 		.slide-video .caption .time::first-letter {
 			text-transform: uppercase;
 		}
+		.video .caption .time::first-letter {
+			text-transform: uppercase;
+		}
 		.slide-video:hover .caption {
 			bottom: 90px;
 		}
@@ -229,20 +232,21 @@
 			width: 75px;
 			cursor: pointer;
 		}
+		.amp-carousel-button:focus {outline:0;}
 		@media (max-width:40rem) {
 			.amp-carousel-button {
 				display: none;
 			}
 		}
 		.amp-carousel-button-next {
-			background-color: transparent;
-			background-size: 75px 75px;
+			background-color: #262626;
+			background-size: 55px 55px;
 			background-image: url('../assets/next.svg');
 			right: 55px;
 		}
 		.amp-carousel-button-prev {
-			background-color: transparent;
-			background-size: 75px 75px;
+			background-color: #262626;
+			background-size: 55px 55px;
 			background-image: url('../assets/prev.svg');
 			left: 55px;
 		}
@@ -328,17 +332,24 @@
 		}
 		.player .overlay {
 			position: absolute;
-			bottom: 120px;
-			left: 30px;
+			bottom: 140px;
+			left: calc(30px + 400px + 50vw);
 			z-index: 10;
-			color: #e4e5e6;
-			width: 30%;
+			color: #e4e5e6;			
 			opacity: 0;
 			-o-transition:1s;
 			-ms-transition:1s;
 			-moz-transition:1s;
 			-webkit-transition:1s;
 			transition:1s;
+		}
+		.player.medium-screen  .overlay {
+			left: calc(30px + 300px + 50vw);
+			width: calc(50vw - 300px - 80px);
+		}
+		.player.large-screen  .overlay {
+			left: calc(30px + 400px + 50vw);
+			width: calc(50vw - 400px - 80px);
 		}
 		.player .overlay h2 {
 			font-family: 'rationalbook_bold';
@@ -353,7 +364,7 @@
 		}
 		.player .share {
 			position: absolute;
-			bottom: 70px;
+			bottom: 15px;
 			right: 15px;
 			z-index: 10;
 			cursor: pointer;
@@ -363,13 +374,6 @@
 			-moz-transition:1s;
 			-webkit-transition:1s;
 			transition:1s;
-		}
-		@media (min-width:741px) and (max-width:52rem) {
-			.player .share {
-				bottom: 85px;
-				right: 35px;
-				opacity: 1;
-			}
 		}
 		@media (min-width:52.06rem) {
 			.player .share {
@@ -402,9 +406,13 @@
 				opacity: 1;
 			}
 			.player .overlay h2 {
-				font-size: 24px;
-				line-height: 28px;
+				font-size: 20px;
+				line-height: 24px;
 				color: #5feb98;
+			}
+			.player .overlay .description {
+				font-size: 16px;
+				line-height: 18px;
 			}
 		}
 		.back {
@@ -420,8 +428,8 @@
 		@media (max-width:40rem) {
 			.back {
 				font-size: 18px;
-				height: 60px;
-				line-height: 60px;
+				height: 50px;
+				line-height: 50px;
 				position: static;
 				text-align: right;
 				padding-right: 30px;
@@ -647,14 +655,14 @@
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
-				<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
-					<amp-img src="/assets/share.svg" media="(max-width: 740px)" layout="fixed" width="18" height="15"></amp-img>
-					<amp-img src="/assets/share.svg" media="(min-width: 741px)" layout="fixed" width="26" height="22"></amp-img>
-				</div>
 			</amp-video>			
 			<div class="overlay">
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
+				<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
+					<amp-img src="/assets/share.svg" media="(max-width: 740px)" layout="fixed" width="18" height="15"></amp-img>
+					<amp-img src="/assets/share.svg" media="(min-width: 741px)" layout="fixed" width="26" height="22"></amp-img>
+				</div>
 			</div>
 		</section>
 		<section class="carousel xs-hide sm-hide">

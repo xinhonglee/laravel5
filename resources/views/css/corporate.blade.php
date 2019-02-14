@@ -168,14 +168,14 @@ amp-img.cover img {
   }
   #menu nav ul li {
     width: 100%;
-    border-bottom: solid 1px #aaa;
+    border-bottom: solid 1px #515151;
     font-size: 25px;
     line-height: 72px;
 	padding-left: 30px;
   }
-  #menu nav ul.dark li {
-	font-size: 21px;
-	border-bottom: solid 1px #ccc;
+  #menu nav.dark ul li {
+	font-size: 18px;
+	line-height: 50px;
   }
   #menu h4 {
 	  font-family: 'rationalsemi_bold';
