@@ -13,6 +13,7 @@ class StoryPageTemplate extends Model
      */
     protected $fillable = [
         'name',
+        'image_url',
         'data',
     ];
 }

@@ -16,6 +16,7 @@ class CreateStoryPageTemplatesTable extends Migration
         Schema::create('story_page_templates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('image_url');
             $table->string('status');
             $table->json('data');
             $table->timestamps();
