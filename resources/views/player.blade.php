@@ -231,6 +231,7 @@
 			height: 75px;
 			width: 75px;
 			cursor: pointer;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
 		.amp-carousel-button:focus {outline:0;}
 		@media (max-width:40rem) {
@@ -318,6 +319,47 @@
 			position: relative;
 			width: 100%;
 		}
+		
+		/* Overlay fills the parent and sits on top of the video */
+		.click-to-play-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.play-icon {
+			position: absolute;
+			z-index: 2;
+
+			width: 200px;
+			height: 200px;
+
+			background-image: url(/assets/click-to-play.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+
+			/* Align to the middle */
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			cursor: pointer;
+			opacity: 0.9;
+		}
+		.play-icon:focus {
+			outline:0;
+		}
+		#small-screen-overlay .play-icon {
+			top: calc(50vw - 10px);
+			width: 30vw;
+			height: 30vw;
+		}
+
+		.play-icon:hover, .play-icon:focus {
+			opacity: 1;
+		}
+		  
 		.player.medium-screen {
 			height: 600px; /** player height ***/
 		}
@@ -400,7 +442,7 @@
 			.player .overlay {
 				background-color: #262626;
 				position: static;
-				padding: 30px;
+				padding: 30px 30px 50px 30px;
 				font-size: 18px;
 				width: 100%;
 				opacity: 1;
@@ -609,7 +651,7 @@
 	</amp-lightbox>
 	<main>
 		<section class="player large-screen">
-			<amp-video class="hoverzone" height="800" src="{{$video->video_url}}"
+			<amp-video id="large-screen-video" class="hoverzone" height="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="fixed-height"
 				controls>
@@ -618,6 +660,9 @@
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
 			</amp-video>
+			<div id="large-screen-overlay" class="click-to-play-overlay">
+				<div class="play-icon" role="button" tabindex="0" on="tap:large-screen-overlay.hide, large-screen-video.play"></div>
+			</div>
 			<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
 				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
 			</div>
@@ -628,7 +673,7 @@
 			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
 		</section>
 		<section class="player medium-screen">
-			<amp-video class="hoverzone" height="600" src="{{$video->video_url}}"
+			<amp-video id="medium-screen-video" class="hoverzone" height="600" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="fixed-height"
 				controls>
@@ -637,6 +682,9 @@
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
 			</amp-video>
+			<div id="medium-screen-overlay" class="click-to-play-overlay">
+				<div class="play-icon" role="button" tabindex="0" on="tap:medium-screen-overlay.hide, medium-screen-video.play"></div>
+			</div>
 			<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
 				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
 			</div>
@@ -647,7 +695,7 @@
 			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
 		</section>
 		<section class="player small-screen">
-			<amp-video height="800" width="800" src="{{$video->video_url}}"
+			<amp-video id="small-screen-video" height="800" width="800" src="{{$video->video_url}}"
 				poster="{{$video->cover_url}}"
 				layout="responsive"
 				controls>
@@ -655,7 +703,10 @@
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
-			</amp-video>			
+			</amp-video>	
+			<div id="small-screen-overlay" class="click-to-play-overlay">
+				<div class="play-icon" role="button" tabindex="0" on="tap:small-screen-overlay.hide, small-screen-video.play"></div>
+			</div>			
 			<div class="overlay">
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
