@@ -29,7 +29,7 @@ class StoryPageTemplatesController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getStoryById(Request $request)
+    public function getStoryPageTemplateById(Request $request)
     {
         try {
             $template_id = $request->route('id');

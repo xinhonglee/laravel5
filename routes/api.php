@@ -71,15 +71,34 @@ Route::group(['namespace' => 'API'], function () {
 
     });
 
+    Route::group(['prefix' => 'story', 'middleware' => 'auth:api'], function () {
+
+        Route::get('/list', 'StoryPageTemplatesController@list');
+
+        Route::pattern('id', '[0-9]+');
+
+        Route::get('/{id}', 'StoryPageTemplatesController@getStoryPageTemplateById');
+
+    });
+
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth:api', 'role:admin']], function () {
 
+        /* Users Management */
         Route::get('/list-users', 'UsersController@list');
 
         Route::put('/update-user', 'UsersController@update');
 
         Route::delete('/delete-user', 'UsersController@delete');
 
+        /* Roles Management */
         Route::get('/list-roles', 'RolesController@list');
+
+        /* StoryPageTemplates Management*/
+        Route::post('/create-page-template', 'StoryPageTemplatesController@create');
+
+        Route::put('/update-page-template', 'StoryPageTemplatesController@update');
+
+        Route::delete('/delete-pate-template', 'StoryPageTemplatesController@delete');
     });
 });
 
