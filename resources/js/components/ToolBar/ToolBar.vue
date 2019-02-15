@@ -51,7 +51,6 @@
     },
     methods: {
       addNewPage () {
-        this.showDialog = false;
         if(this.selectedPage < 0) {
           Vue.alertBox({
             title: 'Template Selection Error',
@@ -59,12 +58,13 @@
             type: 'error'
           });
         }
+
         let insert = this.story;
         insert.data.pages.push(this.pageTemplates[this.selectedPage].data);
-
         this.$store.dispatch('saveAMPStory', insert);
-
         this.selectedPage = -1;
+
+        this.showDialog = false;
       },
     },
     computed: {
