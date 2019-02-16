@@ -4,7 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Story;
+use Validator;
 
 class StoriesController extends BaseController
 {
@@ -66,7 +68,7 @@ class StoriesController extends BaseController
             $insert = [
                 'name' => $input["name"],
                 'user_id' => $user->id,
-                'data' => $input["data"]
+                'data' => json_encode($input["data"])
             ];
             $story = Story::create($insert);
 
@@ -101,7 +103,7 @@ class StoriesController extends BaseController
 
             $story->update([
                 "name" => $input["name"],
-                "data" => $input["data"],
+                "data" => json_encode($input["data"]),
             ]);
 
             return $this->sendResponse($story);

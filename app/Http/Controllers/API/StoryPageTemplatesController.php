@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController;
 use App\Models\StoryPageTemplate;
+use Validator;
 
 class StoryPageTemplatesController extends BaseController
 {
@@ -34,8 +35,7 @@ class StoryPageTemplatesController extends BaseController
         try {
             $template_id = $request->route('id');
 
-            $result = StoryPageTemplate::find($template_id)
-                ->load(['user:id,name']);
+            $result = StoryPageTemplate::find($template_id);
 
             return $this->sendResponse($result);
         } catch (\Exception $exception) {
@@ -63,7 +63,7 @@ class StoryPageTemplatesController extends BaseController
             $input = $request->all();
             $insert = [
                 'name' => $input["name"],
-                'data' => $input["data"]
+                'data' => json_encode($input["data"])
             ];
             $template = StoryPageTemplate::create($insert);
 
@@ -97,7 +97,7 @@ class StoryPageTemplatesController extends BaseController
 
             $template->update([
                 "name" => $input["name"],
-                "data" => $input["data"],
+                "data" => json_encode($input["data"]),
             ]);
 
             return $this->sendResponse($template);
