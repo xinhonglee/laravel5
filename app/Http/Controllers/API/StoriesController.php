@@ -105,6 +105,7 @@ class StoriesController extends BaseController
 
             $story->update([
                 "name" => $input["name"],
+                'end_publication_date' => new \DateTime(),
                 "data" => json_encode($input["data"]),
             ]);
 
