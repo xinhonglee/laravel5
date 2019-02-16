@@ -68,6 +68,8 @@ class StoriesController extends BaseController
             $insert = [
                 'name' => $input["name"],
                 'user_id' => $user->id,
+                'start_publication_date' => new \DateTime(),
+                'end_publication_date' => new \DateTime(),
                 'data' => json_encode($input["data"])
             ];
             $story = Story::create($insert);

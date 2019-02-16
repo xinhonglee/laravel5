@@ -14,6 +14,16 @@ class StoryPageTemplate extends Model
     protected $fillable = [
         'name',
         'image_url',
+        'status',
         'data',
+    ];
+
+    /**
+     * The attributes for Default value.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'status' => 'publish',
     ];
 }

@@ -15,8 +15,19 @@ class Story extends Model
         'user_id',
         'name',
         'status',
+        'start_publication_date',
+        'end_publication_date',
         'data',
     ];
+
+    /**
+     * The attributes for Default value.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'status' => 'publish',
+     ];
 
     public function getISODateAttribute()
     {
