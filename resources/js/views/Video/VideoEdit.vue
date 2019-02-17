@@ -5,7 +5,7 @@
         <span>Video Description</span>
         <md-field>
           <md-icon class="mr-2">wrap_text</md-icon>
-          <md-textarea v-model="description" md-autogrow :disabled="!editable"></md-textarea>
+          <md-textarea v-model="description" rows="5" :disabled="!editable"></md-textarea>
         </md-field>
         <span>Video Date</span>
         <md-datepicker v-model="date" :disabled="!editable"/>
@@ -247,8 +247,5 @@
 <style scoped>
   p {
     word-break: break-all;
-  }
-  textarea {
-    height: 100px !important;
   }
 </style>

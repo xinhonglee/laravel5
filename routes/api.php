@@ -67,11 +67,11 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::put('/update', 'StoriesController@update');
 
-        Route::delete('/delete', 'StoriesController@delete');
+        Route::post('/delete', 'StoriesController@delete');
 
     });
 
-    Route::group(['prefix' => 'story', 'middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'story-template', 'middleware' => 'auth:api'], function () {
 
         Route::get('/list', 'StoryPageTemplatesController@list');
 
@@ -88,17 +88,17 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::put('/update-user', 'UsersController@update');
 
-        Route::delete('/delete-user', 'UsersController@delete');
+        Route::post('/delete-user', 'UsersController@delete');
 
         /* Roles Management */
         Route::get('/list-roles', 'RolesController@list');
 
         /* StoryPageTemplates Management*/
-        Route::post('/create-page-template', 'StoryPageTemplatesController@create');
+        Route::post('/create-story-template', 'StoryPageTemplatesController@create');
 
-        Route::put('/update-page-template', 'StoryPageTemplatesController@update');
+        Route::put('/update-story-template', 'StoryPageTemplatesController@update');
 
-        Route::delete('/delete-pate-template', 'StoryPageTemplatesController@delete');
+        Route::post('/delete-story-template', 'StoryPageTemplatesController@delete');
     });
 });
 

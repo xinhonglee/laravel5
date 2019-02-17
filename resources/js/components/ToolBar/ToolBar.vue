@@ -15,7 +15,7 @@
       <md-dialog-title>Add a new page</md-dialog-title>
 
       <md-dialog-content>
-        <div class="page-templates">
+        <div class="story-templates-list">
           <div class="page-template" v-for="(template, index) in pageTemplates" :key="index" @click="selectedPage = index">
             <div class="page-template-image" :class="selectedPage === index ? 'selected md-elevation-4' : ''"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}"></div>
@@ -78,7 +78,7 @@
 </script>
 
 <style scoped>
-  .page-templates {
+  .story-templates-list {
     display: flex;
   }
 
@@ -95,7 +95,7 @@
     height: 180px;
     border: 1px solid gray;
     margin-bottom: 10px;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }

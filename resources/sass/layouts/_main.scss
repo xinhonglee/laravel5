@@ -1,5 +1,7 @@
+html,
 body {
-  background-color: $dark-gray;
+  background-color: $dark-gray !important;
+  overflow-x: hidden;
 }
 
 .app-body {
@@ -7,6 +9,7 @@ body {
 }
 
 .app-content {
+  background-color: $dark-gray;
   padding: 50px;
   position: relative;
 }
@@ -16,8 +19,6 @@ body {
   position: absolute;
   left: 220px;
 }
-
-
 
 
 @include media-breakpoint-down(md) {

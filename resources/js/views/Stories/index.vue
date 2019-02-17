@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="stories-list">
     <md-table v-model="stories" md-sort="name" md-sort-order="asc" md-card>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToStory(item)">
         <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="videos-list">
     <md-table v-model="videos" md-sort="name" md-sort-order="asc" md-card>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToVideo(item)">
         <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>
@@ -72,9 +72,5 @@
 </script>
 
 <style scoped>
-  .md-table {
-    max-height: calc(100vh - 220px);
-    overflow: hidden;
-    overflow-y: auto;
-  }
+
 </style>

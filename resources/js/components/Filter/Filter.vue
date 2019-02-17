@@ -14,9 +14,6 @@
           <md-input></md-input>
         </md-field>
       </div>
-      <div class="sort">
-        <md-icon>sort_by_alpha</md-icon>
-      </div>
     </div>
   </div>
 </template>
