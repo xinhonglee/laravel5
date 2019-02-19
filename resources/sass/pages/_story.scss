@@ -45,12 +45,12 @@
           z-index: -1;
         }
 
-        .layer-property {
-          img.property-icon {
+        .layer-template {
+          img.template-icon {
             width: 20px;
           }
 
-          .property-name {
+          .template-name {
             display: inline-block;
             margin-left: 20px;
           }
@@ -60,7 +60,7 @@
           margin-left: 70px;
           .element {
             cursor: pointer;
-            .element-name {
+            .element-grid-area {
               cursor: pointer;
             }
             .element-type {

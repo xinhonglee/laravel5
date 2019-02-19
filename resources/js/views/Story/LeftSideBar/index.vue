@@ -32,32 +32,25 @@
 </template>
 
 <script>
-  import AMP from '../constants';
+  import constants from '../constants';
   import PageLayer from "./PageLayer";
 
   const tempLayer = {
     id: '',
-    name: 'Thirds Template',
-    icon: '/assets/phone-3.png',
+    template: 'thirds',
     styles: {},
     elements: [
       {
-        name: 'Upper Third',
-        value: '',
-        type: 'Rich Text',
-        styles: {},
+        gridArea: 'upper-third',
+        type: 'richtext',
       },
       {
-        name: 'Middle Third',
-        value: '',
-        type: 'Rich Text',
-        styles: {},
+        gridArea: 'middle-third',
+        type: 'richtext',
       },
       {
-        name: 'Bottom Third',
-        value: '',
-        type: 'Rich Text',
-        styles: {},
+        gridArea: 'lower-third',
+        type: 'richtext',
       }
     ],
   };
@@ -73,7 +66,7 @@
           tempLayer
         ],
         showDialog: false,
-        layerTemplates: AMP.layerTemplates,
+        layerTemplates: constants.layerTemplates,
         selectedLayer: -1,
       }
     },
