@@ -1,8 +1,8 @@
 const layerTemplates = [
-  { slug: 'fill', name: 'Fill'},
-  { slug: 'vertical', name: 'Vertical'},
-  { slug: 'horizontal', name: 'Horizontal'},
-  { slug: 'thirds', name: 'Thirds'}
+  { slug: 'fill', name: 'Fill', image_url: '/assets/phone-3.png'},
+  { slug: 'vertical', name: 'Vertical', image_url: '/assets/phone-3.png'},
+  { slug: 'horizontal', name: 'Horizontal', image_url: '/assets/phone-3.png'},
+  { slug: 'thirds', name: 'Thirds', image_url: '/assets/phone-3.png'}
 ];
 
 const elementTypes = [

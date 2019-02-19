@@ -17,7 +17,7 @@
       <md-dialog-content>
         <div class="story-templates-list">
           <div class="page-template" v-for="(template, index) in pageTemplates" :key="index" @click="selectedPage = index">
-            <div class="page-template-image" :class="selectedPage === index ? 'selected md-elevation-4' : ''"
+            <div class="page-template-image" :class="selectedPage === index ? 'selected md-elevation-7' : ''"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}"></div>
             <p>{{ template.name }}</p>
           </div>
@@ -100,12 +100,7 @@
     background-repeat: no-repeat;
   }
 
-  .page-template-image.selected {
-    border: 1px solid red;
-    opacity: 0.8;
-  }
-
   .page-template-image:hover {
-    border: 1px solid red;
+    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
   }
 </style>
