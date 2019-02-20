@@ -1,10 +1,10 @@
 <template>
   <div class="story-left-sidebar md-elevation-3">
-    <h4>Page {{ activePage }} of {{ totalPages }}</h4>
+    <h4>Page {{ activePage + 1 }} of {{ totalPages }}</h4>
     <md-divider></md-divider>
     <div class="template-list">
       <template v-for="(layer, index) in pageLayers">
-        <page-layer :layer="layer"></page-layer>
+        <page-layer :layer="layer" :layerIndex="index" :pageIndex="activePage"></page-layer>
       </template>
     </div>
     <md-button class="md-fab md-primary" @click="showDialog = true">
@@ -15,7 +15,8 @@
 
       <md-dialog-content>
         <div class="layer-templates-list">
-          <div class="layer-template" v-for="(template, index) in layerTemplates" :key="index" @click="selectedLayer = index">
+          <div class="layer-template" v-for="(template, index) in layerTemplates" :key="index"
+               @click="selectedLayer = index">
             <div class="layer-template-image" :class="selectedLayer === index ? 'selected md-elevation-7' : ''"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}"></div>
             <p>{{ template.name }}</p>
@@ -60,8 +61,6 @@
     components: { PageLayer },
     data () {
       return {
-        activePage: 1,
-        totalPages: 6,
         pageLayers: [
           tempLayer
         ],
@@ -78,6 +77,14 @@
       removeLayer () {
         return false;
       },
+    },
+    computed: {
+      totalPages () {
+        return this.$store.state.story.data.pages.length;
+      },
+      activePage () {
+        return this.$store.state.story.selected.page;
+      }
     }
   }
 </script>

@@ -54,9 +54,6 @@ export const SAVE_AMP_STORY = (state, story) => {
       "pages": story.data.pages,
     }
   };
-  console.log('=======INSERT DATA========');
-  console.log(data);
-  console.log('==========================');
 
   const api = Vue.$store.state.story.id ? 'update' : 'create';
 
@@ -65,4 +62,10 @@ export const SAVE_AMP_STORY = (state, story) => {
   }, (error) => {
     console.log(error);
   }).catch(Vue.handleClientError);
+};
+
+export const SELECT_AMP_STORY = (state, selected) => {
+  state.story.selected.page = selected.page;
+  state.story.selected.layer = selected.layer;
+  state.story.selected.element = selected.element;
 };

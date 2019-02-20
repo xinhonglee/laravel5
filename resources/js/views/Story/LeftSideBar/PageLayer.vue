@@ -7,7 +7,7 @@
     <div class="layer-setting">
       <span @click="toggleSetting = !toggleSetting"><md-icon>settings</md-icon></span>
       <div class="setting-pane md-elevation-3" v-if="toggleSetting">
-         <b-link @click="removeLayer">Remove</b-link>
+        <b-link @click="removeLayer">Remove</b-link>
       </div>
     </div>
     <div class="layer-elements">
@@ -15,7 +15,9 @@
         <template v-if="isGridArea(layer.template)">
           <div class="element-grid-area" v-html="getGridAreaName(element.gridArea)"></div>
         </template>
-        <div class="element-type">[ {{ getElementName(element.type)}} ]</div>
+        <div class="element-type" :class="isSelected(index) ? 'selected' : ''"
+             @click="selectElement(index)">[ {{ getElementName(element.type)}} ]
+        </div>
       </div>
     </div>
   </div>
@@ -28,7 +30,9 @@
   export default {
     name: "page-layers",
     props: {
-      layer: Object
+      layer: Object,
+      layerIndex: Number,
+      pageIndex: Number,
     },
     data () {
       return {
@@ -38,32 +42,51 @@
       }
     },
     methods: {
-      addElement() {
+      addElement () {
         return false;
       },
-      changeElement() {
+      changeElement () {
         return false;
       },
-      removeLayer() {
+      removeLayer () {
         return false;
       },
-      getLayerTemplateName(slug) {
+      isSelected (index) {
+        if (this.$store.state.story.selected.page !== this.pageIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.layer !== this.layerIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.element !== index) {
+          return false;
+        }
+        return true;
+      },
+      selectElement (index) {
+        this.$store.dispatch('selectAMPStory', {
+          page: this.pageIndex,
+          layer: this.layerIndex,
+          element: index,
+        })
+      },
+      getLayerTemplateName (slug) {
         const template = utils.getLayerTemplate(slug);
         return template ? template.name : '';
       },
-      getLayerTemplateImage(slug) {
+      getLayerTemplateImage (slug) {
         const template = utils.getLayerTemplate(slug);
         return template ? template.image_url : '';
       },
-      getElementName(slug) {
+      getElementName (slug) {
         const element = utils.getElement(slug);
         return element ? element.name : '';
       },
-      getGridAreaName(slug) {
+      getGridAreaName (slug) {
         const grid = utils.getGridArea(slug);
         return grid ? grid.name : '';
       },
-      isGridArea(slug) {
+      isGridArea (slug) {
         return utils.isGridArea(slug)
       },
     },

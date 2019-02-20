@@ -34,6 +34,11 @@ const notSyncedData = {
         posterLandscapeSrc: "image url",
         pages: [],
       },
+      selected: {
+        page: 0,
+        layer: -1,
+        element: -1,
+      }
     },
   };
 
