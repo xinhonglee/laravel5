@@ -15,8 +15,10 @@
         <template v-if="isGridArea(layer.template)">
           <div class="element-grid-area" v-html="getGridAreaName(element.gridArea)"></div>
         </template>
-        <div class="element-type" :class="isSelected(index) ? 'selected' : ''"
-             @click="selectElement(index)">[ {{ getElementName(element.type)}} ]
+        <div class="element-type"
+             :class="isSelected(index) ? 'selected' : ''"
+             @click="selectElement(index)">
+          [ {{ getElementName(element.type)}} ]
         </div>
       </div>
     </div>
@@ -68,7 +70,7 @@
           page: this.pageIndex,
           layer: this.layerIndex,
           element: index,
-        })
+        });
       },
       getLayerTemplateName (slug) {
         const template = utils.getLayerTemplate(slug);

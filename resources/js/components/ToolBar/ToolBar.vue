@@ -2,8 +2,12 @@
   <div class="app-toolbar md-elevation-4">
     <div class="page-index">
       <md-tabs class="md-transparent">
-        <md-tab :id="index.toString()" :md-label="(index + 1).toString()" v-for="(page, index) in story.data.pages"
-                :key="index"></md-tab>
+        <md-tab
+          v-for="(page, index) in story.data.pages"
+          :id="index.toString()"
+          :md-label="(index + 1).toString()"
+          :key="index" @click="selectPage(index)">
+        </md-tab>
       </md-tabs>
     </div>
     <ul class="page-tools">
@@ -16,9 +20,14 @@
 
       <md-dialog-content>
         <div class="story-templates-list">
-          <div class="page-template" v-for="(template, index) in pageTemplates" :key="index" @click="selectedPage = index">
-            <div class="page-template-image" :class="selectedPage === index ? 'selected md-elevation-7' : ''"
-                 :style="{backgroundImage: 'url(' + template.image_url + ')'}"></div>
+          <div class="page-template"
+               v-for="(template, index) in pageTemplates"
+               @click="selectedTemplate = index"
+               :key="index">
+            <div class="page-template-image"
+                 :class="selectedTemplate === index ? 'selected md-elevation-7' : ''"
+                 :style="{backgroundImage: 'url(' + template.image_url + ')'}">
+            </div>
             <p>{{ template.name }}</p>
           </div>
         </div>
@@ -46,12 +55,19 @@
           { id: '6', name: 'Video + Quote', image_url: '', data: [] }
         ],
         showDialog: false,
-        selectedPage: -1,
+        selectedTemplate: -1,
       }
     },
     methods: {
+      selectPage (index) {
+        this.$store.dispatch('selectAMPStory', {
+          page: index,
+          layer: -1,
+          element: -1,
+        });
+      },
       addNewPage () {
-        if(this.selectedPage < 0) {
+        if (this.selectedTemplate < 0) {
           Vue.alertBox({
             title: 'Template Selection Error',
             text: "Please select one of the existing templates!",
@@ -59,11 +75,21 @@
           });
         }
 
+        // add page template
         let insert = this.story;
-        insert.data.pages.push(this.pageTemplates[this.selectedPage].data);
+        insert.data.pages.push(this.pageTemplates[this.selectedTemplate].data);
         this.$store.dispatch('saveAMPStory', insert);
-        this.selectedPage = -1;
 
+        this.selectedTemplate = -1;
+
+        // select page action
+        this.$store.dispatch('selectAMPStory', {
+          page: this.story.data.pages.length - 1,
+          layer: -1,
+          element: -1,
+        });
+
+        // close dialog
         this.showDialog = false;
       },
     },
