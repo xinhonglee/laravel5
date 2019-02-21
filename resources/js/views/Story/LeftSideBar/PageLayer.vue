@@ -13,12 +13,12 @@
     <div class="layer-elements">
       <div class="element" v-for="(element, index) of layer.elements" :key="index">
         <template v-if="isGridArea(layer.template)">
-          <div class="element-grid-area" v-html="getGridAreaName(element.gridArea)"></div>
+          <div class="element-grid-area" v-html="getGridAreaName(element['grid-area'])"></div>
         </template>
         <div class="element-type"
              :class="isSelected(index) ? 'selected' : ''"
              @click="selectElement(index)">
-          [ {{ getElementName(element.type)}} ]
+          [<span>{{ getElementName(element.type)}}</span>]
         </div>
       </div>
     </div>

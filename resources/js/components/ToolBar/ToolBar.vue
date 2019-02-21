@@ -6,7 +6,8 @@
           v-for="(page, index) in story.data.pages"
           :id="index.toString()"
           :md-label="(index + 1).toString()"
-          :key="index" @click="selectPage(index)">
+          :key="index"
+          @click="selectPage(index)">
         </md-tab>
       </md-tabs>
     </div>
@@ -47,12 +48,12 @@
     data () {
       return {
         pageTemplates: [
-          { id: '1', name: 'Blank', image_url: '', data: [] },
-          { id: '2', name: 'Title', image_url: '', data: [] },
-          { id: '3', name: 'Video + Text + Context', image_url: '', data: [] },
-          { id: '4', name: 'Video + Text', image_url: '', data: [] },
-          { id: '5', name: 'Video + Context', image_url: '', data: [] },
-          { id: '6', name: 'Video + Quote', image_url: '', data: [] }
+          { id: '1', name: 'Blank', image_url: '', data: {layers: []} },
+          { id: '2', name: 'Title', image_url: '', data: {layers: []} },
+          { id: '3', name: 'Video + Text + Context', image_url: '', data: {layers: []} },
+          { id: '4', name: 'Video + Text', image_url: '', data: {layers: []} },
+          { id: '5', name: 'Video + Context', image_url: '', data: {layers: []} },
+          { id: '6', name: 'Video + Quote', image_url: '', data: {layers: []} }
         ],
         showDialog: false,
         selectedTemplate: -1,

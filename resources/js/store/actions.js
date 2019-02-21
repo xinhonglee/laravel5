@@ -29,3 +29,7 @@ export const saveAMPStory = ({ commit }, story) => {
 export const selectAMPStory = ({commit}, selected) => {
   commit('SELECT_AMP_STORY', selected);
 };
+
+export const clearAMPStory = ({commit}) => {
+  commit('CLEAR_AMP_STORY')
+};

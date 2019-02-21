@@ -55,17 +55,44 @@ export const SAVE_AMP_STORY = (state, story) => {
     }
   };
 
-  const api = Vue.$store.state.story.id ? 'update' : 'create';
-
-  Vue.$http.put(`/story/${api}`, data).then((response) => {
-    Vue.$store.dispatch('updateAMPStory', response.data);
-  }, (error) => {
-    console.log(error);
-  }).catch(Vue.handleClientError);
+  if(!_.isNil(Vue.$store.state.story.id)) {
+    Vue.$http.put(`/story/update`, data).then((response) => {
+      Vue.$store.dispatch('updateAMPStory', response.data);
+    }, (error) => {
+      console.log(error);
+    }).catch(Vue.handleClientError);
+  } else {
+    Vue.$http.post(`/story/create`, data).then((response) => {
+      Vue.$store.dispatch('updateAMPStory', response.data);
+    }, (error) => {
+      console.log(error);
+    }).catch(Vue.handleClientError);
+  }
 };
 
 export const SELECT_AMP_STORY = (state, selected) => {
   state.story.selected.page = selected.page;
   state.story.selected.layer = selected.layer;
   state.story.selected.element = selected.element;
+};
+
+export const CLEAR_AMP_STORY = (state) => {
+  state.story = {
+    id: null,
+    data: {
+      publisher: "Publisher",
+      publisherLogoSrc: "logo image url",
+      posterPortraitSrc: "portrait poster image url",
+      supportsLandscape: true,
+      backgroundAudio: "audio url",
+      posterSquareSrc: "image url",
+      posterLandscapeSrc: "image url",
+      pages: [],
+    },
+    selected: {
+      page: 0,
+      layer: -1,
+      element: -1,
+    }
+  }
 };

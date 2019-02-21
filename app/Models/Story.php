@@ -34,6 +34,13 @@ class Story extends Model
         return date('c', strtotime($this->date));
     }
 
+    public function getDataAttribute($value){
+        if(is_string($value)){
+            return json_decode($value);
+        }
+        return $value;
+    }
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }

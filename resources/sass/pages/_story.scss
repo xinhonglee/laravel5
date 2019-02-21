@@ -69,6 +69,12 @@
               &.selected, &:hover {
                 background-color: #ccdcec;
               }
+              span {
+                min-width: 70px;
+                display: inline-block;
+                text-align: center;
+                padding: 0 10px;
+              }
             }
 
           }

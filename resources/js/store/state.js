@@ -23,7 +23,7 @@ const notSyncedData = {
       editable: false,
     },
     story: {
-      id: '',
+      id: null,
       data: {
         publisher: "Publisher",
         publisherLogoSrc: "logo image url",

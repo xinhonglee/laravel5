@@ -26,4 +26,11 @@ class StoryPageTemplate extends Model
     protected $attributes = [
         'status' => 'publish',
     ];
+
+    public function getDataAttribute($value){
+        if(is_string($value)){
+            return json_decode($value);
+        }
+        return $value;
+    }
 }

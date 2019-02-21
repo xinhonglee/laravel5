@@ -108,7 +108,7 @@
         let data = {
           "name": this.addTemplateName,
           "image_url": this.addTemplateImageUrl,
-          "data": JSON.parse(this.addJsonString),
+          "data": this.addJsonString,
         };
         this.$http.post('/admin/create-story-template', data).then((response) => {
           Vue.unBlock();
@@ -130,7 +130,7 @@
           "id": this.pageTemplates[this.selectedTemplate],
           "name": this.updateTemplateName,
           "image_url": this.updateTemplateImageUrl,
-          "data": JSON.parse(this.updateJsonString),
+          "data": this.updateJsonString,
         };
         this.$http.put('/admin/update-story-template', data).then((response) => {
           Vue.unBlock();

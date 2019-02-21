@@ -7,92 +7,19 @@
         <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-fab md-primary btn-poss-new-item">
+    <md-button class="md-fab md-primary btn-poss-new-item" @click="redirectToCreateStory">
       <md-icon>add</md-icon>
     </md-button>
   </div>
 </template>
 
 <script>
-  const data = [
-    {
-      id: 1,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Lisa Freeman',
-      owner_id: 2,
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 2,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Lisa Freeman',
-      owner_id: 2,
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 3,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      owner_id: 1,
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 4,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      owner_id: 1,
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 5,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      owner_id: 1,
-      last_update: 'Jan 10, 2019',
-    },
-    {
-      id: 6,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Lisa Freeman',
-      owner_id: 2,
-      last_update: 'Jan 10 2019',
-    },
-    {
-      id: 7,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Lisa Freeman',
-      owner_id: 2,
-      last_update: 'Jan 10 2019',
-    },
-    {
-      id: 8,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      owner_id: 1,
-      last_update: 'Jan 10 2019',
-    },
-    {
-      id: 9,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      owner_id: 2,
-      last_update: 'Jan 10 2019',
-    },
-    {
-      id: 10,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      owner: 'Admin',
-      owner_id: 1,
-      last_update: 'Jan 10 2019',
-    }
-  ];
-
   export default {
     name: "stories",
     data () {
       return {
-        stories: data,
-        backStories: data,
+        stories: [],
+        backStories: [],
       }
     },
     methods: {
@@ -108,9 +35,31 @@
       redirectToStory(story) {
         this.$store.dispatch('updateAppTitle', story.title);
         this.$router.push(`/backoffice/story/${story.id}`);
-      }
+      },
+      redirectToCreateStory() {
+        this.$router.push('/backoffice/story');
+      },
+      loadStories() {
+        Vue.block();
+        this.$http.get('/story/list').then((response) => {
+          Vue.unBlock();
+          this.stories = response.data.map((story) => {
+            return {
+              'id': story.id,
+              'title': story.name,
+              'owner': story.user.name,
+              'owner_id': story.user.id,
+              'last_update': story.updated_at ? story.updated_at : '',
+            }
+          });
+          this.backStories = this.stories;
+        }, (error) => {
+          Vue.unBlock();
+        }).catch(Vue.handleClientError);
+      },
     },
     mounted() {
+      this.loadStories();
       this.$store.dispatch('updateAppTitle', 'Stories');
       Vue.$on('user:select', (userName) => {
         this.filterdByUser(userName);

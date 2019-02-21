@@ -60,6 +60,11 @@ export default new Router({
           component: Story
         },
         {
+          path: 'story',
+          name: 'Story',
+          component: Story
+        },
+        {
           path: 'analytics',
           name: 'Analytics',
           component: Analytics
