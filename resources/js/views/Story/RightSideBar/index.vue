@@ -5,13 +5,13 @@
       <md-divider></md-divider>
       <md-tabs class="md-transparent md-no-animation" md-dynamic-height md-border-bottom md-no-ink-bar>
         <md-tab id="tab-story-setting" md-label="SETTINGS">
-          <property-settings :element="element.type"></property-settings>
+          <property-settings :element="element"></property-settings>
         </md-tab>
         <md-tab id="tab-story-design" md-label="DESIGN">
-          <property-design :element="element.type"></property-design>
+          <property-design :element="element"></property-design>
         </md-tab>
         <md-tab id="tab-story-animation" md-label="ANIMATION">
-          <property-animation :element="element.type"></property-animation>
+          <property-animation :element="element"></property-animation>
         </md-tab>
       </md-tabs>
     </template>
@@ -37,14 +37,25 @@
       }
     },
     methods: {
-      getPropertyName(slug) {
+      getPropertyName (slug) {
         const element = utils.getElement(slug);
         return element ? element.name : '';
       },
     },
-    mounted() {
+    mounted () {
       Vue.$on('setting:properties', (data) => {
-        console.log(data);
+        const element = _deepmerge(this.element, data);
+        console.log(">>>>>>>>>>>>>>");
+        console.log(element);
+
+        const pages = this.$store.state.story.data.pages;
+        const selected = this.$store.state.story.selected;
+        pages[selected.page].layers[selected.layer].elements[selected.element] = element;
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          }
+        });
       });
     },
     computed: {
@@ -58,7 +69,7 @@
         return null;
       },
     },
-    beforeDestroy() {
+    beforeDestroy () {
       Vue.$off('setting:properties');
     },
   }

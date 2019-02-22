@@ -23,15 +23,60 @@
   export default {
     name: "property-animation",
     props: {
-      element: String
+      element: Object
     },
-    data() {
-      return {
-        animationIn: '',
-        animationInDuration: '',
-        animationInDelay: '',
-        animationInAfter: '',
-      }
+    data () {
+      return {}
+    },
+    computed: {
+      animationIn: {
+        get () {
+          if (!_.isNil(this.element && this.element['animate-in'])) {
+            return this.element['animate-in'];
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.animationIn !== value)
+            Vue.$emit('setting:properties', { 'animate-in': value });
+        }, 2000),
+      },
+      animationInDuration: {
+        get () {
+          if (!_.isNil(this.element && this.element['animate-in-duration'])) {
+            return this.element['animate-in-duration'];
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.animationInDuration !== value)
+            Vue.$emit('setting:properties', { 'animate-in-duration': value });
+        }, 2000),
+      },
+      animationInDelay: {
+        get () {
+          if (!_.isNil(this.element && this.element['animate-in-delay'])) {
+            return this.element['animate-in-delay'];
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.animationInDelay !== value)
+            Vue.$emit('setting:properties', { 'animate-in-delay': value });
+        }, 2000),
+      },
+      animationInAfter: {
+        get () {
+          if (!_.isNil(this.element && this.element['animate-in-after'])) {
+            return this.element['animate-in-after'];
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.animationInAfter !== value)
+            Vue.$emit('setting:properties', { 'animate-in-after': value });
+        }, 2000),
+      },
     },
   }
 </script>

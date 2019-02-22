@@ -77,9 +77,13 @@
     },
     methods: {
       addLayer () {
-        let insert = this.story;
-        insert.data.pages[this.story.selected.page].layers.push(tempLayer);
-        this.$store.dispatch('saveAMPStory', insert);
+        let pages = this.story.data.pages;
+        pages[this.story.selected.page].layers.push(tempLayer);
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          }
+        });
 
         this.showDialog = false;
       },

@@ -31,6 +31,10 @@ const isGridArea = (slug) => {
   return slug === 'thirds';
 };
 
+const serializeData = (data1, data2) => {
+
+};
+
 export default {
   getLayerTemplate,
   getElement,

@@ -2,15 +2,15 @@
   <div>
     <md-field>
       <label>Width</label>
-      <md-input v-model="width"></md-input>
+      <md-input v-model="elementWidth"></md-input>
     </md-field>
     <md-field>
       <label>Height</label>
-      <md-input v-model="height"></md-input>
+      <md-input v-model="elementHeight"></md-input>
     </md-field>
     <md-field>
       <label>Layout</label>
-      <md-select v-model="layout">
+      <md-select v-model="elementLayout">
         <md-option v-for="(opt, index) in layoutOptions" :value="opt.slug" :key="index">
           {{ opt.name }}
         </md-option>
@@ -23,13 +23,51 @@
   import constants from '../../constants';
   export default {
     name: "design-image",
+    props: {
+      el: Object
+    },
     data() {
       return {
-        width: '',
-        height: '',
-        layout: '',
-        layoutOptions: constants.elementLayouts
+        layoutOptions: constants.elementLayouts,
       }
+    },
+    computed: {
+      elementWidth: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.width)) {
+            return this.el.properties.width;
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.elementWidth !== value)
+            Vue.$emit('setting:properties', { properties: { width: value } });
+        }, 2000),
+      },
+      elementHeight: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.height)) {
+            return this.el.properties.height;
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.elementHeight !== value)
+            Vue.$emit('setting:properties', { properties: { height: value } });
+        }, 2000),
+      },
+      elementLayout: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.layout)) {
+            return this.el.properties.layout;
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.elementLayout !== value)
+            Vue.$emit('setting:properties', { properties: { layout: value } });
+        }, 2000),
+      },
     },
   }
 </script>

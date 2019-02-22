@@ -40,18 +40,19 @@ export const UPDATE_AMP_STORY = (state, story) => {
 };
 
 export const SAVE_AMP_STORY = (state, story) => {
+  let storyData = Vue.$store.state.story.data;
   let data = {
-    "id": story.id,
+    "id": (story && story.id) ? story.id : Vue.$store.state.story.id,
     "name": Vue.$store.state.app.title,
     "data": {
-      "publisher": story.data.publisher,
-      "publisher-logo-src": story.data.publisherLogoSrc,
-      "poster-portrait-src": story.data.posterPortraitSrc,
-      "supports-landscape": story.data.supportsLandscape,
-      "background-audio": story.data.backgroundAudio,
-      "poster-square-src": story.data.posterSquareSrc,
-      "poster-landscape-src": story.data.posterLandscapeSrc,
-      "pages": story.data.pages,
+      "publisher": (story && story.data.publisher) ? story.data.publisher : storyData.publisher,
+      "publisher-logo-src": (story && story.data.publisherLogoSrc) ? story.data.publisherLogoSrc : storyData.publisherLogoSrc,
+      "poster-portrait-src": (story && story.data.posterPortraitSrc) ? story.data.posterPortraitSrc : storyData.posterPortraitSrc,
+      "supports-landscape": (story && story.data.supportsLandscape) ? story.data.supportsLandscape : storyData.supportsLandscape,
+      "background-audio": (story && story.data.backgroundAudio) ? story.data.backgroundAudio : storyData.backgroundAudio,
+      "poster-square-src": (story && story.data.posterSquareSrc) ? story.data.posterSquareSrc : storyData.posterSquareSrc,
+      "poster-landscape-src": (story && story.data.posterLandscapeSrc) ? story.data.posterLandscapeSrc : storyData.posterLandscapeSrc,
+      "pages": (story && story.data.pages) ? story.data.pages : storyData.pages,
     }
   };
 
