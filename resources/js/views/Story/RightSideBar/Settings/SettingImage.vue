@@ -2,15 +2,15 @@
   <div>
     <md-field>
       <label>Id</label>
-      <md-input v-model="id"></md-input>
+      <md-input v-model="property.id"></md-input>
     </md-field>
     <md-field>
       <label>Class</label>
-      <md-input v-model="eClass"></md-input>
+      <md-input v-model="property.class"></md-input>
     </md-field>
     <md-field>
       <label>Image URL</label>
-      <md-input v-model="src"></md-input>
+      <md-input v-model="property.src"></md-input>
     </md-field>
   </div>
 </template>
@@ -20,11 +20,21 @@
     name: "setting-image",
     data () {
       return {
-        id: '',
-        eClass: '',
-        src: '',
+        property: {
+          id: '',
+          class: '',
+          src: '',
+        },
       }
     },
+    watch: {
+      property: {
+        handler(property) {
+          Vue.$emit('setting:properties', property);
+        },
+        deep: true
+      },
+    }
   }
 </script>
 

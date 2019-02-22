@@ -1,17 +1,17 @@
 <template>
   <div class="story-right-sidebar md-elevation-3">
-    <template v-if="element">
+    <template v-if="element && element.type">
       <h4>{{ propertyName }} Properties</h4>
       <md-divider></md-divider>
       <md-tabs class="md-transparent md-no-animation" md-dynamic-height md-border-bottom md-no-ink-bar>
         <md-tab id="tab-story-setting" md-label="SETTINGS">
-          <property-settings :element="element"></property-settings>
+          <property-settings :element="element.type"></property-settings>
         </md-tab>
         <md-tab id="tab-story-design" md-label="DESIGN">
-          <property-design :element="element"></property-design>
+          <property-design :element="element.type"></property-design>
         </md-tab>
         <md-tab id="tab-story-animation" md-label="ANIMATION">
-          <property-animation :element="element"></property-animation>
+          <property-animation :element="element.type"></property-animation>
         </md-tab>
       </md-tabs>
     </template>
@@ -42,6 +42,11 @@
         return element ? element.name : '';
       },
     },
+    mounted() {
+      Vue.$on('setting:properties', (data) => {
+        console.log(data);
+      });
+    },
     computed: {
       element () {
         const selected = this.$store.state.story.selected;
@@ -52,7 +57,10 @@
         }
         return null;
       },
-    }
+    },
+    beforeDestroy() {
+      Vue.$off('setting:properties');
+    },
   }
 </script>
 

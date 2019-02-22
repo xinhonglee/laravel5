@@ -1,10 +1,10 @@
 <template>
   <div class="property-settings">
     <template v-if="element">
-      <setting-rich-text v-if="this.element.type === 'richtext'"></setting-rich-text>
-      <setting-image v-if="this.element.type === 'img'"></setting-image>
-      <setting-video v-if="this.element.type === 'video'"></setting-video>
-      <setting-audio v-if="this.element.type === 'audio'"></setting-audio>
+      <setting-rich-text v-if="this.element === 'richtext'"></setting-rich-text>
+      <setting-image v-if="this.element === 'img'"></setting-image>
+      <setting-video v-if="this.element === 'video'"></setting-video>
+      <setting-audio v-if="this.element === 'audio'"></setting-audio>
     </template>
   </div>
 </template>
@@ -23,7 +23,7 @@
       SettingRichText
     },
     props: {
-      element: Object
+      element: String
     },
     methods: {
     },

@@ -1,9 +1,9 @@
 <template>
   <div class="property-design">
     <template v-if="element">
-      <design-image v-if="this.element.type === 'img'"></design-image>
-      <design-audio v-if="this.element.type === 'audio'"></design-audio>
-      <design-video v-if="this.element.type === 'video'"></design-video>
+      <design-image v-if="this.element === 'img'"></design-image>
+      <design-audio v-if="this.element === 'audio'"></design-audio>
+      <design-video v-if="this.element === 'video'"></design-video>
     </template>
   </div>
 </template>
@@ -20,7 +20,7 @@
       DesignImage,
     },
     props: {
-      element: Object
+      element: String
     },
   }
 </script>

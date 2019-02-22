@@ -2,15 +2,15 @@
   <div>
     <md-field>
       <label>Id</label>
-      <md-input></md-input>
+      <md-input v-model="property.id"></md-input>
     </md-field>
     <md-field>
       <label>Class</label>
-      <md-input></md-input>
+      <md-input v-model="property.class"></md-input>
     </md-field>
     <br>
     <p style="color:#6d6d6d">[ HTML ]</p>
-    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+    <ckeditor :editor="editor" v-model="property.html" :config="editorConfig"></ckeditor>
   </div>
 </template>
 
@@ -22,7 +22,11 @@
     data () {
       return {
         editor: ClassicEditor,
-        editorData: '<p>Content of the editor.</p>',
+        property: {
+          id: '',
+          class: '',
+          html: '<p>Content of the editor.</p>',
+        },
         editorConfig: {
           toolbar: {
             items: [
@@ -33,6 +37,14 @@
           }
         }
       };
+    },
+    watch: {
+      property: {
+        handler(property) {
+          Vue.$emit('setting:properties', property);
+        },
+        deep: true
+      },
     }
   }
 </script>

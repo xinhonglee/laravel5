@@ -23,7 +23,7 @@
   export default {
     name: "property-animation",
     props: {
-      element: Object
+      element: String
     },
     data() {
       return {
