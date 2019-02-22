@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: "settings-audio"
+    name: "setting-video"
   }
 </script>
 

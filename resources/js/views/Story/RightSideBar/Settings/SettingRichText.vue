@@ -18,7 +18,7 @@
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
   export default {
-    name: "settings-rich-text",
+    name: "setting-rich-text",
     data () {
       return {
         editor: ClassicEditor,

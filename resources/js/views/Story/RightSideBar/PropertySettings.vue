@@ -1,32 +1,31 @@
 <template>
   <div class="property-settings">
-    <settings-rich-text></settings-rich-text>
-    <!--<settings-image></settings-image>-->
-    <!--<settings-video></settings-video>-->
-    <!--<settings-audio></settings-audio>-->
+    <template v-if="element">
+      <setting-rich-text v-if="this.element.type === 'richtext'"></setting-rich-text>
+      <setting-image v-if="this.element.type === 'img'"></setting-image>
+      <setting-video v-if="this.element.type === 'video'"></setting-video>
+      <setting-audio v-if="this.element.type === 'audio'"></setting-audio>
+    </template>
   </div>
 </template>
 
 <script>
-  import SettingsRichText from "./Settings/SettingsRichText";
-  import SettingsImage from "./Settings/SettingsImage";
-  import SettingsVideo from "./Settings/SettingsVideo";
-  import SettingsAudio from "./Settings/SettingsAudio";
+  import SettingRichText from "./Settings/SettingRichText";
+  import SettingImage from "./Settings/SettingImage";
+  import SettingVideo from "./Settings/SettingVideo";
+  import SettingAudio from "./Settings/SettingAudio";
   export default {
     name: "property-settings",
     components: {
-      SettingsAudio,
-      SettingsVideo,
-      SettingsImage,
-      SettingsRichText
+      SettingAudio,
+      SettingVideo,
+      SettingImage,
+      SettingRichText
+    },
+    props: {
+      element: Object
     },
     methods: {
-      isSelected(param = '') {
-        if(param) {
-
-        }
-        return false;
-      }
     },
   }
 </script>

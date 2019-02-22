@@ -9,9 +9,9 @@ const elementTypes = [
   { slug: 'richtext', name: 'Rich Text' },
   { slug: 'img', name: 'Image' },
   { slug: 'video', name: 'Video' },
+  { slug: 'audio', name: 'Audio' },
   { slug: 'timeago', name: 'Time Ago' },
   { slug: 'fit-text', name: 'Fit Text' },
-  { slug: 'audio', name: 'Audio' },
   { slug: 'gfycat', name: 'Gfycat' },
   { slug: 'google-vr-view-image', name: 'Google VR Image' },
 ];
