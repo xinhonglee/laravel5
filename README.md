@@ -33,8 +33,41 @@ php artisan db:seed
 php artisan passport:client --personal
 </code>
 
-### 5. NPM Setup
+### 5. Redis Setup
+Mac OS
+- Install<br>
+<code>
+brew install redis
+</code>
+- Start <br>
+<code>
+redis-server
+</code>
 
+- Launch Redis on computer starts<br>
+<code>
+ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+</code>
+- Start Redis server via “launchctl” <br>
+<code>
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+</code>
+
+Ubuntu
+- Install<br>
+<code>
+apt-get update
+</code>
+<br>
+<code>
+apt-get install redis-server
+</code>
+- Start <br>
+<code>
+redis-server
+</code>
+
+### 6. NPM Setup
 <code>
 npm install
 </code>
