@@ -40,30 +40,23 @@ Mac OS
 <code>
 brew install redis
 </code>
-<br>
 - Start
 <br>
 <code>
 redis-server
 </code>
-<br>
-
 - Launch Redis on computer starts
 <br>
 <code>
 ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
 </code>
-<br>
-
 - Start Redis server via “launchctl”
 <br>
 <code>
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
 </code>
-<br>
 
 Ubuntu
-
 - Install
 <br>
 <code>
@@ -73,7 +66,6 @@ apt-get update
 <code>
 apt-get install redis-server
 </code>
-<br>
 - Start 
 <br>
 <code>
