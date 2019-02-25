@@ -42,6 +42,10 @@
         this.$store.dispatch('clearAMPStory');
       }
     },
+    beforeDestroy() {
+      this.$store.dispatch('deleteAMPStoryFromRedis');
+      this.$store.dispatch('clearAMPStory');
+    },
     computed: {
       editable() {
         return this.$store.state.app.editable;

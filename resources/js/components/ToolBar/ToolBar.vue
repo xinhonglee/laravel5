@@ -79,6 +79,8 @@
         // add page template
         let insert = this.story;
         insert.data.pages.push(this.pageTemplates[this.selectedTemplate].data);
+        insert.publish = false;
+
         this.$store.dispatch('saveAMPStory', insert);
 
         this.selectedTemplate = -1;

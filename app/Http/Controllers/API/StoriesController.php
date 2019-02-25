@@ -41,6 +41,9 @@ class StoriesController extends BaseController
             $result = Story::find($story_id)
                 ->load(['user:id,name']);
 
+            // Redis SET story:id:{story_id}
+            Redis::set('story:id:' . $story_id, json_encode($result));
+
             return $this->sendResponse($result);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
@@ -74,7 +77,8 @@ class StoriesController extends BaseController
                 'data' => json_encode($input["data"])
             ];
             $story = Story::create($insert);
-
+            // Redis SET story:id:{story_id}
+            Redis::set('story:id:' . $story['id'], json_encode($story));
             return $this->sendResponse($story);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());

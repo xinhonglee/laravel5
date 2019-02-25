@@ -26,6 +26,10 @@ export const saveAMPStory = ({ commit }, story) => {
   commit('SAVE_AMP_STORY', story);
 };
 
+export const deleteAMPStoryFromRedis = ({ commit }) => {
+  commit('DELETE_AMP_STORY_REDIS');
+};
+
 export const selectAMPStory = ({commit}, selected) => {
   commit('SELECT_AMP_STORY', selected);
 };

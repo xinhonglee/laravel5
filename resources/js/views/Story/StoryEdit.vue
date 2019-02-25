@@ -25,6 +25,15 @@
         layer: -1,
         element: -1,
       });
+      Vue.$on('app:publish', () => {
+        this.$store.dispatch('saveAMPStory', {data: {}, publish: true});
+      });
+      Vue.$on('app:setting', () => {
+      });
+    },
+    beforeDestroy () {
+      Vue.$off('app:publish');
+      Vue.$off('app:setting');
     },
     methods: {
     }

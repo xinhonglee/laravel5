@@ -38,7 +38,8 @@ const notSyncedData = {
         page: 0,
         layer: -1,
         element: -1,
-      }
+      },
+      new: false,
     },
   };
 

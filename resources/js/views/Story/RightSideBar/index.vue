@@ -54,7 +54,8 @@
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages
-          }
+          },
+          publish: false
         });
       });
     },

@@ -55,20 +55,58 @@ export const SAVE_AMP_STORY = (state, story) => {
       "pages": (story && story.data.pages) ? story.data.pages : storyData.pages,
     }
   };
-
-  if(!_.isNil(Vue.$store.state.story.id)) {
-    Vue.$http.put(`/story/update`, data).then((response) => {
-      Vue.$store.dispatch('updateAMPStory', response.data);
-    }, (error) => {
-      console.log(error);
-    }).catch(Vue.handleClientError);
+  if (story.publish) {
+    Vue.block();
+    if (!_.isNil(Vue.$store.state.story.id) && !Vue.$store.state.story.new) {
+      Vue.$http.put(`/story/update`, data).then((response) => {
+        Vue.$store.dispatch('updateAMPStory', response.data);
+        Vue.unBlock();
+        Vue.alertBox({
+          title: 'Success',
+          text: "Successfully published this story!",
+          type: 'success'
+        });
+      }, (error) => {
+        console.log(error);
+      }).catch(Vue.handleClientError);
+    } else {
+      Vue.$http.post(`/story/create`, data).then((response) => {
+        Vue.$store.dispatch('updateAMPStory', response.data);
+        Vue.$store.state.story.new = false;
+        Vue.unBlock();
+        Vue.alertBox({
+          title: 'Success',
+          text: "Successfully published this story!",
+          type: 'success'
+        });
+      }, (error) => {
+        console.log(error);
+        Vue.unBlock();
+      }).catch(Vue.handleClientError);
+    }
   } else {
-    Vue.$http.post(`/story/create`, data).then((response) => {
+    if(_.isNil(Vue.$store.state.story.id)) {
+      data.id = new Date();
+      Vue.$store.state.story.new = true;
+    }
+    Vue.$http.post(`/story/redis/set`, data).then((response) => {
       Vue.$store.dispatch('updateAMPStory', response.data);
     }, (error) => {
       console.log(error);
     }).catch(Vue.handleClientError);
   }
+};
+
+export const DELETE_AMP_STORY_REDIS = (state) => {
+  const data = {
+    id: Vue.$store.state.story.id
+  };
+  Vue.$http.post(`/story/redis/delete`, data).then((response) => {
+    console.log('DELETE STORY FROM REDIS', response);
+    Vue.$store.dispatch('clearAMPStory');
+  }, (error) => {
+    console.log(error);
+  }).catch(Vue.handleClientError);
 };
 
 export const SELECT_AMP_STORY = (state, selected) => {
@@ -94,6 +132,7 @@ export const CLEAR_AMP_STORY = (state) => {
       page: 0,
       layer: -1,
       element: -1,
-    }
+    },
+    new: false,
   }
 };
