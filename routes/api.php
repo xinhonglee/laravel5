@@ -69,6 +69,12 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::post('/delete', 'StoriesController@delete');
 
+        Route::get('/redis/{id}', 'StoriesController@getStoryFromRedis');
+
+        Route::post('/redis/set', 'StoriesController@setStoryToRedis');
+
+        Route::post('/redis/delete', 'StoriesController@deleteStoryFromRedis');
+
     });
 
     Route::group(['prefix' => 'story-template', 'middleware' => 'auth:api'], function () {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 use App\Models\Story;
 use Validator;
 
@@ -137,6 +138,73 @@ class StoriesController extends BaseController
 
             $result = $story->delete();
             return $this->sendResponse($result);
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
+    }
+
+    /**
+     * Get Story From Redis
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getStoryFromRedis(Request $request)
+    {
+        $story_id = $request->route('id');
+        try {
+            $story = Redis::get('story:id:' . $story_id);
+
+            return $this->sendResponse(json_decode($story));
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
+    }
+
+    /**
+     * Get Story From Redis
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setStoryToRedis(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'data' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendValidationError($validator->errors());
+        }
+        try {
+            $input = $request->all();
+            Redis::set('story:id:' . $input["id"], json_encode($input['data']));
+
+            return $this->sendResponse($input);
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
+    }
+
+    /**
+     * Delete Story From Redis
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteStoryFromRedis(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendValidationError($validator->errors());
+        }
+        try {
+            $input = $request->all();
+            Redis::del('story:id:' . $input["id"]);
+
+            return $this->sendResponse(['message' => 'success']);
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
