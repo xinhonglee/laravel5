@@ -101,7 +101,7 @@
         if (!_.isNil(this.$store.state.story)) {
           return this.$store.state.story;
         }
-      }
+      },
     }
   }
 </script>
