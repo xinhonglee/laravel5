@@ -35,30 +35,25 @@ php artisan passport:client --personal
 
 ### 5. Redis Setup
 Mac OS
-- Install
-<br>
+- Install <br>
 <code>
 brew install redis
 </code>
-- Start
-<br>
+- Start <br>
 <code>
 redis-server
 </code>
-- Launch Redis on computer starts
-<br>
+- Launch Redis on computer starts <br>
 <code>
 ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
 </code>
-- Start Redis server via “launchctl”
-<br>
+- Start Redis server via “launchctl” <br>
 <code>
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
 </code>
 
 Ubuntu
-- Install
-<br>
+- Install <br>
 <code>
 apt-get update
 </code>
@@ -66,8 +61,7 @@ apt-get update
 <code>
 apt-get install redis-server
 </code>
-- Start 
-<br>
+- Start <br>
 <code>
 redis-server
 </code>
