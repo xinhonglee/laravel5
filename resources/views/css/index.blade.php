@@ -45,10 +45,10 @@ a, a:visited, a:hover {
 h2.section {
   margin: 3.17vw 6.75vw 3.17vw 6.75vw;
   font-family: 'rationalextra_bold';
-  font-size: 4.37vw;
-  line-height: 3.57vw;
+  font-size: 3.71vw;
+  line-height: 3.03vw;
   display: block;
-  border-bottom: solid 0.79vw #262626;
+  border-bottom: solid 0.67vw #262626;
 }
 @media (max-width:40rem) {
   h2.section {
@@ -708,7 +708,7 @@ amp-img.cover img {
   }
 }
 .social {
-  padding-top: 360px;
+  padding-top: 260px;
   padding-bottom: 360px;
   background-color: #262626;
   width: 100%;

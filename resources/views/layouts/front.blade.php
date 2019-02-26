@@ -111,7 +111,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" target="_blank">
+					<a href="https://www.snapchat.com/discover/Loopsider/1993111828" target="_blank">
 						<amp-img src="/assets/snapchat_black.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
 						<amp-img src="/assets/snapchat_green.svg"  media="(min-width: 52.06rem)" width="27" height="26" layout="fixed"></amp-img>
 					</a>

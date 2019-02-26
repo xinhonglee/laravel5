@@ -332,8 +332,8 @@
 			position: absolute;
 			z-index: 2;
 
-			width: 200px;
-			height: 200px;
+			width: 150px;
+			height: 150px;
 
 			background-image: url(/assets/click-to-play.png);
 			background-repeat: no-repeat;
