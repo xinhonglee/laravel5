@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
-class NewsletterController extends BaseController
+class NewsletterController extends Controller
 {
     public function subscribe(Request $request) {
       if ($request->isMethod('post')) {
