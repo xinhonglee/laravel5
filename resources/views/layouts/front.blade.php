@@ -17,6 +17,7 @@
 
 	<script custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" async=""></script>
 	<script custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js" async=""></script>
+	<script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
 	<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
 	<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
 	<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
@@ -28,6 +29,8 @@
 	@if ($css=="corporate")
 	<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 	@endif
+	
+	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
@@ -45,6 +48,29 @@
 </head>
 
 <body>
+
+	<amp-analytics type="gtag" data-credentials="include">
+		<script type="application/json">
+		{
+		  "vars" : {
+			"gtag_id": "UA-131939849-1",
+			"config" : {
+			  "UA-131939849-1": { "groups": "default" }
+			}
+		  }
+		}
+		</script>
+	</amp-analytics>
+	
+	<amp-user-notification id="cookie-notification"
+	  layout="nodisplay">
+	  <div class="message">
+		  En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour réaliser des statistiques de visites.
+		  <br />
+		  Pour en savoir plus, vous pouvez consulter notre <a href="/mentions-legales">Politique de confidentialité</a>.
+	  </div>
+	  <button on="tap:cookie-notification.dismiss">J'accepte</button>
+	</amp-user-notification>
 
 	<!-- Start Navbar -->
 	<header class="ampstart-headerbar fixed flex justify-start items-center top-0 right-0 left-0 pl2 pr2 ">

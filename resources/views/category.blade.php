@@ -8,7 +8,7 @@
 
 <div class="header-img">
 	<div class="gradient"></div>
-	<amp-img class="cover" layout="fill" src="/assets/banner1.jpg"></amp-img>
+	<amp-img class="cover" layout="fill" src="/assets/banner_{{ $category->slug }}.jpg"></amp-img>
 </div>
 
 @php ($i = 0)

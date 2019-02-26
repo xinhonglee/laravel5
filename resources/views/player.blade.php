@@ -17,6 +17,7 @@
 
 	<script custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" async=""></script>
 	<script custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js" async=""></script>
+	<script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
 	<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
 	<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
@@ -43,6 +44,8 @@
 	  "contentUrl": "{{$video->video_url}}"
 	}
 	</script>
+	
+	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
@@ -75,6 +78,14 @@
 			font-weight: normal;
 			font-style: normal;
 
+		}
+		
+		@font-face {
+		  font-family: 'rationalmedium';
+		  src: url('/assets/rational-medium.woff2') format('woff2'),
+			 url('/assets/rational-medium.woff') format('woff');
+		  font-weight: normal;
+		  font-style: normal;
 		}
 
 		body {
@@ -601,11 +612,71 @@
 				text-align: center;
 			}
 		}
+		#cookie-notification {
+			padding: 20px;
+			background-color: #262626;
+		}
+		#cookie-notification .message{
+			float: left;
+			font-family: 'rationalmedium';
+			font-size: 16px;
+			line-height: 20px;
+			color: #fff;
+		}
+		#cookie-notification button {
+			float: right;
+			font-family: 'rationalextra_bold';
+			color: #5feb98;
+			padding: 10px 30px 10px 30px;
+			border: solid 2px #5feb98;
+			background-color: transparent;
+			font-size: 16px;
+			text-decoration: none;
+			cursor: pointer;
+			display: inline-block;
+		}
+		@media (max-width:60rem) {
+		  #cookie-notification .message {
+			float: none;
+			text-align: center;
+		  }
+		  #cookie-notification button {
+			float: none;
+			margin-top: 10px;
+		  }
+		  #cookie-notification {
+			text-align: center;
+		  }
+		}
 
 	</style>
 </head>
 
 <body>
+
+	<amp-analytics type="gtag" data-credentials="include">
+		<script type="application/json">
+		{
+		  "vars" : {
+			"gtag_id": "UA-131939849-1",
+			"config" : {
+			  "UA-131939849-1": { "groups": "default" }
+			}
+		  }
+		}
+		</script>
+	</amp-analytics>
+	
+	<amp-user-notification id="cookie-notification"
+	  layout="nodisplay">
+	  <div class="message">
+		  En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies pour réaliser des statistiques de visites.
+		  <br />
+		  Pour en savoir plus, vous pouvez consulter notre <a href="/mentions-legales">Politique de confidentialité</a>.
+	  </div>
+	  <button on="tap:cookie-notification.dismiss">J'accepte</button>
+	</amp-user-notification>
+	
 	<div class="back">
 		<a href="/">
 			Retour
