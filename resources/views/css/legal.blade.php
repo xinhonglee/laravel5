@@ -441,3 +441,39 @@ footer {
     padding: 0;
   }
 }
+#cookie-notification {
+	padding: 20px;
+	background-color: #262626;
+}
+#cookie-notification .message{
+	float: left;
+	font-family: 'rationalmedium';
+	font-size: 16px;
+	line-height: 20px;
+	color: #fff;
+}
+#cookie-notification button {
+	float: right;
+	font-family: 'rationalextra_bold';
+	color: #5feb98;
+	padding: 10px 30px 10px 30px;
+	border: solid 2px #5feb98;
+	background-color: transparent;
+	font-size: 16px;
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+}
+@media (max-width:60rem) {
+  #cookie-notification .message {
+	float: none;
+	text-align: center;
+  }
+  #cookie-notification button {
+	float: none;
+	margin-top: 10px;
+  }
+  #cookie-notification {
+	text-align: center;
+  }
+}
