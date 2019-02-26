@@ -1,7 +1,16 @@
 <template>
   <div class="story-left-sidebar md-elevation-3">
-    <template v-if="story.data.pages.length > 0">
-      <h4>Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}</h4>
+    <template v-if="story.data.pages.length > 0 && story.selected.page >= 0">
+      <div class="sidebar-header">
+        <span class="title">Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}</span>
+        <div class="btn-more" @click="showPageTools = !showPageTools"><md-icon>more_vert</md-icon></div>
+        <div class="page-tools md-elevation-3" v-if="showPageTools">
+          <ul>
+            <li>Duplicate</li>
+            <li @click="showRemovePageDialog=true">Remove</li>
+          </ul>
+        </div>
+      </div>
       <md-divider></md-divider>
       <div class="template-list">
         <template v-for="(layer, index) in story.data.pages[story.selected.page].layers">
@@ -38,6 +47,13 @@
         </md-dialog-actions>
       </md-dialog>
     </template>
+    <md-dialog-confirm
+      :md-active.sync="showRemovePageDialog"
+      md-title="Do you really want to remove this page?"
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="showRemoveLayerDialog = false"
+      @md-confirm="removePage"/>
     <md-dialog-confirm
       :md-active.sync="showRemoveLayerDialog"
       md-title="Do you really want to remove this layer?"
@@ -86,11 +102,13 @@
       return {
         showDialog: false,
         layerTemplates: constants.layerTemplates,
+        showRemovePageDialog: false,
         showRemoveLayerDialog: false,
         showRemoveElementDialog: false,
         selectedLayer: -1,
         removeLayerIndex: -1,
         removeElementIndex: -1,
+        showPageTools: false,
       }
     },
     methods: {
@@ -103,8 +121,23 @@
           },
           publish: false
         });
-
         this.showDialog = false;
+      },
+      removePage() {
+        let pages = this.story.data.pages;
+        pages.splice(this.story.selected.page, 1);
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          },
+          publish: false
+        });
+        this.$store.dispatch('selectAMPStory', {
+          page: -1,
+          layer: -1,
+          element: -1,
+        });
+        this.showPageTools = false;
       },
       removeLayer () {
         let pages = this.story.data.pages;
