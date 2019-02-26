@@ -271,13 +271,19 @@
   <section class="newsletter">
     <h2>Newsletter</h2>
 	<form class="newsletter-form" action-xhr="/subscribe" method="post">
-		<input type="email" value="" name="mce-EMAIL" id="mce-EMAIL" placeholder="exemple@mail.com">
+    @csrf
+		<input type="email" value="" name="mce-EMAIL" id="mce-EMAIL" placeholder="exemple@mail.com" on="submit-success: AMP.setState({'subscribe': event.response.email})">
     <input type="hidden" name="u" value="5c7255b39a1e010463ccfa29d">
     <input type="hidden" name="id" value="544abd0a31">
 		<button id="submit" type="submit" value="Submit">
 			<amp-img src="/assets/arrow_green.svg" media="(max-width: 40rem)" layout="fixed" width="38" height="11"></amp-img>
 			<amp-img src="/assets/arrow_green.svg" media="(min-width: 40.06rem)" layout="fixed" width="64" height="21" ></amp-img>
 		</button>
+    <div submit-success>
+      <template type="amp-mustache">
+        Thanks for subscribing!
+      </template>
+    </div>
 	</form>
   </section>
 
@@ -290,7 +296,7 @@
       <a href="mailto:contact@loopsider.com?subject=Video" target="_blank"><li>Vous souhaitez nous envoyer une vidéo</li></a>
     </ul>
   </section>
-  
+
   <section class="footer-social sm-hide md-hide lg-hide">
   <ul>
     <li>
