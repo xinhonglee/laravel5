@@ -4,8 +4,16 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Loopsider</title>
-	<link rel="canonical" href="#">
+	@if ($css=="index")
+	<title>LOOPSIDER @isset($category)| {{$category->name}} @endisset</title>
+	@elseif ($css=="corporate")
+	<title>LOOPSIDER | A propos</title>
+	@elseif ($css=="legal")
+	<title>LOOPSIDER | Mentions légales</title>
+	@endif
+	<meta name="description" content="LOOPSIDER | Regarder. Comprendre. Partager. Conçu pour les écrans mobiles et les réseaux sociaux, Loopsider est un média d'information en vidéo qui décryptent en images les histoires qui font l’actualité.">
+	
+	<link rel="canonical" href="{{ url()->full() }}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">

@@ -281,7 +281,7 @@
 		</button>
     <div submit-success>
       <template type="amp-mustache">
-        Thanks for subscribing!
+        <p><small>Votre abonnement à notre liste a été confirmé. Merci pour votre inscription !</small></p>
       </template>
     </div>
 	</form>
