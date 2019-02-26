@@ -46,6 +46,16 @@
         }
 
         .layer-template {
+          padding-right: 10px;
+          cursor: pointer;
+          &:hover {
+            background-color: #ccdcec;
+            .btn-remove {
+              display: block;
+              margin-top: 5px;
+            }
+          }
+
           img.template-icon {
             width: 20px;
           }
@@ -68,6 +78,9 @@
               cursor: pointer;
               &.selected, &:hover {
                 background-color: #ccdcec;
+                .btn-remove {
+                  display: block;
+                }
               }
               span {
                 min-width: 70px;
@@ -95,6 +108,11 @@
     .md-button {
       height: 40px !important;
       width: 40px !important;
+    }
+
+    .btn-remove {
+      float: right;
+      display: none;
     }
   }
 

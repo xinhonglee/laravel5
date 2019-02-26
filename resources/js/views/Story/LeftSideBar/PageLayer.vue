@@ -3,12 +3,7 @@
     <div class="layer-template">
       <img class="template-icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
       <div class="template-name">{{ getLayerTemplateName(layer.template)}} Template</div>
-    </div>
-    <div class="layer-setting">
-      <span @click="toggleSetting = !toggleSetting"><md-icon>settings</md-icon></span>
-      <div class="setting-pane md-elevation-3" v-if="toggleSetting">
-        <b-link @click="removeLayer">Remove</b-link>
-      </div>
+      <div class="btn-remove" @click="removeLayer(layerIndex)"><md-icon>delete_outline</md-icon></div>
     </div>
     <div class="layer-elements">
       <div class="element" v-for="(element, index) of layer.elements" :key="index">
@@ -19,6 +14,7 @@
              :class="isSelected(index) ? 'selected' : ''"
              @click="selectElement(index)">
           [<span>{{ getElementName(element.type)}}</span>]
+          <div class="btn-remove" @click="removeElement(layerIndex, index)"><md-icon>delete_outline</md-icon></div>
         </div>
       </div>
     </div>
@@ -50,8 +46,14 @@
       changeElement () {
         return false;
       },
-      removeLayer () {
-        return false;
+      removeElement (layerIndex, elementIndex) {
+        Vue.$emit("remove:element", {
+          layerIndex: layerIndex,
+          elementIndex: elementIndex,
+        });
+      },
+      removeLayer (index) {
+        Vue.$emit("remove:layer", index);
       },
       isSelected (index) {
         if (this.$store.state.story.selected.page !== this.pageIndex) {

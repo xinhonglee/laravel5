@@ -38,6 +38,20 @@
         </md-dialog-actions>
       </md-dialog>
     </template>
+    <md-dialog-confirm
+      :md-active.sync="showRemoveLayerDialog"
+      md-title="Do you really want to remove this layer?"
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="showRemoveLayerDialog = false"
+      @md-confirm="removeLayer"/>
+    <md-dialog-confirm
+      :md-active.sync="showRemoveElementDialog"
+      md-title="Do you really want to remove this element?"
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="showRemoveElementDialog = false"
+      @md-confirm="removeElement"/>
   </div>
 </template>
 
@@ -72,7 +86,11 @@
       return {
         showDialog: false,
         layerTemplates: constants.layerTemplates,
+        showRemoveLayerDialog: false,
+        showRemoveElementDialog: false,
         selectedLayer: -1,
+        removeLayerIndex: -1,
+        removeElementIndex: -1,
       }
     },
     methods: {
@@ -89,13 +107,55 @@
         this.showDialog = false;
       },
       removeLayer () {
-        return false;
+        let pages = this.story.data.pages;
+        pages[this.story.selected.page].layers.splice(this.removeLayerIndex, 1);
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          },
+          publish: false
+        });
+        this.$store.dispatch('selectAMPStory', {
+          page: this.story.selected.page,
+          layer: -1,
+          element: -1,
+        });
       },
+      removeElement () {
+        let pages = this.story.data.pages;
+        pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          },
+          publish: false
+        });
+        this.$store.dispatch('selectAMPStory', {
+          page: this.story.selected.page,
+          layer: -1,
+          element: -1,
+        });
+      }
+    },
+    mounted () {
+      Vue.$on("remove:layer", (index) => {
+        this.removeLayerIndex = index;
+        this.showRemoveLayerDialog = true;
+      });
+      Vue.$on("remove:element", (data) => {
+        this.removeLayerIndex = data.layerIndex;
+        this.removeElementIndex = data.elementIndex;
+        this.showRemoveElementDialog = true;
+      });
     },
     computed: {
       story () {
         return this.$store.state.story;
       },
+    },
+    beforeDestroy () {
+      Vue.$off("remove:layer");
+      Vue.$off("remove:element");
     }
   }
 </script>
