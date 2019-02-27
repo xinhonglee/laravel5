@@ -71,6 +71,7 @@ class StoriesController extends BaseController
             $input = $request->all();
             $insert = [
                 'name' => $input["name"],
+                'slug' => str_slug($input["name"], "-"),
                 'user_id' => $user->id,
                 'start_publication_date' => new \DateTime(),
                 'end_publication_date' => new \DateTime(),
@@ -110,6 +111,7 @@ class StoriesController extends BaseController
 
             $story->update([
                 "name" => $input["name"],
+                "slug" => str_slug($input["name"], "-"),
                 'end_publication_date' => new \DateTime(),
                 "data" => json_encode($input["data"]),
             ]);
