@@ -3,7 +3,9 @@
     <template v-if="story.data.pages.length > 0 && story.selected.page >= 0">
       <div class="sidebar-header">
         <span class="title">Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}</span>
-        <div class="btn-more" @click="showPageTools = !showPageTools"><md-icon>more_vert</md-icon></div>
+        <div class="btn-more" @click="showPageTools = !showPageTools">
+          <md-icon>more_vert</md-icon>
+        </div>
         <div class="page-tools md-elevation-3" v-if="showPageTools">
           <ul>
             <li>Duplicate</li>
@@ -23,30 +25,28 @@
       <md-button class="md-fab md-primary" @click="showDialog = true">
         <md-icon>add</md-icon>
       </md-button>
-      <md-dialog :md-active.sync="showDialog">
-        <md-dialog-title>Add a new layer</md-dialog-title>
-
-        <md-dialog-content>
-          <div class="layer-templates-list">
-            <div class="layer-template"
-                 v-for="(template, index) in layerTemplates"
-                 @click="selectedLayer = index"
-                 :key="index">
-              <div class="layer-template-image"
-                   :class="selectedLayer === index ? 'selected md-elevation-7' : ''"
-                   :style="{backgroundImage: 'url(' + template.image_url + ')'}">
-              </div>
-              <p>{{ template.name }}</p>
-            </div>
-          </div>
-        </md-dialog-content>
-
-        <md-dialog-actions>
-          <md-button class="md-primary" @click="showDialog = false">Close</md-button>
-          <md-button class="md-primary" @click="addLayer">Add</md-button>
-        </md-dialog-actions>
-      </md-dialog>
     </template>
+    <md-dialog :md-active.sync="showDialog">
+      <md-dialog-title>Add a new layer</md-dialog-title>
+      <md-dialog-content>
+        <div class="layer-templates-list">
+          <div class="layer-template"
+               v-for="(template, index) in layerTemplates"
+               @click="selectedLayer = index"
+               :key="index">
+            <div class="layer-template-image"
+                 :class="selectedLayer === index ? 'selected md-elevation-7' : ''"
+                 :style="{backgroundImage: 'url(' + template.image_url + ')'}">
+            </div>
+            <p>{{ template.name }}</p>
+          </div>
+        </div>
+      </md-dialog-content>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="showDialog = false">Close</md-button>
+        <md-button class="md-primary" @click="addLayer">Add</md-button>
+      </md-dialog-actions>
+    </md-dialog>
     <md-dialog-confirm
       :md-active.sync="showRemovePageDialog"
       md-title="Do you really want to remove this page?"
@@ -123,7 +123,7 @@
         });
         this.showDialog = false;
       },
-      removePage() {
+      removePage () {
         let pages = this.story.data.pages;
         pages.splice(this.story.selected.page, 1);
         this.$store.dispatch('saveAMPStory', {
@@ -194,28 +194,4 @@
 </script>
 
 <style scoped>
-  .layer-templates-list {
-    display: flex;
-  }
-
-  .layer-template {
-    display: inline-block;
-    float: left;
-    width: 120px;
-    padding: 5px;
-    text-align: center;
-  }
-
-  .layer-template-image {
-    width: 100%;
-    height: 180px;
-    margin-bottom: 10px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .layer-template-image:hover {
-    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
-  }
 </style>

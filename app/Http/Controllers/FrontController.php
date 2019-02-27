@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class FrontController extends Controller
 {
     var $wallSize = 19;
-    public function index(Request $request, $page = 0)
+     public function index(Request $request, $page = 0)
     {
         $page = (int) $page;
         $totalVideoCount = Video::count();
