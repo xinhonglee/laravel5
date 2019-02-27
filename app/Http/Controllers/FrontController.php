@@ -3,7 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\VideoCategory;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Story;
+use Illuminate\Support\Facades\Redis;
 
 class FrontController extends Controller
 {
@@ -84,10 +85,48 @@ class FrontController extends Controller
       $suggestedVideos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
       return view('player', compact('video', 'suggestedVideos'));
     }
-    public function getStory(Request $request) {
-      $story = json_decode(Storage::disk('public')->get('story.json'), true);
-//var_dump($story);
-//exit;
+    public function getStoryBySlug(Request $request, $slug) {
+      $dbStory = Story::where('slug', $slug)->first();
+      if (is_null($dbStory)) {
+        abort(404);
+      }
+      $story = [
+         "title" => $dbStory["name"],
+         "slug" => $dbStory["slug"]
+      ];
+      $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
       return view('story', compact('story'));
+    }
+    public function getStoryById(Request $request, $id) {
+      try {
+          $dbStory = json_decode(Redis::get('story:id:' . $id), true);
+          if (is_null($dbStory)) {
+            abort(404);
+          }
+          $story = [
+             "title" => $dbStory["name"],
+             "slug" => $dbStory["slug"]
+          ];
+          $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
+          return view('story', compact('story'));
+      } catch (\Exception $exception) {
+          abort(404);
+      }
+    }
+    public function getStoryPage(Request $request, $story_id, $page_id) {
+      try {
+          $dbStory = json_decode(Redis::get('story:id:' . $story_id), true);
+          if (is_null($dbStory)) {
+            abort(404);
+          }
+          $story = [
+             "title" => $dbStory["name"],
+             "slug" => $dbStory["slug"]
+          ];
+          $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
+          return view('story', compact('story', 'page_id'));
+      } catch (\Exception $exception) {
+          abort(404);
+      }
     }
 }
