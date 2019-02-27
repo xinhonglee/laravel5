@@ -18,7 +18,7 @@ class StoryPageTemplatesController extends BaseController
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'image_url' => 'required',
             'data' => 'required',
         ]);
@@ -29,7 +29,7 @@ class StoryPageTemplatesController extends BaseController
         try {
             $input = $request->all();
             $insert = [
-                'name' => $input["name"],
+                'title' => $input["title"],
                 'image_url' => $input["image_url"],
                 'data' => json_encode($input["data"])
             ];
@@ -51,7 +51,7 @@ class StoryPageTemplatesController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'image_url' => 'required',
             'data' => 'required',
         ]);
@@ -65,7 +65,7 @@ class StoryPageTemplatesController extends BaseController
                 ->firstOrFail();
 
             $template->update([
-                "name" => $input["name"],
+                "title" => $input["title"],
                 'image_url' => $input["image_url"],
                 "data" => json_encode($input["data"]),
             ]);

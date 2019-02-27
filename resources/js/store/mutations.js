@@ -43,7 +43,7 @@ export const SAVE_AMP_STORY = (state, story) => {
   let storyData = Vue.$store.state.story.data;
   let data = {
     "id": (story && story.id) ? story.id : Vue.$store.state.story.id,
-    "name": Vue.$store.state.app.title,
+    "title": Vue.$store.state.app.title,
     "data": {
       "publisher": (story && story.data.publisher) ? story.data.publisher : storyData.publisher,
       "publisher-logo-src": (story && story.data.publisherLogoSrc) ? story.data.publisherLogoSrc : storyData.publisherLogoSrc,
