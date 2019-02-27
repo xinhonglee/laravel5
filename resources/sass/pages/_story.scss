@@ -69,7 +69,6 @@
     }
   }
 
-
   .template-list {
     margin-top: 20px;
     margin-left: 19px;
@@ -182,5 +181,31 @@
     max-height: calc(100vh - 220px);
     overflow: hidden;
     overflow-y: auto;
+  }
+}
+
+
+.layer-templates-list {
+  display: flex;
+
+  .layer-template {
+    display: inline-block;
+    float: left;
+    width: 120px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .layer-template-image {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 10px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .layer-template-image:hover {
+    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
   }
 }
