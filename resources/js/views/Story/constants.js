@@ -1,8 +1,58 @@
 const layerTemplates = [
-  { slug: 'fill', name: 'Fill', image_url: '/assets/phone-3.png' },
-  { slug: 'vertical', name: 'Vertical', image_url: '/assets/phone-3.png' },
-  { slug: 'horizontal', name: 'Horizontal', image_url: '/assets/phone-3.png' },
-  { slug: 'thirds', name: 'Thirds', image_url: '/assets/phone-3.png' }
+  {
+    slug: 'fill',
+    name: 'Fill',
+    image_url: '/assets/layer-templates/fill.png',
+    data: {
+      id: '',
+      template: 'fill',
+      styles: {},
+      elements: [],
+    },
+  },
+  {
+    slug: 'vertical',
+    name: 'Vertical',
+    image_url: '/assets/layer-templates/vertical.png',
+    data: {
+      id: '',
+      template: 'vertical',
+      styles: {},
+      elements: [],
+    },
+  },
+  {
+    slug: 'horizontal',
+    name: 'Horizontal',
+    image_url: '/assets/layer-templates/horizontal.png',
+    data: {
+      id: '',
+      template: 'horizontal',
+      styles: {},
+      elements: [],
+    },
+  },
+  {
+    slug: 'thirds',
+    name: 'Thirds',
+    image_url: '/assets/layer-templates/thirds.png',
+    data: {
+      id: '',
+      template: 'thirds',
+      styles: {},
+      elements: [
+        {
+          'grid-area': 'upper-third',
+        },
+        {
+          'grid-area': 'middle-third',
+        },
+        {
+          'grid-area': 'lower-third',
+        }
+      ],
+    },
+  }
 ];
 
 const elementTypes = [

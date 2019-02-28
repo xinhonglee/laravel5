@@ -1,9 +1,11 @@
 <template>
   <div class="page-layer">
-    <div class="layer-template">
+    <div class="layer-template"
+         :class="isLayerSelected() ? 'selected' : ''"
+         @click="selectLayer">
       <img class="template-icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
       <div class="template-name">{{ getLayerTemplateName(layer.template)}} Template</div>
-      <div class="btn-remove" @click="removeLayer(layerIndex)"><md-icon>delete_outline</md-icon></div>
+      <div class="btn-remove" @click="removeLayer"><md-icon>delete_outline</md-icon></div>
     </div>
     <div class="layer-elements">
       <div class="element" v-for="(element, index) of layer.elements" :key="index">
@@ -11,10 +13,10 @@
           <div class="element-grid-area" v-html="getGridAreaName(element['grid-area'])"></div>
         </template>
         <div class="element-type"
-             :class="isSelected(index) ? 'selected' : ''"
+             :class="isElementSelected(index) ? 'selected' : ''"
              @click="selectElement(index)">
           [<span>{{ getElementName(element.type)}}</span>]
-          <div class="btn-remove" @click="removeElement(layerIndex, index)"><md-icon>delete_outline</md-icon></div>
+          <div class="btn-remove" @click="removeElement(index)"><md-icon>delete_outline</md-icon></div>
         </div>
       </div>
     </div>
@@ -46,16 +48,28 @@
       changeElement () {
         return false;
       },
-      removeElement (layerIndex, elementIndex) {
+      removeElement (elementIndex) {
         Vue.$emit("remove:element", {
-          layerIndex: layerIndex,
+          layerIndex: this.layerIndex,
           elementIndex: elementIndex,
         });
       },
-      removeLayer (index) {
-        Vue.$emit("remove:layer", index);
+      removeLayer () {
+        Vue.$emit("remove:layer", this.layerIndex);
       },
-      isSelected (index) {
+      isLayerSelected () {
+        if (this.$store.state.story.selected.page !== this.pageIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.layer !== this.layerIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.element >=0) {
+          return false;
+        }
+        return true;
+      },
+      isElementSelected (index) {
         if (this.$store.state.story.selected.page !== this.pageIndex) {
           return false;
         }
@@ -66,6 +80,13 @@
           return false;
         }
         return true;
+      },
+      selectLayer(index) {
+        this.$store.dispatch('selectAMPStory', {
+          page: this.pageIndex,
+          layer: this.layerIndex,
+          element: -1,
+        });
       },
       selectElement (index) {
         this.$store.dispatch('selectAMPStory', {

@@ -4,9 +4,6 @@
       <md-tab id="tab-posts" md-label="Users">
         <user-management></user-management>
       </md-tab>
-      <md-tab id="tab-home" md-label="Story Templates">
-        <story-template-management></story-template-management>
-      </md-tab>
       <md-tab id="tab-pages" md-label="Videos">
         Videos Management
       </md-tab>
@@ -16,11 +13,9 @@
 
 <script>
   import UserManagement from "./UserManagement/Index";
-  import StoryTemplateManagement from "./StoryTemplateManagment/Index";
   export default {
     name: "admin",
     components: {
-      StoryTemplateManagement,
       UserManagement
     },
     mounted() {

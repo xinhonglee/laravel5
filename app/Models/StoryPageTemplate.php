@@ -12,7 +12,8 @@ class StoryPageTemplate extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'user_id',
+        'title',
         'image_url',
         'status',
         'data',

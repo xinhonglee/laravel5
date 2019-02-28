@@ -65,14 +65,12 @@ class StoriesController extends BaseController
         if ($validator->fails()) {
             return $this->sendValidationError($validator->errors());
         }
-
-        $user = Auth::user();
         try {
             $input = $request->all();
             $insert = [
                 'title' => $input["title"],
                 'slug' => str_slug($input["title"], "-"),
-                'user_id' => $user->id,
+                'user_id' => Auth::user()->id,
                 'start_publication_date' => new \DateTime(),
                 'end_publication_date' => new \DateTime(),
                 'data' => json_encode($input["data"])

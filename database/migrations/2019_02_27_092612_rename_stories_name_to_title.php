@@ -26,7 +26,7 @@ class RenameStoriesNameToTitle extends Migration
     public function down()
     {
         Schema::table('stories', function (Blueprint $table) {
-            $table->dropColumn('title');
+            $table->renameColumn('title', 'name');
         });
     }
 }
