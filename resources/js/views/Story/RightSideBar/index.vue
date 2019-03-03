@@ -4,13 +4,13 @@
       <h4>{{ propertyName }} Properties</h4>
       <md-divider></md-divider>
       <md-tabs class="md-transparent md-no-animation" md-dynamic-height md-border-bottom md-no-ink-bar>
-        <md-tab id="tab-story-setting" md-label="SETTINGS">
+        <md-tab id="tab-property-setting" md-label="SETTINGS">
           <property-settings :element="element"></property-settings>
         </md-tab>
-        <md-tab id="tab-story-design" md-label="DESIGN">
+        <md-tab id="tab-property-design" md-label="DESIGN">
           <property-design :element="element"></property-design>
         </md-tab>
-        <md-tab id="tab-story-animation" md-label="ANIMATION">
+        <md-tab id="tab-property-animation" md-label="ANIMATION">
           <property-animation :element="element"></property-animation>
         </md-tab>
       </md-tabs>
