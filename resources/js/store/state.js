@@ -15,33 +15,47 @@ let syncedData = {
     role: "",
     verifiedAt: null,
   },
+  cloudinary: {
+    cloudName: '',
+    userName: '',
+    timestamp: '',
+    signature: '',
+    apiKey: '',
+  }
 };
 
 const notSyncedData = {
-    app: {
-      title: '',
-      editable: false,
+  app: {
+    title: '',
+    editable: false,
+  },
+  story: {
+    id: null,
+    data: {
+      publisher: "Publisher",
+      publisherLogoSrc: "logo image url",
+      posterPortraitSrc: "portrait poster image url",
+      supportsLandscape: true,
+      backgroundAudio: "audio url",
+      posterSquareSrc: "image url",
+      posterLandscapeSrc: "image url",
+      pages: [],
     },
-    story: {
-      id: null,
-      data: {
-        publisher: "Publisher",
-        publisherLogoSrc: "logo image url",
-        posterPortraitSrc: "portrait poster image url",
-        supportsLandscape: true,
-        backgroundAudio: "audio url",
-        posterSquareSrc: "image url",
-        posterLandscapeSrc: "image url",
-        pages: [],
-      },
-      selected: {
-        page: 0,
-        layer: -1,
-        element: -1,
-      },
-      new: false,
+    selected: {
+      page: 0,
+      layer: -1,
+      element: -1,
     },
-  };
+    new: false,
+  },
+  cloudinary: {
+    cloudName: '',
+    userName: '',
+    timestamp: '',
+    signature: '',
+    apiKey: '',
+  }
+};
 
 // Sync with local storage.
 if (localStorage.getItem(STORAGE_KEY)) {

@@ -37,3 +37,7 @@ export const selectAMPStory = ({commit}, selected) => {
 export const clearAMPStory = ({commit}) => {
   commit('CLEAR_AMP_STORY')
 };
+
+export const updateCloudinary = ({commit}, data) => {
+  commit('UPDATE_CLOUDINARY', data)
+};

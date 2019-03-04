@@ -39,6 +39,21 @@
       AppSidebar,
       AppFilter
     },
+    methods: {
+      loadCloudinary () {
+        this.$http.get('/video/cloud').then((response) => {
+          const data = {
+            cloudName: response.data.cloud_name,
+            userName: response.data.user_name,
+            apiKey: response.data.api_key,
+            timestamp: response.data.timestamp,
+            signature: response.data.signature
+          };
+          this.$store.dispatch("updateCloudinary", data);
+        }, (error) => {
+        }).catch(Vue.handleClientError);
+      }
+    },
     computed: {
       showAppFilter () {
         return [
@@ -46,16 +61,16 @@
           'Stories'
         ].includes(this.$route.name);
       },
-      showAppToolbar() {
+      showAppToolbar () {
         return this.$route.name === 'Story' && this.$store.state.app.editable;
       },
-      showEditableHeader() {
+      showEditableHeader () {
         return [
           'Video',
           'Story'
         ].includes(this.$route.name);
       },
-      showAppSidebar() {
+      showAppSidebar () {
         return [
           'Videos',
           'Stories',
@@ -63,10 +78,13 @@
           'Analytics'
         ].includes(this.$route.name);
       },
-      editable() {
+      editable () {
         return this.$store.state.app.editable;
-      }
+      },
     },
+    mounted () {
+      this.loadCloudinary();
+    }
   }
 </script>
 

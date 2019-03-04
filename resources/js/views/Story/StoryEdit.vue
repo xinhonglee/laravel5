@@ -2,8 +2,8 @@
   <div>
     <story-left-side-bar></story-left-side-bar>
     <div class="story-page-view md-elevation-3">
-    <!--<iframe src="https://mic.com/stories/327/what-happens-in-your-brain-when-you-listen-to-music"-->
-              <!--width="100%" height="100%"></iframe>-->
+      <!--<iframe src="https://mic.com/stories/327/what-happens-in-your-brain-when-you-listen-to-music"-->
+      <!--width="100%" height="100%"></iframe>-->
     </div>
     <story-right-side-bar></story-right-side-bar>
     <md-dialog :md-active.sync="settingDialog">
@@ -27,7 +27,7 @@
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="settingDialog = false">Close</md-button>
-        <md-button class="md-primary" @click="saveSettings">Save</md-button>
+        <md-button class="md-primary" @click="saveSettings">Ok</md-button>
       </md-dialog-actions>
     </md-dialog>
   </div>
@@ -40,6 +40,7 @@
   import StoryAdvertising from "./Settings/StoryAdvertising";
   import StoryAnalytics from "./Settings/StoryAnalytics";
   import StoryUrl from "./Settings/StoryURL";
+
   export default {
     name: "story-edit",
     components: {
@@ -50,17 +51,32 @@
       StoryRightSideBar,
       StoryLeftSideBar,
     },
-    data() {
+    data () {
       return {
-        settingDialog: false
+        settingDialog: false,
+        settings: {
+          backgroundAudio: "",
+          posterPortraitSrc: "",
+          posterSquareSrc: "",
+          posterLandscapeSrc: "",
+          publisher: "",
+          publisherLogoSrc: "",
+          supportsLandscape: true,
+        }
       }
     },
     methods: {
-      saveSettings() {
-        console.log("save settings");
-      }
+      saveSettings () {
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            ...this.settings
+          },
+          publish: false
+        });
+      },
+
     },
-    mounted() {
+    mounted () {
       // select page action
       this.$store.dispatch('selectAMPStory', {
         page: 0,
@@ -68,10 +84,20 @@
         element: -1,
       });
       Vue.$on('app:publish', () => {
-        this.$store.dispatch('saveAMPStory', {data: {}, publish: true});
+        this.$store.dispatch('saveAMPStory', { data: {}, publish: true });
       });
       Vue.$on('app:setting', () => {
         this.settingDialog = true;
+      });
+      Vue.$on('story:settings', (data) => {
+        this.settings = Object.assign(this.settings, data);
+        console.log(this.settings);
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            ...this.settings
+          },
+          publish: false
+        });
       });
     },
     beforeDestroy () {
