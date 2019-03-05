@@ -37,6 +37,7 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.posterSquareSrc = (story && story.data['poster-square-src']) ? story.data['poster-square-src'] : '';
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
+  state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {};
 };
 
 export const SAVE_AMP_STORY = (state, story) => {
@@ -53,6 +54,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       "publisher-logo-src": (story && story.data.publisherLogoSrc) ? story.data.publisherLogoSrc : storyData.publisherLogoSrc,
       "pages": (story && story.data.pages) ? story.data.pages : storyData.pages,
       "supports-landscape": (story && story.data.supportsLandscape) ? story.data.supportsLandscape : storyData.supportsLandscape,
+      "bookend": (story && story.data.bookend) ? story.data.bookend : storyData.bookend,
     }
   };
   if (story.publish) {

@@ -40,6 +40,7 @@ const notSyncedData = {
       posterSquareSrc: "image url",
       posterLandscapeSrc: "image url",
       pages: [],
+      bookend: {}
     },
     selected: {
       page: 0,
