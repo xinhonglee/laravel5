@@ -11,6 +11,7 @@ class BackController extends Controller
 
     public function index()
     {
-        return view('backoffice');
+        $app_url = env('APP_URL');
+        return view('backoffice', compact('app_url'));
     }
 }

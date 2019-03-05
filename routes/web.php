@@ -33,7 +33,7 @@ Route::get('/videos/{category}', 'FrontController@getVideosPerCategory')->where(
 Route::get('/videos/{category}/page/{page}', 'FrontController@getVideosPerCategoryAndPage')->where(['category' => '[A-Za-z]+', 'page' => '[0-9]+']);
 Route::get('/story/{slug}', 'FrontController@getStoryBySlug');
 Route::get('/embed/story/{id}', 'FrontController@getStoryById');
-Route::get('/embed/story/{story_id}/page/{page_id}', 'FrontController@getStoryPage');
+Route::get('/embed/story/{story_id}/page/{page_id}', 'FrontController@getStoryPage')->where(['story_id' => '[0-9]+', 'page_id' => '[0-9]+']);;
 Route::post('/subscribe', 'NewsletterController@subscribe');
 Route::view('/mentions-legales', 'mentions', ['css' => 'legal']);
 Route::get('/{category}', 'FrontController@getCategory')->where('category', '[A-Za-z]+');

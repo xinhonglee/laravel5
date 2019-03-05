@@ -48,7 +48,20 @@
     data () {
       return {
         pageTemplates: [
-          { id: '', title: 'Blank', image_url: '', data: { layers: [] } },
+          {
+            id: '', title: 'Blank', image_url: '',
+            data: {
+              "auto-advance-after": "1s",
+              "background-audio": "",
+              layers: [],
+              cta_layer: {
+                type: "",
+                class: "",
+                properties: {}
+              },
+              bookend: {}
+            }
+          },
         ],
         showDialog: false,
         showSaveTemplateDialog: false,
@@ -62,7 +75,7 @@
         }, (error) => {
         }).catch(Vue.handleClientError);
       },
-      savePageTemplate() {
+      savePageTemplate () {
 
       },
       selectPage (index) {
@@ -82,7 +95,7 @@
         }
         // add page template
         const story = this.story;
-        story.data.pages.push(this.pageTemplates[this.selectedTemplate].data);
+        story.data.pages.push({ id: Date.now(), ...this.pageTemplates[this.selectedTemplate].data });
         story.publish = false;
         this.$store.dispatch('saveAMPStory', story);
 
@@ -98,7 +111,7 @@
         this.showDialog = false;
       },
     },
-    mounted() {
+    mounted () {
       this.loadTemplates();
     },
     computed: {

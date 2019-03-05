@@ -91,7 +91,7 @@ class FrontController extends Controller
         abort(404);
       }
       $story = [
-         "title" => $dbStory["name"],
+         "title" => $dbStory["title"],
          "slug" => $dbStory["slug"]
       ];
       $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
@@ -104,7 +104,7 @@ class FrontController extends Controller
             abort(404);
           }
           $story = [
-             "title" => $dbStory["name"],
+             "title" => $dbStory["title"],
              "slug" => $dbStory["slug"]
           ];
           $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
@@ -116,11 +116,12 @@ class FrontController extends Controller
     public function getStoryPage(Request $request, $story_id, $page_id) {
       try {
           $dbStory = json_decode(Redis::get('story:id:' . $story_id), true);
+
           if (is_null($dbStory)) {
             abort(404);
           }
           $story = [
-             "title" => $dbStory["name"],
+             "title" => $dbStory["title"],
              "slug" => $dbStory["slug"]
           ];
           $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));

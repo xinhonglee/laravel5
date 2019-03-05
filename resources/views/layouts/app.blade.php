@@ -19,6 +19,11 @@
 <body>
   <div id="app"></div>
   @yield('content')
+  @if ($app_url)
+      <script type="text/javascript">
+          window.app_url = "{{ $app_url }}";
+      </script>
+  @endif
   <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>
