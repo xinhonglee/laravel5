@@ -66,12 +66,13 @@
         const pages = this.$store.state.story.data.pages;
         const selected = this.$store.state.story.selected;
         if (pages[selected.page].layers[selected.layer].template !== 'thirds') {
-          pages[selected.page].layers[selected.layer].elements.push({ type: slug });
+          pages[selected.page].layers[selected.layer].elements.push({ type: slug, properties: {} });
         } else if (selected.element >=0 ){
           const element = pages[selected.page].layers[selected.layer].elements[selected.element];
           pages[selected.page].layers[selected.layer].elements[selected.element] = {
             'grid-area': element['grid-area'],
-            type: slug
+            type: slug,
+            properties: {}
           };
         } else {
           Vue.alertBox({
