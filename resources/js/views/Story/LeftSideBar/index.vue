@@ -75,26 +75,6 @@
   import constants from '../constants';
   import PageLayer from "./PageLayer";
 
-  const tempLayer = {
-    id: '',
-    template: 'thirds',
-    styles: {},
-    elements: [
-      {
-        'grid-area': 'upper-third',
-        type: 'richtext',
-      },
-      {
-        'grid-area': 'middle-third',
-        type: '',
-      },
-      {
-        'grid-area': 'lower-third',
-        type: 'richtext',
-      }
-    ],
-  };
-
   export default {
     name: "story-left-side-bar",
     components: { PageLayer },
@@ -113,8 +93,8 @@
     },
     methods: {
       addLayer () {
-        let pages = this.story.data.pages;
-        pages[this.story.selected.page].layers.push(tempLayer);
+        const pages = this.story.data.pages;
+        pages[this.story.selected.page].layers.push(this.layerTemplates[this.selectedLayer].data);
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages
@@ -124,7 +104,7 @@
         this.showDialog = false;
       },
       removePage () {
-        let pages = this.story.data.pages;
+        const pages = this.story.data.pages;
         pages.splice(this.story.selected.page, 1);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -140,7 +120,7 @@
         this.showPageTools = false;
       },
       removeLayer () {
-        let pages = this.story.data.pages;
+        const pages = this.story.data.pages;
         pages[this.story.selected.page].layers.splice(this.removeLayerIndex, 1);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -155,8 +135,16 @@
         });
       },
       removeElement () {
-        let pages = this.story.data.pages;
-        pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
+        const pages = this.story.data.pages;
+        if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
+          pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
+        } else {
+          const gridArea = pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
+          pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex] = {
+            'grid-area': gridArea,
+          }
+        }
+
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages

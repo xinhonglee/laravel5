@@ -84,7 +84,7 @@
         bottom: 0;
         content: '';
         display: block;
-        left: 6px;
+        left: 4px;
         position: absolute;
         top: 0;
         width: 5px;
@@ -95,16 +95,16 @@
         padding-right: 10px;
         cursor: pointer;
 
-        &:hover {
+        &.selected, &:hover {
           background-color: #ccdcec;
           .btn-remove {
             display: block;
-            margin-top: 5px;
+            margin-top: 2px;
           }
         }
 
         img.template-icon {
-          width: 20px;
+          width: 15px;
         }
 
         .template-name {

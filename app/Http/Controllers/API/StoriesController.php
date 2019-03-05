@@ -59,20 +59,18 @@ class StoriesController extends BaseController
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'data' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendValidationError($validator->errors());
         }
-
-        $user = Auth::user();
         try {
             $input = $request->all();
             $insert = [
-                'name' => $input["name"],
-                'slug' => str_slug($input["name"], "-"),
-                'user_id' => $user->id,
+                'title' => $input["title"],
+                'slug' => str_slug($input["title"], "-"),
+                'user_id' => Auth::user()->id,
                 'start_publication_date' => new \DateTime(),
                 'end_publication_date' => new \DateTime(),
                 'data' => json_encode($input["data"])
@@ -96,7 +94,7 @@ class StoriesController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'data' => 'required',
         ]);
         if ($validator->fails()) {
@@ -110,8 +108,8 @@ class StoriesController extends BaseController
                 ->firstOrFail();
 
             $story->update([
-                "name" => $input["name"],
-                "slug" => str_slug($input["name"], "-"),
+                "title" => $input["title"],
+                "slug" => str_slug($input["title"], "-"),
                 'end_publication_date' => new \DateTime(),
                 "data" => json_encode($input["data"]),
             ]);

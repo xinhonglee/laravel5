@@ -14,7 +14,7 @@
     <ul class="page-tools">
       <li @click="showDialog = true">+ Add a new page</li>
       <li>Page structure...</li>
-      <li>Save current page as model</li>
+      <li @click="showSaveTemplateDialog=true">Save current page as model</li>
     </ul>
     <md-dialog :md-active.sync="showDialog">
       <md-dialog-title>Add a new page</md-dialog-title>
@@ -29,7 +29,7 @@
                  :class="selectedTemplate === index ? 'selected md-elevation-7' : ''"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}">
             </div>
-            <p>{{ template.name }}</p>
+            <p>{{ template.title }}</p>
           </div>
         </div>
       </md-dialog-content>
@@ -48,18 +48,23 @@
     data () {
       return {
         pageTemplates: [
-          { id: '1', name: 'Blank', image_url: '', data: {layers: []} },
-          { id: '2', name: 'Title', image_url: '', data: {layers: []} },
-          { id: '3', name: 'Video + Text + Context', image_url: '', data: {layers: []} },
-          { id: '4', name: 'Video + Text', image_url: '', data: {layers: []} },
-          { id: '5', name: 'Video + Context', image_url: '', data: {layers: []} },
-          { id: '6', name: 'Video + Quote', image_url: '', data: {layers: []} }
+          { id: '', title: 'Blank', image_url: '', data: { layers: [] } },
         ],
         showDialog: false,
+        showSaveTemplateDialog: false,
         selectedTemplate: -1,
       }
     },
     methods: {
+      loadTemplates () {
+        this.$http.get('/story-template/list').then((response) => {
+          this.pageTemplates.push(...response.data);
+        }, (error) => {
+        }).catch(Vue.handleClientError);
+      },
+      savePageTemplate() {
+
+      },
       selectPage (index) {
         this.$store.dispatch('selectAMPStory', {
           page: index,
@@ -75,15 +80,11 @@
             type: 'error'
           });
         }
-
         // add page template
-        let insert = this.story;
-        insert.data.pages.push(this.pageTemplates[this.selectedTemplate].data);
-        insert.publish = false;
-
-        this.$store.dispatch('saveAMPStory', insert);
-
-        this.selectedTemplate = -1;
+        const story = this.story;
+        story.data.pages.push(this.pageTemplates[this.selectedTemplate].data);
+        story.publish = false;
+        this.$store.dispatch('saveAMPStory', story);
 
         // select page action
         this.$store.dispatch('selectAMPStory', {
@@ -92,9 +93,13 @@
           element: -1,
         });
 
+        this.selectedTemplate = -1;
         // close dialog
         this.showDialog = false;
       },
+    },
+    mounted() {
+      this.loadTemplates();
     },
     computed: {
       story () {
@@ -108,7 +113,8 @@
 
 <style scoped>
   .story-templates-list {
-    display: flex;
+    display: block;
+    min-width: 700px;
   }
 
   .page-template {

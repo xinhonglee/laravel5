@@ -46,7 +46,7 @@
           this.stories = response.data.map((story) => {
             return {
               'id': story.id,
-              'title': story.name,
+              'title': story.title,
               'owner': story.user.name,
               'owner_id': story.user.id,
               'last_update': story.updated_at ? story.updated_at : '',

@@ -59,11 +59,6 @@
         coverVignette: '',
         video_category_id: '',
         video_categories: [],
-        cloudinary_cloud_name: '',
-        cloudinary_user_name: '',
-        cloudinary_api_key: '',
-        cloudinary_timestamp: '',
-        cloudinary_signature: '',
       }
     },
     methods: {
@@ -147,27 +142,18 @@
         }).catch(Vue.handleClientError);
       },
       initializeCloudinary () {
-        this.$http.get('/video/cloud').then((response) => {
-          this.cloudinary_cloud_name = response.data.cloud_name;
-          this.cloudinary_user_name = response.data.user_name;
-          this.cloudinary_api_key = response.data.api_key;
-          this.cloudinary_timestamp = response.data.timestamp;
-          this.cloudinary_signature = response.data.signature;
-
-          this.generateVideoMediaLibrary();
-          this.generateCoverMediaLibrary();
-        }, (error) => {
-        }).catch(Vue.handleClientError);
+        this.generateVideoMediaLibrary();
+        this.generateCoverMediaLibrary();
       },
       generateVideoMediaLibrary () {
         let vm = this;
         cloudinary.createMediaLibrary(
           {
-            cloud_name: this.cloudinary_cloud_name,
-            api_key: this.cloudinary_api_key,
-            username: this.cloudinary_user_name,
-            timestamp: this.cloudinary_timestamp,
-            signature: this.cloudinary_signature,
+            cloud_name: vm.$store.state.cloudinary.cloudName,
+            api_key: vm.$store.state.cloudinary.apiKey,
+            username: vm.$store.state.cloudinary.userName,
+            timestamp: vm.$store.state.cloudinary.timestamp,
+            signature: vm.$store.state.cloudinary.signature,
             button_class: 'md-button md-raised ml-5 md-theme-default px-3',
             button_caption: 'Select a file',
             multiple: false
@@ -187,11 +173,11 @@
         let vm = this;
         cloudinary.createMediaLibrary(
           {
-            cloud_name: this.cloudinary_cloud_name,
-            api_key: this.cloudinary_api_key,
-            username: this.cloudinary_user_name,
-            timestamp: this.cloudinary_timestamp,
-            signature: this.cloudinary_signature,
+            cloud_name: vm.$store.state.cloudinary.cloudName,
+            api_key: vm.$store.state.cloudinary.apiKey,
+            username: vm.$store.state.cloudinary.userName,
+            timestamp: vm.$store.state.cloudinary.timestamp,
+            signature: vm.$store.state.cloudinary.signature,
             button_class: 'md-button md-raised ml-5 md-theme-default px-3',
             button_caption: 'Select a file',
             multiple: false

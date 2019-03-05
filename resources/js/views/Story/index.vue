@@ -25,7 +25,7 @@
         this.$http.get('/story/' + id).then((response) => {
           Vue.unBlock();
           this.$store.dispatch('updateAMPStory', response.data);
-          this.$store.dispatch('updateAppTitle', response.data.name);
+          this.$store.dispatch('updateAppTitle', response.data.title);
         }, (error) => {
           Vue.unBlock();
         }).catch(Vue.handleClientError);
