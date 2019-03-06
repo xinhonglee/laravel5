@@ -2,7 +2,9 @@
   <div class="story-left-sidebar md-elevation-3">
     <template v-if="story.data.pages.length > 0 && story.selected.page >= 0">
       <div class="sidebar-header">
-        <span class="title">Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}</span>
+        <span class="title">
+          Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}
+        </span>
         <div class="btn-more" @click="showPageTools = !showPageTools">
           <md-icon>more_vert</md-icon>
         </div>
@@ -92,17 +94,9 @@
       }
     },
     methods: {
-      addLayer () {
-        const pages = this.story.data.pages;
-        pages[this.story.selected.page].layers.push(this.layerTemplates[this.selectedLayer].data);
-        this.$store.dispatch('saveAMPStory', {
-          data: {
-            pages: pages
-          },
-          publish: false
-        });
-        this.showDialog = false;
-      },
+      /**
+       * remove selected page from story
+       */
       removePage () {
         const pages = this.story.data.pages;
         pages.splice(this.story.selected.page, 1);
@@ -119,6 +113,23 @@
         });
         this.showPageTools = false;
       },
+      /**
+       * add new layer to the selected page
+       */
+      addLayer () {
+        const pages = this.story.data.pages;
+        pages[this.story.selected.page].layers.push(this.layerTemplates[this.selectedLayer].data);
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          },
+          publish: false
+        });
+        this.showDialog = false;
+      },
+      /**
+       * remove selected layer from selected page
+       */
       removeLayer () {
         const pages = this.story.data.pages;
         pages[this.story.selected.page].layers.splice(this.removeLayerIndex, 1);
@@ -134,11 +145,14 @@
           element: -1,
         });
       },
+      /**
+       * remove selected element from selected layer
+       */
       removeElement () {
         const pages = this.story.data.pages;
         if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
-        } else {
+        } else { // in case of selected template thirds, it should be keep grid-area info
           const gridArea = pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex] = {
             'grid-area': gridArea,
@@ -161,10 +175,12 @@
       }
     },
     mounted () {
+      // remove layer emit receiver from PageLayer Component
       Vue.$on("remove:layer", (index) => {
         this.removeLayerIndex = index;
         this.showRemoveLayerDialog = true;
       });
+      // remove element emit receiver from PageLayer Component
       Vue.$on("remove:element", (data) => {
         this.removeLayerIndex = data.layerIndex;
         this.removeElementIndex = data.elementIndex;

@@ -44,12 +44,18 @@
       }
     },
     methods: {
+      /**
+       * get Element Name from slug
+       *
+       * @param slug
+       */
       getPropertyName (slug) {
         const element = utils.getElement(slug);
         return element ? element.name : '';
       },
     },
     mounted () {
+      // set properties emit receiver from Properties Components
       Vue.$on('setting:properties', (data) => {
         const element = _deepmerge(this.element, data);
         const pages = this.$store.state.story.data.pages;
@@ -62,6 +68,7 @@
           publish: false
         });
       });
+      // add element emit receiver from AMPElement Component
       Vue.$on('add:element', (slug) => {
         const pages = this.$store.state.story.data.pages;
         const selected = this.$store.state.story.selected;

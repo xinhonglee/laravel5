@@ -2,7 +2,8 @@
   <div>
     <story-left-side-bar></story-left-side-bar>
     <div class="story-page-view md-elevation-3">
-      <iframe id="story_page_view" v-if="storyPageUrl" :src="storyPageUrl" width="100%" height="100%"></iframe>
+      <iframe id="story_page_view" width="100%" height="100%"
+              v-if="storyPageUrl" :src="storyPageUrl"></iframe>
     </div>
     <story-right-side-bar></story-right-side-bar>
     <md-dialog :md-active.sync="settingDialog">
@@ -65,6 +66,9 @@
       }
     },
     methods: {
+      /**
+       * save story global setting
+       */
       saveSettings () {
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -73,11 +77,17 @@
           publish: false
         });
       },
-      reloadIframe() {
+      /**
+       * reload story_page_view iframe
+       */
+      reloadIframe () {
         document.getElementById('story_page_view').contentWindow.location.reload();
       },
     },
     computed: {
+      /**
+       *  generate embed url to put iframe from selected story and page
+       */
       storyPageUrl () {
         if (!_.isNil(this.$store.state.story) &&
           this.$store.state.story.data.pages.length > 0 &&
@@ -86,7 +96,10 @@
         }
         return null;
       },
-      page() {
+      /**
+       * fetch selected page content from the store
+       */
+      page () {
         if (!_.isNil(this.$store.state.story) &&
           this.$store.state.story.data.pages.length > 0 &&
           this.$store.state.story.selected.page >= 0) {
@@ -96,9 +109,12 @@
       },
     },
     watch: {
+      /**
+       * reload story page view whenever selected page content is changed
+       */
       page: {
         handler: _.debounce(function (data) {
-            this.reloadIframe();
+          this.reloadIframe();
         }, 200),
         deep: true
       }
@@ -110,12 +126,16 @@
         layer: -1,
         element: -1,
       });
+
+      // app publish action emit receiver from EditableHeader Component
       Vue.$on('app:publish', () => {
         this.$store.dispatch('saveAMPStory', { data: {}, publish: true });
       });
+      // app setting action emit receiver from EditableHeader Component
       Vue.$on('app:setting', () => {
         this.settingDialog = true;
       });
+      // story settings action emit receiver from Settings components on the right sidebar
       Vue.$on('story:settings', (data) => {
         this.settings = Object.assign(this.settings, data);
         console.log(this.settings);
@@ -130,7 +150,7 @@
     beforeDestroy () {
       Vue.$off('app:publish');
       Vue.$off('app:setting');
-
+      Vue.$off('story:settings');
     },
   }
 </script>

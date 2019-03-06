@@ -17,8 +17,6 @@
 <script>
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-  const defaultCK = '<p>Content of the editor.</p>';
-
   export default {
     name: "setting-rich-text",
     props: {
@@ -68,7 +66,7 @@
           if (!_.isNil(this.el && this.el.properties && this.el.properties.html)) {
             return this.el.properties.html;
           }
-          return defaultCK;
+          return '';
         },
         set: _.debounce(function (value) {
           if (this.elementHtml !== value)
