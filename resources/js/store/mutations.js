@@ -29,6 +29,7 @@ export const UPDATE_APP_EDITABLE = (state, editable) => {
 
 export const UPDATE_AMP_STORY = (state, story) => {
   state.story.id = (story && story.id) ? story.id : '';
+  state.story.slug = (story && story.slug) ? story.slug : '';
   state.story.data.publisher = (story && story.data.publisher) ? story.data.publisher : '';
   state.story.data.publisherLogoSrc = (story && story.data['publisher-logo-src']) ? story.data['publisher-logo-src'] : '';
   state.story.data.posterPortraitSrc = (story && story.data['poster-portrait-src']) ? story.data['poster-portrait-src'] : '';
@@ -45,6 +46,7 @@ export const SAVE_AMP_STORY = (state, story) => {
   let data = {
     "id": (story && story.id) ? story.id : Vue.$store.state.story.id,
     "title": Vue.$store.state.app.title,
+    "slug" : (story && story.slug) ? story.slug : Vue.$store.state.story.slug,
     "data": {
       "background-audio": (story && story.data.backgroundAudio) ? story.data.backgroundAudio : storyData.backgroundAudio,
       "poster-portrait-src": (story && story.data.posterPortraitSrc) ? story.data.posterPortraitSrc : storyData.posterPortraitSrc,

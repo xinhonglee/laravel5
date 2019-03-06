@@ -21,8 +21,8 @@
         publisher-logo-src="{{ $story['publisher-logo-src'] }}"
         poster-portrait-src="{{ $story['poster-portrait-src'] }}">
       @each('story-page', $story['pages'], 'page')
-      <amp-story-bookend src="{{ $story['bookend'] }}" layout="nodisplay">
-      </amp-story-bookend>
+      {{--<amp-story-bookend src="{{ $story['bookend'] }}" layout="nodisplay">--}}
+      {{--</amp-story-bookend>--}}
     </amp-story>
   </body>
 </html>

@@ -2,7 +2,7 @@
   <div>
     <story-left-side-bar></story-left-side-bar>
     <div class="story-page-view md-elevation-3">
-      <iframe v-if="storyPageUrl" :src="storyPageUrl" width="100%" height="100%"></iframe>
+      <iframe id="story_page_view" v-if="storyPageUrl" :src="storyPageUrl" width="100%" height="100%"></iframe>
     </div>
     <story-right-side-bar></story-right-side-bar>
     <md-dialog :md-active.sync="settingDialog">
@@ -73,7 +73,9 @@
           publish: false
         });
       },
-
+      reloadIframe() {
+        document.getElementById('story_page_view').contentWindow.location.reload();
+      },
     },
     computed: {
       storyPageUrl () {
@@ -82,7 +84,23 @@
           this.$store.state.story.selected.page >= 0) {
           return `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
         }
+        return null;
+      },
+      page() {
+        if (!_.isNil(this.$store.state.story) &&
+          this.$store.state.story.data.pages.length > 0 &&
+          this.$store.state.story.selected.page >= 0) {
+          return this.$store.state.story.data.pages[this.$store.state.story.selected.page];
+        }
         return '';
+      },
+    },
+    watch: {
+      page: {
+        handler: _.debounce(function (data) {
+            this.reloadIframe();
+        }, 200),
+        deep: true
       }
     },
     mounted () {
@@ -112,6 +130,7 @@
     beforeDestroy () {
       Vue.$off('app:publish');
       Vue.$off('app:setting');
+
     },
   }
 </script>

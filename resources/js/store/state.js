@@ -31,6 +31,7 @@ const notSyncedData = {
   },
   story: {
     id: null,
+    slug: null,
     data: {
       publisher: "Publisher",
       publisherLogoSrc: "logo image url",

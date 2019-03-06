@@ -4,7 +4,7 @@
       <story-edit></story-edit>
     </template>
     <template v-else>
-      <story-view></story-view>
+      <story-view :slug="slug"></story-view>
     </template>
   </div>
 </template>
@@ -17,6 +17,7 @@
     components: { StoryView, StoryEdit },
     data() {
       return {
+        slug: '',
       }
     },
     methods: {
@@ -26,6 +27,8 @@
           Vue.unBlock();
           this.$store.dispatch('updateAMPStory', response.data);
           this.$store.dispatch('updateAppTitle', response.data.title);
+          console.log(response.data);
+          this.slug = response.data.slug;
         }, (error) => {
           Vue.unBlock();
         }).catch(Vue.handleClientError);
@@ -33,7 +36,6 @@
     },
     mounted() {
       if (this.$route.params.id) {
-        console.log(this.$route.params.id);
         this.loadStory(this.$route.params.id);
         this.$store.dispatch('updateAppEditable', false);
       } else {
@@ -44,7 +46,6 @@
     },
     beforeDestroy() {
       this.$store.dispatch('deleteAMPStoryFromRedis');
-      this.$store.dispatch('clearAMPStory');
     },
     computed: {
       editable() {

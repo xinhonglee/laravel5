@@ -1,7 +1,6 @@
 <template>
   <div class="story-slide-view">
-    <!--<iframe src="https://mic.com/stories/327/what-happens-in-your-brain-when-you-listen-to-music"-->
-            <!--width="100%" height="100%"></iframe>-->
+    <iframe v-if="storyUrl" :src="storyUrl" width="100%" height="100%"></iframe>
   </div>
 </template>
 
@@ -9,12 +8,20 @@
 
   export default {
     name: "story-view",
-    components: {
+    props: {
+      slug: String
     },
-    data() {
-      return {
-
-      }
+    components: {},
+    data () {
+      return {}
+    },
+    computed: {
+      storyUrl () {
+        if (this.slug) {
+          return `${app_url}/story/${this.slug}`;
+        }
+        return null;
+      },
     }
   }
 </script>

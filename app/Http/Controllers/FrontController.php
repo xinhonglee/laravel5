@@ -99,6 +99,7 @@ class FrontController extends Controller
     }
     public function getStoryById(Request $request, $id) {
       try {
+
           $dbStory = json_decode(Redis::get('story:id:' . $id), true);
           if (is_null($dbStory)) {
             abort(404);
@@ -116,7 +117,6 @@ class FrontController extends Controller
     public function getStoryPage(Request $request, $story_id, $page_id) {
       try {
           $dbStory = json_decode(Redis::get('story:id:' . $story_id), true);
-
           if (is_null($dbStory)) {
             abort(404);
           }
@@ -127,7 +127,9 @@ class FrontController extends Controller
           $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
           return view('story', compact('story', 'page_id'));
       } catch (\Exception $exception) {
-          abort(404);
+          //abort(404);
+          var_dump($exception);
+          exit;
       }
     }
 }
