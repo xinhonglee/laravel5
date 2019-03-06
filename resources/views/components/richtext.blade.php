@@ -3,5 +3,7 @@
   @if (!empty($element['animate-in-delay'])) animate-in-delay="{{ $element['animate-in-delay']}}" @endif
   @if (!empty($element['grid-area'])) animate-in-delay="{{ $element['grid-area']}}" @endif
   >
-  {!! $properties['html'] !!}
+  @if (!empty($properties['html']))
+    {!! $properties['html'] !!}
+  @endif
 </div>

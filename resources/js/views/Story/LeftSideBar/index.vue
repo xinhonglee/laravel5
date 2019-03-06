@@ -142,6 +142,8 @@
           const gridArea = pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex] = {
             'grid-area': gridArea,
+            type: '',
+            properties: {}
           }
         }
 
