@@ -81,7 +81,7 @@
        * reload story_page_view iframe
        */
       reloadIframe () {
-        document.getElementById('story_page_view').contentWindow.location.reload();
+        document.getElementById('story_page_view').contentWindow.location.reload(true);
       },
     },
     computed: {
