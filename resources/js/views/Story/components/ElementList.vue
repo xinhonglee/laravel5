@@ -12,11 +12,9 @@
 
 <script>
   import AmpElement from "./AMPElement";
-  import constants from "../constants";
-  import utils from "../utils";
 
   export default {
-    name: "Elements",
+    name: "element-list",
     components: { AmpElement },
     data() {
       return {

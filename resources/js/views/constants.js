@@ -99,6 +99,21 @@ const elementLayouts = [
   { slug: 'responsive', name: 'Responsive' },
 ];
 
+const blankPageTemplate =  {
+    id: '',
+    title: 'Blank',
+    image_url: '',
+    data: {
+      "auto-advance-after": "1s",
+      "background-audio": "",
+      layers: [],
+      cta_layer: {
+        type: "",
+        class: "",
+        properties: {}
+      },
+    }
+};
 
 export default {
   layerTemplates,
@@ -107,5 +122,6 @@ export default {
   imageFilters,
   ctaTypes,
   gridAreas,
-  elementLayouts
+  elementLayouts,
+  blankPageTemplate
 }

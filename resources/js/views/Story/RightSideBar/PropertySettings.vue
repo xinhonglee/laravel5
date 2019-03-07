@@ -10,10 +10,10 @@
 </template>
 
 <script>
-  import SettingRichText from "./Settings/SettingRichText";
-  import SettingImage from "./Settings/SettingImage";
-  import SettingVideo from "./Settings/SettingVideo";
-  import SettingAudio from "./Settings/SettingAudio";
+  import SettingRichText from "../components/properties/SettingRichText";
+  import SettingImage from "../components/properties/SettingImage";
+  import SettingVideo from "../components/properties/SettingVideo";
+  import SettingAudio from "../components/properties/SettingAudio";
   export default {
     name: "property-settings",
     components: {

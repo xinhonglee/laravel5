@@ -33,4 +33,3 @@
     </amp-story>
   </body>
 </html>
-</body>

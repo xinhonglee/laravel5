@@ -74,7 +74,7 @@
 </template>
 
 <script>
-  import constants from '../constants';
+  import constants from '../../constants';
   import PageLayer from "./PageLayer";
 
   export default {

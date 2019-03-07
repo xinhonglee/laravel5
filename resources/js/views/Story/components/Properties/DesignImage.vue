@@ -20,14 +20,13 @@
 </template>
 
 <script>
-  import constants from '../../constants';
-
+  import constants from '../../../constants';
   export default {
-    name: "design-video",
+    name: "design-image",
     props: {
       el: Object
     },
-    data () {
+    data() {
       return {
         layoutOptions: constants.elementLayouts,
       }
@@ -69,7 +68,7 @@
             Vue.$emit('setting:properties', { properties: { layout: value } });
         }, 2000),
       },
-    }
+    },
   }
 </script>
 

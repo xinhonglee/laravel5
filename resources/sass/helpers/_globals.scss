@@ -23,3 +23,12 @@ md-tabs.md-no-animation md-tab-content {
 md-tabs.md-no-animation md-ink-bar {
   transition: none !important;
 }
+
+.md-dialog-container {
+  min-width: 500px !important;
+}
+
+.attachment-image {
+  height: 100px !important;
+  width: auto !important;
+}

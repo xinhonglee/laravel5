@@ -30,20 +30,32 @@
         <md-button class="md-primary" @click="saveSettings">Ok</md-button>
       </md-dialog-actions>
     </md-dialog>
+    <md-dialog :md-active.sync="saveTemplateDialog">
+      <md-dialog-title>Save current page as model</md-dialog-title>
+      <md-dialog-content>
+        <save-page-template></save-page-template>
+      </md-dialog-content>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="saveTemplateDialog = false">Close</md-button>
+        <md-button class="md-primary" @click="savePageTemplate">Save</md-button>
+      </md-dialog-actions>
+    </md-dialog>
   </div>
 </template>
 
 <script>
   import StoryLeftSideBar from "./LeftSideBar/index";
   import StoryRightSideBar from "./RightSideBar/index";
-  import StorySeo from "./Settings/StorySEO";
-  import StoryAdvertising from "./Settings/StoryAdvertising";
-  import StoryAnalytics from "./Settings/StoryAnalytics";
-  import StoryUrl from "./Settings/StoryURL";
+  import StorySeo from "./components/Settings/StorySEO";
+  import StoryAdvertising from "./components/Settings/StoryAdvertising";
+  import StoryAnalytics from "./components/Settings/StoryAnalytics";
+  import StoryUrl from "./components/Settings/StoryURL";
+  import SavePageTemplate from "./components/SavePageTemplate";
 
   export default {
     name: "story-edit",
     components: {
+      SavePageTemplate,
       StoryAnalytics,
       StoryAdvertising,
       StorySeo,
@@ -63,6 +75,7 @@
           publisherLogoSrc: "",
           supportsLandscape: true,
         },
+        saveTemplateDialog: false,
       }
     },
     methods: {
@@ -76,13 +89,47 @@
           },
           publish: false
         });
+        this.settingDialog = false;
       },
       /**
        * reload story_page_view iframe
        */
       reloadIframe () {
-        document.getElementById('story_page_view').contentWindow.location.reload(true);
+        if(this.storyPageUrl) {
+          document.getElementById('story_page_view').contentWindow.location.reload(true);
+        }
       },
+
+      /**
+       * sage page template
+       */
+      savePageTemplate() {
+        Vue.$emit('save:page-template');
+        this.saveTemplateDialog = false;
+      }
+    },
+    mounted () {
+      // select page action
+      this.$store.dispatch('selectAMPStory', {page: 0, layer: -1, element: -1,});
+
+      // app publish action emit receiver from EditableHeader Component
+      Vue.$on('app:publish', () => {
+        this.$store.dispatch('saveAMPStory', { data: {}, publish: true });
+      });
+      // app setting action emit receiver from EditableHeader Component
+      Vue.$on('app:setting', () => {
+        this.settingDialog = true;
+      });
+      // app setting action emit receiver from EditableHeader Component
+      Vue.$on('show:page-template-dialog', () => {
+        this.saveTemplateDialog = true;
+      });
+      // story settings action emit receiver from Settings components on the right sidebar
+      Vue.$on('story:settings', (data) => {
+        this.settings = Object.assign(this.settings, data);
+        this.$store.dispatch('saveAMPStory', { data: {...this.settings}, publish: false});
+      });
+
     },
     computed: {
       /**
@@ -117,40 +164,19 @@
           this.reloadIframe();
         }, 200),
         deep: true
+      },
+      /**
+       * reload story page view whenever switch page
+       */
+      storyPageUrl() {
+        this.reloadIframe();
       }
-    },
-    mounted () {
-      // select page action
-      this.$store.dispatch('selectAMPStory', {
-        page: 0,
-        layer: -1,
-        element: -1,
-      });
-
-      // app publish action emit receiver from EditableHeader Component
-      Vue.$on('app:publish', () => {
-        this.$store.dispatch('saveAMPStory', { data: {}, publish: true });
-      });
-      // app setting action emit receiver from EditableHeader Component
-      Vue.$on('app:setting', () => {
-        this.settingDialog = true;
-      });
-      // story settings action emit receiver from Settings components on the right sidebar
-      Vue.$on('story:settings', (data) => {
-        this.settings = Object.assign(this.settings, data);
-        console.log(this.settings);
-        this.$store.dispatch('saveAMPStory', {
-          data: {
-            ...this.settings
-          },
-          publish: false
-        });
-      });
     },
     beforeDestroy () {
       Vue.$off('app:publish');
       Vue.$off('app:setting');
       Vue.$off('story:settings');
+      Vue.$off('show:page-template-dialog');
     },
   }
 </script>

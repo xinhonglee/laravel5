@@ -10,10 +10,10 @@
 </template>
 
 <script>
-  import DesignImage from "./Designs/DesignImage";
-  import DesignAudio from "./Designs/DesignAudio";
-  import DesignVideo from "./Designs/DesignVideo";
-  import DesignRichText from "./Designs/DesignRichText";
+  import DesignImage from "../components/properties/DesignImage";
+  import DesignAudio from "../components/properties/DesignAudio";
+  import DesignVideo from "../components/properties/DesignVideo";
+  import DesignRichText from "../components/properties/DesignRichText";
   export default {
     name: "property-design",
     components: {

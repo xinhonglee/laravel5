@@ -1,28 +1,46 @@
 <template>
   <div>
-    <div>
-      <span class="label-poss-btn">Poster Portrait Image</span>
-      <button type="button" class="md-raised ml-5 px-3" id="upload_poster_portrait_image">Select a file</button>
-      <img v-if="posterPortraitSrc" :src="posterPortraitSrc"/>
+    <div class="md-layout">
+      <div class="md-layout-item">
+        <p>Poster Portrait Image</p>
+        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_portrait_image">Select a file</button>
+      </div>
+      <div class="md-layout-item">
+        <img v-if="posterPortraitSrc" :src="posterPortraitSrc" class="attachment-image md-elevation-7"/>
+      </div>
     </div>
-    <div>
-      <span class="label-poss-btn">Poster Square Image</span>
-      <button type="button" class="md-raised ml-5 px-3" id="upload_poster_square_image">Select a file</button>
-      <img v-if="posterSquareSrc" :src="posterSquareSrc"/>
+    <div class="md-layout">
+      <div class="md-layout-item">
+        <p>Poster Square Image</p>
+        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_square_image">Select a file</button>
+      </div>
+      <div class="md-layout-item">
+        <img v-if="posterSquareSrc" :src="posterSquareSrc" class="attachment-image md-elevation-7"/>
+      </div>
     </div>
-    <div>
-      <span class="label-poss-btn">Poster Landscape Image</span>
-      <button type="button" class="md-raised ml-5 px-3" id="upload_poster_landscape_image">Select a file</button>
-      <img v-if="posterLandscapeSrc" :src="posterLandscapeSrc"/>
+    <div class="md-layout">
+      <div class="md-layout-item">
+        <p>Poster Landscape Image</p>
+        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_landscape_image">Select a file</button>
+      </div>
+      <div class="md-layout-item">
+        <img v-if="posterLandscapeSrc" :src="posterLandscapeSrc" class="attachment-image md-elevation-7"/>
+      </div>
     </div>
-    <md-switch v-model="supportsLandscape">Supports Landscape</md-switch>
+    <!--<md-switch v-model="supportsLandscape">Supports Landscape</md-switch>-->
     <md-field>
       <label>Publisher</label>
       <md-input v-model="publisher"></md-input>
     </md-field>
-    <span class="label-poss-btn">Publisher Logo</span>
-    <button type="button" class="md-raised ml-5 px-3" id="upload_story_publisher_logo">Select a file</button>
-    <img v-if="publisherLogoSrc" :src="publisherLogoSrc"/>
+    <div class="md-layout">
+      <div class="md-layout-item">
+        <p>Publisher Logo</p>
+        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_story_publisher_logo">Select a file</button>
+      </div>
+      <div class="md-layout-item">
+        <img v-if="publisherLogoSrc" :src="publisherLogoSrc" class="attachment-image md-elevation-7"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -36,7 +54,7 @@
     },
     methods: {
       generateMediaLibraries () {
-        let vm = this;
+        const vm = this;
         cloudinary.createMediaLibrary(
           {...vm.cloudinaryInfo},
           {
@@ -86,7 +104,7 @@
         username: this.$store.state.cloudinary.userName,
         timestamp: this.$store.state.cloudinary.timestamp,
         signature: this.$store.state.cloudinary.signature,
-        button_class: 'md-button md-raised ml-5 md-theme-default px-3',
+        button_class: 'md-button md-raised md-theme-default px-3',
         button_caption: 'Select a file',
         multiple: false
       };
@@ -170,5 +188,7 @@
 </script>
 
 <style scoped>
-
+  .md-layout {
+    padding-bottom: 20px;
+  }
 </style>

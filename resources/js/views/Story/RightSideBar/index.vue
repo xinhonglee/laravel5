@@ -18,7 +18,7 @@
     <template v-if="(layer && layer.template) || (element && element['grid-area'] && !element.type)">
       <h4>New element</h4>
       <md-divider></md-divider>
-      <elements></elements>
+      <element-list></element-list>
     </template>
   </div>
 </template>
@@ -27,13 +27,13 @@
   import PropertySettings from "./PropertySettings";
   import PropertyDesign from "./PropertyDesign";
   import PropertyAnimation from "./PropertyAnimation";
-  import Elements from "./Elements";
-  import utils from '../utils';
+  import ElementList from "../components/ElementList";
+  import utils from '../../utils';
 
   export default {
     name: "story-right-side-bar",
     components: {
-      Elements,
+      ElementList,
       PropertyAnimation,
       PropertyDesign,
       PropertySettings

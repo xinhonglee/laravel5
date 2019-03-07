@@ -14,11 +14,10 @@
     <ul class="page-tools">
       <li @click="showDialog = true">+ Add a new page</li>
       <li>Page structure...</li>
-      <li @click="showSaveTemplateDialog=true">Save current page as model</li>
+      <li @click="showPageTemplateModal">Save current page as model</li>
     </ul>
     <md-dialog :md-active.sync="showDialog">
       <md-dialog-title>Add a new page</md-dialog-title>
-
       <md-dialog-content>
         <div class="story-templates-list">
           <div class="page-template"
@@ -33,7 +32,6 @@
           </div>
         </div>
       </md-dialog-content>
-
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false">Close</md-button>
         <md-button class="md-primary" @click="addNewPage">Add</md-button>
@@ -43,39 +41,28 @@
 </template>
 
 <script>
+  import constants from '../../views/constants';
+
   export default {
     name: "app-toolbar",
     data () {
       return {
-        pageTemplates: [
-          {
-            id: '', title: 'Blank', image_url: '',
-            data: {
-              "auto-advance-after": "1s",
-              "background-audio": "",
-              layers: [],
-              cta_layer: {
-                type: "",
-                class: "",
-                properties: {}
-              },
-            }
-          },
-        ],
+        pageTemplates: [constants.blankPageTemplate],
         showDialog: false,
-        showSaveTemplateDialog: false,
         selectedTemplate: -1,
       }
     },
     methods: {
       loadTemplates () {
+        this.pageTemplates = [constants.blankPageTemplate];
         this.$http.get('/story-template/list').then((response) => {
           this.pageTemplates.push(...response.data);
         }, (error) => {
         }).catch(Vue.handleClientError);
       },
-      savePageTemplate () {
-
+      showPageTemplateModal () {
+        console.log("[save:page-template] action trigger ...");
+        Vue.$emit('show:page-template-dialog');
       },
       selectPage (index) {
         this.$store.dispatch('selectAMPStory', {
@@ -94,7 +81,7 @@
         }
         // add page template
         const story = this.story;
-        story.data.pages.push({ id: Date.now(), ...this.pageTemplates[this.selectedTemplate].data });
+        story.data.pages.push({...this.pageTemplates[this.selectedTemplate].data, id: Date.now()});
         story.publish = false;
         this.$store.dispatch('saveAMPStory', story);
 
@@ -112,6 +99,9 @@
     },
     mounted () {
       this.loadTemplates();
+      Vue.$on("reload:story-templates", () => {
+        this.loadTemplates();
+      });
     },
     computed: {
       story () {
@@ -119,7 +109,10 @@
           return this.$store.state.story;
         }
       },
-    }
+    },
+    beforeDestroy () {
+      Vue.$off("reload:story-templates");
+    },
   }
 </script>
 
