@@ -95,9 +95,9 @@
        * reload story_page_view iframe
        */
       reloadIframe () {
-        if(this.storyPageUrl) {
+        // if(this.storyPageUrl) {
           document.getElementById('story_page_view').contentWindow.location.reload(true);
-        }
+        // }
       },
 
       /**
