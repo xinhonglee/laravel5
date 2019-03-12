@@ -7,6 +7,8 @@
 	<title>LOOPSIDER | {{$video->title}}</title>
 	<meta name="description" content="{{$video->description}}">
 	
+	<meta name="robots" content="noindex, nofollow">
+	
 	<link rel="canonical" href="{{ url()->full() }}">
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">

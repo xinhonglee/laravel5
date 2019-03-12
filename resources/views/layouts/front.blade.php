@@ -13,6 +13,8 @@
 	@endif
 	<meta name="description" content="LOOPSIDER | Regarder. Comprendre. Partager. Conçu pour les écrans mobiles et les réseaux sociaux, Loopsider est un média d'information en vidéo qui décryptent en images les histoires qui font l’actualité.">
 	
+	<meta name="robots" content="noindex, nofollow">
+	
 	<link rel="canonical" href="{{ url()->full() }}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
