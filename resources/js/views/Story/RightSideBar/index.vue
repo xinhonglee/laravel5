@@ -7,9 +7,11 @@
         <md-tab id="tab-property-setting" md-label="SETTINGS">
           <property-settings :element="element"></property-settings>
         </md-tab>
+        <!--<template v-show="element && element.type !== 'richtext'">-->
         <md-tab id="tab-property-design" md-label="DESIGN">
           <property-design :element="element"></property-design>
         </md-tab>
+        <!--</template>-->
         <md-tab id="tab-property-animation" md-label="ANIMATION">
           <property-animation :element="element"></property-animation>
         </md-tab>
@@ -74,6 +76,8 @@
         const selected = this.$store.state.story.selected;
         if (pages[selected.page].layers[selected.layer].template !== 'thirds') {
           pages[selected.page].layers[selected.layer].elements.push({ type: slug, properties: {} });
+          selected.element +=1;
+          this.$store.dispatch('selectAMPStory', selected);
         } else if (selected.element >=0 ){
           const element = pages[selected.page].layers[selected.layer].elements[selected.element];
           pages[selected.page].layers[selected.layer].elements[selected.element] = {

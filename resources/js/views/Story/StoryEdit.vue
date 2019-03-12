@@ -76,6 +76,7 @@
           supportsLandscape: true,
         },
         saveTemplateDialog: false,
+        prevPageSelected: 0,
       }
     },
     methods: {
@@ -95,9 +96,11 @@
        * reload story_page_view iframe
        */
       reloadIframe () {
-        // if(this.storyPageUrl) {
+        if(this.storyPageUrl &&  this.prevPageSelected === this.$store.state.story.selected.page) {
           document.getElementById('story_page_view').contentWindow.location.reload(true);
-        // }
+        } else {
+          this.prevPageSelected = this.$store.state.story.selected.page;
+        }
       },
 
       /**
@@ -165,12 +168,6 @@
         }, 200),
         deep: true
       },
-      /**
-       * reload story page view whenever switch page
-       */
-      storyPageUrl() {
-        this.reloadIframe();
-      }
     },
     beforeDestroy () {
       Vue.$off('app:publish');

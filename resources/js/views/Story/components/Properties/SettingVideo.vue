@@ -8,10 +8,12 @@
       <label>Class</label>
       <md-input v-model="elementClass"></md-input>
     </md-field>
-    <md-field>
-      <label>Video URL</label>
-      <md-input v-model="elementSrc"></md-input>
-    </md-field>
+    <img v-if="elementSrcVignette" :src="elementSrcVignette" class="attachment-image md-elevation-7"/>
+    <br>
+    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+            id="upload_property_video">
+      Select a Video
+    </button>
   </div>
 </template>
 
@@ -22,7 +24,37 @@
       el: Object
     },
     data () {
-      return {}
+      return {
+        cloudinaryInfo: null,
+      }
+    },
+    methods: {
+      generateMediaLibraries() {
+        const vm = this;
+        cloudinary.createMediaLibrary(
+          {...vm.cloudinaryInfo},
+          {
+            insertHandler: function (data) {
+              let result = data.assets[0];
+              vm.elementSrc = result.secure_url;
+            }
+          },
+          document.getElementById("upload_property_video")
+        );
+      }
+    },
+    mounted () {
+      this.cloudinaryInfo = {
+        cloud_name: this.$store.state.cloudinary.cloudName,
+        api_key: this.$store.state.cloudinary.apiKey,
+        username: this.$store.state.cloudinary.userName,
+        timestamp: this.$store.state.cloudinary.timestamp,
+        signature: this.$store.state.cloudinary.signature,
+        button_class: 'md-button md-raised md-theme-default px-3 ml-0',
+        button_caption: 'Select a Video',
+        multiple: false
+      };
+      this.generateMediaLibraries();
     },
     computed: {
       elementId: {
@@ -52,14 +84,23 @@
       elementSrc: {
         get () {
           if (!_.isNil(this.el && this.el.properties && this.el.properties.src)) {
+            this.elementSrcVignette = this.el.properties.src.substr(0, this.el.properties.src.lastIndexOf(".")) + ".jpg";
             return this.el.properties.src;
           }
           return '';
         },
-        set: _.debounce(function (value) {
+        set(value) {
           if (this.elementSrc !== value)
             Vue.$emit('setting:properties', { properties: { src: value } });
-        }, 2000),
+        },
+      },
+      elementSrcVignette: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.src)) {
+            return this.el.properties.src.substr(0, this.el.properties.src.lastIndexOf(".")) + ".jpg";
+          }
+          return '';
+        },
       },
     },
   }

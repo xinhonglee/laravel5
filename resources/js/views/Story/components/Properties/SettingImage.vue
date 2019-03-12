@@ -8,10 +8,12 @@
       <label>Class</label>
       <md-input v-model="elementClass"></md-input>
     </md-field>
-    <md-field>
-      <label>Image URL</label>
-      <md-input v-model="elementSrc"></md-input>
-    </md-field>
+    <img v-if="elementSrc" :src="elementSrc" class="attachment-image md-elevation-7"/>
+    <br>
+    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+              id="upload_property_image">
+        Select an Image
+    </button>
   </div>
 </template>
 
@@ -22,7 +24,37 @@
       el: Object
     },
     data () {
-      return {}
+      return {
+        cloudinaryInfo: null
+      }
+    },
+    methods: {
+      generateMediaLibraries() {
+        const vm = this;
+        cloudinary.createMediaLibrary(
+          {...vm.cloudinaryInfo},
+          {
+            insertHandler: function (data) {
+              let result = data.assets[0];
+              vm.elementSrc = result.secure_url.substr(0, result.secure_url.lastIndexOf(".")) + ".jpg";
+            }
+          },
+          document.getElementById("upload_property_image")
+        );
+      }
+    },
+    mounted () {
+      this.cloudinaryInfo = {
+        cloud_name: this.$store.state.cloudinary.cloudName,
+        api_key: this.$store.state.cloudinary.apiKey,
+        username: this.$store.state.cloudinary.userName,
+        timestamp: this.$store.state.cloudinary.timestamp,
+        signature: this.$store.state.cloudinary.signature,
+        button_class: 'md-button md-raised md-theme-default px-3 ml-0',
+        button_caption: 'Select a Image',
+        multiple: false
+      };
+      this.generateMediaLibraries();
     },
     computed: {
       elementId: {
@@ -56,10 +88,14 @@
           }
           return '';
         },
-        set: _.debounce(function (value) {
-          if (this.elementSrc !== value)
+        set(value) {
+          if (this.elementSrc !== value) {
+
+            console.log("======setting image src=====");
             Vue.$emit('setting:properties', { properties: { src: value } });
-        }, 2000),
+          }
+
+        },
       },
     },
   }
