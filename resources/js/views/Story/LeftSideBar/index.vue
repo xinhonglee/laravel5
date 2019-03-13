@@ -125,6 +125,11 @@
           },
           publish: false
         });
+        this.$store.dispatch('selectAMPStory', {
+          page: this.story.selected.page,
+          layer: (pages[this.story.selected.page].layers.length - 1),
+          element: -1,
+        });
         this.showDialog = false;
       },
       /**
