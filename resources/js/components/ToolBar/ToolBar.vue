@@ -2,11 +2,16 @@
   <div class="app-toolbar md-elevation-4">
     <div class="page-index">
       <md-tabs class="md-transparent">
+        <template slot="md-tab" slot-scope="{ tab }">
+          {{ tab.label }} <i class="badge" v-if="tab.data.new"></i>
+        </template>
         <md-tab
           v-for="(page, index) in story.data.pages"
           :id="index.toString()"
           :md-label="(index + 1).toString()"
+          :md-template-data="{ new: isNew(page.id) }"
           :key="index"
+          :class="index"
           @click="selectPage(index)">
         </md-tab>
       </md-tabs>
@@ -49,6 +54,7 @@
         pageTemplates: [constants.blankPageTemplate],
         showDialog: false,
         selectedTemplate: -1,
+        newPageIDs: []
       }
     },
     methods: {
@@ -79,27 +85,42 @@
           });
         }
         // add page template
-        const story = this.story;
-        story.data.pages.push({...this.pageTemplates[this.selectedTemplate].data, id: Date.now()});
+        const story = Object.assign({}, this.story);
+        const id = Date.now();
+        const data = {...this.pageTemplates[this.selectedTemplate].data, id: id};
+        story.data.pages.push(data);
         story.publish = false;
+
+        // save page ids created as new
+        this.newPageIDs.push(id);
+
+        // save new page
         this.$store.dispatch('saveAMPStory', story);
 
-        // select page action
+        // // select page action
         this.$store.dispatch('selectAMPStory', {
           page: this.story.data.pages.length - 1,
           layer: -1,
           element: -1,
         });
 
-        this.selectedTemplate = -1;
-        // close dialog
-        this.showDialog = false;
+         this.selectedTemplate = -1;
+         // close dialog
+         this.showDialog = false;
       },
+      isNew(id) {
+        return this.newPageIDs.indexOf(id) >= 0;
+      }
     },
     mounted () {
       this.loadTemplates();
+      // app reload story templates action emit receiver from Save Template Component
       Vue.$on("reload:story-templates", () => {
         this.loadTemplates();
+      });
+      // app publish action emit receiver from EditableHeader Component
+      Vue.$on('app:publish', () => {
+        this.newPageIDs = [];
       });
     },
     computed: {

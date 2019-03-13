@@ -60,7 +60,7 @@
       // set properties emit receiver from Properties Components
       Vue.$on('setting:properties', (data) => {
         const element = _deepmerge(this.element, data);
-        const pages = this.$store.state.story.data.pages;
+        const pages =  Object.assign({}, this.$store.state.story.data.pages);
         const selected = this.$store.state.story.selected;
         pages[selected.page].layers[selected.layer].elements[selected.element] = element;
         this.$store.dispatch('saveAMPStory', {
@@ -72,7 +72,7 @@
       });
       // add element emit receiver from AMPElement Component
       Vue.$on('add:element', (slug) => {
-        const pages = this.$store.state.story.data.pages;
+        const pages =  Object.assign({}, this.$store.state.story.data.pages);
         const selected = this.$store.state.story.selected;
         if (pages[selected.page].layers[selected.layer].template !== 'thirds') {
           pages[selected.page].layers[selected.layer].elements.push({ type: slug, properties: {} });

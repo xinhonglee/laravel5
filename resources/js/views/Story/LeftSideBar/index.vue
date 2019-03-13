@@ -98,7 +98,7 @@
        * remove selected page from story
        */
       removePage () {
-        const pages = this.story.data.pages;
+        const pages =  Object.assign({}, this.story.data.pages);
         pages.splice(this.story.selected.page, 1);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -117,7 +117,7 @@
        * add new layer to the selected page
        */
       addLayer () {
-        const pages = this.story.data.pages;
+        const pages =  Object.assign({}, this.story.data.pages);
         pages[this.story.selected.page].layers.push(this.layerTemplates[this.selectedLayer].data);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -136,7 +136,7 @@
        * remove selected layer from selected page
        */
       removeLayer () {
-        const pages = this.story.data.pages;
+        const pages = Object.assign({}, this.story.data.pages);
         pages[this.story.selected.page].layers.splice(this.removeLayerIndex, 1);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -154,7 +154,7 @@
        * remove selected element from selected layer
        */
       removeElement () {
-        const pages = this.story.data.pages;
+        const pages =  Object.assign({}, this.story.data.pages);
         if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
         } else { // in case of selected template thirds, it should be keep grid-area info
