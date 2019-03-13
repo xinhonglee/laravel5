@@ -3,7 +3,7 @@
     <div class="page-index">
       <md-tabs class="md-transparent">
         <template slot="md-tab" slot-scope="{ tab }">
-          {{ tab.label }} <i class="badge" v-if="tab.data.new"></i>
+          {{ tab.label }} <md-icon v-if="tab.data.new">flag</md-icon>
         </template>
         <md-tab
           v-for="(page, index) in story.data.pages"
@@ -86,6 +86,7 @@
         }
         // add page template
         const story = Object.assign({}, this.story);
+        // id with timestamp
         const id = Date.now();
         const data = {...this.pageTemplates[this.selectedTemplate].data, id: id};
         story.data.pages.push(data);
@@ -109,6 +110,7 @@
          this.showDialog = false;
       },
       isNew(id) {
+        console.log(this.newPageIDs.indexOf(id) >= 0);
         return this.newPageIDs.indexOf(id) >= 0;
       }
     },
@@ -136,7 +138,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .story-templates-list {
     display: block;
     min-width: 700px;
@@ -162,5 +164,16 @@
 
   .page-template-image:hover {
     box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .page-index {
+    .md-icon {
+      color: red !important;
+      font-size: 8px !important;
+      position: absolute;
+      right: 0;
+      top: -8px;
+      z-index: 100;
+    }
   }
 </style>

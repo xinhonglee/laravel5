@@ -90,11 +90,8 @@
         },
         set(value) {
           if (this.elementSrc !== value) {
-
-            console.log("======setting image src=====");
             Vue.$emit('setting:properties', { properties: { src: value } });
           }
-
         },
       },
     },
