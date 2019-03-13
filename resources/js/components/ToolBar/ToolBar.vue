@@ -13,7 +13,6 @@
     </div>
     <ul class="page-tools">
       <li @click="showDialog = true">+ Add a new page</li>
-      <li>Page structure...</li>
       <li @click="showPageTemplateModal">Save current page as model</li>
     </ul>
     <md-dialog :md-active.sync="showDialog">
