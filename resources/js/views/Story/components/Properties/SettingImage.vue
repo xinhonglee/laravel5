@@ -51,7 +51,7 @@
         timestamp: this.$store.state.cloudinary.timestamp,
         signature: this.$store.state.cloudinary.signature,
         button_class: 'md-button md-raised md-theme-default px-3 ml-0',
-        button_caption: 'Select a Image',
+        button_caption: 'Select an Image',
         multiple: false
       };
       this.generateMediaLibraries();
