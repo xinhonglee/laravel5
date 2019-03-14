@@ -1,20 +1,28 @@
 <template>
   <div class="app-toolbar md-elevation-4">
     <div class="page-index">
-      <md-tabs class="md-transparent">
-        <template slot="md-tab" slot-scope="{ tab }">
-          {{ tab.label }} <md-icon v-if="tab.data.new">flag</md-icon>
-        </template>
-        <md-tab
-          v-for="(page, index) in story.data.pages"
-          :id="index.toString()"
-          :md-label="(index + 1).toString()"
-          :md-template-data="{ new: isNew(page.id) }"
-          :md-active="isActive(index)"
-          :key="index"
-          @click="selectPage(index)">
-        </md-tab>
-      </md-tabs>
+      <md-button v-for="(page, index) in story.data.pages"
+                 :class="{'md-primary' : isActive(index)}"
+                 @click="selectPage(index)"
+                 :key="index"
+      >
+        {{ (index + 1).toString() }}
+        <md-icon v-if="isNew(page.id)">flag</md-icon>
+      </md-button>
+      <!--<md-tabs class="md-transparent">-->
+      <!--<template slot="md-tab" slot-scope="{ tab }">-->
+      <!--{{ tab.label }} <md-icon v-if="tab.data.new">flag</md-icon>-->
+      <!--</template>-->
+      <!--<md-tab-->
+      <!--v-for="(page, index) in story.data.pages"-->
+      <!--:id="index.toString()"-->
+      <!--:md-label="(index + 1).toString()"-->
+      <!--:md-template-data="{ new: isNew(page.id) }"-->
+      <!--:md-active="isActive(index)"-->
+      <!--:key="index"-->
+      <!--@click="selectPage(index)">-->
+      <!--</md-tab>-->
+      <!--</md-tabs>-->
     </div>
     <ul class="page-tools">
       <li @click="showDialog = true">+ Add a new page</li>
@@ -88,7 +96,7 @@
         const story = Object.assign({}, this.story);
         // id with timestamp
         const id = Date.now();
-        const data = {...this.pageTemplates[this.selectedTemplate].data, id: id};
+        const data = { ...this.pageTemplates[this.selectedTemplate].data, id: id };
         story.data.pages.push(data);
         story.publish = false;
 
@@ -105,15 +113,14 @@
           element: -1,
         });
 
-         this.selectedTemplate = -1;
-         // close dialog
-         this.showDialog = false;
+        this.selectedTemplate = -1;
+        // close dialog
+        this.showDialog = false;
       },
-      isNew(id) {
+      isNew (id) {
         return this.newPageIDs.indexOf(id) >= 0;
       },
-      isActive(index) {
-        console.log(this.story.selected.page === index);
+      isActive (index) {
         return this.story.selected.page === index;
       }
     },
@@ -174,8 +181,8 @@
       color: red !important;
       font-size: 8px !important;
       position: absolute;
-      right: 0;
-      top: -8px;
+      left: -7px;
+      top: -15px;
       z-index: 100;
     }
   }
