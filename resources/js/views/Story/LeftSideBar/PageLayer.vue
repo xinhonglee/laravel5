@@ -120,6 +120,7 @@
        * @param index
        */
       selectElement (index) {
+        Vue.$emit("select:element");
         this.$store.dispatch('selectAMPStory', {
           page: this.pageIndex,
           layer: this.layerIndex,
