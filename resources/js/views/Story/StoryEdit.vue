@@ -141,6 +141,7 @@
       storyPageUrl () {
         if (!_.isNil(this.$store.state.story) &&
           this.$store.state.story.data.pages.length > 0 &&
+          this.$store.state.story.data.pages[this.$store.state.story.selected.page] &&
           this.$store.state.story.selected.page >= 0) {
           return `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
         }

@@ -10,14 +10,16 @@
         </div>
         <div class="page-tools md-elevation-3" v-if="showPageTools">
           <ul>
-            <li>Duplicate</li>
+            <li @click="duplicatePage">Duplicate</li>
             <li @click="showRemovePageDialog=true">Remove</li>
           </ul>
         </div>
       </div>
       <md-divider></md-divider>
       <div class="template-list">
-        <template v-for="(layer, index) in story.data.pages[story.selected.page].layers">
+        <template
+          v-if="story.data.pages[story.selected.page]"
+          v-for="(layer, index) in story.data.pages[story.selected.page].layers">
           <page-layer :layer="layer"
                       :layerIndex="index"
                       :pageIndex="story.selected.page">
@@ -94,6 +96,27 @@
       }
     },
     methods: {
+      /**
+       * duplicate selected page
+       */
+      duplicatePage() {
+        const pages =  Object.assign([], this.story.data.pages);
+        const id = Date.now();
+        pages.push({...pages[this.story.selected.page], id: id});
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages,
+          },
+          publish: false
+        });
+        this.$store.dispatch('selectAMPStory', {
+          page: pages.length - 1,
+          layer: -1,
+          element: -1,
+        });
+        Vue.$emit("duplicate:page", id);
+        this.showPageTools = false;
+      },
       /**
        * remove selected page from story
        */

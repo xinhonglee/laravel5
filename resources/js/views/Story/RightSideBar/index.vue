@@ -133,7 +133,7 @@
     computed: {
       element () {
         const selected = this.$store.state.story.selected;
-        if (selected.element >= 0) {
+        if (selected.element >= 0 ) {
           const el = this.$store.state.story.data.pages[selected.page].layers[selected.layer].elements[selected.element];
           this.propertyName = this.getPropertyName(el.type);
 

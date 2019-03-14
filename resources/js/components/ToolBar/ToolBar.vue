@@ -96,8 +96,7 @@
         const story = Object.assign({}, this.story);
         // id with timestamp
         const id = Date.now();
-        const data = { ...this.pageTemplates[this.selectedTemplate].data, id: id };
-        story.data.pages.push(data);
+        story.data.pages.push({ ...this.pageTemplates[this.selectedTemplate].data, id: id });
         story.publish = false;
 
         // save page ids created as new
@@ -134,6 +133,10 @@
       Vue.$on('app:publish', () => {
         this.newPageIDs = [];
       });
+      Vue.$on('duplicate:page', (id) => {
+        // save page ids created as new
+        this.newPageIDs.push(id);
+      });
     },
     computed: {
       story () {
@@ -144,6 +147,8 @@
     },
     beforeDestroy () {
       Vue.$off("reload:story-templates");
+      Vue.$off('duplicate:page');
+      Vue.$off('app:publish');
     },
   }
 </script>
