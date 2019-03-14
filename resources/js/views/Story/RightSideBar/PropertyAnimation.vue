@@ -40,49 +40,53 @@
       animationIn: {
         get () {
           if (!_.isNil(this.element && this.element['animate-in'])) {
-            return this.element['animate-in'];
+            const animation = Object.assign({}, this.element['animate-in']);
+            return animation.substring(0, animation.length - 1);
           }
           return '';
         },
         set: _.debounce(function (value) {
           if (this.animationIn !== value)
-            Vue.$emit('setting:properties', { 'animate-in': value });
+            Vue.$emit('setting:properties', { 'animate-in': value + 's'});
         }, 2000),
       },
       animationInDuration: {
         get () {
           if (!_.isNil(this.element && this.element['animate-in-duration'])) {
-            return this.element['animate-in-duration'];
+            const animation = Object.assign({}, this.element['animate-in']);
+            return animation.substring(0, animation.length - 1);
           }
           return '';
         },
         set: _.debounce(function (value) {
           if (this.animationInDuration !== value)
-            Vue.$emit('setting:properties', { 'animate-in-duration': value });
+            Vue.$emit('setting:properties', { 'animate-in-duration': value + 's' });
         }, 2000),
       },
       animationInDelay: {
         get () {
           if (!_.isNil(this.element && this.element['animate-in-delay'])) {
-            return this.element['animate-in-delay'];
+            const animation = Object.assign({}, this.element['animate-in-delay']);
+            return animation.substring(0, animation.length - 1);
           }
           return '';
         },
         set: _.debounce(function (value) {
           if (this.animationInDelay !== value)
-            Vue.$emit('setting:properties', { 'animate-in-delay': value });
+            Vue.$emit('setting:properties', { 'animate-in-delay': value + 's' });
         }, 2000),
       },
       animationInAfter: {
         get () {
           if (!_.isNil(this.element && this.element['animate-in-after'])) {
-            return this.element['animate-in-after'];
+            const animation = Object.assign({}, this.element['animate-in-after']);
+            return animation.substring(0, animation.length - 1);
           }
           return '';
         },
         set: _.debounce(function (value) {
           if (this.animationInAfter !== value)
-            Vue.$emit('setting:properties', { 'animate-in-after': value });
+            Vue.$emit('setting:properties', { 'animate-in-after': value + 's' });
         }, 2000),
       },
     },

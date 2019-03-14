@@ -10,8 +10,8 @@
           :id="index.toString()"
           :md-label="(index + 1).toString()"
           :md-template-data="{ new: isNew(page.id) }"
+          :md-active="isActive(index)"
           :key="index"
-          :class="index"
           @click="selectPage(index)">
         </md-tab>
       </md-tabs>
@@ -110,8 +110,11 @@
          this.showDialog = false;
       },
       isNew(id) {
-        console.log(this.newPageIDs.indexOf(id) >= 0);
         return this.newPageIDs.indexOf(id) >= 0;
+      },
+      isActive(index) {
+        console.log(this.story.selected.page === index);
+        return this.story.selected.page === index;
       }
     },
     mounted () {
