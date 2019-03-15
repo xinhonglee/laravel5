@@ -17,12 +17,12 @@
       </div>
       <md-divider></md-divider>
       <div class="template-list">
-        <template
-          v-if="story.data.pages[story.selected.page]"
-          v-for="(layer, index) in story.data.pages[story.selected.page].layers">
-          <page-layer :layer="layer"
-                      :layerIndex="index"
-                      :pageIndex="story.selected.page">
+        <template v-if="story.data.pages[story.selected.page]">
+          <page-layer
+            v-for="(layer, index) of story.data.pages[story.selected.page].layers"
+            :layer="layer"
+            :layerIndex="index"
+            :pageIndex="story.selected.page">
           </page-layer>
         </template>
       </div>
@@ -99,10 +99,10 @@
       /**
        * duplicate selected page
        */
-      duplicatePage() {
-        const pages =  Object.assign([], this.story.data.pages);
+      duplicatePage () {
+        const pages = Object.assign([], this.story.data.pages);
         const id = Date.now();
-        pages.push({...pages[this.story.selected.page], id: id});
+        pages.push({ ...pages[this.story.selected.page], id: id });
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages,
@@ -121,7 +121,7 @@
        * remove selected page from story
        */
       removePage () {
-        const pages =  Object.assign([], this.story.data.pages);
+        const pages = Object.assign([], this.story.data.pages);
         pages.splice(this.story.selected.page, 1);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -140,7 +140,7 @@
        * add new layer to the selected page
        */
       addLayer () {
-        const pages =  Object.assign([], this.story.data.pages);
+        const pages = Object.assign([], this.story.data.pages);
         pages[this.story.selected.page].layers.push(this.layerTemplates[this.selectedLayer].data);
         this.$store.dispatch('saveAMPStory', {
           data: {
@@ -177,18 +177,21 @@
        * remove selected element from selected layer
        */
       removeElement () {
-        const pages =  Object.assign([], this.story.data.pages);
+        const pages = Object.assign([], this.story.data.pages);
         if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
+
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
+
         } else { // in case of selected template thirds, it should be keep grid-area info
+
           const gridArea = pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
+
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex] = {
             'grid-area': gridArea,
             type: '',
             properties: {}
           }
         }
-
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages

@@ -99,7 +99,7 @@
         if(this.storyPageUrl &&  this.prevPageSelected === this.$store.state.story.selected.page) {
           document.getElementById('story_page_view').contentWindow.location.reload(true);
         } else {
-          this.prevPageSelected = this.$store.state.story.selected.page;
+           this.prevPageSelected = this.$store.state.story.selected.page;
         }
       },
 
@@ -140,9 +140,9 @@
        */
       storyPageUrl () {
         if (!_.isNil(this.$store.state.story) &&
+          this.$store.state.story.selected.page >= 0 &&
           this.$store.state.story.data.pages.length > 0 &&
-          this.$store.state.story.data.pages[this.$store.state.story.selected.page] &&
-          this.$store.state.story.selected.page >= 0) {
+          !_.isNil(this.$store.state.story.data.pages[this.$store.state.story.selected.page])) {
           return `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
         }
         return null;
@@ -153,10 +153,11 @@
       page () {
         if (!_.isNil(this.$store.state.story) &&
           this.$store.state.story.data.pages.length > 0 &&
+          this.$store.state.story.data.pages[this.$store.state.story.selected.page] &&
           this.$store.state.story.selected.page >= 0) {
           return this.$store.state.story.data.pages[this.$store.state.story.selected.page];
         }
-        return '';
+        return null;
       },
     },
     watch: {

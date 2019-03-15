@@ -105,9 +105,9 @@
         // save new page
         this.$store.dispatch('saveAMPStory', story);
 
-        // // select page action
+        // select page action
         this.$store.dispatch('selectAMPStory', {
-          page: this.story.data.pages.length - 1,
+          page: (story.data.pages.length - 1),
           layer: -1,
           element: -1,
         });
