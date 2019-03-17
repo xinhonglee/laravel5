@@ -16,6 +16,8 @@
 
 <script>
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+  // import EssentialsPlugin from '@ckeditor/ckeditor5-essentials/src/essentials';
+  import TextColor from 'ckeditor-text-color-select/src/textcolor';
 
   export default {
     name: "setting-rich-text",
@@ -26,11 +28,15 @@
       return {
         editor: ClassicEditor,
         editorConfig: {
+          // plugins: [
+          //   TextColor
+          // ],
           toolbar: {
             items: [
               'heading',
               'bold',
               'italic',
+              // 'textColor'
             ]
           }
         },

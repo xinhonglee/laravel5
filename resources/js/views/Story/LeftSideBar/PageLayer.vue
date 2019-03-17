@@ -1,7 +1,7 @@
 <template>
   <div class="page-layer">
     <div class="layer-template"
-         :class="isLayerSelected() ? 'selected' : ''"
+         :class="{ selected : isLayerSelected()}"
          @click="selectLayer">
       <img class="template-icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
       <div class="template-name">{{ getLayerTemplateName(layer.template)}} Template</div>
@@ -15,7 +15,7 @@
           <div class="element-grid-area" v-html="getGridAreaName(element['grid-area'])"></div>
         </template>
         <div class="element-type"
-             :class="isElementSelected(index) ? 'selected' : ''"
+             :class="{ selected : isElementSelected(index)}"
              @click="selectElement(index)">
           [ <span>{{ getElementName(element.type)}}</span> ]
           <div class="btn-remove" @click="removeElement(index)">

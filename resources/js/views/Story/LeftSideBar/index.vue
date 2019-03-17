@@ -22,7 +22,9 @@
             v-for="(layer, index) of story.data.pages[story.selected.page].layers"
             :layer="layer"
             :layerIndex="index"
-            :pageIndex="story.selected.page">
+            :pageIndex="story.selected.page"
+            :key="index"
+          >
           </page-layer>
         </template>
       </div>
@@ -39,7 +41,7 @@
                @click="selectedLayer = index"
                :key="index">
             <div class="layer-template-image"
-                 :class="selectedLayer === index ? 'selected md-elevation-7' : ''"
+                 :class="{'selected md-elevation-7' : selectedLayer === index}"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}">
             </div>
             <p>{{ template.name }}</p>

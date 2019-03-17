@@ -37,7 +37,7 @@
                @click="selectedTemplate = index"
                :key="index">
             <div class="page-template-image"
-                 :class="selectedTemplate === index ? 'selected md-elevation-7' : ''"
+                 :class="{ 'selected md-elevation-7' : selectedTemplate === index }"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}">
             </div>
             <p>{{ template.title }}</p>
