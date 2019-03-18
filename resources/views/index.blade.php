@@ -2,14 +2,13 @@
 
 @section('content')
 
-
 <header class="xs-hide large-screen">
   @php ($i = 0)
   <amp-carousel height="819" layout="fixed-height" type="carousel" autoplay="" loop="" class="">
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -23,14 +22,14 @@
     @php ($i++)
 	@endfor
   </amp-carousel>
-</header> 
+</header>
 <header class="xs-hide small-medium-screen">
   @php ($i = 0)
   <amp-carousel height="615" layout="fixed-height" type="carousel" autoplay="" loop="" class="">
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" width="615" height="615" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover}}" width="615" height="615" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -51,7 +50,7 @@
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -77,7 +76,7 @@
     <div class="lg-col lg-col-3 md-col md-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+          <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -99,7 +98,7 @@
     <div class="lg-col lg-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+          <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -121,12 +120,12 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
-    height="25"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
+                  height="25"
+                  datetime="{{$videos[$i]->ISODate}}"
+                  locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
                 <h2 class="small">{{$videos[$i]->title}}</h2>
               </div>
 			  <div class="btn"></div>
@@ -144,7 +143,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -171,7 +170,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -194,7 +193,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -215,7 +214,7 @@
     <div class="lg-col lg-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+          <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -243,7 +242,7 @@
 				<amp-img src="/assets/facebook_green.svg" media="(max-width: 40rem)" width="13" height="25" layout="fixed"></amp-img>
 				<amp-img src="/assets/facebook_green.svg" media="(min-width: 40.06rem) and (max-width: 52rem)" width="20" height="38" layout="fixed"></amp-img>
 				<amp-img src="/assets/facebook_green.svg" media="(min-width: 52.06rem) and (max-width: 64rem)" width="27" height="52" layout="fixed"></amp-img>
-				<amp-img src="/assets/facebook_green.svg" media="(min-width: 64.06rem)" width="34" height="66" layout="fixed"></amp-img>				
+				<amp-img src="/assets/facebook_green.svg" media="(min-width: 64.06rem)" width="34" height="66" layout="fixed"></amp-img>
 			</a>
 		</li>
         <li>

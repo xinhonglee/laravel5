@@ -29,6 +29,11 @@ class Video extends Model
         return date('c', strtotime($this->date));
     }
 
+    public function getCoverAttribute()
+    {
+        return str_replace("https://res.cloudinary.com/loopsider/image/upload/", "https://res.cloudinary.com/loopsider/image/upload/q_auto,f_auto,dpr_auto,w_auto/", $this->cover_url);
+    }
+
     public function category()
     {
         return $this->belongsTo('App\Models\VideoCategory', 'video_category_id', 'id');

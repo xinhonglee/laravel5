@@ -17,7 +17,7 @@
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -38,7 +38,7 @@
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" width="569" height="569" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover}}" width="569" height="569" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -59,7 +59,7 @@
 	@for ($k = 0; $k < 5; $k++)
     @if ($videos->count()>=($i+1))
     <article class="slide">
-      <amp-img src="{{$videos[$i]->cover_url}}" layout="fill" class="cover"></amp-img>
+      <amp-img src="{{$videos[$i]->cover}}" layout="fill" class="cover"></amp-img>
       <div class="caption">
         <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -85,7 +85,7 @@
     <div class="lg-col lg-col-3 md-col md-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+          <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -107,7 +107,7 @@
     <div class="lg-col lg-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+          <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -129,7 +129,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -152,7 +152,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -179,7 +179,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -202,7 +202,7 @@
         <div class="md-col md-col-6">
           <a href="{{route('player', $videos[$i]->slug)}}">
             <article class="video">
-              <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+              <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
               <div class="caption">
                 <amp-timeago layout="fixed" width="300" class="time"
     height="25"
@@ -223,7 +223,7 @@
     <div class="lg-col lg-col-6">
       <a href="{{route('player', $videos[$i]->slug)}}">
         <article class="video">
-          <amp-img src="{{$videos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+          <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
     height="25"

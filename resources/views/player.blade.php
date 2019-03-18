@@ -6,15 +6,15 @@
 	<meta charset="utf-8">
 	<title>LOOPSIDER | {{$video->title}}</title>
 	<meta name="description" content="{{$video->description}}">
-	
+
 	<meta name="robots" content="noindex, nofollow">
-	
+
 	<link rel="canonical" href="{{ url()->full() }}">
-	
+
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-	
+
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 	<script async="" src="https://cdn.ampproject.org/v0.js"></script>
@@ -26,14 +26,14 @@
 	<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
-	
+
 	<script type="application/ld+json">
 	{
 	  "@context": "https://schema.org",
 	  "@type": "VideoObject",
 	  "name": "{{$video->title}}",
 	  "description": "{{$video->description}}",
-	  "thumbnailUrl": "{{$video->cover_url}}",
+	  "thumbnailUrl": "{{$video->optimized_cover}}",
 	  "uploadDate": "{{$video->ISODate}}",
 	  "publisher": {
 		"@type": "Organization",
@@ -48,7 +48,7 @@
 	  "contentUrl": "{{$video->video_url}}"
 	}
 	</script>
-	
+
 	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -83,7 +83,7 @@
 			font-style: normal;
 
 		}
-		
+
 		@font-face {
 		  font-family: 'rationalmedium';
 		  src: url('/assets/rational-medium.woff2') format('woff2'),
@@ -98,7 +98,7 @@
 		a, a:visited, a:hover {
 			text-decoration: none;
 		}
-		
+
 		h1, h2, h3, h4, h5, h6 {
 			letter-spacing: normal;
 		}
@@ -308,7 +308,7 @@
 			padding: 0;
 			margin: 20px 0 20px 0;
 		}
-		
+
 		@media (min-width:52.06rem) {
 			.small-screen {
 				display: none;
@@ -317,7 +317,7 @@
 		@media (max-width:52rem){
 			.medium-screen {
 				display: none;
-			}			
+			}
 		}
 		@media (min-width:100.06rem) {
 			.medium-screen {
@@ -334,7 +334,7 @@
 			position: relative;
 			width: 100%;
 		}
-		
+
 		/* Overlay fills the parent and sits on top of the video */
 		.click-to-play-overlay {
 			position: absolute;
@@ -374,7 +374,7 @@
 		.play-icon:hover, .play-icon:focus {
 			opacity: 1;
 		}
-		  
+
 		.player.medium-screen {
 			height: 600px; /** player height ***/
 		}
@@ -392,7 +392,7 @@
 			bottom: 140px;
 			left: calc(30px + 400px + 50vw);
 			z-index: 10;
-			color: #e4e5e6;			
+			color: #e4e5e6;
 			opacity: 0;
 			-o-transition:1s;
 			-ms-transition:1s;
@@ -444,7 +444,7 @@
 				top: 680px;  /** player height - 120 px **/
 			}
 		}
-		.hoverzone:hover ~ .overlay, .hoverzone:hover ~ .share, .share:hover { 
+		.hoverzone:hover ~ .overlay, .hoverzone:hover ~ .share, .share:hover {
 			opacity: 1;
 		}
 		.share:hover ~ .overlay {
@@ -670,7 +670,7 @@
 		}
 		</script>
 	</amp-analytics>
-	
+
 	<amp-user-notification id="cookie-notification"
 	  layout="nodisplay">
 	  <div class="message">
@@ -680,7 +680,7 @@
 	  </div>
 	  <button on="tap:cookie-notification.dismiss">J'accepte</button>
 	</amp-user-notification>
-	
+
 	<div class="back">
 		<a href="/">
 			Retour
@@ -727,7 +727,7 @@
 	<main>
 		<section class="player large-screen">
 			<amp-video id="large-screen-video" class="hoverzone" height="800" src="{{$video->video_url}}"
-				poster="{{$video->cover_url}}"
+				poster="{{$video->optimized_cover}}"
 				layout="fixed-height"
 				controls>
 				<div fallback>
@@ -745,11 +745,11 @@
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
 			</div>
-			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
+			<amp-img src="{{$video->cover}}" layout="fill" class="cover blur"></amp-img>
 		</section>
 		<section class="player medium-screen">
 			<amp-video id="medium-screen-video" class="hoverzone" height="600" src="{{$video->video_url}}"
-				poster="{{$video->cover_url}}"
+				poster="{{$video->cover}}"
 				layout="fixed-height"
 				controls>
 				<div fallback>
@@ -767,21 +767,21 @@
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
 			</div>
-			<amp-img src="{{$video->cover_url}}" layout="fill" class="cover blur"></amp-img>
+			<amp-img src="{{$video->cover}}" layout="fill" class="cover blur"></amp-img>
 		</section>
 		<section class="player small-screen">
 			<amp-video id="small-screen-video" height="800" width="800" src="{{$video->video_url}}"
-				poster="{{$video->cover_url}}"
+				poster="{{$video->cover}}"
 				layout="responsive"
 				controls>
 				<div fallback>
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
 				<source type="video/mp4" src="{{$video->video_url}}">
-			</amp-video>	
+			</amp-video>
 			<div id="small-screen-overlay" class="click-to-play-overlay">
 				<div class="play-icon" role="button" tabindex="0" on="tap:small-screen-overlay.hide, small-screen-video.play"></div>
-			</div>			
+			</div>
 			<div class="overlay">
 				<h2>{{$video->title}}</h2>
 				<span class="description">{{$video->description}}</span>
@@ -798,7 +798,7 @@
 				@if ($suggestedVideos->count()>=($i+1))
 				<a href="{{route('player', $suggestedVideos[$i]->slug)}}" class="slide-video">
 					<article>
-						<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="fill" class="cover"></amp-img>
+						<amp-img src="{{$suggestedVideos[$i]->cover}}" width="819" height="819" layout="fill" class="cover"></amp-img>
 						<div class="caption">
 							<amp-timeago layout="fixed" width="300" class="time"
 								height="25"
@@ -822,7 +822,7 @@
 					<div class="lg-col lg-col-3 md-col md-col-6">
 						<a href="{{route('player', $suggestedVideos[$i]->slug)}}">
 							<article class="video">
-								<amp-img src="{{$suggestedVideos[$i]->cover_url}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
+								<amp-img src="{{$suggestedVideos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
 								<div class="caption">
 									<amp-timeago layout="fixed" width="300" class="time"
 										height="25"
