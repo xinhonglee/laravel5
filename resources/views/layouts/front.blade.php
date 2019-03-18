@@ -12,9 +12,9 @@
 	<title>LOOPSIDER | Mentions légales</title>
 	@endif
 	<meta name="description" content="LOOPSIDER | Regarder. Comprendre. Partager. Conçu pour les écrans mobiles et les réseaux sociaux, Loopsider est un média d'information en vidéo qui décryptent en images les histoires qui font l’actualité.">
-	
+
 	<meta name="robots" content="noindex, nofollow">
-	
+
 	<link rel="canonical" href="{{ url()->full() }}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
@@ -39,7 +39,7 @@
 	@if ($css=="corporate")
 	<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
 	@endif
-	
+
 	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
 	<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -71,7 +71,7 @@
 		}
 		</script>
 	</amp-analytics>
-	
+
 	<amp-user-notification id="cookie-notification"
 	  layout="nodisplay">
 	  <div class="message">
@@ -170,7 +170,7 @@
 				<li class="xs-hide"><a href="/mentions-legales">Mentions légales</a></li>
 			</ul>
 		</nav>
-		<span>Loopsider &copy;2018</span>
+		<span>Loopsider &copy;2018 - 2019</span>
 		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide">Mentions légales</span></a>
 	</footer>
 </body>
