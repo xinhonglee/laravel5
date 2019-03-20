@@ -1,5 +1,8 @@
 <template>
   <div class="stories-list">
+    <md-button class="md-raised md-primary mb-3 pr-2 ml-0" @click="redirectToCreateStory">
+      <md-icon>add</md-icon> CREATE
+    </md-button>
     <md-table v-model="searches" md-sort="last_update" md-sort-order="asc" md-card>
       <md-table-empty-state md-label="No stories found"></md-table-empty-state>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToStory(item)">
@@ -8,9 +11,6 @@
         <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-fab md-primary btn-poss-new-item" @click="redirectToCreateStory">
-      <md-icon>add</md-icon>
-    </md-button>
   </div>
 </template>
 
