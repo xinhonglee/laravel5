@@ -1,5 +1,5 @@
 <template>
-  <div class="app-filter md-elevation-4">
+  <div class="app-filter">
     <div class="tab-navigation">
       <md-tabs class="md-transparent">
         <md-tab id="all" md-label="ALL" @click="selectedUser('all')"></md-tab>
