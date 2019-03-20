@@ -2,7 +2,7 @@
   <div class="videos-list">
     <md-table v-model="videos" md-sort="name" md-sort-order="asc" md-card>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToVideo(item)">
-        <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>
+        <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
         <md-table-cell md-label="Owner" md-sort-by="owner">{{ item.owner }}</md-table-cell>
         <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
