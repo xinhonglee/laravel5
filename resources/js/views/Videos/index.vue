@@ -1,6 +1,7 @@
 <template>
   <div class="videos-list">
-    <md-table v-model="videos" md-sort="name" md-sort-order="asc" md-card>
+    <md-table v-model="searches" md-sort="last_update" md-sort-order="asc" md-card>
+      <md-table-empty-state md-label="No videos found"></md-table-empty-state>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToVideo(item)">
         <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
         <md-table-cell md-label="Owner" md-sort-by="owner">{{ item.owner }}</md-table-cell>
@@ -14,23 +15,29 @@
 </template>
 
 <script>
+  import utils from "../utils";
   export default {
     name: "videos",
     data () {
       return {
+        filters: [],
+        searches: [],
         videos: [],
-        backVideos: [],
       }
     },
     methods: {
       filterdByUser (userName) {
         if (userName !== 'all') {
-          this.videos = this.backVideos.filter((video) => {
+          this.filters = this.videos.filter((video) => {
             return video.owner_id === this.$store.state.userInfo.id;
           })
         } else {
-          this.videos = this.backVideos;
+          this.filters = this.videos;
         }
+        Vue.$emit('search:clear');
+      },
+      search(term) {
+        this.searches = utils.searchTable(this.filters, term);
       },
       redirectToVideo (video) {
         this.$router.push(`/backoffice/video/${video.id}`);
@@ -51,7 +58,8 @@
               'last_update': video.updated_at ? video.updated_at : '',
             }
           });
-          this.backVideos = this.videos;
+          this.searches = this.videos;
+          this.filters = this.videos;
         }, (error) => {
           Vue.unBlock();
         }).catch(Vue.handleClientError);
@@ -64,9 +72,14 @@
       Vue.$on('user:select', (userName) => {
         this.filterdByUser(userName);
       });
+      Vue.$on('search:table', (term) => {
+        this.search(term);
+      });
+      Vue.$emit('search:clear');
     },
     beforeDestroy () {
       Vue.$off('user:select');
+      Vue.$off('search:table');
     }
   }
 </script>

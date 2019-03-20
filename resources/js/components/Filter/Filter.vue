@@ -11,7 +11,7 @@
         <md-field class="m-0 md-transparent">
           <md-icon>search</md-icon>
           <label>Search</label>
-          <md-input></md-input>
+          <md-input v-model="search"></md-input>
         </md-field>
       </div>
     </div>
@@ -21,13 +21,31 @@
 <script>
   export default {
     name: "app-filter",
+    data() {
+      return {
+        search: '',
+      }
+    },
     methods: {
       selectedUser(userName) {
         if(userName !== 'all') {
           userName = 'Admin'; // temporary name, it should be come from Vue Store
         }
         Vue.$emit('user:select', userName);
+      },
+    },
+    watch: {
+      search() {
+        Vue.$emit('search:table', this.search);
       }
+    },
+    mounted() {
+      Vue.$on('search:clear', () => {
+        this.search = '';
+      });
+    },
+    beforeDestroy() {
+      Vue.$off('search:clear');
     }
   }
 </script>
