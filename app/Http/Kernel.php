@@ -19,7 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        \MikeFrancis\LaravelSecureHeaders\ApplySecureHeaders::class,
+//        \MikeFrancis\LaravelSecureHeaders\ApplySecureHeaders::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
