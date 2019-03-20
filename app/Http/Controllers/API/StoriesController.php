@@ -182,6 +182,7 @@ class StoriesController extends BaseController
         }
         try {
             $input = $request->all();
+
             Redis::set('story:id:' . $input["id"], json_encode($input));
 
             return $this->sendResponse($input);
