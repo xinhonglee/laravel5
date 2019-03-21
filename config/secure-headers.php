@@ -17,7 +17,9 @@ return [
         'default' => 'self',
         'script-src' => [
             'self',
-            'cdn.ampproject.org'
+            'cdn.ampproject.org',
+            'cdnjs.cloudflare.com',
+            'google-analytics.com'
         ],
         'connect-src' => [
             'self',
@@ -28,7 +30,10 @@ return [
         'style-src' => [
             'self',
             'unsafe-inline', // Allow inline styles
-            'https://fonts.googleapis.com', // Allow stylesheets from Google Fonts
+            'fonts.googleapis.com', // Allow stylesheets from Google Fonts
+            'unpkg.com',
+            'media-library.cloudinary.com',
+            'fonts.gstatic.com'
         ],
         'img-src' => [
             '*', // Allow images from anywhere
