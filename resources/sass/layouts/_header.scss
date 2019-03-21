@@ -48,13 +48,14 @@
   padding-bottom: 3px;
   display: flex;
   height: $toolbar-height;
+  margin-left: calc(50px + #{$sidebar-width});
 
   .tab-navigation {
     flex: 2;
   }
 
   .tool-box {
-    flex: 1;
+    flex: 2;
     display: flex;
   }
 

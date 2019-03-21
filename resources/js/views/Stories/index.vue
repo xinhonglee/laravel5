@@ -1,36 +1,43 @@
 <template>
   <div class="stories-list">
-    <md-table v-model="stories" md-sort="name" md-sort-order="asc" md-card>
+    <md-button class="md-raised md-primary mb-3 pr-2 ml-0" @click="redirectToCreateStory">
+      <md-icon>add</md-icon> CREATE
+    </md-button>
+    <md-table v-model="searches" md-sort="last_update" md-sort-order="asc" md-card>
+      <md-table-empty-state md-label="No stories found"></md-table-empty-state>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToStory(item)">
-        <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>
+        <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
         <md-table-cell md-label="Owner" md-sort-by="owner">{{ item.owner }}</md-table-cell>
         <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-fab md-primary btn-poss-new-item" @click="redirectToCreateStory">
-      <md-icon>add</md-icon>
-    </md-button>
   </div>
 </template>
 
 <script>
+  import utils from "../utils";
   export default {
     name: "stories",
     data () {
       return {
+        filters: [],
+        searches: [],
         stories: [],
-        backStories: [],
       }
     },
     methods: {
       filterdByUser(userName) {
         if(userName !== 'all') {
-          this.stories = this.backStories.filter((story)=> {
+          this.filters = this.stories.filter((story)=> {
             return story.owner_id === this.$store.state.userInfo.id;
           })
         } else {
-          this.stories = this.backStories;
+          this.filters = this.stories;
         }
+        Vue.$emit('search:clear');
+      },
+      search(term) {
+        this.searches = utils.searchTable(this.filters, term);
       },
       redirectToStory(story) {
         this.$store.dispatch('updateAppTitle', story.title);
@@ -52,7 +59,8 @@
               'last_update': story.updated_at ? story.updated_at : '',
             }
           });
-          this.backStories = this.stories;
+          this.searches = this.stories;
+          this.filters = this.stories;
         }, (error) => {
           Vue.unBlock();
         }).catch(Vue.handleClientError);
@@ -64,9 +72,14 @@
       Vue.$on('user:select', (userName) => {
         this.filterdByUser(userName);
       });
+      Vue.$on('search:table', (term) => {
+        this.search(term);
+      });
+      Vue.$emit('search:clear');
     },
     beforeDestroy () {
       Vue.$off('user:select');
+      Vue.$off('search:table');
     }
   }
 </script>

@@ -96,24 +96,24 @@
        * reload story_page_view iframe
        */
       reloadIframe () {
-        if(this.storyPageUrl &&  this.prevPageSelected === this.$store.state.story.selected.page) {
+        if (this.storyPageUrl && this.prevPageSelected === this.$store.state.story.selected.page) {
           document.getElementById('story_page_view').contentWindow.location.reload(true);
         } else {
-           this.prevPageSelected = this.$store.state.story.selected.page;
+          this.prevPageSelected = this.$store.state.story.selected.page;
         }
       },
 
       /**
        * sage page template
        */
-      savePageTemplate() {
+      savePageTemplate () {
         Vue.$emit('save:page-template');
         this.saveTemplateDialog = false;
       }
     },
     mounted () {
       // select page action
-      this.$store.dispatch('selectAMPStory', {page: 0, layer: -1, element: -1,});
+      this.$store.dispatch('selectAMPStory', { page: 0, layer: -1, element: -1, });
 
       // app publish action emit receiver from EditableHeader Component
       Vue.$on('app:publish', () => {
@@ -130,7 +130,7 @@
       // story settings action emit receiver from Settings components on the right sidebar
       Vue.$on('story:settings', (data) => {
         this.settings = Object.assign(this.settings, data);
-        this.$store.dispatch('saveAMPStory', { data: {...this.settings}, publish: false});
+        this.$store.dispatch('saveAMPStory', { data: { ...this.settings }, publish: false });
       });
 
     },
@@ -140,6 +140,7 @@
        */
       storyPageUrl () {
         if (!_.isNil(this.$store.state.story) &&
+          !_.isNil(this.$store.state.story.id) &&
           this.$store.state.story.selected.page >= 0 &&
           this.$store.state.story.data.pages.length > 0 &&
           !_.isNil(this.$store.state.story.data.pages[this.$store.state.story.selected.page])) {
@@ -152,9 +153,10 @@
        */
       page () {
         if (!_.isNil(this.$store.state.story) &&
+          !_.isNil(this.$store.state.story.id) &&
+          this.$store.state.story.selected.page >= 0 &&
           this.$store.state.story.data.pages.length > 0 &&
-          this.$store.state.story.data.pages[this.$store.state.story.selected.page] &&
-          this.$store.state.story.selected.page >= 0) {
+          !_.isNil(this.$store.state.story.data.pages[this.$store.state.story.selected.page])) {
           return this.$store.state.story.data.pages[this.$store.state.story.selected.page];
         }
         return null;

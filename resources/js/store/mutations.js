@@ -90,7 +90,8 @@ export const SAVE_AMP_STORY = (state, story) => {
     }
   } else {
     if (_.isNil(Vue.$store.state.story.id)) {
-      data.id = new Date();
+      data.id = Date.now();
+      data.slug = data.id;
       Vue.$store.state.story.new = true;
     }
     Vue.$http.post(`/story/redis/set`, data).then((response) => {

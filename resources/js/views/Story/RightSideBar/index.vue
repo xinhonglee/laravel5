@@ -102,7 +102,7 @@
         const selected = this.$store.state.story.selected;
         if (pages[selected.page].layers[selected.layer].template !== 'thirds') {
           pages[selected.page].layers[selected.layer].elements.push({ type: slug, properties: {} });
-          selected.element += 1;
+          selected.element = pages[selected.page].layers[selected.layer].elements.length - 1;
           this.$store.dispatch('selectAMPStory', selected);
         } else if (selected.element >= 0) {
           const element = pages[selected.page].layers[selected.layer].elements[selected.element];
