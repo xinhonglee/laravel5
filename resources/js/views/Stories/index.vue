@@ -3,7 +3,7 @@
     <md-button class="md-raised md-primary mb-3 pr-2 ml-0" @click="redirectToCreateStory">
       <md-icon>add</md-icon> CREATE
     </md-button>
-    <md-table v-model="searches" md-sort="last_update" md-sort-order="asc" md-card>
+    <md-table v-model="searches" md-sort="last_update" md-sort-order="desc" md-card>
       <md-table-empty-state md-label="No stories found"></md-table-empty-state>
       <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToStory(item)">
         <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>

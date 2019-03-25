@@ -1,12 +1,12 @@
 <template>
   <div class="page-layer">
-    <div class="layer-template"
-         :class="{ selected : isLayerSelected()}"
-         @click="selectLayer">
+    <div class="layer-template" :class="{ selected : isLayerSelected()}">
       <img class="template-icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
-      <div class="template-name">{{ getLayerTemplateName(layer.template)}} Template</div>
-      <div class="btn-remove" @click="removeLayer">
-        <md-icon>delete_outline</md-icon>
+      <div class="template-name" @click="selectLayer">{{ getLayerTemplateName(layer.template)}} Template</div>
+      <div class="btn-tools">
+        <span @click="orderUpLayer"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
+        <span @click="orderDownLayer"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
+        <span @click="removeLayer"><md-icon>delete_outline</md-icon></span>
       </div>
     </div>
     <div class="layer-elements">
@@ -14,12 +14,12 @@
         <template v-if="isGridArea(layer.template)">
           <div class="element-grid-area" v-html="getGridAreaName(element['grid-area'])"></div>
         </template>
-        <div class="element-type"
-             :class="{ selected : isElementSelected(index)}"
-             @click="selectElement(index)">
-          [ <span>{{ getElementName(element.type)}}</span> ]
-          <div class="btn-remove" @click="removeElement(index)">
-            <md-icon>delete_outline</md-icon>
+        <div class="element-type" :class="{ selected : isElementSelected(index)}">
+          [ <span class="element-type_label" @click="selectElement(index)">{{ getElementName(element.type)}}</span> ]
+          <div class="btn-tools">
+            <span @click="orderUpElement(index)"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
+            <span @click="orderDownElement(index)"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
+            <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
           </div>
         </div>
       </div>
@@ -45,6 +45,45 @@
       }
     },
     methods: {
+
+      /**
+       * Order Up Layer
+       */
+      orderUpLayer() {
+        Vue.$emit("order-up:layer", {
+          layerIndex: this.layerIndex,
+        });
+      },
+
+      /**
+       * Order Down Layer
+       */
+      orderDownLayer() {
+        Vue.$emit("order-down:layer", {
+          layerIndex: this.layerIndex,
+        });
+      },
+
+      /**
+       * Order Up Element
+       */
+      orderUpElement(index) {
+        Vue.$emit("order-up:element", {
+          layerIndex: this.layerIndex,
+          elementIndex: index,
+        });
+      },
+
+      /**
+       * Order Down Element
+       */
+      orderDownElement(index) {
+        Vue.$emit("order-down:element", {
+          layerIndex: this.layerIndex,
+          elementIndex: index,
+        });
+      },
+
       /**
        * remove element
        *

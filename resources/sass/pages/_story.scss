@@ -95,11 +95,17 @@
         cursor: pointer;
 
         &.selected, &:hover {
-          background-color: #ccdcec;
-          .btn-remove {
+          .btn-tools {
             display: block;
             margin-top: 2px;
           }
+        }
+
+        &.selected {
+          background-color: #ccdcec;
+        }
+        &:hover {
+          background-color: #d9d9d9;
         }
 
         img.template-icon {
@@ -128,13 +134,18 @@
             cursor: pointer;
 
             &.selected, &:hover {
-              background-color: #ccdcec;
-              .btn-remove {
+              .btn-tools {
                 display: block;
               }
             }
+            &.selected {
+              background-color: #ccdcec;
+            }
+            &:hover {
+              background-color: #d9d9d9;
+            }
 
-            span {
+            span.element-type_label {
               min-width: 70px;
               display: inline-block;
               text-align: center;
@@ -150,7 +161,7 @@
     width: 40px !important;
   }
 
-  .btn-remove {
+  .btn-tools {
     float: right;
     display: none;
     cursor: pointer;
