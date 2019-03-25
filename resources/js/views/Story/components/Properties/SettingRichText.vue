@@ -28,15 +28,11 @@
       return {
         editor: ClassicEditor,
         editorConfig: {
-          // plugins: [
-          //   TextColor
-          // ],
           toolbar: {
             items: [
               'heading',
               'bold',
               'italic',
-              // 'textColor'
             ]
           }
         },

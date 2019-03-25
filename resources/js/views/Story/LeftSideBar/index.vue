@@ -5,8 +5,11 @@
         <span class="title">
           Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}
         </span>
-        <div class="btn-more" @click="showPageTools = !showPageTools">
-          <md-icon>more_vert</md-icon>
+        <span>
+
+        </span>
+        <div class="btn-more">
+          <span @click="showPageTools = !showPageTools"><md-icon>more_vert</md-icon></span>
         </div>
         <div class="page-tools md-elevation-3" v-if="showPageTools">
           <ul>
@@ -179,14 +182,17 @@
        * remove selected element from selected layer
        */
       removeElement () {
+
         const pages = Object.assign([], this.story.data.pages);
+
         if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
 
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
 
         } else { // in case of selected template thirds, it should be keep grid-area info
 
-          const gridArea = pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
+          const gridArea =
+            pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
 
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex] = {
             'grid-area': gridArea,
@@ -205,6 +211,104 @@
           layer: -1,
           element: -1,
         });
+      },
+      /**
+       * Order Up Layer
+       */
+      orderUpLayer (layerIndex) {
+        if (layerIndex > 0) {
+          const pages = Object.assign([], this.story.data.pages);
+          const temp = pages[this.story.selected.page].layers[layerIndex - 1];
+          pages[this.story.selected.page].layers[layerIndex - 1] = pages[this.story.selected.page].layers[layerIndex];
+          pages[this.story.selected.page].layers[layerIndex] = temp;
+
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
+          });
+
+          this.$store.dispatch('selectAMPStory', {
+            page: this.story.selected.page,
+            layer: (layerIndex - 1),
+            element: -1,
+          });
+        }
+      },
+      /**
+       * Order Down Layer
+       */
+      orderDownLayer (layerIndex) {
+        if ((layerIndex + 1) < this.story.data.pages[this.story.selected.page].layers.length) {
+          const pages = Object.assign([], this.story.data.pages);
+          const temp = pages[this.story.selected.page].layers[layerIndex + 1];
+          pages[this.story.selected.page].layers[layerIndex + 1] = pages[this.story.selected.page].layers[layerIndex];
+          pages[this.story.selected.page].layers[layerIndex] = temp;
+
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
+          });
+
+          this.$store.dispatch('selectAMPStory', {
+            page: this.story.selected.page,
+            layer: (layerIndex + 1),
+            element: -1,
+          });
+        }
+      },
+      /**
+       * Order Up Element
+       */
+      orderUpElement (layerIndex, elementIndex) {
+        if (elementIndex > 0) {
+          const pages = Object.assign([], this.story.data.pages);
+          const temp = pages[this.story.selected.page].layers[layerIndex].elements[elementIndex - 1];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex - 1] =
+            pages[this.story.selected.page].layers[layerIndex].elements[elementIndex];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex] = temp;
+
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
+          });
+
+          this.$store.dispatch('selectAMPStory', {
+            page: this.story.selected.page,
+            layer: layerIndex,
+            element: elementIndex - 1,
+          });
+        }
+      },
+      /**
+       * Order Up Element
+       */
+      orderDownElement (layerIndex, elementIndex) {
+        if ((elementIndex + 1) < this.story.data.pages[this.story.selected.page].layers[layerIndex].elements.length) {
+          const pages = Object.assign([], this.story.data.pages);
+          const temp = pages[this.story.selected.page].layers[layerIndex].elements[elementIndex - 1];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex - 1] =
+            pages[this.story.selected.page].layers[layerIndex].elements[elementIndex];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex] = temp;
+
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
+          });
+
+          this.$store.dispatch('selectAMPStory', {
+            page: this.story.selected.page,
+            layer: layerIndex,
+            element: elementIndex + 1,
+          });
+        }
       }
     },
     mounted () {
@@ -219,6 +323,22 @@
         this.removeElementIndex = data.elementIndex;
         this.showRemoveElementDialog = true;
       });
+      // order up layer emit from PageLayer Component
+      Vue.$on("order-up:layer", (data) => {
+        this.orderUpLayer(data.layerIndex);
+      });
+      // order down layer emit from PageLayer Component
+      Vue.$on("order-down:layer", (data) => {
+        this.orderDownLayer(data.layerIndex);
+      });
+      // order up element emit from PageLayer Component
+      Vue.$on("order-up:element", (data) => {
+        this.orderUpElement(data.layerIndex, data.elementIndex);
+      });
+      // order down element emit from PageLayer Component
+      Vue.$on("order-down:element", (data) => {
+        this.orderDownElement(data.layerIndex, data.elementIndex);
+      });
     },
     computed: {
       story () {
@@ -228,6 +348,7 @@
     beforeDestroy () {
       Vue.$off("remove:layer");
       Vue.$off("remove:element");
+      Vue.$off("order-up:layer");
     }
   }
 </script>
