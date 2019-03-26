@@ -408,7 +408,7 @@
 			left: calc(30px + 400px + 50vw);
 			width: calc(50vw - 400px - 80px);
 		}
-		.player .overlay h2 {
+		.player .overlay h1 {
 			font-family: 'rationalbook_bold';
 			font-size: 28px;
 			line-height: 36px;
@@ -462,7 +462,7 @@
 				width: 100%;
 				opacity: 1;
 			}
-			.player .overlay h2 {
+			.player .overlay h1 {
 				font-size: 20px;
 				line-height: 24px;
 				color: #5feb98;
@@ -742,7 +742,7 @@
 				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
 			</div>
 			<div class="overlay">
-				<h2>{{$video->title}}</h2>
+				<h1>{{$video->title}}</h1>
 				<span class="description">{{$video->description}}</span>
 			</div>
 			<amp-img src="{{$video->cover}}" layout="fill" class="cover blur"></amp-img>
@@ -764,7 +764,7 @@
 				<amp-img src="/assets/share.svg" layout="fixed" width="26" height="22"></amp-img>
 			</div>
 			<div class="overlay">
-				<h2>{{$video->title}}</h2>
+				<h1>{{$video->title}}</h1>
 				<span class="description">{{$video->description}}</span>
 			</div>
 			<amp-img src="{{$video->cover}}" layout="fill" class="cover blur"></amp-img>
@@ -783,7 +783,7 @@
 				<div class="play-icon" role="button" tabindex="0" on="tap:small-screen-overlay.hide, small-screen-video.play"></div>
 			</div>
 			<div class="overlay">
-				<h2>{{$video->title}}</h2>
+				<h1>{{$video->title}}</h1>
 				<span class="description">{{$video->description}}</span>
 				<div role="button" aria-label="open share box" on="tap:share" tabindex="0" class="share">
 					<amp-img src="/assets/share.svg" media="(max-width: 740px)" layout="fixed" width="18" height="15"></amp-img>
