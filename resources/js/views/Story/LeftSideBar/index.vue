@@ -61,7 +61,7 @@
       md-title="Do you really want to remove this page?"
       md-confirm-text="Agree"
       md-cancel-text="Disagree"
-      @md-cancel="showRemoveLayerDialog = false"
+      @md-cancel="showRemovePageDialog = false"
       @md-confirm="removePage"/>
     <md-dialog-confirm
       :md-active.sync="showRemoveLayerDialog"

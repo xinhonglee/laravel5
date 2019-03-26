@@ -3,14 +3,39 @@
     <md-button class="md-raised md-primary mb-3 pr-2 ml-0" @click="redirectToCreateVideo">
       <md-icon>add</md-icon> CREATE
     </md-button>
-    <md-table v-model="searches" md-sort="last_update" md-sort-order="asc" md-card>
-      <md-table-empty-state md-label="No videos found"></md-table-empty-state>
-      <md-table-row slot="md-table-row" slot-scope="{ item }" @click="redirectToVideo(item)">
-        <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
-        <md-table-cell md-label="Owner" md-sort-by="owner">{{ item.owner }}</md-table-cell>
-        <md-table-cell md-label="Last Update" md-sort-by="last_update">{{ item.last_update }}</md-table-cell>
-      </md-table-row>
-    </md-table>
+    <div class="table-responsive md-elevation-3">
+      <b-table striped hover show-empty small head-class="txHead" class="mb-0"
+               :current-page="currentPage" :per-page="perPage" :sort-by.sync="sortBy"
+               :sort-desc.sync="sortDesc"  :items="searches" :fields="columns"
+               @row-clicked="redirectToVideo"
+      >
+        <template slot="tool" slot-scope="row">
+          <div>
+            <span>
+              <md-icon style="font-size:20px!important;">file_copy</md-icon>
+              <md-tooltip md-direction="top">Duplicate</md-tooltip>
+            </span>
+            <span @click="showRemoveVideoDialog(row.item)">
+              <md-icon>delete_outline</md-icon>
+              <md-tooltip md-direction="top">Remove</md-tooltip>
+            </span>
+          </div>
+        </template>
+      </b-table>
+    </div>
+    <div class="mt-4">
+      <div class="form-group float-left">
+        <b-form-select :options="pageOptions" v-model="perPage"/>
+      </div>
+      <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" class="justify-content-center"/>
+    </div>
+    <md-dialog-confirm
+      :md-active.sync="showRemoveDialog"
+      md-title="Do you really want to remove this video?"
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="showRemoveDialog = false"
+      @md-confirm="removeVideo"/>
   </div>
 </template>
 
@@ -23,6 +48,19 @@
         filters: [],
         searches: [],
         videos: [],
+        sortBy: 'last_update',
+        sortDesc: true,
+        currentPage: 1,
+        perPage: 10,
+        columns: [
+          {key: 'title', label: 'Title', sortable: true},
+          {key: 'owner', label: 'Owner', sortable: true},
+          {key: 'last_update', label: 'Last Update', sortable: true},
+          {key: 'tool', label: 'Actions', sortable: false},
+        ],
+        pageOptions: [10, 20, 50],
+        showRemoveDialog: false,
+        removeVideoId: null,
       }
     },
     methods: {
@@ -64,6 +102,31 @@
           Vue.unBlock();
         }).catch(Vue.handleClientError);
       },
+      showRemoveVideoDialog (video) {
+        event.stopPropagation();
+        this.showRemoveDialog = true;
+        this.removeVideoId = video.id;
+      },
+      removeVideo () {
+        const data = { id: this.removeVideoId };
+        Vue.block();
+        this.$http.post('/video/delete', data).then((response) => {
+          Vue.unBlock();
+          Vue.alertBox({
+            title: 'Success',
+            text: "Successfully removed this video!",
+            type: 'success'
+          });
+          this.loadVideos();
+        }, (error) => {
+          Vue.unBlock();
+        }).catch(Vue.handleClientError);
+      }
+    },
+    computed: {
+      totalRows() {
+        return this.searches.length;
+      }
     },
     mounted () {
       this.loadVideos();

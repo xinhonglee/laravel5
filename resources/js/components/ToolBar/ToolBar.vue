@@ -9,20 +9,6 @@
         {{ (index + 1).toString() }}
         <md-icon v-if="isNew(page.id)">flag</md-icon>
       </md-button>
-      <!--<md-tabs class="md-transparent">-->
-      <!--<template slot="md-tab" slot-scope="{ tab }">-->
-      <!--{{ tab.label }} <md-icon v-if="tab.data.new">flag</md-icon>-->
-      <!--</template>-->
-      <!--<md-tab-->
-      <!--v-for="(page, index) in story.data.pages"-->
-      <!--:id="index.toString()"-->
-      <!--:md-label="(index + 1).toString()"-->
-      <!--:md-template-data="{ new: isNew(page.id) }"-->
-      <!--:md-active="isActive(index)"-->
-      <!--:key="index"-->
-      <!--@click="selectPage(index)">-->
-      <!--</md-tab>-->
-      <!--</md-tabs>-->
     </div>
     <ul class="page-tools">
       <li @click="showDialog = true">+ Add a new page</li>

@@ -36,3 +36,13 @@ md-tabs.md-no-animation md-ink-bar {
   height: 100px !important;
   width: auto !important;
 }
+
+.table-responsive {
+  background-color: white;
+  tr {
+    line-height: 30px;
+  }
+  td, th {
+    padding: 0.3rem 1rem;
+  }
+}
