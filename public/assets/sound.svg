@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="57px" height="56px" viewBox="0 0 57 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
-    <title>Shape</title>
-    <desc>Created with Sketch.</desc>
-    <g id="PROD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="14_Desktop-/-Page_Corporate" transform="translate(-815.000000, -4264.000000)" fill="#262626" fill-rule="nonzero">
-            <g id="Group-10" transform="translate(663.000000, 4206.000000)">
-                <path d="M152,76.4130435 L152,95.5869565 L164.93617,95.5869565 L181.106383,111.565217 L181.106383,60.4347826 L164.93617,76.4130435 L152,76.4130435 Z M194.446809,85.4071834 C194.446809,79.7860113 190.983149,74.9587902 185.957447,72.6086957 L185.957447,98.173913 C190.983149,95.8555766 194.446809,91.0283554 194.446809,85.4071834 Z M187.170213,58 L187.170213,64.5769669 C196.182796,67.322691 202.762918,75.8791334 202.762918,86 C202.762918,96.1208666 196.182796,104.677309 187.170213,107.423033 L187.170213,114 C199.675562,111.094641 209,99.6647662 209,86 C209,72.3352338 199.675562,60.9053592 187.170213,58 Z" id="Shape"></path>
-            </g>
-        </g>
-    </g>
+<svg version="1.1" viewBox="0 0 57 56" xmlns="http://www.w3.org/2000/svg">
+<title>Shape</title>
+<desc>Created with Sketch.</desc>
+<g fill="none" fill-rule="evenodd">
+<g transform="translate(-815 -4264)" fill="#262626" fill-rule="nonzero">
+<g transform="translate(663 4206)">
+<path d="m152 76.413v19.174h12.936l16.17 15.978v-51.13l-16.17 15.978h-12.936zm42.447 8.9941c0-5.6212-3.4637-10.448-8.4894-12.798v25.565c5.0257-2.3183 8.4894-7.1456 8.4894-12.767zm-7.2766-27.407v6.577c9.0126 2.7457 15.593 11.302 15.593 21.423s-6.5801 18.677-15.593 21.423v6.577c12.505-2.9054 21.83-14.335 21.83-28s-9.3244-25.095-21.83-28z"/>
+</g>
+</g>
+</g>
 </svg>
