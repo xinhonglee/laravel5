@@ -85,8 +85,8 @@
 	<!-- Start Navbar -->
 	<header class="ampstart-headerbar fixed flex justify-start items-center top-0 right-0 left-0 pl2 pr2 ">
 		<a href="/">
-			<amp-img src="/assets/logo.png" media="(min-width: 40.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
-			<amp-img src="/assets/logo.png" media="(max-width: 40rem)" width="70" height="70" layout="fixed" class="logo top-0 absolute"></amp-img>
+			<amp-img src="/assets/logo.svg" media="(min-width: 40.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
+			<amp-img src="/assets/logo.svg" media="(max-width: 40rem)" width="70" height="70" layout="fixed" class="logo top-0 absolute"></amp-img>
 		</a>
 		<div role="button" aria-label="open menu" on="tap:menu" tabindex="0" class="ampstart-navbar-trigger top-0 absolute">Menu</div>
 	</header>
@@ -94,7 +94,7 @@
 	<!-- Start Sidebar -->
 	<amp-lightbox id="menu" layout="nodisplay" scrollable>
 		<amp-img class="cover xs-hide sm-hide " layout="fill" src="/assets/banner1.jpg"></amp-img>
-		<amp-img src="/assets/logo.png" media="(min-width: 52.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
+		<amp-img src="/assets/logo.svg" media="(min-width: 52.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
 		<div role="button" aria-label="close menu" on="tap:menu.close" tabindex="0" class="close">
 			<span>Fermer</span>
 		</div>
