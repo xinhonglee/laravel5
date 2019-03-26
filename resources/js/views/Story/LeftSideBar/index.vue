@@ -41,10 +41,9 @@
         <div class="layer-templates-list">
           <div class="layer-template"
                v-for="(template, index) in layerTemplates"
-               @click="selectedLayer = index"
+               @click="addLayer(index)"
                :key="index">
             <div class="layer-template-image"
-                 :class="{'selected md-elevation-7' : selectedLayer === index}"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}">
             </div>
             <p>{{ template.name }}</p>
@@ -53,7 +52,6 @@
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false">Close</md-button>
-        <md-button class="md-primary" @click="addLayer">Add</md-button>
       </md-dialog-actions>
     </md-dialog>
     <md-dialog-confirm
@@ -94,7 +92,6 @@
         showRemovePageDialog: false,
         showRemoveLayerDialog: false,
         showRemoveElementDialog: false,
-        selectedLayer: -1,
         removeLayerIndex: -1,
         removeElementIndex: -1,
         showPageTools: false,
@@ -144,9 +141,9 @@
       /**
        * add new layer to the selected page
        */
-      addLayer () {
+      addLayer (index) {
         const pages = Object.assign([], this.story.data.pages);
-        pages[this.story.selected.page].layers.push(this.layerTemplates[this.selectedLayer].data);
+        pages[this.story.selected.page].layers.push(this.layerTemplates[index].data);
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages
