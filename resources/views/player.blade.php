@@ -61,24 +61,24 @@
 
 		@font-face {
 			font-family: 'rationalextra_bold';
-			src: url('../assets/rational-extrabold-webfont.woff2') format('woff2'),
-				 url('../assets/rational-extrabold-webfont.woff') format('woff');
+			src: url('/assets/rational-extrabold-webfont.woff2') format('woff2'),
+				 url('/assets/rational-extrabold-webfont.woff') format('woff');
 			font-weight: normal;
 			font-style: normal;
 		}
 
 		@font-face {
 			font-family: 'rationalsemi_bold';
-			src: url('../assets/rational-semibold-webfont.woff2') format('woff2'),
-				 url('../assets/rational-semibold-webfont.woff') format('woff');
+			src: url('/assets/rational-semibold-webfont.woff2') format('woff2'),
+				 url('/assets/rational-semibold-webfont.woff') format('woff');
 			font-weight: normal;
 			font-style: normal;
 		}
 
 		@font-face {
 			font-family: 'rationalbook_bold';
-			src: url('../assets/rational-bookbold-webfont.woff2') format('woff2'),
-				 url('../assets/rational-bookbold-webfont.woff') format('woff');
+			src: url('/assets/rational-bookbold-webfont.woff2') format('woff2'),
+				 url('/assets/rational-bookbold-webfont.woff') format('woff');
 			font-weight: normal;
 			font-style: normal;
 
