@@ -100,6 +100,7 @@
 		</div>
 		<nav class="dark">
 			<ul class="">
+				<li><a href="/">Accueil</a></li>
 				<li><a href="/corporate#apropos">A propos</a></li>
 				<li><a href="/corporate#services">Annonceurs</a></li>
 				<li><a href="/corporate#contact">Contact</a></li>
