@@ -31,7 +31,17 @@ class Video extends Model
 
     public function getCoverAttribute()
     {
-        return str_replace("https://res.cloudinary.com/loopsider/image/upload/", "https://res.cloudinary.com/loopsider/image/upload/q_auto,f_auto,dpr_auto,w_auto/", $this->cover_url);
+        return str_replace("upload/", "upload/q_auto,f_auto,dpr_auto,w_auto/", $this->cover_url);
+    }
+
+    public function getMp4Attribute()
+    {
+        return str_replace(["upload/"], ["upload/vc_auto/"], $this->video_url);
+    }
+
+    public function getWebmAttribute()
+    {
+        return str_replace(["upload/","mp4"], ["upload/vc_auto/","webm"], $this->video_url);
     }
 
     public function category()

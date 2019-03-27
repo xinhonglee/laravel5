@@ -29,10 +29,12 @@ return [
         ],
         'style-src' => [
             'self',
-            'unsafe-inline', // Allow inline styles
-            'fonts.googleapis.com', // Allow stylesheets from Google Fonts
+            'unsafe-inline',
             'unpkg.com',
-            'media-library.cloudinary.com',
+            'media-library.cloudinary.com'
+        ],
+        'font-src' => [
+            'fonts.googleapis.com',
             'fonts.gstatic.com'
         ],
         'img-src' => [

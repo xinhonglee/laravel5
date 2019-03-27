@@ -726,13 +726,15 @@
 	</amp-lightbox>
 	<main>
 		<section class="player large-screen">
-			<amp-video id="large-screen-video" class="hoverzone" height="800" src="{{$video->video_url}}"
+			<amp-video id="large-screen-video" class="hoverzone" height="800"
 				poster="{{$video->optimized_cover}}"
 				layout="fixed-height"
 				controls>
 				<div fallback>
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
+				<!-- <source type="video/webm" src="{{$video->webm}}"> -->
+				<!-- <source type="video/mp4" src="{{$video->mp4}}"> -->
 				<source type="video/mp4" src="{{$video->video_url}}">
 			</amp-video>
 			<div id="large-screen-overlay" class="click-to-play-overlay">
@@ -748,13 +750,15 @@
 			<amp-img src="{{$video->cover}}" layout="fill" class="cover blur"></amp-img>
 		</section>
 		<section class="player medium-screen">
-			<amp-video id="medium-screen-video" class="hoverzone" height="600" src="{{$video->video_url}}"
+			<amp-video id="medium-screen-video" class="hoverzone" height="600"
 				poster="{{$video->cover}}"
 				layout="fixed-height"
 				controls>
 				<div fallback>
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
+				<!-- <source type="video/webm" src="{{$video->webm}}"> -->
+				<!-- <source type="video/mp4" src="{{$video->mp4}}"> -->
 				<source type="video/mp4" src="{{$video->video_url}}">
 			</amp-video>
 			<div id="medium-screen-overlay" class="click-to-play-overlay">
@@ -770,10 +774,13 @@
 			<amp-img src="{{$video->cover}}" layout="fill" class="cover blur"></amp-img>
 		</section>
 		<section class="player small-screen">
-			<amp-video id="small-screen-video" height="800" width="800" src="{{$video->video_url}}"
+			<amp-video id="small-screen-video" height="800" width="800"
 				poster="{{$video->cover}}"
 				layout="responsive"
 				controls>
+				<!-- <source type="video/webm" src="{{$video->webm}}"> -->
+				<!-- <source type="video/mp4" src="{{$video->mp4}}"> -->
+				<source type="video/mp4" src="{{$video->video_url}}">
 				<div fallback>
 					<p>Your browser doesn't support HTML5 video.</p>
 				</div>
