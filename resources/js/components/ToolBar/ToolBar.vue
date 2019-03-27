@@ -9,20 +9,6 @@
         {{ (index + 1).toString() }}
         <md-icon v-if="isNew(page.id)">flag</md-icon>
       </md-button>
-      <!--<md-tabs class="md-transparent">-->
-      <!--<template slot="md-tab" slot-scope="{ tab }">-->
-      <!--{{ tab.label }} <md-icon v-if="tab.data.new">flag</md-icon>-->
-      <!--</template>-->
-      <!--<md-tab-->
-      <!--v-for="(page, index) in story.data.pages"-->
-      <!--:id="index.toString()"-->
-      <!--:md-label="(index + 1).toString()"-->
-      <!--:md-template-data="{ new: isNew(page.id) }"-->
-      <!--:md-active="isActive(index)"-->
-      <!--:key="index"-->
-      <!--@click="selectPage(index)">-->
-      <!--</md-tab>-->
-      <!--</md-tabs>-->
     </div>
     <ul class="page-tools">
       <li @click="showDialog = true">+ Add a new page</li>
@@ -34,10 +20,9 @@
         <div class="story-templates-list">
           <div class="page-template"
                v-for="(template, index) in pageTemplates"
-               @click="selectedTemplate = index"
+               @click="addNewPage(index)"
                :key="index">
             <div class="page-template-image"
-                 :class="{ 'selected md-elevation-7' : selectedTemplate === index }"
                  :style="{backgroundImage: 'url(' + template.image_url + ')'}">
             </div>
             <p>{{ template.title }}</p>
@@ -46,7 +31,6 @@
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false">Close</md-button>
-        <md-button class="md-primary" @click="addNewPage">Add</md-button>
       </md-dialog-actions>
     </md-dialog>
   </div>
@@ -61,7 +45,6 @@
       return {
         pageTemplates: [constants.blankPageTemplate],
         showDialog: false,
-        selectedTemplate: -1,
         newPageIDs: []
       }
     },
@@ -84,8 +67,8 @@
           element: -1,
         });
       },
-      addNewPage () {
-        if (this.selectedTemplate < 0) {
+      addNewPage (index) {
+        if (index < 0) {
           Vue.alertBox({
             title: 'Template Selection Error',
             text: "Please select one of the existing templates!",
@@ -96,7 +79,7 @@
         const story = Object.assign({}, this.story);
         // id with timestamp
         const id = Date.now();
-        story.data.pages.push({ ...this.pageTemplates[this.selectedTemplate].data, id: id });
+        story.data.pages.push({ ...this.pageTemplates[index].data, id: id });
         story.publish = false;
 
         // save page ids created as new
@@ -111,8 +94,6 @@
           layer: -1,
           element: -1,
         });
-
-        this.selectedTemplate = -1;
         // close dialog
         this.showDialog = false;
       },

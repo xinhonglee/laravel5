@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="26px" height="22px" viewBox="0 0 26 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
-    <title>Share</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="PROD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="0_UI" transform="translate(-1347.000000, -149.000000)" fill="#F6F7F9">
-            <g id="Group" transform="translate(173.000000, 94.000000)">
-                <path d="M1184.11111,60.8666667 L1184.11111,55 L1174,65.2666667 L1184.11111,75.5333333 L1184.11111,69.52 C1191.33333,69.52 1196.38889,71.8666667 1200,77 C1198.55556,69.6666667 1194.22222,62.3333333 1184.11111,60.8666667" id="Share" transform="translate(1187.000000, 66.000000) scale(-1, 1) translate(-1187.000000, -66.000000) "></path>
-            </g>
-        </g>
-    </g>
+<svg version="1.1" viewBox="0 0 26 22" xmlns="http://www.w3.org/2000/svg">
+<title>Share</title>
+<desc>Created with Sketch.</desc>
+<g fill="none" fill-rule="evenodd">
+<g transform="translate(-1347 -149)" fill="#F6F7F9">
+<g transform="translate(173 94)">
+<path transform="translate(1187 66) scale(-1 1) translate(-1187 -66)" d="m1184.1 60.867v-5.8667l-10.111 10.267 10.111 10.267v-6.0133c7.2222 0 12.278 2.3467 15.889 7.48-1.4444-7.3333-5.7778-14.667-15.889-16.133"/>
+</g>
+</g>
+</g>
 </svg>

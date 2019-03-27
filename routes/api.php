@@ -48,7 +48,7 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::put('/update', 'VideosController@update');
 
-        Route::delete('/delete', 'VideosController@delete');
+        Route::post('/delete', 'VideosController@delete');
 
         Route::get('/cloud', 'VideosController@getCloudinaryInformation');
 
