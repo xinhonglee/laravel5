@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="header">
-  <h2>Toutes les vidéos</h2>
+  <h1 class="@if (isset($category))small-margin @endif">Toutes les vidéos @if (isset($category))<br />{{ $category->name }}@endif</h1>
 </section>
 
 @php ($i=0)

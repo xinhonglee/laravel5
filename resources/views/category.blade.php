@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="header cat">
-  <h2>{{ $category->name }}</h2>
+  <h1>{{ $category->name }}</h1>
 </section>
 
 <div class="header-img">
@@ -75,7 +75,7 @@
   </amp-carousel>
 </header>
 
-<h2 class="section">A la une</h2>
+<h2 class="section">A la une {{ $category->name }}</h2>
 
 <section class="video-wall">
   <div class="clearfix">
