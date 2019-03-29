@@ -10,7 +10,6 @@ window._ = require('lodash');
 try {
   window.Popper = require('popper.js').default;
   window.$ = window.jQuery = require('jquery');
-  window._deepmerge = require('deepmerge');
   require('bootstrap');
   require('block-ui');
   require('sweetalert');

@@ -80,7 +80,7 @@
     mounted () {
       // set properties emit receiver from Properties Components
       Vue.$on('setting:properties', (data) => {
-        const element = _deepmerge(this.element, data);
+        const element = _.merge(this.element, data);
         const pages = Object.assign([], this.$store.state.story.data.pages);
         const selected = this.$store.state.story.selected;
         pages[selected.page].layers[selected.layer].elements[selected.element] = element;
@@ -93,7 +93,7 @@
       });
       // set page emit receiver from setting page Component
       Vue.$on('setting:page', (data) => {
-        const page = _deepmerge(this.page, data);
+        const page = _.merge(this.page, data);
         const pages = Object.assign([], this.$store.state.story.data.pages);
         const selected = this.$store.state.story.selected;
         pages[selected.page] = page;
