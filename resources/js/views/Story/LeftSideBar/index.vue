@@ -179,15 +179,10 @@
        * remove selected element from selected layer
        */
       removeElement () {
-
         const pages = Object.assign([], this.story.data.pages);
-
         if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
-
           pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
-
         } else { // in case of selected template thirds, it should be keep grid-area info
-
           const gridArea =
             pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
 

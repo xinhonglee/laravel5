@@ -87,7 +87,6 @@ const elementLayouts = [
   { slug: "fixed", name: "Fixed" },
   { slug: "fixed-height", name: "Fixed Height" },
   { slug: "flex-item", name: "Flex Item" },
-  { slug: "intrinsic", name: "Intrinsic" },
   { slug: "nodisplay", name: "No display" },
   { slug: "responsive", name: "Responsive" },
 ];
@@ -97,7 +96,7 @@ const blankPageTemplate =  {
     title: "Blank",
     image_url: "",
     data: {
-      "auto-advance-after": "1s",
+      "auto-advance-after": "1",
       "background-audio": "",
       layers: [],
       cta_layer: {

@@ -20,22 +20,15 @@
           <property-animation v-if="isActive('animation')" :element="element"></property-animation>
         </div>
       </div>
-      <!--<md-tabs class="md-transparent md-no-animation" md-border-bottom md-no-ink-bar>-->
-        <!--<md-tab id="tab-property-setting" md-label="SETTINGS">-->
-          <!--<property-settings :element="element"></property-settings>-->
-        <!--</md-tab>-->
-        <!--<md-tab id="tab-property-design" md-label="DESIGN" v-if="element && element.type !== 'richtext'">-->
-          <!--<property-design :element="element"></property-design>-->
-        <!--</md-tab>-->
-        <!--<md-tab id="tab-property-animation" md-label="ANIMATION">-->
-          <!--<property-animation :element="element"></property-animation>-->
-        <!--</md-tab>-->
-      <!--</md-tabs>-->
     </template>
     <template v-if="(layer && layer.template) || (element && element['grid-area'] && !element.type)">
       <h4>New element</h4>
       <md-divider></md-divider>
       <element-list></element-list>
+    </template>
+    <template v-if="page">
+      <h4>Page Properties</h4>
+      <setting-page :page="page"></setting-page>
     </template>
   </div>
 </template>
@@ -46,10 +39,12 @@
   import PropertyAnimation from "./PropertyAnimation";
   import ElementList from "../components/ElementList";
   import utils from "../../utils";
+  import SettingPage from "../components/Properties/SettingPage";
 
   export default {
     name: "story-right-side-bar",
     components: {
+      SettingPage,
       ElementList,
       PropertyAnimation,
       PropertyDesign,
@@ -89,6 +84,19 @@
         const pages = Object.assign([], this.$store.state.story.data.pages);
         const selected = this.$store.state.story.selected;
         pages[selected.page].layers[selected.layer].elements[selected.element] = element;
+        this.$store.dispatch('saveAMPStory', {
+          data: {
+            pages: pages
+          },
+          publish: false
+        });
+      });
+      // set page emit receiver from setting page Component
+      Vue.$on('setting:page', (data) => {
+        const page = _deepmerge(this.page, data);
+        const pages = Object.assign([], this.$store.state.story.data.pages);
+        const selected = this.$store.state.story.selected;
+        pages[selected.page] = page;
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages
@@ -148,6 +156,13 @@
         }
         return null;
       },
+      page() {
+        const selected = this.$store.state.story.selected;
+        if (selected.page >= 0 && selected.layer < 0 && selected.element < 0) {
+          return this.$store.state.story.data.pages[selected.page];
+        }
+        return null;
+      }
     },
     beforeDestroy () {
       Vue.$off('setting:properties');

@@ -14,6 +14,16 @@
             id="upload_property_video">
       Select a Video
     </button>
+    <br>
+    <md-switch v-model="autoPlay">Auto play</md-switch>
+    <br>
+    <md-switch v-model="loop">Loop</md-switch>
+    <img v-if="posterSrc" :src="posterSrc" class="attachment-image md-elevation-7"/>
+    <br>
+    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+            id="upload_poster_video">
+      Select a Poster Image
+    </button>
   </div>
 </template>
 
@@ -40,6 +50,16 @@
             }
           },
           document.getElementById("upload_property_video")
+        );
+        cloudinary.createMediaLibrary(
+          {...vm.cloudinaryInfo, "button_caption": "Select a Poster Image"},
+          {
+            insertHandler: function (data) {
+              let result = data.assets[0];
+              vm.posterSrc = result.secure_url.substr(0, result.secure_url.lastIndexOf(".")) + ".jpg";
+            }
+          },
+          document.getElementById("upload_poster_video")
         );
       }
     },
@@ -102,6 +122,45 @@
           return '';
         },
       },
+      posterSrc: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.poster)) {
+            return this.el.properties.poster;
+          }
+          return '';
+        },
+        set(value) {
+          if (this.posterSrc !== value) {
+            Vue.$emit('setting:properties', { properties: { poster: value } });
+          }
+        },
+      },
+      autoPlay: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.autoplay)) {
+            return this.el.properties.autoplay;
+          }
+          return true;
+        },
+        set(value) {
+          if (this.autoPlay !== value) {
+            Vue.$emit('setting:properties', { properties: { autoplay: value } });
+          }
+        },
+      },
+      loop: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.loop)) {
+            return this.el.properties.loop;
+          }
+          return true;
+        },
+        set(value) {
+          if (this.loop !== value) {
+            Vue.$emit('setting:properties', { properties: { loop: value } });
+          }
+        },
+      }
     },
   }
 </script>

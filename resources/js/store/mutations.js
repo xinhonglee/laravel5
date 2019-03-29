@@ -33,7 +33,7 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.publisher = (story && story.data.publisher) ? story.data.publisher : '';
   state.story.data.publisherLogoSrc = (story && story.data['publisher-logo-src']) ? story.data['publisher-logo-src'] : '';
   state.story.data.posterPortraitSrc = (story && story.data['poster-portrait-src']) ? story.data['poster-portrait-src'] : '';
-  state.story.data.supportsLandscape = (story && story.data['supports-landscape']) ? story.data['supports-landscape'] : '';
+  state.story.data.supportsLandscape = (story && !_.isNil(story.data['supports-landscape'])) ? story.data['supports-landscape'] : true;
   state.story.data.backgroundAudio = (story && story.data['background-audio']) ? story.data['background-audio'] : '';
   state.story.data.posterSquareSrc = (story && story.data['poster-square-src']) ? story.data['poster-square-src'] : '';
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
@@ -55,7 +55,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       "publisher": (story && story.data.publisher) ? story.data.publisher : storyData.publisher,
       "publisher-logo-src": (story && story.data.publisherLogoSrc) ? story.data.publisherLogoSrc : storyData.publisherLogoSrc,
       "pages": (story && story.data.pages) ? story.data.pages : storyData.pages,
-      "supports-landscape": (story && story.data.supportsLandscape) ? story.data.supportsLandscape : storyData.supportsLandscape,
+      "supports-landscape": (story && !_.isNil(story.data.supportsLandscape)) ? story.data.supportsLandscape : storyData.supportsLandscape,
       "bookend": (story && story.data.bookend) ? story.data.bookend : storyData.bookend,
     }
   };
