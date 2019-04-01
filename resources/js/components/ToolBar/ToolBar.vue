@@ -7,7 +7,7 @@
                  :key="index"
       >
         {{ (index + 1).toString() }}
-        <md-icon v-if="isNew(page.id)">flag</md-icon>
+        <!--<md-icon v-if="isNew(page.id)">flag</md-icon>-->
       </md-button>
     </div>
     <ul class="page-tools">
