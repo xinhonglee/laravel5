@@ -115,9 +115,10 @@ export const DELETE_AMP_STORY_REDIS = (state) => {
 };
 
 export const SELECT_AMP_STORY = (state, selected) => {
-  state.story.selected.page = selected.page;
-  state.story.selected.layer = selected.layer;
-  state.story.selected.element = selected.element;
+  state.story.selected.page = !_.isNil(selected.page) ? selected.page: 0;
+  state.story.selected.layer = !_.isNil(selected.layer) ? selected.layer: -1;
+  state.story.selected.gridArea = !_.isNil(selected.gridArea) ? selected.gridArea: -1;
+  state.story.selected.element = !_.isNil(selected.element) ? selected.element: -1;
 };
 
 export const CLEAR_AMP_STORY = (state) => {
@@ -136,6 +137,7 @@ export const CLEAR_AMP_STORY = (state) => {
     selected: {
       page: 0,
       layer: -1,
+      gridArea: -1,
       element: -1,
     },
     new: false,

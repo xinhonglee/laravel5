@@ -41,21 +41,21 @@ const layerTemplates = [
       template: "thirds",
       styles: {},
       elements: [
-        {
-          "grid-area": "upper-third",
-          type: "",
-          properties: {}
-        },
-        {
-          "grid-area": "middle-third",
-          type: "",
-          properties: {}
-        },
-        {
-          "grid-area": "lower-third",
-          type: "",
-          properties: {}
-        }
+        // {
+        //   "grid-area": "upper-third",
+        //   type: "",
+        //   properties: {}
+        // },
+        // {
+        //   "grid-area": "middle-third",
+        //   type: "",
+        //   properties: {}
+        // },
+        // {
+        //   "grid-area": "lower-third",
+        //   type: "",
+        //   properties: {}
+        // }
       ],
     },
   }
@@ -77,9 +77,9 @@ const imageFilters = [".jpg", ".png", ".gif"];
 const ctaTypes = ["img", "richtext", "timeago", "fit-text"];
 
 const gridAreas = [
-  { slug: "lower-third", name: "Lower Third" },
+  { slug: "upper-third", name: "Upper Third" },
   { slug: "middle-third", name: "Middle Third" },
-  { slug: "upper-third", name: "Upper Third" }
+  { slug: "lower-third", name: "Lower Third" },
 ];
 
 const elementLayouts = [

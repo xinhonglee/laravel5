@@ -113,7 +113,7 @@
     },
     mounted () {
       // select page action
-      this.$store.dispatch('selectAMPStory', { page: 0, layer: -1, element: -1, });
+      this.$store.dispatch('selectAMPStory', {});
 
       // app publish action emit receiver from EditableHeader Component
       Vue.$on('app:publish', () => {

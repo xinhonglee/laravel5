@@ -1,8 +1,8 @@
 <template>
   <div class="page-layer">
     <div class="layer-template" :class="{ selected : isLayerSelected()}">
-      <img class="template-icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
-      <div class="template-name" @click="selectLayer">{{ getLayerTemplateName(layer.template)}} Template</div>
+      <img class="layer-template_icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
+      <div class="layer-template_name" @click="selectLayer">{{ getLayerTemplateName(layer.template)}} Template</div>
       <div class="btn-tools">
         <span @click="orderUpLayer"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
         <span @click="orderDownLayer"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
@@ -10,25 +10,44 @@
       </div>
     </div>
     <div class="layer-elements">
-      <div class="element" v-for="(element, index) of layer.elements" :key="index">
-        <template v-if="isGridArea(layer.template)">
-          <div class="element-grid-area" v-html="getGridAreaName(element['grid-area'])"></div>
+      <template v-if="isGridArea(layer.template)">
+        <template v-for="(gridArea, gridIndex) of gridAreas">
+          <div class="element-grid-area" :class="{ selected : isGridAreaSelected(gridIndex)}"
+               @click="selectGridArea(gridIndex)" v-html="gridArea.name"></div>
+          <div class="element" v-if="element['grid-area'] === gridArea.slug"
+               v-for="(element, index) of layer.elements" :key="index">
+            <div class="element-type" :class="{ selected : isElementSelected(index)}">
+              [ <span class="element-type_label" @click="selectGridElement(gridIndex, index)">{{ getElementName(element.type)}}</span> ]
+              <div class="btn-tools">
+                <span @click="orderGridUpElement(gridIndex, index)"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
+                <span @click="orderGridDownElement(gridIndex, index)"><md-icon
+                  style="transform: rotate(90deg);">trending_flat</md-icon></span>
+                <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
+              </div>
+            </div>
+          </div>
         </template>
-        <div class="element-type" :class="{ selected : isElementSelected(index)}">
-          [ <span class="element-type_label" @click="selectElement(index)">{{ getElementName(element.type)}}</span> ]
-          <div class="btn-tools">
-            <span @click="orderUpElement(index)"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
-            <span @click="orderDownElement(index)"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
-            <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
+      </template>
+      <template v-else>
+        <div class="element" v-for="(element, index) of layer.elements" :key="index">
+          <div class="element-type" :class="{ selected : isElementSelected(index)}">
+            [ <span class="element-type_label" @click="selectElement(index)">{{ getElementName(element.type)}}</span> ]
+            <div class="btn-tools">
+              <span @click="orderUpElement(index)"><md-icon
+                style="transform: rotate(-90deg);">trending_flat</md-icon></span>
+              <span @click="orderDownElement(index)"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
+              <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
+            </div>
           </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
   import utils from '../../utils';
+  import constants from '../../constants';
 
   export default {
     name: "page-layers",
@@ -42,6 +61,7 @@
         toggleSetting: false,
         layerTemplate: null,
         layerElements: null,
+        gridAreas: constants.gridAreas
       }
     },
     methods: {
@@ -49,7 +69,7 @@
       /**
        * Order Up Layer
        */
-      orderUpLayer() {
+      orderUpLayer () {
         Vue.$emit("order-up:layer", {
           layerIndex: this.layerIndex,
         });
@@ -58,7 +78,7 @@
       /**
        * Order Down Layer
        */
-      orderDownLayer() {
+      orderDownLayer () {
         Vue.$emit("order-down:layer", {
           layerIndex: this.layerIndex,
         });
@@ -67,7 +87,7 @@
       /**
        * Order Up Element
        */
-      orderUpElement(index) {
+      orderUpElement (index) {
         Vue.$emit("order-up:element", {
           layerIndex: this.layerIndex,
           elementIndex: index,
@@ -77,10 +97,32 @@
       /**
        * Order Down Element
        */
-      orderDownElement(index) {
+      orderDownElement (index) {
         Vue.$emit("order-down:element", {
           layerIndex: this.layerIndex,
           elementIndex: index,
+        });
+      },
+
+      /**
+       * Order Up GridElement
+       */
+      orderGridUpElement (gridIndex, elementIndex) {
+        Vue.$emit("order-up:grid-element", {
+          layerIndex: this.layerIndex,
+          gridIndex: gridIndex,
+          elementIndex: elementIndex,
+        });
+      },
+
+      /**
+       * Order Down GridElement
+       */
+      orderGridDownElement (gridIndex, elementIndex) {
+        Vue.$emit("order-down:grid-element", {
+          layerIndex: this.layerIndex,
+          gridIndex: gridIndex,
+          elementIndex: elementIndex,
         });
       },
 
@@ -113,6 +155,31 @@
           return false;
         }
         if (this.$store.state.story.selected.layer !== this.layerIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.gridArea >= 0 ) {
+          return false;
+        }
+        if (this.$store.state.story.selected.element >= 0) {
+          return false;
+        }
+        return true;
+      },
+
+      /**
+       * current grid-area is selected by index
+       *
+       * @param index
+       * @returns {boolean}
+       */
+      isGridAreaSelected(index) {
+        if (this.$store.state.story.selected.page !== this.pageIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.layer !== this.layerIndex) {
+          return false;
+        }
+        if (this.$store.state.story.selected.gridArea !== index) {
           return false;
         }
         if (this.$store.state.story.selected.element >= 0) {
@@ -149,10 +216,36 @@
         this.$store.dispatch('selectAMPStory', {
           page: this.pageIndex,
           layer: this.layerIndex,
-          element: -1,
         });
       },
 
+      /**
+       * select grid-area
+       *
+       * @param index
+       */
+      selectGridArea (index) {
+        this.$store.dispatch('selectAMPStory', {
+          page: this.pageIndex,
+          layer: this.layerIndex,
+          gridArea: index,
+        });
+      },
+
+      /**
+       * select grid element
+       *
+       * @param gridIndex, elementIndex
+       */
+      selectGridElement (gridIndex, elementIndex) {
+        Vue.$emit("select:element");
+        this.$store.dispatch('selectAMPStory', {
+          page: this.pageIndex,
+          layer: this.layerIndex,
+          gridArea: gridIndex,
+          element: elementIndex,
+        });
+      },
       /**
        * select element
        *

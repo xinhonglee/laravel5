@@ -46,6 +46,7 @@ const notSyncedData = {
     selected: {
       page: 0,
       layer: -1,
+      gridArea: -1,
       element: -1,
     },
     new: false,

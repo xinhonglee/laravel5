@@ -6,13 +6,16 @@
       <div class="custom-tabs">
         <div class="tab-buttons">
           <md-button :class="{'md-primary' : isActive('settings')}"
-                     @click="activeTab='settings'">SETTINGS</md-button>
+                     @click="activeTab='settings'">SETTINGS
+          </md-button>
           <md-button v-if="element && element.type !== 'richtext'"
                      :class="{'md-primary' : isActive('design')}"
                      @click="activeTab='design'">
-            DESIGN</md-button>
+            DESIGN
+          </md-button>
           <md-button :class="{'md-primary' : isActive('animation')}"
-                     @click="activeTab='animation'">ANIMATION</md-button>
+                     @click="activeTab='animation'">ANIMATION
+          </md-button>
         </div>
         <div class="tab-contents">
           <property-settings v-if="isActive('settings')" :element="element"></property-settings>
@@ -21,7 +24,7 @@
         </div>
       </div>
     </template>
-    <template v-if="(layer && layer.template) || (element && element['grid-area'] && !element.type)">
+    <template v-if="(layer && layer.template)">
       <h4>New element</h4>
       <md-divider></md-divider>
       <element-list></element-list>
@@ -39,6 +42,7 @@
   import PropertyAnimation from "./PropertyAnimation";
   import ElementList from "../components/ElementList";
   import utils from "../../utils";
+  import constants from '../../constants';
   import SettingPage from "../components/Properties/SettingPage";
 
   export default {
@@ -72,8 +76,8 @@
        * @param slug
        * @returns {boolean}
        */
-      isActive(slug) {
-        return  this.activeTab === slug;
+      isActive (slug) {
+        return this.activeTab === slug;
       },
 
     },
@@ -84,6 +88,7 @@
         const pages = Object.assign([], this.$store.state.story.data.pages);
         const selected = this.$store.state.story.selected;
         pages[selected.page].layers[selected.layer].elements[selected.element] = element;
+
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages
@@ -106,33 +111,26 @@
       });
       // add element emit receiver from AMPElement Component
       Vue.$on('add:element', (slug) => {
-        const pages = Object.assign([], this.$store.state.story.data.pages);
-        const selected = this.$store.state.story.selected;
-        if (pages[selected.page].layers[selected.layer].template !== 'thirds') {
-          pages[selected.page].layers[selected.layer].elements.push({ type: slug, properties: {} });
+          const pages = Object.assign([], this.$store.state.story.data.pages);
+          const selected = this.$store.state.story.selected;
+          let newElement = { type: slug, properties: {id: '', class: ''} };
+
+          if (pages[selected.page].layers[selected.layer].template === 'thirds') {
+            newElement = { 'grid-area': constants.gridAreas[selected.gridArea].slug, ...newElement };
+          }
+
+          pages[selected.page].layers[selected.layer].elements.push(newElement);
           selected.element = pages[selected.page].layers[selected.layer].elements.length - 1;
+
           this.$store.dispatch('selectAMPStory', selected);
-        } else if (selected.element >= 0) {
-          const element = pages[selected.page].layers[selected.layer].elements[selected.element];
-          pages[selected.page].layers[selected.layer].elements[selected.element] = {
-            'grid-area': element['grid-area'],
-            type: slug,
-            properties: {}
-          };
-        } else {
-          Vue.alertBox({
-            title: 'Error',
-            text: 'Please select a blank grid inside of the Thirds template',
-            type: 'error'
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
           });
         }
-        this.$store.dispatch('saveAMPStory', {
-          data: {
-            pages: pages
-          },
-          publish: false
-        });
-      });
+      );
       // select element emit receiver from Each elements
       Vue.$on('select:element', () => {
         this.activeTab = 'settings';
@@ -141,11 +139,18 @@
     computed: {
       element () {
         const selected = this.$store.state.story.selected;
-        if (selected.element >= 0 ) {
+        if (selected.element >= 0) {
           const el = this.$store.state.story.data.pages[selected.page].layers[selected.layer].elements[selected.element];
           this.propertyName = this.getPropertyName(el.type);
 
           return el;
+        }
+        return null;
+      },
+      gridArea () {
+        const selected = this.$store.state.story.selected;
+        if (selected.layer >= 0 && selected.element < 0) {
+          return this.$store.state.story.data.pages[selected.page].layers[selected.layer];
         }
         return null;
       },
@@ -156,7 +161,7 @@
         }
         return null;
       },
-      page() {
+      page () {
         const selected = this.$store.state.story.selected;
         if (selected.page >= 0 && selected.layer < 0 && selected.element < 0) {
           return this.$store.state.story.data.pages[selected.page];

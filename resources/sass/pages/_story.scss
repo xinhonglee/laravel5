@@ -15,7 +15,6 @@
     width: $amp-width;
   }
 
-
   .ck-editor {
     width: 100% !important;
   }
@@ -93,11 +92,12 @@
       .layer-template {
         padding-right: 10px;
         cursor: pointer;
+        background: $light-gray;
 
         &.selected, &:hover {
           .btn-tools {
             display: block;
-            margin-top: 2px;
+            margin-top: 8px;
           }
         }
 
@@ -108,28 +108,43 @@
           background-color: #d9d9d9;
         }
 
-        img.template-icon {
+        img.layer-template_icon {
           width: 15px;
         }
 
-        .template-name {
+        &_name {
           display: inline-block;
           margin-left: 20px;
+          padding: 10px 0;
         }
       }
 
       .layer-elements {
         font-size: 13px;
-        margin-left: 70px;
+        margin-left: 60px;
+
+        .element-grid-area {
+          cursor: pointer;
+          padding: 10px;
+
+          &.selected, &:hover {
+            .btn-tools {
+              display: block;
+            }
+          }
+          &.selected {
+            background-color: #ccdcec;
+          }
+          &:hover {
+            background-color: #d9d9d9;
+          }
+        }
 
         .element {
           cursor: pointer;
+          margin-left: 10px;
 
-          .element-grid-area {
-            cursor: pointer;
-          }
-
-          .element-type {
+          &-type {
             padding: 10px;
             cursor: pointer;
 
@@ -193,7 +208,6 @@
     overflow-y: auto;
   }
 }
-
 
 .layer-templates-list {
   display: flex;

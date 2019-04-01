@@ -111,11 +111,7 @@
           },
           publish: false
         });
-        this.$store.dispatch('selectAMPStory', {
-          page: pages.length - 1,
-          layer: -1,
-          element: -1,
-        });
+        this.$store.dispatch('selectAMPStory', {});
         Vue.$emit("duplicate:page", id);
         this.showPageTools = false;
       },
@@ -131,11 +127,7 @@
           },
           publish: false
         });
-        this.$store.dispatch('selectAMPStory', {
-          page: -1,
-          layer: -1,
-          element: -1,
-        });
+        this.$store.dispatch('selectAMPStory', {});
         this.showPageTools = false;
       },
       /**
@@ -153,7 +145,6 @@
         this.$store.dispatch('selectAMPStory', {
           page: this.story.selected.page,
           layer: (pages[this.story.selected.page].layers.length - 1),
-          element: -1,
         });
         this.showDialog = false;
       },
@@ -171,8 +162,6 @@
         });
         this.$store.dispatch('selectAMPStory', {
           page: this.story.selected.page,
-          layer: -1,
-          element: -1,
         });
       },
       /**
@@ -180,19 +169,8 @@
        */
       removeElement () {
         const pages = Object.assign([], this.story.data.pages);
-        if (pages[this.story.selected.page].layers[this.removeLayerIndex].template !== 'thirds') {
-          pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
-        } else {
-          // in case of selected template thirds, it should be keep grid-area info
-          const gridArea =
-            pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex]['grid-area'];
+        pages[this.story.selected.page].layers[this.removeLayerIndex].elements.splice(this.removeElementIndex, 1);
 
-          pages[this.story.selected.page].layers[this.removeLayerIndex].elements[this.removeElementIndex] = {
-            'grid-area': gridArea,
-            type: '',
-            properties: {}
-          }
-        }
         this.$store.dispatch('saveAMPStory', {
           data: {
             pages: pages
@@ -201,8 +179,6 @@
         });
         this.$store.dispatch('selectAMPStory', {
           page: this.story.selected.page,
-          layer: -1,
-          element: -1,
         });
       },
       /**
@@ -225,7 +201,6 @@
           this.$store.dispatch('selectAMPStory', {
             page: this.story.selected.page,
             layer: (layerIndex - 1),
-            element: -1,
           });
         }
       },
@@ -249,7 +224,6 @@
           this.$store.dispatch('selectAMPStory', {
             page: this.story.selected.page,
             layer: (layerIndex + 1),
-            element: -1,
           });
         }
       },
@@ -279,13 +253,13 @@
         }
       },
       /**
-       * Order Up Element
+       * Order Down Element
        */
       orderDownElement (layerIndex, elementIndex) {
         if ((elementIndex + 1) < this.story.data.pages[this.story.selected.page].layers[layerIndex].elements.length) {
           const pages = Object.assign([], this.story.data.pages);
-          const temp = pages[this.story.selected.page].layers[layerIndex].elements[elementIndex - 1];
-          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex - 1] =
+          const temp = pages[this.story.selected.page].layers[layerIndex].elements[elementIndex + 1];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex + 1] =
             pages[this.story.selected.page].layers[layerIndex].elements[elementIndex];
           pages[this.story.selected.page].layers[layerIndex].elements[elementIndex] = temp;
 
@@ -300,6 +274,86 @@
             page: this.story.selected.page,
             layer: layerIndex,
             element: elementIndex + 1,
+          });
+        }
+      },
+
+      /**
+       * Order Up Element
+       */
+      orderUpGridElement (layerIndex, gridIndex, elementIndex) {
+        const pages = Object.assign([], this.story.data.pages);
+        const filteredIndexes = [];
+        let filteredIndex = -1;
+        const filteredElements = pages[this.story.selected.page].layers[layerIndex].elements.filter((element, index) => {
+          const isGridArea = element['grid-area'] === constants.gridAreas[gridIndex].slug;
+          if (isGridArea) {
+            filteredIndexes.push(index);
+            if (elementIndex === index) {
+              filteredIndex = filteredIndexes.length - 1;
+            }
+          }
+          return isGridArea;
+        });
+        console.log(filteredElements, filteredIndex);
+        if (filteredIndex > 0) {
+          const temp = pages[this.story.selected.page].layers[layerIndex].elements[filteredIndexes[filteredIndex - 1]];
+          pages[this.story.selected.page].layers[layerIndex].elements[filteredIndexes[filteredIndex - 1]] =
+            pages[this.story.selected.page].layers[layerIndex].elements[elementIndex];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex] = temp;
+
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
+          });
+
+          this.$store.dispatch('selectAMPStory', {
+            page: this.story.selected.page,
+            layer: layerIndex,
+            gridArea: gridIndex,
+            element: filteredIndexes[filteredIndex - 1],
+          });
+        }
+      },
+      /**
+       * Order Down GridElement
+       */
+      orderDownGridElement (layerIndex, gridIndex, elementIndex) {
+        const pages = Object.assign([], this.story.data.pages);
+        const filteredIndexes = [];
+        let filteredIndex = -1;
+        const filteredElements = pages[this.story.selected.page].layers[layerIndex].elements.filter((element, index) => {
+          const isGridArea = element['grid-area'] === constants.gridAreas[gridIndex].slug;
+          if (isGridArea) {
+            filteredIndexes.push(index);
+            if (elementIndex === index) {
+              filteredIndex = filteredIndexes.length - 1;
+            }
+          }
+          return isGridArea;
+        });
+
+        console.log(filteredElements, filteredIndex);
+        if ((filteredIndex + 1) < filteredElements.length) {
+          const temp = pages[this.story.selected.page].layers[layerIndex].elements[filteredIndexes[filteredIndex + 1]];
+          pages[this.story.selected.page].layers[layerIndex].elements[filteredIndexes[filteredIndex + 1]] =
+            pages[this.story.selected.page].layers[layerIndex].elements[elementIndex];
+          pages[this.story.selected.page].layers[layerIndex].elements[elementIndex] = temp;
+
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false
+          });
+
+          this.$store.dispatch('selectAMPStory', {
+            page: this.story.selected.page,
+            layer: layerIndex,
+            gridArea: gridIndex,
+            element: filteredIndexes[filteredIndex + 1],
           });
         }
       }
@@ -332,6 +386,14 @@
       Vue.$on("order-down:element", (data) => {
         this.orderDownElement(data.layerIndex, data.elementIndex);
       });
+      // order up grid element emit from PageLayer Component
+      Vue.$on("order-up:grid-element", (data) => {
+        this.orderUpGridElement(data.layerIndex, data.gridIndex, data.elementIndex);
+      });
+      // order down grid element emit from PageLayer Component
+      Vue.$on("order-down:grid-element", (data) => {
+        this.orderDownGridElement(data.layerIndex, data.gridIndex, data.elementIndex);
+      });
     },
     computed: {
       story () {
@@ -342,6 +404,11 @@
       Vue.$off("remove:layer");
       Vue.$off("remove:element");
       Vue.$off("order-up:layer");
+      Vue.$off("order-down:layer");
+      Vue.$off("order-up:element");
+      Vue.$off("order-down:element");
+      Vue.$off("order-up:grid-element");
+      Vue.$off("order-down:grid-element");
     }
   }
 </script>

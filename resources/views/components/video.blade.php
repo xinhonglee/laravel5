@@ -1,4 +1,5 @@
 <amp-video
+    @if (!empty($element['grid-area'])) grid-area="{{ $element['grid-area']}}" @endif
     @if (!empty($properties['src'])) src="{{ $properties['src'] }}" @endif
     @if (!empty($properties['width'])) width="{{ $properties['width']}}" @endif
     @if (!empty($properties['height'])) height="{{ $properties['height']}}" @endif
