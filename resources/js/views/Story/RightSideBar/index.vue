@@ -116,6 +116,14 @@
           let newElement = { type: slug, properties: {id: '', class: ''} };
 
           if (pages[selected.page].layers[selected.layer].template === 'thirds') {
+            if(selected.gridArea < 0) {
+              Vue.alertBox({
+                title: 'Warning',
+                text: "Please select one of 3 grid areas!",
+                type: 'warning'
+              });
+              return;
+            }
             newElement = { 'grid-area': constants.gridAreas[selected.gridArea].slug, ...newElement };
           }
 
