@@ -13,6 +13,11 @@
         </div>
         <div class="page-tools md-elevation-3" v-if="showPageTools">
           <ul>
+            <li>Move to Left</li>
+            <li>Move to Right</li>
+          </ul>
+          <hr class="m-0">
+          <ul>
             <li @click="duplicatePage">Duplicate</li>
             <li @click="showRemovePageDialog=true">Remove</li>
           </ul>

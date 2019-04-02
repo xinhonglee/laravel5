@@ -68,16 +68,18 @@
 }
 
 .app-toolbar {
+  align-items: center;
   background: $light-gray;
   display: flex;
-  align-items: center;
   height: $toolbar-height;
   padding: 0 20px;
 
-  .page-index {
-    width: 400px;
+  .page-indexes {
+    width: 330px;
+    display: flex;
     overflow-x: auto;
     overflow-y: hidden;
+
     .md-button {
       min-width: 30px;
       font-weight: bold;

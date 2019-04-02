@@ -1,6 +1,6 @@
 <template>
   <div class="app-toolbar md-elevation-4">
-    <div class="page-index">
+    <div class="page-indexes">
       <md-button v-for="(page, index) in story.data.pages"
                  :class="{'md-primary' : isActive(index)}"
                  @click="selectPage(index)"
