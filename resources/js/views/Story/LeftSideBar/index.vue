@@ -13,8 +13,8 @@
         </div>
         <div class="page-tools md-elevation-3" v-if="showPageTools">
           <ul>
-            <li>Move to Left</li>
-            <li>Move to Right</li>
+            <li @click="movePageToLeft">Move to Left</li>
+            <li @click="movePageToRight">Move to Right</li>
           </ul>
           <hr class="m-0">
           <ul>
@@ -114,9 +114,9 @@
           data: {
             pages: pages,
           },
-          publish: false
+          publish: false,
+          selected: {}
         });
-        this.$store.dispatch('selectAMPStory', {});
         Vue.$emit("duplicate:page", id);
         this.showPageTools = false;
       },
@@ -130,9 +130,9 @@
           data: {
             pages: pages
           },
-          publish: false
+          publish: false,
+          selected: {}
         });
-        this.$store.dispatch('selectAMPStory', {});
         this.showPageTools = false;
       },
       /**
@@ -145,11 +145,11 @@
           data: {
             pages: pages
           },
-          publish: false
-        });
-        this.$store.dispatch('selectAMPStory', {
-          page: this.story.selected.page,
-          layer: (pages[this.story.selected.page].layers.length - 1),
+          publish: false,
+          selected: {
+            page: this.story.selected.page,
+            layer: (pages[this.story.selected.page].layers.length - 1),
+          }
         });
         this.showDialog = false;
       },
@@ -163,10 +163,10 @@
           data: {
             pages: pages
           },
-          publish: false
-        });
-        this.$store.dispatch('selectAMPStory', {
-          page: this.story.selected.page,
+          publish: false,
+          selected: {
+            page: this.story.selected.page,
+          }
         });
       },
       /**
@@ -180,11 +180,53 @@
           data: {
             pages: pages
           },
-          publish: false
+          publish: false,
+          selected: {
+            page: this.story.selected.page,
+          }
         });
-        this.$store.dispatch('selectAMPStory', {
-          page: this.story.selected.page,
-        });
+      },
+      /**
+       * move page to left
+       */
+      movePageToLeft() {
+        if(this.story.selected.page > 0) {
+          const pages = Object.assign([], this.story.data.pages);
+          const temp = pages[this.story.selected.page - 1];
+          pages[this.story.selected.page - 1] = pages[this.story.selected.page];
+          pages[this.story.selected.page] = temp;
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false,
+            selected: {
+              page: (this.story.selected.page - 1),
+            }
+          });
+          this.showPageTools = false;
+        }
+      },
+      /**
+       * move page to left
+       */
+      movePageToRight() {
+        if((this.story.selected.page + 1) < this.story.data.pages.length) {
+          const pages = Object.assign([], this.story.data.pages);
+          const temp = pages[this.story.selected.page + 1];
+          pages[this.story.selected.page + 1] = pages[this.story.selected.page];
+          pages[this.story.selected.page] = temp;
+          this.$store.dispatch('saveAMPStory', {
+            data: {
+              pages: pages
+            },
+            publish: false,
+            selected: {
+              page: (this.story.selected.page + 1)
+            }
+          });
+          this.showPageTools = false;
+        }
       },
       /**
        * Order Up Layer
@@ -200,12 +242,11 @@
             data: {
               pages: pages
             },
-            publish: false
-          });
-
-          this.$store.dispatch('selectAMPStory', {
-            page: this.story.selected.page,
-            layer: (layerIndex - 1),
+            publish: false,
+            selected: {
+              page: this.story.selected.page,
+              layer: (layerIndex - 1),
+            }
           });
         }
       },
@@ -223,12 +264,11 @@
             data: {
               pages: pages
             },
-            publish: false
-          });
-
-          this.$store.dispatch('selectAMPStory', {
-            page: this.story.selected.page,
-            layer: (layerIndex + 1),
+            publish: false,
+            selected: {
+              page: this.story.selected.page,
+              layer: (layerIndex + 1),
+            }
           });
         }
       },
@@ -247,13 +287,12 @@
             data: {
               pages: pages
             },
-            publish: false
-          });
-
-          this.$store.dispatch('selectAMPStory', {
-            page: this.story.selected.page,
-            layer: layerIndex,
-            element: elementIndex - 1,
+            publish: false,
+            selected: {
+              page: this.story.selected.page,
+              layer: layerIndex,
+              element: elementIndex - 1,
+            }
           });
         }
       },
@@ -272,13 +311,12 @@
             data: {
               pages: pages
             },
-            publish: false
-          });
-
-          this.$store.dispatch('selectAMPStory', {
-            page: this.story.selected.page,
-            layer: layerIndex,
-            element: elementIndex + 1,
+            publish: false,
+            selected: {
+              page: this.story.selected.page,
+              layer: layerIndex,
+              element: elementIndex + 1,
+            }
           });
         }
       },
@@ -311,14 +349,13 @@
             data: {
               pages: pages
             },
-            publish: false
-          });
-
-          this.$store.dispatch('selectAMPStory', {
-            page: this.story.selected.page,
-            layer: layerIndex,
-            gridArea: gridIndex,
-            element: filteredIndexes[filteredIndex - 1],
+            publish: false,
+            selected: {
+              page: this.story.selected.page,
+              layer: layerIndex,
+              gridArea: gridIndex,
+              element: filteredIndexes[filteredIndex - 1],
+            }
           });
         }
       },
@@ -351,14 +388,13 @@
             data: {
               pages: pages
             },
-            publish: false
-          });
-
-          this.$store.dispatch('selectAMPStory', {
-            page: this.story.selected.page,
-            layer: layerIndex,
-            gridArea: gridIndex,
-            element: filteredIndexes[filteredIndex + 1],
+            publish: false,
+            selected: {
+              page: this.story.selected.page,
+              layer: layerIndex,
+              gridArea: gridIndex,
+              element: filteredIndexes[filteredIndex + 1],
+            }
           });
         }
       }

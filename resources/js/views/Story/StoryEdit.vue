@@ -136,7 +136,7 @@
     },
     computed: {
       /**
-       *  generate embed url to put iframe from selected story and page
+       *  generate embed url of iframe from selected story and page
        */
       storyPageUrl () {
         if (!_.isNil(this.$store.state.story) &&

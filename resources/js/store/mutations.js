@@ -39,6 +39,10 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
   state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {};
+
+  if(!_.isNil(story.selected)) {
+    Vue.$store.dispatch('selectAMPStory', story.selected);
+  }
 };
 
 export const SAVE_AMP_STORY = (state, story) => {
@@ -63,6 +67,7 @@ export const SAVE_AMP_STORY = (state, story) => {
     Vue.block();
     if (!_.isNil(Vue.$store.state.story.id) && !Vue.$store.state.story.new) {
       Vue.$http.put(`/story/update`, data).then((response) => {
+        response.data = !_.isNil(story.selected) ? {...response.data, selected: story.selected} : response.data;
         Vue.$store.dispatch('updateAMPStory', response.data);
         Vue.unBlock();
         Vue.alertBox({
@@ -75,6 +80,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       }).catch(Vue.handleClientError);
     } else {
       Vue.$http.post(`/story/create`, data).then((response) => {
+        response.data = !_.isNil(story.selected) ? {...response.data, selected: story.selected} : response.data;
         Vue.$store.dispatch('updateAMPStory', response.data);
         Vue.$store.state.story.new = false;
         Vue.unBlock();
@@ -95,6 +101,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       Vue.$store.state.story.new = true;
     }
     Vue.$http.post(`/story/redis/set`, data).then((response) => {
+      response.data = !_.isNil(story.selected) ? {...response.data, selected: story.selected} : response.data;
       Vue.$store.dispatch('updateAMPStory', response.data);
     }, (error) => {
       console.log(error);

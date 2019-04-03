@@ -130,12 +130,12 @@
           pages[selected.page].layers[selected.layer].elements.push(newElement);
           selected.element = pages[selected.page].layers[selected.layer].elements.length - 1;
 
-          this.$store.dispatch('selectAMPStory', selected);
           this.$store.dispatch('saveAMPStory', {
             data: {
               pages: pages
             },
-            publish: false
+            publish: false,
+            selected
           });
         }
       );
@@ -147,10 +147,9 @@
     computed: {
       element () {
         const selected = this.$store.state.story.selected;
-        if (selected.element >= 0) {
+        if ( selected.element >= 0 ) {
           const el = this.$store.state.story.data.pages[selected.page].layers[selected.layer].elements[selected.element];
-          this.propertyName = this.getPropertyName(el.type);
-
+          this.propertyName = !_.isNil(el) ? this.getPropertyName(el.type) : null;
           return el;
         }
         return null;
