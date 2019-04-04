@@ -41,21 +41,6 @@ const layerTemplates = [
       template: "thirds",
       styles: {},
       elements: [
-        // {
-        //   "grid-area": "upper-third",
-        //   type: "",
-        //   properties: {}
-        // },
-        // {
-        //   "grid-area": "middle-third",
-        //   type: "",
-        //   properties: {}
-        // },
-        // {
-        //   "grid-area": "lower-third",
-        //   type: "",
-        //   properties: {}
-        // }
       ],
     },
   }

@@ -17,7 +17,7 @@ export default {
       $.blockUI({
         css: {
           border: 'none',
-          padding: '15px',
+          padding: '5px',
           backgroundColor: '#000',
           '-webkit-border-radius': '10px',
           '-moz-border-radius': '10px',
