@@ -11,7 +11,7 @@
                @row-clicked="redirectToStory"
       >
         <template slot="tool" slot-scope="row">
-          <div>
+          <div class="table-actions">
             <span>
               <md-icon style="font-size:20px!important;">file_copy</md-icon>
               <md-tooltip md-direction="top">Duplicate</md-tooltip>
