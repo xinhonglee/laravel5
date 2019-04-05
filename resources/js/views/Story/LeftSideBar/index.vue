@@ -115,7 +115,9 @@
             pages: pages,
           },
           publish: false,
-          selected: {}
+          selected: {
+            page: this.story.data.pages.length
+          }
         });
         Vue.$emit("duplicate:page", id);
         this.showPageTools = false;
