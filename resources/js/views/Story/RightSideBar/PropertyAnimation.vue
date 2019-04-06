@@ -17,7 +17,7 @@
       <md-input v-model="animationInDelay"></md-input>
     </md-field>
     <md-field>
-      <label>Animation In After(s)</label>
+      <label>Animation In After</label>
       <md-input v-model="animationInAfter"></md-input>
     </md-field>
   </div>
