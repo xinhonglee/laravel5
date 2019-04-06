@@ -1,4 +1,5 @@
 <amp-img
+    @if (!empty($properties['id'])) id="{{ $properties['id'] }}" @endif
     @if (!empty($properties['src'])) src="{{ $properties['src'] }}" @endif
     @if (!empty($properties['width'])) width="{{ $properties['width']}}" @endif
     @if (!empty($properties['height'])) height="{{ $properties['height']}}" @endif
