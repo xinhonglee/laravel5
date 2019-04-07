@@ -32,8 +32,8 @@
     <md-dialog-confirm
       :md-active.sync="showRemoveDialog"
       md-title="Do you really want to remove this video?"
-      md-confirm-text="Agree"
-      md-cancel-text="Disagree"
+      md-confirm-text="Ok"
+      md-cancel-text="Cancel"
       @md-cancel="showRemoveDialog = false"
       @md-confirm="removeVideo"/>
   </div>

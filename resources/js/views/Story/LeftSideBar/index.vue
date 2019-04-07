@@ -62,22 +62,22 @@
     <md-dialog-confirm
       :md-active.sync="showRemovePageDialog"
       md-title="Do you really want to remove this page?"
-      md-confirm-text="Agree"
-      md-cancel-text="Disagree"
+      md-confirm-text="Ok"
+      md-cancel-text="Cancel"
       @md-cancel="showRemovePageDialog = false"
       @md-confirm="removePage"/>
     <md-dialog-confirm
       :md-active.sync="showRemoveLayerDialog"
       md-title="Do you really want to remove this layer?"
-      md-confirm-text="Agree"
-      md-cancel-text="Disagree"
+      md-confirm-text="Ok"
+      md-cancel-text="Cancel"
       @md-cancel="showRemoveLayerDialog = false"
       @md-confirm="removeLayer"/>
     <md-dialog-confirm
       :md-active.sync="showRemoveElementDialog"
       md-title="Do you really want to remove this element?"
-      md-confirm-text="Agree"
-      md-cancel-text="Disagree"
+      md-confirm-text="Ok"
+      md-cancel-text="Cancel"
       @md-cancel="showRemoveElementDialog = false"
       @md-confirm="removeElement"/>
   </div>

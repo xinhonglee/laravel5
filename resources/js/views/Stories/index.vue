@@ -33,8 +33,8 @@
     <md-dialog-confirm
       :md-active.sync="showRemoveDialog"
       md-title="Do you really want to remove this story?"
-      md-confirm-text="Agree"
-      md-cancel-text="Disagree"
+      md-confirm-text="Ok"
+      md-cancel-text="Cancel"
       @md-cancel="showRemoveDialog = false"
       @md-confirm="removeStory"/>
   </div>
