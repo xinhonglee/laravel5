@@ -4,7 +4,7 @@
       <img src="/assets/logo.png"/>
     </b-link>
     <div class="editable-header-title">
-      <input type="text" v-model="title" :disabled="!editable">
+      <input type="text" class="width-dynamic" v-model="title" :disabled="!editable">
     </div>
     <div class="editable-tools mr-3">
       <span class="icon-group">
@@ -34,7 +34,20 @@
     components: {
       HeaderDropdownAccnt
     },
+    mounted() {
+      $.fn.textWidth = function (text, font) {
+        if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+        $.fn.textWidth.fakeEl.text(text || this.val() || this.text() || this.attr('placeholder')).css('font', font || this.css('font'));
+        return $.fn.textWidth.fakeEl.width();
+      };
 
+      $('.width-dynamic').on('input', function () {
+        const inputWidth = $(this).textWidth();
+        $(this).css({
+          width: inputWidth + 15
+        })
+      }).trigger('input');
+    },
     methods: {
       toggleEdit () {
         this.$store.dispatch('updateAppEditable', !this.editable);
