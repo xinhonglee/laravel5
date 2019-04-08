@@ -21,7 +21,8 @@ return [
             'cdnjs.cloudflare.com',
             'www.google-analytics.com',
             'unpkg.com',
-            'media-library.cloudinary.com'
+            'media-library.cloudinary.com',
+            'unsafe-inline'
         ],
         'connect-src' => [
             'self',
@@ -33,7 +34,8 @@ return [
             'self',
             'unsafe-inline',
             'unpkg.com',
-            'media-library.cloudinary.com'
+            'media-library.cloudinary.com',
+            'fonts.googleapis.com'
         ],
         'font-src' => [
             'self',
