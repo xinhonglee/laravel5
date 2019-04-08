@@ -19,7 +19,9 @@ return [
             'self',
             'cdn.ampproject.org',
             'cdnjs.cloudflare.com',
-            'google-analytics.com'
+            'www.google-analytics.com',
+            'unpkg.com',
+            'media-library.cloudinary.com'
         ],
         'connect-src' => [
             'self',
@@ -34,6 +36,7 @@ return [
             'media-library.cloudinary.com'
         ],
         'font-src' => [
+            'self',
             'fonts.googleapis.com',
             'fonts.gstatic.com'
         ],
