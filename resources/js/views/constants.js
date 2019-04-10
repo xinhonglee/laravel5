@@ -81,7 +81,7 @@ const blankPageTemplate =  {
     title: "Blank",
     image_url: "",
     data: {
-      "auto-advance-after": "1",
+      "auto-advance-after": "",
       "background-audio": "",
       layers: [],
       cta_layer: {
