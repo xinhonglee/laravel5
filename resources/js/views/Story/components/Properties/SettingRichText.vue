@@ -9,7 +9,7 @@
       <md-input v-model="elementClass"></md-input>
     </md-field>
     <br>
-    <p style="color:#6d6d6d">Rich Text</p>
+    <p style="color:#6d6d6d">Rich text</p>
     <ckeditor :editor="editor" v-model="elementHtml" :config="editorConfig"></ckeditor>
   </div>
 </template>
