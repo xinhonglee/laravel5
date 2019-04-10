@@ -9,7 +9,7 @@
     <div class="editable-tools mr-3">
       <span class="icon-group">
           <span v-if="editable" @click="setting"><md-icon>settings</md-icon></span>
-          <span v-if="editable" @click="publish"><md-icon>publish</md-icon></span>
+          <span v-if="editable" @click="publish"><md-icon>save</md-icon></span>
       </span>
       <md-button class="md-raised" @click="toggleEdit">
         <md-icon>{{ editable ? 'visibility' : 'edit' }}</md-icon>
