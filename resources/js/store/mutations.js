@@ -72,7 +72,7 @@ export const SAVE_AMP_STORY = (state, story) => {
         Vue.unBlock();
         Vue.alertBox({
           title: 'Success',
-          text: "Successfully published this story!",
+          text: "Successfully saved this story!",
           type: 'success'
         });
       }, (error) => {
@@ -86,7 +86,7 @@ export const SAVE_AMP_STORY = (state, story) => {
         Vue.unBlock();
         Vue.alertBox({
           title: 'Success',
-          text: "Successfully published this story!",
+          text: "Successfully saved this story!",
           type: 'success'
         });
       }, (error) => {
