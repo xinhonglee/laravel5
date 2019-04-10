@@ -19,10 +19,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-//        \MikeFrancis\LaravelSecureHeaders\ApplySecureHeaders::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
-        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class
     ];
 
     /**
@@ -85,4 +84,14 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];
+
+    public function handle($request)
+    {
+      $debug = env('APP_DEBUG', false);
+      if (!$debug)
+      {
+        $this->middleware[] = \MikeFrancis\LaravelSecureHeaders\ApplySecureHeaders::class;
+      }
+      return parent::handle($request);
+    }
 }
