@@ -61,7 +61,7 @@
 
 .ampstart-headerbar .ampstart-navbar-trigger,.header h2,h2.section{font-family:rationalextra_bold}#cookie-notification button,#menu nav ul li a,#menu nav ul li a:hover,#menu nav ul li a:visited,a,a:hover,a:visited{text-decoration:none}@font-face{font-family:rationalextra_bold;src:url(/assets/rational-extrabold-webfont.woff2) format('woff2'),url(/assets/rational-extrabold-webfont.woff) format('woff');font-weight:400;font-style:normal}@font-face{font-family:rationalsemi_bold;src:url(/assets/rational-semibold-webfont.woff2) format('woff2'),url(/assets/rational-semibold-webfont.woff) format('woff');font-weight:400;font-style:normal}@font-face{font-family:rationalbook_bold;src:url(/assets/rational-bookbold-webfont.woff2) format('woff2'),url(/assets/rational-bookbold-webfont.woff) format('woff');font-weight:400;font-style:normal}@font-face{font-family:rationalmedium;src:url(/assets/rational-medium.woff2) format('woff2'),url(/assets/rational-medium.woff) format('woff');font-weight:400;font-style:normal}body{background-color:#5feb98;color:#262626}h1,h2,h3,h4,h5,h6{letter-spacing:normal}h2.section{margin:3.17vw 6.75vw;font-size:3.71vw;line-height:3.03vw;display:block;border-bottom:solid .67vw #262626}@media (max-width:40rem){h2.section{margin:40px 30px;font-size:44px;line-height:50px;display:block;border-bottom:solid 10px #262626}}.header{height:260px;background-color:#262626}.header h2{font-size:6.55vw;line-height:5.36vw;color:#fff;border-bottom:solid 10px #5feb98;display:inline-block;margin-top:110px;position:absolute;z-index:300;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);white-space:nowrap}.header-img{width:100%;height:500px;position:absolute;top:-30px;opacity:.35;background:#262626}.header-img .gradient{position:absolute;bottom:0;z-index:5;width:100%;height:360px;background-image:linear-gradient(to top,#262626,rgba(38,38,38,0))}@media (max-width:40rem){.header{height:240px}.cat{height:300px}.header h2{font-size:36px;line-height:40px;margin-top:140px;z-index:150}.category h2{margin-top:170px}}.ampstart-headerbar{z-index:200;background:linear-gradient(to bottom,rgba(0,0,0,.5) 0,rgba(0,0,0,0) 100%);height:175px}.ampstart-headerbar .ampstart-navbar-trigger{color:#fff;font-size:22px;top:45px;right:55px;margin-top:10px;text-shadow:1px 1px 5px #262626;}.ampstart-headerbar .logo{top:55px;left:55px}.ampstart-navbar-trigger:active,.ampstart-navbar-trigger:focus,.gallery-sidebar .ampstart-navbar-trigger{background:0 0}.video .bg,.video-wall,main header.xs-hide{background-color:#262626}@media (max-width:40rem){.ampstart-headerbar{height:100px}.ampstart-headerbar .ampstart-navbar-trigger{font-size:18px;top:30px;right:32px}.ampstart-headerbar .logo{top:20px;left:20px}}
 
-#menu{width:100%;background-color:#5feb98;color:#262626;padding:0;margin:0}#menu .close{cursor:pointer;font-family:rationalbook_bold;font-size:18px;position:absolute;top:30px;right:30px}#menu nav ul{list-style-type:none;font-family:rationalextra_bold}#menu .menu-social ul{list-style-type:none;margin:0;padding:0}#menu .menu-social ul li{display:inline-block;margin:0;padding:0}@media (max-width:52.06rem){#menu .close{color:#fff}#menu nav ul{padding-left:0;margin:0}#menu nav.dark ul{padding-top:45px;background-color:#262626;color:#fff;font-family:rationalmedium}#menu nav ul li{width:100%;border-bottom:solid 1px #515151;font-size:22px;line-height:60px;padding-left:30px}#menu nav.dark ul li{font-size:18px;line-height:50px}#menu h4{font-family:rationalsemi_bold;font-weight:15px;padding-left:30px;text-transform:uppercase;padding-top:40px;padding-bottom:10px}#menu .menu-social{margin-bottom:30px;width:100%;text-align:center;margin-top:50px}#menu .menu-social ul li{width:15%}}@media (min-width:52.06rem){#menu amp-img.cover img{object-fit:cover;opacity:.35}#menu .logo{top:55px;left:55px}#menu .close{top:45px;right:55px;font-size:22px;margin-top:10px;color:#e4e5e6;line-height:1}#menu{background-color:#262626;color:#fff}#menu nav.dark ul{position:absolute;bottom:45px;left:55px;padding:0;margin:0}#menu nav.dark ul li{display:inline;font-family:rationalsemi_bold;font-size:1.19vw;line-height:42px;margin-right:20px;color:#e4e5e6}#menu nav.dark ul li:first-of-type {display:none}#menu nav.dark ul li a:hover{border-bottom:solid 2px #5feb98}#menu nav.category ul{position:absolute;top:35px;left:40vw}#menu nav.category ul li{font-family:rationalextra_bold;font-size:3vw;line-height:calc((100vh - 70px)/ 9)}#menu nav.category ul li a:hover{border-bottom:solid 10px #5feb98}#menu .menu-social{position:absolute;bottom:52px;right:55px}#menu .menu-social ul li{margin-left:50px}#menu .menu-social ul li a:hover{filter:brightness(0) invert(1)}}
+#menu{width:100%;background-color:#5feb98;color:#262626;padding:0;margin:0}#menu .close{cursor:pointer;font-family:rationalbook_bold;font-size:18px;position:absolute;top:30px;right:30px}#menu nav ul{list-style-type:none;font-family:rationalextra_bold}#menu .menu-social ul{list-style-type:none;margin:0;padding:0}#menu .menu-social ul li{display:inline-block;margin:0;padding:0}@media (max-width:52.06rem){#menu .close{color:#fff}#menu nav ul{padding-left:0;margin:0}#menu nav.dark ul{padding-top:45px;background-color:#262626;color:#fff;font-family:rationalmedium}#menu nav ul li{width:100%;border-bottom:solid 1px #515151;font-size:22px;line-height:60px;padding-left:30px}#menu nav.dark ul li{font-size:18px;line-height:50px}#menu h4{font-family:rationalsemi_bold;font-weight:15px;padding-left:30px;text-transform:uppercase;padding-top:40px;padding-bottom:10px}#menu .menu-social{margin-bottom:30px;width:100%;text-align:center;margin-top:50px}#menu .menu-social ul li{width:15%}}@media (min-width:52.06rem){#menu amp-img.cover img{object-fit:cover;opacity:.35}#menu .logo{top:55px;left:55px}#menu .close{top:45px;right:55px;font-size:22px;margin-top:10px;color:#e4e5e6;line-height:1}#menu{background-color:#262626;color:#fff}#menu nav.dark ul{position:absolute;bottom:45px;left:55px;padding:0;margin:0}#menu nav.dark ul a li{display:inline;font-family:rationalsemi_bold;font-size:1.19vw;line-height:42px;margin-right:20px;color:#e4e5e6}#menu nav.dark ul a:first-of-type {display:none}#menu nav.dark ul a:hover li{border-bottom:solid 2px #5feb98}#menu nav.category ul{position:absolute;top:35px;left:40vw}#menu nav.category ul li{font-family:rationalextra_bold;font-size:3vw;line-height:calc((100vh - 70px)/ 9)}#menu nav.category ul a:hover li span{border-bottom:solid 10px #5feb98}#menu .menu-social{position:absolute;bottom:52px;right:55px}#menu .menu-social ul li{margin-left:50px}#menu .menu-social ul a:hover li span{filter:brightness(0) invert(1)}}
 
 		@font-face {
 			font-family: 'rationalextra_bold';
@@ -708,25 +708,25 @@
 		</div>
 		<nav class="dark">
 			<ul class="">
-				<li><a href="/" rel="nofollow">Accueil</a></li>
-				<li><a href="/corporate#apropos" rel="nofollow">A propos</a></li>
-				<li><a href="/corporate#services" rel="nofollow">Annonceurs</a></li>
-				<li><a href="/corporate#contact" rel="nofollow">Contact</a></li>
-				<li><a href="/mentions-legales" rel="nofollow">Mentions légales</a></li>
+				<a href="/" rel="nofollow"><li>Accueil</li></a>
+				<a href="/corporate#apropos" rel="nofollow"><li>A propos</li></a>
+				<a href="/corporate#services" rel="nofollow"><li>Annonceurs</li></a>
+				<a href="/corporate#contact" rel="nofollow"><li>Contact</li></a>
+				<a href="/mentions-legales" rel="nofollow"><li>Mentions légales</li></a>
 			</ul>
 		</nav>
 		<nav class="category">
 			<h4 class="md-hide lg-hide">Catégories</h4>
 			<ul class="">
-				<li><a href="/environment" rel="nofollow">Environnement</a></li>
-				<li><a href="/world" rel="nofollow">Monde</a></li>
-				<li><a href="/society" rel="nofollow">Société</a></li>
-				<li><a href="/identities" rel="nofollow">Identités</a></li>
-				<li><a href="/travel" rel="nofollow">Voyage + Food</a></li>
-				<li><a href="/culture" rel="nofollow">Culture</a></li>
-				<li><a href="/unusual" rel="nofollow">Insolite</a></li>
-				<li><a href="/voxpop" rel="nofollow">VoxPop</a></li>
-				<li><a href="/tribune" rel="nofollow">Tribune</a></li>
+				<a href="/environment" rel="nofollow"><li><span>Environnement</span></li></a>
+				<a href="/world" rel="nofollow"><li><span>Monde</span></li></a>
+				<a href="/society" rel="nofollow"><li><span>Société</span></li></a>
+				<a href="/identities" rel="nofollow"><li><span>Identités</span></li></a>
+				<a href="/travel" rel="nofollow"><li><span>Voyage + Food</span></li></a>
+				<a href="/culture" rel="nofollow"><li><span>Culture</span></li></a>
+				<a href="/unusual" rel="nofollow"><li><span>Insolite</span></li></a>
+				<a href="/voxpop" rel="nofollow"><li><span>VoxPop</span></li></a>
+				<a href="/tribune" rel="nofollow"><li><span>Tribune</span></li></a>
 			</ul>
 		</nav>
 		<div class="menu-social">

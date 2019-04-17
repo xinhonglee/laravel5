@@ -100,25 +100,25 @@
 		</div>
 		<nav class="dark">
 			<ul class="">
-				<li><a href="/" @if($css!="index") rel="nofollow" @endif>Accueil</a></li>
-				<li><a href="/corporate#apropos" @if($css!="index") rel="nofollow" @endif>A propos</a></li>
-				<li><a href="/corporate#services" @if($css!="index") rel="nofollow" @endif>Annonceurs</a></li>
-				<li><a href="/corporate#contact" @if($css!="index") rel="nofollow" @endif>Contact</a></li>
-				<li><a href="/mentions-legales" @if($css!="index") rel="nofollow" @endif>Mentions légales</a></li>
+				<a href="/" @if($css!="index") rel="nofollow" @endif><li>Accueil</li></a>
+				<a href="/corporate#apropos" @if($css!="index") rel="nofollow" @endif><li>A propos</li></a>
+				<a href="/corporate#services" @if($css!="index") rel="nofollow" @endif><li>Annonceurs</li></a>
+				<a href="/corporate#contact" @if($css!="index") rel="nofollow" @endif><li>Contact</li></a>
+				<a href="/mentions-legales" @if($css!="index") rel="nofollow" @endif><li>Mentions légales</li></a>
 			</ul>
 		</nav>
 		<nav class="category">
 			<h4 class="md-hide lg-hide">Catégories</h4>
 			<ul class="">
-				<li><a href="/environment" @if($css!="index") rel="nofollow" @endif>Environnement</a></li>
-				<li><a href="/world" @if($css!="index") rel="nofollow" @endif>Monde</a></li>
-				<li><a href="/society" @if($css!="index") rel="nofollow" @endif>Société</a></li>
-				<li><a href="/identities" @if($css!="index") rel="nofollow" @endif>Identités</a></li>
-				<li><a href="/travel" @if($css!="index") rel="nofollow" @endif>Voyage + Food</a></li>
-				<li><a href="/culture" @if($css!="index") rel="nofollow" @endif>Culture</a></li>
-				<li><a href="/unusual" @if($css!="index") rel="nofollow" @endif>Insolite</a></li>
-				<li><a href="/voxpop" @if($css!="index") rel="nofollow" @endif>VoxPop</a></li>
-				<li><a href="/tribune" @if($css!="index") rel="nofollow" @endif>Tribune</a></li>
+				<a href="/environment" @if($css!="index") rel="nofollow" @endif><li><span>Environnement</span></li>
+				<a href="/world" @if($css!="index") rel="nofollow" @endif><li><span>Monde</span></li></a>
+				<a href="/society" @if($css!="index") rel="nofollow" @endif><li><span>Société</span></li></a>
+				<a href="/identities" @if($css!="index") rel="nofollow" @endif><li><span>Identités</span></li></a>
+				<a href="/travel" @if($css!="index") rel="nofollow" @endif><li><span>Voyage + Food</span></li></a>
+				<a href="/culture" @if($css!="index") rel="nofollow" @endif><li><span>Culture</span></li></a>
+				<a href="/unusual" @if($css!="index") rel="nofollow" @endif><li><span>Insolite</span></li></a>
+				<a href="/voxpop" @if($css!="index") rel="nofollow" @endif><li><span>VoxPop</span></li></a>
+				<a href="/tribune" @if($css!="index") rel="nofollow" @endif><li><span>Tribune</span></li></a>
 			</ul>
 		</nav>
 		<div class="menu-social">
