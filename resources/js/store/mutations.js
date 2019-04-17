@@ -39,6 +39,7 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
   state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {};
+  state.story.data.css = (story && story.data.css) ? story.data.css : "";
 
   if(!_.isNil(story.selected)) {
     Vue.$store.dispatch('selectAMPStory', story.selected);
@@ -61,6 +62,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       "pages": (story && story.data.pages) ? story.data.pages : storyData.pages,
       "supports-landscape": (story && !_.isNil(story.data.supportsLandscape)) ? story.data.supportsLandscape : storyData.supportsLandscape,
       "bookend": (story && story.data.bookend) ? story.data.bookend : storyData.bookend,
+      "css": (story && story.data.css) ? story.data.css : storyData.css
     }
   };
   if (story.publish) {
@@ -140,6 +142,7 @@ export const CLEAR_AMP_STORY = (state) => {
       posterSquareSrc: "image url",
       posterLandscapeSrc: "image url",
       pages: [],
+      css: ""
     },
     selected: {
       page: 0,
@@ -149,6 +152,13 @@ export const CLEAR_AMP_STORY = (state) => {
     },
     new: false,
   }
+};
+
+export const FETCH_STORY_STYLE = (state) => {
+  Vue.$http.get('/story/style').then((response) => {
+    state.story.data.css = response.data.data;
+  }, (error) => {
+  }).catch(Vue.handleClientError);
 };
 
 export const UPDATE_CLOUDINARY = (state, data) => {

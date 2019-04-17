@@ -41,3 +41,7 @@ export const clearAMPStory = ({commit}) => {
 export const updateCloudinary = ({commit}, data) => {
   commit('UPDATE_CLOUDINARY', data)
 };
+
+export const fetchStoryStyle = ({commit}) => {
+  commit('FETCH_STORY_STYLE')
+};

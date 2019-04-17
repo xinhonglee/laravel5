@@ -23,6 +23,9 @@
           <md-tab id="tab-story-analytics" md-label="ANALYTICS">
             <story-analytics></story-analytics>
           </md-tab>
+          <md-tab id="tab-story-css" md-label="CSS">
+            <story-css></story-css>
+          </md-tab>
         </md-tabs>
       </md-dialog-content>
       <md-dialog-actions>
@@ -50,6 +53,7 @@
   import StoryAdvertising from "./components/Settings/StoryAdvertising";
   import StoryAnalytics from "./components/Settings/StoryAnalytics";
   import StoryUrl from "./components/Settings/StoryURL";
+  import StoryCss from "./components/Settings/StroyCSS";
   import SavePageTemplate from "./components/SavePageTemplate";
 
   export default {
@@ -60,6 +64,7 @@
       StoryAdvertising,
       StorySeo,
       StoryUrl,
+      StoryCss,
       StoryRightSideBar,
       StoryLeftSideBar,
     },

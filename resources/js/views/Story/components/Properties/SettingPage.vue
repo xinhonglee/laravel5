@@ -65,7 +65,7 @@
           return '';
         },
         set: _.debounce(function (value) {
-          if (this.pageId !== value)
+          if (this.pageId !== value && this.pageId !== "")
             Vue.$emit('setting:page', { id: value });
         }, 2000),
       },

@@ -7,10 +7,26 @@ use App\Http\Controllers\API\BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Story;
+use App\Models\Style;
 use Validator;
 
 class StoriesController extends BaseController
 {
+
+    /**
+     * Get Style
+     */
+    public function getStyle()
+    {
+        try {
+            $result = Style::all()->first();
+
+            return $this->sendResponse($result);
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
+    }
+
 
     /**
      * Stories List

@@ -49,6 +49,7 @@
         this.$store.dispatch('updateAppTitle', 'Untitled Story');
         this.$store.dispatch('updateAppEditable', true);
         this.$store.dispatch('clearAMPStory');
+        this.$store.dispatch('fetchStoryStyle');
       }
     },
     beforeDestroy () {

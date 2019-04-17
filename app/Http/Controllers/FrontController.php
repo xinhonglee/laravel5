@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\VideoCategory;
 use App\Models\Story;
+use App\Models\Style;
 use Illuminate\Support\Facades\Redis;
 
 class FrontController extends Controller
@@ -99,7 +100,6 @@ class FrontController extends Controller
     }
     public function getStoryById(Request $request, $id) {
       try {
-
           $dbStory = json_decode(Redis::get('story:id:' . $id), true);
           if (is_null($dbStory)) {
             abort(404);

@@ -90,7 +90,7 @@ class Kernel extends HttpKernel
       $debug = env('APP_DEBUG', false);
       if (!$debug)
       {
-        $this->middleware[] = \MikeFrancis\LaravelSecureHeaders\ApplySecureHeaders::class;
+//        $this->middleware[] = \MikeFrancis\LaravelSecureHeaders\ApplySecureHeaders::class;
       }
       return parent::handle($request);
     }

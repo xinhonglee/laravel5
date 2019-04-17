@@ -63,6 +63,9 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::get('/{id}', 'StoriesController@getStoryById');
 
+
+        Route::get('/style', 'StoriesController@getStyle');
+
         Route::post('/create', 'StoriesController@create');
 
         Route::put('/update', 'StoriesController@update');
@@ -106,6 +109,11 @@ Route::group(['namespace' => 'API'], function () {
         /* Roles Management */
         Route::get('/list-roles', 'RolesController@list');
 
+        /* Stories CSS Management */
+
+        Route::post('/create-style-stories', 'StoriesController@createStyle');
+
+        Route::put('/update-style-stories', 'StoriesController@updateStyle');
     });
 });
 

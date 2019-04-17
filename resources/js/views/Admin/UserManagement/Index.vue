@@ -54,7 +54,6 @@
         this.searched = searchByName(this.users, this.search)
       },
       loadUsers() {
-        this.sending = true;
         Vue.block();
         this.$http.get('/admin/list-users').then((response) => {
           Vue.unBlock();
