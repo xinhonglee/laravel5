@@ -94,61 +94,61 @@
 	<!-- Start Sidebar -->
 	<amp-lightbox id="menu" layout="nodisplay" scrollable>
 		<amp-img class="cover xs-hide sm-hide " layout="fill" src="/assets/banner1.jpg"></amp-img>
-		<amp-img src="/assets/logo.svg" media="(min-width: 52.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
+		<a href="/"><amp-img src="/assets/logo.svg" media="(min-width: 52.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img></a>
 		<div role="button" aria-label="close menu" on="tap:menu.close" tabindex="0" class="close">
 			<span>Fermer</span>
 		</div>
 		<nav class="dark">
 			<ul class="">
-				<li><a href="/">Accueil</a></li>
-				<li><a href="/corporate#apropos">A propos</a></li>
-				<li><a href="/corporate#services">Annonceurs</a></li>
-				<li><a href="/corporate#contact">Contact</a></li>
-				<li><a href="/mentions-legales">Mentions légales</a></li>
+				<li><a href="/" @if($css!="index") rel="nofollow" @endif>Accueil</a></li>
+				<li><a href="/corporate#apropos" @if($css!="index") rel="nofollow" @endif>A propos</a></li>
+				<li><a href="/corporate#services" @if($css!="index") rel="nofollow" @endif>Annonceurs</a></li>
+				<li><a href="/corporate#contact" @if($css!="index") rel="nofollow" @endif>Contact</a></li>
+				<li><a href="/mentions-legales" @if($css!="index") rel="nofollow" @endif>Mentions légales</a></li>
 			</ul>
 		</nav>
 		<nav class="category">
 			<h4 class="md-hide lg-hide">Catégories</h4>
 			<ul class="">
-				<li><a href="/environment">Environnement</a></li>
-				<li><a href="/world">Monde</a></li>
-				<li><a href="/society">Société</a></li>
-				<li><a href="/identities">Identités</a></li>
-				<li><a href="/travel">Voyage + Food</a></li>
-				<li><a href="/culture">Culture</a></li>
-				<li><a href="/unusual">Insolite</a></li>
-				<li><a href="/voxpop">VoxPop</a></li>
-				<li><a href="/tribune">Tribune</a></li>
+				<li><a href="/environment" @if($css!="index") rel="nofollow" @endif>Environnement</a></li>
+				<li><a href="/world" @if($css!="index") rel="nofollow" @endif>Monde</a></li>
+				<li><a href="/society" @if($css!="index") rel="nofollow" @endif>Société</a></li>
+				<li><a href="/identities" @if($css!="index") rel="nofollow" @endif>Identités</a></li>
+				<li><a href="/travel" @if($css!="index") rel="nofollow" @endif>Voyage + Food</a></li>
+				<li><a href="/culture" @if($css!="index") rel="nofollow" @endif>Culture</a></li>
+				<li><a href="/unusual" @if($css!="index") rel="nofollow" @endif>Insolite</a></li>
+				<li><a href="/voxpop" @if($css!="index") rel="nofollow" @endif>VoxPop</a></li>
+				<li><a href="/tribune" @if($css!="index") rel="nofollow" @endif>Tribune</a></li>
 			</ul>
 		</nav>
 		<div class="menu-social">
 			<ul>
 				<li>
-					<a href="https://www.facebook.com/Loopsider/" target="_blank">
+					<a href="https://www.facebook.com/Loopsider/" target="_blank" @if($css!="index") rel="nofollow" @endif>
 						<amp-img src="/assets/facebook_black.svg"  media="(max-width: 52rem)" width="13" height="25" layout="fixed"></amp-img>
 						<amp-img src="/assets/facebook_green.svg"  media="(min-width: 52.06rem)" width="13" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://twitter.com/Loopsidernews" target="_blank">
+					<a href="https://twitter.com/Loopsidernews" target="_blank" @if($css!="index") rel="nofollow" @endif>
 						<amp-img src="/assets/twitter_black.svg"  media="(max-width: 52rem)" width="27" height="23" layout="fixed"></amp-img>
 						<amp-img src="/assets/twitter_green.svg"  media="(min-width: 52.06rem)" width="27" height="23" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank">
+					<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank" @if($css!="index") rel="nofollow" @endif>
 						<amp-img src="/assets/youtube_black.svg"  media="(max-width: 52rem)" width="34" height="25" layout="fixed"></amp-img>
 						<amp-img src="/assets/youtube_green.svg"  media="(min-width: 52.06rem)" width="34" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://www.instagram.com/loopsider/" target="_blank">
+					<a href="https://www.instagram.com/loopsider/" target="_blank" @if($css!="index") rel="nofollow" @endif>
 						<amp-img src="/assets/instagram_black.svg"  media="(max-width: 52rem)" width="24" height="24" layout="fixed"></amp-img>
 						<amp-img src="/assets/instagram_green.svg"  media="(min-width: 52.06rem)" width="24" height="24" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://www.snapchat.com/discover/Loopsider/1993111828" target="_blank">
+					<a href="https://www.snapchat.com/discover/Loopsider/1993111828" target="_blank" @if($css!="index") rel="nofollow" @endif>
 						<amp-img src="/assets/snapchat_black.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
 						<amp-img src="/assets/snapchat_green.svg"  media="(min-width: 52.06rem)" width="27" height="26" layout="fixed"></amp-img>
 					</a>
@@ -165,13 +165,13 @@
 	<footer class="clearfix">
 		<nav>
 			<ul>
-				<li><a href="/corporate#apropos">A propos</a></li>
-				<li><a href="/corporate#services">Annonceurs</a></li>
-				<li><a href="/corporate#contact">Contact</a></li>
-				<li class="xs-hide"><a href="/mentions-legales">Mentions légales</a></li>
+				<li><a href="/corporate#apropos" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif A propos @if($css=="index")</h3>@endif</a></li>
+				<li><a href="/corporate#services" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif Annonceurs @if($css=="index")</h3>@endif</a></li>
+				<li><a href="/corporate#contact" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif Contact @if($css=="index")</h3>@endif</a></li>
+				<li class="xs-hide"><a href="/mentions-legales" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif Mentions légales @if($css=="index")</h3>@endif</a></li>
 			</ul>
 		</nav>
 		<span>Loopsider &copy;2018 - 2019</span>
-		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide">Mentions légales</span></a>
+		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide" @if($css!="index") rel="nofollow" @endif>Mentions légales</span></a>
 	</footer>
 </body>
