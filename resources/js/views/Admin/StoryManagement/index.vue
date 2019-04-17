@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>Default CSS</p>
     <div class="code-editor">
       <div class="code-editor_index">
         <div v-for="i in lines">{{i}}</div>
