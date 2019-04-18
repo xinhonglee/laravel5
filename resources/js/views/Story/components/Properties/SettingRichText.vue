@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+  import ClassicEditor from 'custom-rich-text';
 
   export default {
     name: "setting-rich-text",
@@ -31,6 +31,7 @@
               'heading',
               'bold',
               'italic',
+              'customStyle'
             ]
           }
         },
