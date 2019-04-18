@@ -58,7 +58,7 @@
 </head>
 
 <body>
-
+	@if(Route::current()->getName()=='home') <h1 class="home">Loopsider - Regarder. Comprendre. Partager</h1> @endif
 	<amp-analytics type="gtag" data-credentials="include">
 		<script type="application/json">
 		{
@@ -84,7 +84,7 @@
 
 	<!-- Start Navbar -->
 	<header class="ampstart-headerbar fixed flex justify-start items-center top-0 right-0 left-0 pl2 pr2 ">
-		<a href="/">
+		<a href="/" @if(Route::current()->getName()!='home') rel="nofollow" @endif>
 			<amp-img src="/assets/logo.svg" media="(min-width: 40.06rem)" width="100" height="100" layout="fixed" class="logo top-0 absolute"></amp-img>
 			<amp-img src="/assets/logo.svg" media="(max-width: 40rem)" width="70" height="70" layout="fixed" class="logo top-0 absolute"></amp-img>
 		</a>
@@ -100,55 +100,55 @@
 		</div>
 		<nav class="dark">
 			<ul class="">
-				<a href="/" @if($css!="index") rel="nofollow" @endif><li>Accueil</li></a>
-				<a href="/corporate#apropos" @if($css!="index") rel="nofollow" @endif><li>A propos</li></a>
-				<a href="/corporate#services" @if($css!="index") rel="nofollow" @endif><li>Annonceurs</li></a>
-				<a href="/corporate#contact" @if($css!="index") rel="nofollow" @endif><li>Contact</li></a>
-				<a href="/mentions-legales" @if($css!="index") rel="nofollow" @endif><li>Mentions légales</li></a>
+				<a href="/" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li>Accueil</li></a>
+				<a href="/corporate#apropos" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li>A propos</li></a>
+				<a href="/corporate#services" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li>Annonceurs</li></a>
+				<a href="/corporate#contact" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li>Contact</li></a>
+				<a href="/mentions-legales" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li>Mentions légales</li></a>
 			</ul>
 		</nav>
 		<nav class="category">
 			<h4 class="md-hide lg-hide">Catégories</h4>
 			<ul class="">
-				<a href="/environment" @if($css!="index") rel="nofollow" @endif><li><span>Environnement</span></li>
-				<a href="/world" @if($css!="index") rel="nofollow" @endif><li><span>Monde</span></li></a>
-				<a href="/society" @if($css!="index") rel="nofollow" @endif><li><span>Société</span></li></a>
-				<a href="/identities" @if($css!="index") rel="nofollow" @endif><li><span>Identités</span></li></a>
-				<a href="/travel" @if($css!="index") rel="nofollow" @endif><li><span>Voyage + Food</span></li></a>
-				<a href="/culture" @if($css!="index") rel="nofollow" @endif><li><span>Culture</span></li></a>
-				<a href="/unusual" @if($css!="index") rel="nofollow" @endif><li><span>Insolite</span></li></a>
-				<a href="/voxpop" @if($css!="index") rel="nofollow" @endif><li><span>VoxPop</span></li></a>
-				<a href="/tribune" @if($css!="index") rel="nofollow" @endif><li><span>Tribune</span></li></a>
+				<a href="/environment" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Environnement</span></li>
+				<a href="/world" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Monde</span></li></a>
+				<a href="/society" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Société</span></li></a>
+				<a href="/identities" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Identités</span></li></a>
+				<a href="/travel" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Voyage + Food</span></li></a>
+				<a href="/culture" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Culture</span></li></a>
+				<a href="/unusual" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Insolite</span></li></a>
+				<a href="/voxpop" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>VoxPop</span></li></a>
+				<a href="/tribune" @if(Route::current()->getName()!='home') rel="nofollow" @endif><li><span>Tribune</span></li></a>
 			</ul>
 		</nav>
 		<div class="menu-social">
 			<ul>
 				<li>
-					<a href="https://www.facebook.com/Loopsider/" target="_blank" @if($css!="index") rel="nofollow" @endif>
+					<a href="https://www.facebook.com/Loopsider/" target="_blank" @if(Route::current()->getName()!='home') rel="nofollow" @endif>
 						<amp-img src="/assets/facebook_black.svg"  media="(max-width: 52rem)" width="13" height="25" layout="fixed"></amp-img>
 						<amp-img src="/assets/facebook_green.svg"  media="(min-width: 52.06rem)" width="13" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://twitter.com/Loopsidernews" target="_blank" @if($css!="index") rel="nofollow" @endif>
+					<a href="https://twitter.com/Loopsidernews" target="_blank" @if(Route::current()->getName()!='home') rel="nofollow" @endif>
 						<amp-img src="/assets/twitter_black.svg"  media="(max-width: 52rem)" width="27" height="23" layout="fixed"></amp-img>
 						<amp-img src="/assets/twitter_green.svg"  media="(min-width: 52.06rem)" width="27" height="23" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank" @if($css!="index") rel="nofollow" @endif>
+					<a href="https://www.youtube.com/channel/UC6bn_ABjeTwbJFGFMQbZFlw" target="_blank" @if(Route::current()->getName()!='home') rel="nofollow" @endif>
 						<amp-img src="/assets/youtube_black.svg"  media="(max-width: 52rem)" width="34" height="25" layout="fixed"></amp-img>
 						<amp-img src="/assets/youtube_green.svg"  media="(min-width: 52.06rem)" width="34" height="25" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://www.instagram.com/loopsider/" target="_blank" @if($css!="index") rel="nofollow" @endif>
+					<a href="https://www.instagram.com/loopsider/" target="_blank" @if(Route::current()->getName()!='home') rel="nofollow" @endif>
 						<amp-img src="/assets/instagram_black.svg"  media="(max-width: 52rem)" width="24" height="24" layout="fixed"></amp-img>
 						<amp-img src="/assets/instagram_green.svg"  media="(min-width: 52.06rem)" width="24" height="24" layout="fixed"></amp-img>
 					</a>
 				</li>
 				<li>
-					<a href="https://www.snapchat.com/discover/Loopsider/1993111828" target="_blank" @if($css!="index") rel="nofollow" @endif>
+					<a href="https://www.snapchat.com/discover/Loopsider/1993111828" target="_blank" @if(Route::current()->getName()!='home') rel="nofollow" @endif>
 						<amp-img src="/assets/snapchat_black.svg"  media="(max-width: 52rem)" width="27" height="26" layout="fixed"></amp-img>
 						<amp-img src="/assets/snapchat_green.svg"  media="(min-width: 52.06rem)" width="27" height="26" layout="fixed"></amp-img>
 					</a>
@@ -165,13 +165,13 @@
 	<footer class="clearfix">
 		<nav>
 			<ul>
-				<li><a href="/corporate#apropos" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif A propos @if($css=="index")</h3>@endif</a></li>
-				<li><a href="/corporate#services" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif Annonceurs @if($css=="index")</h3>@endif</a></li>
-				<li><a href="/corporate#contact" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif Contact @if($css=="index")</h3>@endif</a></li>
-				<li class="xs-hide"><a href="/mentions-legales" @if($css!="index") rel="nofollow" @endif>@if($css=="index")<h3>@endif Mentions légales @if($css=="index")</h3>@endif</a></li>
+				<li><a href="/corporate#apropos" @if(Route::current()->getName()!='home') rel="nofollow" @endif>@if(Route::current()->getName()=='home')<h3>@endif A propos @if(Route::current()->getName()=='home')</h3>@endif</a></li>
+				<li><a href="/corporate#services" @if(Route::current()->getName()!='home') rel="nofollow" @endif>@if(Route::current()->getName()=='home')<h3>@endif Annonceurs @if(Route::current()->getName()=='home')</h3>@endif</a></li>
+				<li><a href="/corporate#contact" @if(Route::current()->getName()!='home') rel="nofollow" @endif>@if(Route::current()->getName()=='home')<h3>@endif Contact @if(Route::current()->getName()=='home')</h3>@endif</a></li>
+				<li class="xs-hide"><a href="/mentions-legales" @if(Route::current()->getName()!='home') rel="nofollow" @endif>@if(Route::current()->getName()=='home')<h3>@endif Mentions légales @if(Route::current()->getName()=='home')</h3>@endif</a></li>
 			</ul>
 		</nav>
 		<span>Loopsider &copy;2018 - 2019</span>
-		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide" @if($css!="index") rel="nofollow" @endif>Mentions légales</span></a>
+		<a href="/mentions-legales" class="right sm-hide md-hide lg-hide" @if(Route::current()->getName()!='home') rel="nofollow" @endif>Mentions légales</span></a>
 	</footer>
 </body>
