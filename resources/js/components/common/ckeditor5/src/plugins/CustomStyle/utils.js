@@ -20,6 +20,6 @@ export const customStyles = [
   }
 ];
 
-export function isCustomDefault( type ) {
+export function isDefault( type ) {
   return type === 'default';
 }
