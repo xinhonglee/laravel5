@@ -1,0 +1,1 @@
+(function(d){d['uk']=Object.assign(d['uk']||{},{a:"Жирний",b:"Оберіть заголовок",c:"Заголовок",d:"Курсив",e:"Параграф",f:"Заголовок 1",g:"Заголовок 2",h:"Заголовок 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Розширений текстовий редактор, %0",m:"Розширений текстовий редактор",n:"Відміна",o:"Повтор"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

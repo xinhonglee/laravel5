@@ -1,0 +1,1 @@
+(function(d){d['hr']=Object.assign(d['hr']||{},{a:"Podebljano",b:"Odaberite naslov",c:"Naslov",d:"Ukošeno",e:"Paragraf",f:"Naslov 1",g:"Naslov 2",h:"Naslov 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Rich Text Editor, %0",m:"Rich Text Editor",n:"Poništi",o:"Ponovi"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

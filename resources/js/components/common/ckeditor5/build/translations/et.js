@@ -1,0 +1,1 @@
+(function(d){d['et']=Object.assign(d['et']||{},{a:"Rasvane",b:"Vali pealkiri",c:"Pealkiri",d:"Kaldkiri",e:"Lõik",f:"Pealkiri 1",g:"Pealkiri 2",h:"Pealkiri 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Tekstiredaktor, %0",m:"Tekstiredaktor",n:"Samm tagasi",o:"Samm edasi"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

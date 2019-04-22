@@ -1,0 +1,1 @@
+(function(d){d['fr']=Object.assign(d['fr']||{},{a:"Gras",b:"Choisir le titre",c:"Titre",d:"Italique",e:"Paragraphe",f:"Titre 1",g:"Titre 2",h:"Titre 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Éditeur de texte enrichi, %0",m:"Éditeur de texte enrichi",n:"Annuler",o:"Restaurer"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

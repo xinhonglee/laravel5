@@ -1,0 +1,1 @@
+(function(d){d['de']=Object.assign(d['de']||{},{a:"Fett",b:"Überschrift auswählen",c:"Überschrift",d:"Kursiv",e:"Absatz",f:"Überschrift 1",g:"Überschrift 2",h:"Überschrift 3",i:"Überschrift 4",j:"Überschrift 5",k:"Überschrift 6",l:"Rich-Text-Editor, %0",m:"Rich Text Editor",n:"Rückgängig",o:"Wiederherstellen"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

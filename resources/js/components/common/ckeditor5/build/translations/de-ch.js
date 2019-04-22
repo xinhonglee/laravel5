@@ -1,0 +1,1 @@
+(function(d){d['de-ch']=Object.assign(d['de-ch']||{},{a:"Bold",b:"Choose heading",c:"Heading",d:"Italic",e:"Paragraph",f:"Heading 1",g:"Heading 2",h:"Heading 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Rich-Text-Editor, %0",m:"Rich-Text-Edito",n:"Rückgängig",o:"Wiederherstellen"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

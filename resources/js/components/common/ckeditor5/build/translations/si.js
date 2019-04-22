@@ -1,0 +1,1 @@
+(function(d){d['si']=Object.assign(d['si']||{},{a:"තදකුරු",b:"Choose heading",c:"Heading",d:"ඇලකුරු",e:"Paragraph",f:"Heading 1",g:"Heading 2",h:"Heading 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Rich Text Editor, %0",m:"Rich Text Editor",n:"අහෝසි කරන්න",o:"නැවත කරන්න"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

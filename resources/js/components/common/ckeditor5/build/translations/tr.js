@@ -1,0 +1,1 @@
+(function(d){d['tr']=Object.assign(d['tr']||{},{a:"Kalın",b:"Başlık tipi seç",c:"Başlık",d:"İtalik",e:"Paragraf",f:"1. Seviye Başlık",g:"2. Seviye Başlık",h:"3. Seviye Başlık",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Zengin İçerik Editörü, %0",m:"Zengin İçerik Editörü",n:"Geri al",o:"Tekrar yap"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
