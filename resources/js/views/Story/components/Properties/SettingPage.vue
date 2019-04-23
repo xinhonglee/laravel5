@@ -5,6 +5,10 @@
       <md-input v-model="pageId"></md-input>
     </md-field>
     <md-field>
+      <label>Class</label>
+      <md-input v-model="pageClass"></md-input>
+    </md-field>
+    <md-field>
       <label>Auto Advance After(s)</label>
       <md-input v-model="autoAdvanceAfter"></md-input>
     </md-field>
@@ -67,6 +71,19 @@
         set: _.debounce(function (value) {
           if (this.pageId !== value && this.pageId !== "")
             Vue.$emit('setting:page', { id: value });
+        }, 2000),
+      },
+      pageClass: {
+        get () {
+          if (!_.isNil(this.page && this.page.class)) {
+            return this.page.class;
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.pageClass !== value) {
+            Vue.$emit('setting:page', { class: value });
+          }
         }, 2000),
       },
       autoAdvanceAfter: {

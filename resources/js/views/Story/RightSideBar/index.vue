@@ -178,6 +178,7 @@
     },
     beforeDestroy () {
       Vue.$off('setting:properties');
+      Vue.$off('setting:page');
       Vue.$off('add:element');
       Vue.$off('select:element');
     },
