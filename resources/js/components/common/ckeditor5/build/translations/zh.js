@@ -1,1 +1,1 @@
-(function(d){d['zh']=Object.assign(d['zh']||{},{a:"粗體",b:"斜體",c:"選取標題",d:"標題",e:"段落",f:"標題 1",g:"標題 2",h:"標題 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"豐富文字編輯器",m:"豐富文字編輯器，%0",n:"取消",o:"重做"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
+(function(d){d['zh']=Object.assign(d['zh']||{},{a:"選取標題",b:"標題",c:"粗體",d:"斜體",e:"段落",f:"標題 1",g:"標題 2",h:"標題 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"豐富文字編輯器，%0",m:"豐富文字編輯器",n:"取消",o:"重做"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

@@ -15,7 +15,8 @@
 </template>
 
 <script>
-  import * as ClassicEditor from '../../../../components/common/ckeditor5'
+  import ClassicEditor from 'custom-rich-text';
+  //import * as ClassicEditor from '../../../../components/common/ckeditor5'
 
   export default {
     name: "setting-rich-text",

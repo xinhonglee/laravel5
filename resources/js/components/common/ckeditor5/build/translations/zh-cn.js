@@ -1,1 +1,1 @@
-(function(d){d['zh-cn']=Object.assign(d['zh-cn']||{},{a:"加粗",b:"倾斜",c:"标题类型",d:"标题",e:"段落",f:"标题 1",g:"标题 2",h:"标题 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"富文本编辑器",m:"富文本编辑器， %0",n:"撤销",o:"重做"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
+(function(d){d['zh-cn']=Object.assign(d['zh-cn']||{},{a:"标题类型",b:"标题",c:"加粗",d:"倾斜",e:"段落",f:"标题 1",g:"标题 2",h:"标题 3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"富文本编辑器， %0",m:"富文本编辑器",n:"撤销",o:"重做"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

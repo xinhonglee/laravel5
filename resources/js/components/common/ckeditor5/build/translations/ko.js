@@ -1,1 +1,1 @@
-(function(d){d['ko']=Object.assign(d['ko']||{},{a:"굵게",b:"기울임꼴",c:"제목 선택",d:"제목",e:"문단",f:"제목1",g:"제목2",h:"제목3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Rich Text Editor",m:"Rich Text Editor, %0",n:"실행 취소",o:"다시 실행"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
+(function(d){d['ko']=Object.assign(d['ko']||{},{a:"제목 선택",b:"제목",c:"굵게",d:"기울임꼴",e:"문단",f:"제목1",g:"제목2",h:"제목3",i:"Heading 4",j:"Heading 5",k:"Heading 6",l:"Rich Text Editor, %0",m:"Rich Text Editor",n:"실행 취소",o:"다시 실행"})})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
