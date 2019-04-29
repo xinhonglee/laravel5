@@ -1,50 +1,56 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
-import first from '@ckeditor/ckeditor5-utils/src/first';
-import { isCustomDefault } from './utils';
+
 const CUSTOMSTYLE = 'customStyle';
 
 export default class CustomStyleCommand extends Command {
 
-  refresh() {
-    const firstBlock = first( this.editor.model.document.selection.getSelectedBlocks() );
-    this.isEnabled = !!firstBlock && this._canBeCustomStyle( firstBlock );
-    this.value = ( this.isEnabled && firstBlock.hasAttribute( 'customStyle' ) ) ? firstBlock.getAttribute( 'customStyle' ) : 'default';
-  }
-
-  execute( options = {} ) {
-    const editor = this.editor;
-    const model = editor.model;
+  refresh () {
+    const model = this.editor.model;
     const doc = model.document;
-    const value = options.value;
+    this.value = doc.selection.getAttribute(CUSTOMSTYLE);
+    this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, CUSTOMSTYLE);
+  }
 
-    model.change( writer => {
-      const blocks = Array.from( doc.selection.getSelectedBlocks() ).filter( block => this._canBeCustomStyle( block ) );
-      const currentCustomStyle = blocks[ 0 ].getAttribute( 'customStyle' );
+  execute (options = {}) {
+    const model = this.editor.model;
+    const document = model.document;
+    const selection = document.selection;
+    const customStyle = options.value;
 
-      const removeCustomStyle = isCustomDefault( value ) || currentCustomStyle === value || !value;
+    model.change(writer => {
+      const ranges = model.schema.getValidRanges(selection.getRanges(), CUSTOMSTYLE);
 
-      if ( removeCustomStyle ) {
-        removeCustomStyleFromSelection( blocks, writer );
+      if (selection.isCollapsed) {
+        const position = selection.getFirstPosition();
+
+        if (selection.hasAttribute(CUSTOMSTYLE)) {
+          const isSameCustomStyle = value => {
+            return value.item.hasAttribute(CUSTOMSTYLE) && value.item.getAttribute(CUSTOMSTYLE) === this.value;
+          };
+
+          const customStyleStart = position.getLastMatchingPosition(isSameCustomStyle, { direction: 'backward' });
+          const customStyleEnd = position.getLastMatchingPosition(isSameCustomStyle);
+          const customStyleRange = writer.createRange(customStyleStart, customStyleEnd);
+
+          if (!customStyle || this.value === customStyle) {
+            writer.removeAttribute(CUSTOMSTYLE, customStyleRange);
+            writer.removeSelectionAttribute(CUSTOMSTYLE);
+          } else {
+            writer.setAttribute(CUSTOMSTYLE, customStyle, customStyleRange);
+            writer.setSelectionAttribute(CUSTOMSTYLE, customStyle);
+          }
+        } else if (customStyle) {
+          writer.setSelectionAttribute(CUSTOMSTYLE, customStyle);
+        }
       } else {
-        setCustomStyleOnSelection( blocks, writer, value );
+        for (const range of ranges) {
+          if (customStyle) {
+            writer.setAttribute(CUSTOMSTYLE, customStyle, range);
+          } else {
+            writer.removeAttribute(CUSTOMSTYLE, range);
+          }
+        }
       }
-    } );
-  }
-
-  _canBeCustomStyle( block ) {
-    return this.editor.model.schema.checkAttribute( block, CUSTOMSTYLE );
-  }
-}
-
-
-function removeCustomStyleFromSelection( blocks, writer ) {
-  for ( const block of blocks ) {
-    writer.removeAttribute( CUSTOMSTYLE, block );
-  }
-}
-
-function setCustomStyleOnSelection( blocks, writer, customStyle ) {
-  for ( const block of blocks ) {
-    writer.setAttribute( CUSTOMSTYLE, customStyle, block );
+    });
   }
 }

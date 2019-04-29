@@ -3,6 +3,8 @@
     <story-left-side-bar></story-left-side-bar>
     <div class="story-page-view md-elevation-3">
       <iframe id="story_page_view" width="100%" height="100%"
+              style="visibility:hidden;" onload="this.style.visibility='visible';"
+              allowtransparency="true"
               v-if="storyPageUrl" :src="storyPageUrl"></iframe>
     </div>
     <story-right-side-bar></story-right-side-bar>
@@ -82,6 +84,7 @@
         },
         saveTemplateDialog: false,
         prevPageSelected: 0,
+        storyPageUrl: '',
       }
     },
     methods: {
@@ -102,6 +105,7 @@
        */
       reloadIframe () {
         if (this.storyPageUrl && this.prevPageSelected === this.$store.state.story.selected.page) {
+          console.log("refresh iframe.......");
           document.getElementById('story_page_view').contentWindow.location.reload(true);
         } else {
           this.prevPageSelected = this.$store.state.story.selected.page;
@@ -141,19 +145,6 @@
     },
     computed: {
       /**
-       *  generate embed url of iframe from selected story and page
-       */
-      storyPageUrl () {
-        if (!_.isNil(this.$store.state.story) &&
-          !_.isNil(this.$store.state.story.id) &&
-          this.$store.state.story.selected.page >= 0 &&
-          this.$store.state.story.data.pages.length > 0 &&
-          !_.isNil(this.$store.state.story.data.pages[this.$store.state.story.selected.page])) {
-          return `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
-        }
-        return null;
-      },
-      /**
        * fetch selected page content from the store
        */
       page () {
@@ -162,6 +153,7 @@
           this.$store.state.story.selected.page >= 0 &&
           this.$store.state.story.data.pages.length > 0 &&
           !_.isNil(this.$store.state.story.data.pages[this.$store.state.story.selected.page])) {
+          this.storyPageUrl = `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
           return this.$store.state.story.data.pages[this.$store.state.story.selected.page];
         }
         return null;
@@ -174,7 +166,7 @@
       page: {
         handler: _.debounce(function (data) {
           this.reloadIframe();
-        }, 200),
+        }, 1000),
         deep: true
       },
     },

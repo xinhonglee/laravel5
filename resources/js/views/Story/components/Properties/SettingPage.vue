@@ -69,7 +69,7 @@
           return '';
         },
         set: _.debounce(function (value) {
-          if (this.pageId !== value && this.pageId !== "")
+          if (this.pageId !== value && !_.isNil(this.pageId))
             Vue.$emit('setting:page', { id: value });
         }, 2000),
       },

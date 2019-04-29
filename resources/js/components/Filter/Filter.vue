@@ -27,11 +27,8 @@
       }
     },
     methods: {
-      selectedUser(userName) {
-        if(userName !== 'all') {
-          userName = 'Admin'; // temporary name, it should be come from Vue Store
-        }
-        Vue.$emit('user:select', userName);
+      selectedUser(user) {
+        Vue.$emit('user:select', user);
       },
     },
     watch: {

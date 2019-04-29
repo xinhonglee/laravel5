@@ -5,21 +5,25 @@ export const customStyles = [
     style: {}
   },
   {
-    type: 'apply1',
-    label: 'Apply1',
+    type: 'redColor',
+    label: 'Red Color',
     style: {
       'color': 'red',
     },
   },
   {
-    type: 'apply2',
-    label: 'Apply2',
+    type: 'blueColor',
+    label: 'Blue Color',
     style: {
-      'color': 'yellow'
+      'color': 'blue'
+    },
+  },
+  {
+    type: 'whiteColor',
+    label: 'White Color',
+    style: {
+      'color': 'white'
     },
   }
 ];
 
-export function isCustomDefault( type ) {
-  return type === 'default';
-}

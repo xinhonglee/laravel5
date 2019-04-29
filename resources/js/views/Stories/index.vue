@@ -66,8 +66,8 @@
       }
     },
     methods: {
-      filterdByUser (userName) {
-        if (userName !== 'all') {
+      filterdByUser (user) {
+        if (user !== 'all') {
           this.filters = this.stories.filter((story) => {
             return story.owner_id === this.$store.state.userInfo.id;
           })
@@ -129,8 +129,8 @@
     mounted () {
       this.loadStories();
       this.$store.dispatch('updateAppTitle', 'Stories');
-      Vue.$on('user:select', (userName) => {
-        this.filterdByUser(userName);
+      Vue.$on('user:select', (user) => {
+        this.filterdByUser(user);
       });
       Vue.$on('search:table', (term) => {
         this.search(term);

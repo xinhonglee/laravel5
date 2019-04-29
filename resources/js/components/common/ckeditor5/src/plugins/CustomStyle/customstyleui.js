@@ -2,6 +2,7 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import { createDropdown, addToolbarToDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
 import {customStyles} from './utils';
+const CUSTOMSTYLE = 'customStyle';
 
 export default class CustomStyleUI extends Plugin {
 
@@ -40,7 +41,7 @@ export default class CustomStyleUI extends Plugin {
     const editor = this.editor;
 
     editor.ui.componentFactory.add(`customStyle:${ option.type }`, locale => {
-      const command = editor.commands.get('customStyle');
+      const command = editor.commands.get(CUSTOMSTYLE);
       const buttonView = new ButtonView(locale);
 
       buttonView.set({
@@ -55,7 +56,7 @@ export default class CustomStyleUI extends Plugin {
 
       // Execute command.
       this.listenTo(buttonView, 'execute', () => {
-        editor.execute('customStyle', { value: option.type });
+        editor.execute(CUSTOMSTYLE, { value: option.type });
         editor.editing.view.focus();
       });
 
