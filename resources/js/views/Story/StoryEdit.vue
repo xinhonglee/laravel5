@@ -5,6 +5,7 @@
       <iframe id="story_page_view" width="100%" height="100%"
               style="visibility:hidden;" onload="this.style.visibility='visible';"
               allowtransparency="true"
+              ref="storyPageView"
               v-if="storyPageUrl" :src="storyPageUrl"></iframe>
     </div>
     <story-right-side-bar></story-right-side-bar>
@@ -104,7 +105,8 @@
        * reload story_page_view iframe
        */
       reloadIframe () {
-        if (this.storyPageUrl && this.prevPageSelected === this.$store.state.story.selected.page) {
+        if (this.storyPageUrl &&
+          this.prevPageSelected === this.$store.state.story.selected.page) {
           console.log("refresh iframe.......");
           document.getElementById('story_page_view').contentWindow.location.reload(true);
         } else {
@@ -141,7 +143,6 @@
         this.settings = Object.assign(this.settings, data);
         this.$store.dispatch('saveAMPStory', { data: { ...this.settings }, publish: false });
       });
-
     },
     computed: {
       /**
@@ -153,7 +154,8 @@
           this.$store.state.story.selected.page >= 0 &&
           this.$store.state.story.data.pages.length > 0 &&
           !_.isNil(this.$store.state.story.data.pages[this.$store.state.story.selected.page])) {
-          this.storyPageUrl = `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
+          const storyUrl = `${app_url}/embed/story/${this.$store.state.story.id}/page/${this.$store.state.story.data.pages[this.$store.state.story.selected.page].id}`;
+          this.storyPageUrl = storyUrl;
           return this.$store.state.story.data.pages[this.$store.state.story.selected.page];
         }
         return null;
