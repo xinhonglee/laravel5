@@ -10,6 +10,18 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@ckeditor/ckeditor5-basic-styles": "^11.1.0",
+        "@ckeditor/ckeditor5-core": "^12.1.0",
+        "@ckeditor/ckeditor5-dev-utils": "^12.0.1",
+        "@ckeditor/ckeditor5-dev-webpack-plugin": "^7.0.0",
+        "@ckeditor/ckeditor5-editor-classic": "^12.1.0",
+        "@ckeditor/ckeditor5-essentials": "^11.0.1",
+        "@ckeditor/ckeditor5-heading": "^11.0.1",
+        "@ckeditor/ckeditor5-highlight": "^11.0.1",
+        "@ckeditor/ckeditor5-paragraph": "^11.0.1",
+        "@ckeditor/ckeditor5-theme-lark": "^13.0.1",
+        "@ckeditor/ckeditor5-ui": "^12.1.0",
+        "@ckeditor/ckeditor5-utils": "^12.1.0",
         "axios": "^0.18",
         "block-ui": "^2.70.1",
         "bootstrap": "^4.0.0",
