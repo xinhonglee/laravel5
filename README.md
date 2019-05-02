@@ -36,7 +36,7 @@ php artisan passport:client --personal
 
 ### 5. Redis Setup
 
-####Mac OS
+#### Mac OS
 
 - Install
 
