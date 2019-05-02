@@ -1,5 +1,10 @@
 const mix = require('laravel-mix');
 const CKEditorWebpackPlugin = require('@ckeditor/ckeditor5-dev-webpack-plugin');
+const CKEStyles = require('@ckeditor/ckeditor5-dev-utils').styles;
+const CKERegex = {
+  svg: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
+  css: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css/,
+};
 
 /*
  |--------------------------------------------------------------------------
@@ -11,13 +16,6 @@ const CKEditorWebpackPlugin = require('@ckeditor/ckeditor5-dev-webpack-plugin');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-const CKEStyles = require('@ckeditor/ckeditor5-dev-utils').styles;
-const CKERegex = {
-  svg: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-  css: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css/,
-};
-
 Mix.listen('configReady', webpackConfig => {
   const rules = webpackConfig.module.rules;
   const targetSVG = /(\.(png|jpe?g|gif|webp)$|^((?!font).)*\.svg$)/;
