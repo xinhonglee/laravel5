@@ -15,8 +15,13 @@
 </template>
 
 <script>
-  import ClassicEditor from 'custom-rich-text';
-  //import * as ClassicEditor from '../../../../components/common/ckeditor5'
+  import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+  import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+  import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+  import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+  import Heading from '@ckeditor/ckeditor5-heading/src/heading';
+  import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+  import CustomStyle from '../../../../components/common/CK5CustomStyle/customstyle';
 
   export default {
     name: "setting-rich-text",
@@ -27,6 +32,14 @@
       return {
         editor: ClassicEditor,
         editorConfig: {
+          plugins: [
+            Essentials,
+            Bold,
+            Italic,
+            Heading,
+            Paragraph,
+            CustomStyle
+          ],
           toolbar: {
             items: [
               'heading',
