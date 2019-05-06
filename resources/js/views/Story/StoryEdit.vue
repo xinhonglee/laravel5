@@ -99,6 +99,11 @@
           },
           publish: false
         });
+        Vue.alertBox({
+          title: 'Success',
+          text: "Successfully saved this settings!",
+          type: 'success'
+        });
         this.settingDialog = false;
       },
       /**
@@ -141,7 +146,7 @@
       // story settings action emit receiver from Settings components on the right sidebar
       Vue.$on('story:settings', (data) => {
         this.settings = Object.assign(this.settings, data);
-        this.$store.dispatch('saveAMPStory', { data: { ...this.settings }, publish: false });
+        // this.$store.dispatch('saveAMPStory', { data: { ...this.settings }, publish: false });
       });
     },
     computed: {

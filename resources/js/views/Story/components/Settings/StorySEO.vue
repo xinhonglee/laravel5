@@ -58,6 +58,14 @@
     data () {
       return {
         cloudinaryInfo: null,
+        publisher: "",
+        publisherLogoSrc: "",
+        posterPortraitSrc: "",
+        supportsLandscape: true,
+        backgroundAudio: "",
+        posterSquareSrc: "",
+        posterLandscapeSrc: "",
+        css: "",
       }
     },
     methods: {
@@ -106,91 +114,47 @@
       },
     },
     mounted () {
-      this.cloudinaryInfo = {
-        cloud_name: this.$store.state.cloudinary.cloudName,
-        api_key: this.$store.state.cloudinary.apiKey,
-        username: this.$store.state.cloudinary.userName,
-        timestamp: this.$store.state.cloudinary.timestamp,
-        signature: this.$store.state.cloudinary.signature,
-        button_class: 'md-button md-raised md-theme-default px-3',
-        button_caption: 'Select a file',
-        multiple: false
-      };
-      this.generateMediaLibraries();
+      if (this.$store.state.cloudinary) {
+        this.cloudinaryInfo = {
+          cloud_name: this.$store.state.cloudinary.cloudName,
+          api_key: this.$store.state.cloudinary.apiKey,
+          username: this.$store.state.cloudinary.userName,
+          timestamp: this.$store.state.cloudinary.timestamp,
+          signature: this.$store.state.cloudinary.signature,
+          button_class: 'md-button md-raised md-theme-default px-3',
+          button_caption: 'Select a file',
+          multiple: false
+        };
+        this.generateMediaLibraries();
+      }
+
+      if (this.$store.state.story) {
+        this.publisher = this.$store.state.story.data.publisher;
+        this.posterPortraitSrc = this.$store.state.story.data.posterPortraitSrc;
+        this.posterSquareSrc = this.$store.state.story.data.posterSquareSrc;
+        this.supportsLandscape = this.$store.state.story.data.supportsLandscape;
+        this.publisherLogoSrc = this.$store.state.story.data.publisherLogoSrc;
+        this.posterLandscapeSrc = this.$store.state.story.data.posterLandscapeSrc;
+      }
     },
-    computed: {
-      posterPortraitSrc: {
-        get () {
-          if (!_.isNil(this.$store.state.story)) {
-            return this.$store.state.story.data.posterPortraitSrc;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.posterPortraitSrc !== value)
-            Vue.$emit('story:settings', { posterPortraitSrc: value });
-        },
+    watch: {
+      posterPortraitSrc(value) {
+          Vue.$emit('story:settings', { posterPortraitSrc: value });
       },
-      posterSquareSrc: {
-        get () {
-          if (!_.isNil(this.$store.state.story)) {
-            return this.$store.state.story.data.posterSquareSrc;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.posterSquareSrc !== value)
-            Vue.$emit('story:settings', { posterSquareSrc: value });
-        }
+      posterSquareSrc(value) {
+          Vue.$emit('story:settings', { posterSquareSrc: value });
       },
-      posterLandscapeSrc: {
-        get () {
-          if (!_.isNil(this.$store.state.story)) {
-            return this.$store.state.story.data.posterLandscapeSrc;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.posterLandscapeSrc !== value)
-            Vue.$emit('story:settings', { posterLandscapeSrc: value });
-        }
+      posterLandscapeSrc(value) {
+          Vue.$emit('story:settings', { posterLandscapeSrc: value });
       },
-      supportsLandscape: {
-        get () {
-          if (!_.isNil(this.$store.state.story)) {
-            return this.$store.state.story.data.supportsLandscape;
-          }
-          return true;
-        },
-        set (value) {
-          console.log(value);
-          if (this.supportsLandscape !== value)
-            Vue.$emit('story:settings', { supportsLandscape: value });
-        }
+      supportsLandscape(value) {
+          Vue.$emit('story:settings', { supportsLandscape: value });
       },
-      publisher: {
-        get () {
-          if (!_.isNil(this.$store.state.story)) {
-            return this.$store.state.story.data.publisher;
-          }
-          return '';
-        },
-        set: _.debounce(function (value) {
-          if (this.publisher !== value)
-            Vue.$emit('story:settings', { publisher: value });
-        }, 2000)
+      publisher(value) {
+          Vue.$emit('story:settings', { publisher: value });
       },
-      publisherLogoSrc: {
-        get () {
-          if (!_.isNil(this.$store.state.story)) {
-            return this.$store.state.story.data.publisherLogoSrc;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.publisherLogoSrc !== value)
-            Vue.$emit('story:settings', { publisherLogoSrc: value });
-        }
+      publisherLogoSrc(value) {
+          Vue.$emit('story:settings', { publisherLogoSrc: value });
       }
     }
   }
