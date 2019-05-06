@@ -16,10 +16,10 @@ class StoriesController extends BaseController
     /**
      * Get Style
      */
-    public function getStyle()
+    public function getStyles()
     {
         try {
-            $result = Style::all()->first();
+            $result = Style::all();
 
             return $this->sendResponse($result);
         } catch (\Exception $exception) {
