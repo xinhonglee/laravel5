@@ -5,8 +5,11 @@
       <div class="code-editor_index">
         <div v-for="i in lines">{{i}}</div>
       </div>
-      <textarea v-model="css"></textarea>
+      <textarea v-model="setting"></textarea>
     </div>
+
+    <p class="mt-3">RichText</p>
+
 
     <md-button class="md-raised md-primary my-3 float-right" @click="saveStyle">
       SAVE
@@ -20,49 +23,37 @@
     data () {
       return {
         lines: 1,
-        css: '',
-        styleId: '',
+        setting: '',
+        richtext: []
       }
     },
     methods: {
+      serializeStyle(data) {
+        this.setting = data.filter( style => {
+          return style.slug = 'setting'
+        })[0].data;
+        this.richtext = data.filter( style => {
+          return style.slug = 'richtext'
+        })[0].data;
+      },
       saveStyle () {
-        if (this.styleId) {
-          this.updateStyle();
-        } else {
-          this.createStyle();
-        }
+        const data = {
+          "setting": this.setting,
+          "richtext": this.richtext
+        };
+        Vue.block();
+        this.$http.post('/admin/save-style-stories', data).then((response) => {
+          Vue.unBlock();
+          this.serializeStyle(response.data)
+        }, (error) => {
+          Vue.unBlock();
+        }).catch(Vue.handleClientError);
       },
       loadStyle () {
         Vue.block();
         this.$http.get('/story/style').then((response) => {
           Vue.unBlock();
-          this.css = response.data.data;
-          this.styleId = response.data.id;
-        }, (error) => {
-          Vue.unBlock();
-        }).catch(Vue.handleClientError);
-      },
-      createStyle () {
-        const data = {
-          "data": this.css
-        };
-        Vue.block();
-        this.$http.post('/admin/create-style-stories', data).then((response) => {
-          Vue.unBlock();
-          this.css = response.data.data;
-          this.styleId = response.data.id;
-        }, (error) => {
-          Vue.unBlock();
-        }).catch(Vue.handleClientError);
-      },
-      updateStyle () {
-        const data = {
-          "id": this.styleId,
-          "data": this.css
-        };
-        Vue.block();
-        this.$http.put('/admin/update-style-stories', data).then((response) => {
-          Vue.unBlock();
+          this.serializeStyle(response.data)
         }, (error) => {
           Vue.unBlock();
         }).catch(Vue.handleClientError);
@@ -72,7 +63,7 @@
       this.loadStyle();
     },
     watch: {
-      css (value) {
+      setting (value) {
         if (value) {
           const lines = value.split(/\r*\n/);
           this.lines = lines.length;

@@ -156,7 +156,9 @@ export const CLEAR_AMP_STORY = (state) => {
 
 export const FETCH_STORY_STYLE = (state) => {
   Vue.$http.get('/story/style').then((response) => {
-    state.story.data.css = response.data.data;
+    state.story.data.css = response.data.filter( style => {
+      return style.slug = 'setting'
+    })[0].data;
   }, (error) => {
   }).catch(Vue.handleClientError);
 };

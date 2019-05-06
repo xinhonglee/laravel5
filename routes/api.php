@@ -64,7 +64,7 @@ Route::group(['namespace' => 'API'], function () {
         Route::get('/{id}', 'StoriesController@getStoryById');
 
 
-        Route::get('/style', 'StoriesController@getStyle');
+        Route::get('/style', 'StoriesController@getStyles');
 
         Route::post('/create', 'StoriesController@create');
 
@@ -111,9 +111,8 @@ Route::group(['namespace' => 'API'], function () {
 
         /* Stories CSS Management */
 
-        Route::post('/create-style-stories', 'StoriesController@createStyle');
+        Route::post('/save-style-stories', 'StoriesController@saveStyle');
 
-        Route::put('/update-style-stories', 'StoriesController@updateStyle');
     });
 });
 
