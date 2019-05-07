@@ -75,12 +75,12 @@
       return {
         settingDialog: false,
         settings: {
-          backgroundAudio: "",
-          posterPortraitSrc: "",
-          posterSquareSrc: "",
-          posterLandscapeSrc: "",
-          publisher: "",
-          publisherLogoSrc: "",
+          backgroundAudio: '',
+          posterPortraitSrc: '',
+          posterSquareSrc: '',
+          posterLandscapeSrc: '',
+          publisher: '',
+          publisherLogoSrc: '',
           supportsLandscape: true,
         },
         saveTemplateDialog: false,
@@ -112,7 +112,6 @@
       reloadIframe () {
         if (this.storyPageUrl &&
           this.prevPageSelected === this.$store.state.story.selected.page) {
-          console.log("refresh iframe.......");
           document.getElementById('story_page_view').contentWindow.location.reload(true);
         } else {
           this.prevPageSelected = this.$store.state.story.selected.page;

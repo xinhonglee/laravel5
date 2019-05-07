@@ -38,8 +38,8 @@
       },
       saveStyle () {
         const data = {
-          "setting": this.setting,
-          "richtext": this.richtext
+          'setting': this.setting,
+          'richtext': this.richtext
         };
         Vue.block();
         this.$http.post('/admin/save-style-stories', data).then((response) => {

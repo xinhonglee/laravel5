@@ -1,8 +1,8 @@
 export const UPDATE_USER_INFO = (state, userInfo) => {
-  state.userInfo.id = userInfo.id ? userInfo.id : "";
-  state.userInfo.email = userInfo.email ? userInfo.email : "";
-  state.userInfo.name = userInfo.name ? userInfo.name : "";
-  state.userInfo.role = userInfo.role ? userInfo.role : "";
+  state.userInfo.id = userInfo.id ? userInfo.id : '';
+  state.userInfo.email = userInfo.email ? userInfo.email : '';
+  state.userInfo.name = userInfo.name ? userInfo.name : '';
+  state.userInfo.role = userInfo.role ? userInfo.role : '';
   state.userInfo.verifiedAt = userInfo.verifiedAt ? userInfo.verifiedAt : null;
 };
 
@@ -39,7 +39,7 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
   state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {};
-  state.story.data.css = (story && story.data.css) ? story.data.css : "";
+  state.story.data.css = (story && story.data.css) ? story.data.css : '';
 
   if(!_.isNil(story.selected)) {
     Vue.$store.dispatch('selectAMPStory', story.selected);
@@ -49,20 +49,20 @@ export const UPDATE_AMP_STORY = (state, story) => {
 export const SAVE_AMP_STORY = (state, story) => {
   const storyData = Vue.$store.state.story.data;
   const data = {
-    "id": (story && story.id) ? story.id : Vue.$store.state.story.id,
-    "title": Vue.$store.state.app.title,
-    "slug" : (story && story.slug) ? story.slug : Vue.$store.state.story.slug,
-    "data": {
-      "background-audio": (story && story.data.backgroundAudio) ? story.data.backgroundAudio : storyData.backgroundAudio,
-      "poster-portrait-src": (story && story.data.posterPortraitSrc) ? story.data.posterPortraitSrc : storyData.posterPortraitSrc,
-      "poster-square-src": (story && story.data.posterSquareSrc) ? story.data.posterSquareSrc : storyData.posterSquareSrc,
-      "poster-landscape-src": (story && story.data.posterLandscapeSrc) ? story.data.posterLandscapeSrc : storyData.posterLandscapeSrc,
-      "publisher": (story && story.data.publisher) ? story.data.publisher : storyData.publisher,
-      "publisher-logo-src": (story && story.data.publisherLogoSrc) ? story.data.publisherLogoSrc : storyData.publisherLogoSrc,
-      "pages": (story && story.data.pages) ? story.data.pages : storyData.pages,
-      "supports-landscape": (story && !_.isNil(story.data.supportsLandscape)) ? story.data.supportsLandscape : storyData.supportsLandscape,
-      "bookend": (story && story.data.bookend) ? story.data.bookend : storyData.bookend,
-      "css": (story && story.data.css) ? story.data.css : storyData.css
+    'id': (story && story.id) ? story.id : Vue.$store.state.story.id,
+    'title': Vue.$store.state.app.title,
+    'slug' : (story && story.slug) ? story.slug : Vue.$store.state.story.slug,
+    'data': {
+      'background-audio': (story && story.data.backgroundAudio) ? story.data.backgroundAudio : storyData.backgroundAudio,
+      'poster-portrait-src': (story && story.data.posterPortraitSrc) ? story.data.posterPortraitSrc : storyData.posterPortraitSrc,
+      'poster-square-src': (story && story.data.posterSquareSrc) ? story.data.posterSquareSrc : storyData.posterSquareSrc,
+      'poster-landscape-src': (story && story.data.posterLandscapeSrc) ? story.data.posterLandscapeSrc : storyData.posterLandscapeSrc,
+      'publisher': (story && story.data.publisher) ? story.data.publisher : storyData.publisher,
+      'publisher-logo-src': (story && story.data.publisherLogoSrc) ? story.data.publisherLogoSrc : storyData.publisherLogoSrc,
+      'pages': (story && story.data.pages) ? story.data.pages : storyData.pages,
+      'supports-landscape': (story && !_.isNil(story.data.supportsLandscape)) ? story.data.supportsLandscape : storyData.supportsLandscape,
+      'bookend': (story && story.data.bookend) ? story.data.bookend : storyData.bookend,
+      'css': (story && story.data.css) ? story.data.css : storyData.css
     }
   };
   if (story.publish) {
@@ -74,7 +74,7 @@ export const SAVE_AMP_STORY = (state, story) => {
         Vue.unBlock();
         Vue.alertBox({
           title: 'Success',
-          text: "Successfully saved this story!",
+          text: 'Successfully saved this story!',
           type: 'success'
         });
       }, (error) => {
@@ -88,7 +88,7 @@ export const SAVE_AMP_STORY = (state, story) => {
         Vue.unBlock();
         Vue.alertBox({
           title: 'Success',
-          text: "Successfully saved this story!",
+          text: 'Successfully saved this story!',
           type: 'success'
         });
       }, (error) => {
@@ -134,15 +134,15 @@ export const CLEAR_AMP_STORY = (state) => {
   state.story = {
     id: null,
     data: {
-      publisher: "Publisher",
-      publisherLogoSrc: "logo image url",
-      posterPortraitSrc: "portrait poster image url",
+      publisher: 'Publisher',
+      publisherLogoSrc: 'logo image url',
+      posterPortraitSrc: 'portrait poster image url',
       supportsLandscape: true,
-      backgroundAudio: "audio url",
-      posterSquareSrc: "image url",
-      posterLandscapeSrc: "image url",
+      backgroundAudio: 'audio url',
+      posterSquareSrc: 'image url',
+      posterLandscapeSrc: 'image url',
       pages: [],
-      css: ""
+      css: ''
     },
     selected: {
       page: 0,
@@ -156,9 +156,15 @@ export const CLEAR_AMP_STORY = (state) => {
 
 export const FETCH_STORY_STYLE = (state) => {
   Vue.$http.get('/story/style').then((response) => {
-    state.story.data.css = response.data.filter( style => {
-      return style.slug = 'setting'
-    })[0].data;
+    
+    // temporarily 
+    if(response.data && response.data.length === 0 && _.isNil(response.data[0].slug) ) {
+      state.story.data.css = response.data[0].data;
+    } else {
+      state.story.data.css = response.data.filter( style => {
+        return style.slug = 'setting'
+      })[0].data;
+    }
   }, (error) => {
   }).catch(Vue.handleClientError);
 };

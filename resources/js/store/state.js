@@ -9,10 +9,10 @@ let syncedData = {
   refreshTokenExpiresIn: null, // timestamp
   refreshTokenAlreadyExpired: false,
   userInfo: {
-    id: "",
-    email: "",
-    name: "",
-    role: "",
+    id: '',
+    email: '',
+    name: '',
+    role: '',
     verifiedAt: null,
   },
   cloudinary: {
@@ -33,16 +33,16 @@ const notSyncedData = {
     id: null,
     slug: null,
     data: {
-      publisher: "Publisher",
-      publisherLogoSrc: "logo image url",
-      posterPortraitSrc: "portrait poster image url",
+      publisher: 'Publisher',
+      publisherLogoSrc: 'logo image url',
+      posterPortraitSrc: 'portrait poster image url',
       supportsLandscape: true,
-      backgroundAudio: "audio url",
-      posterSquareSrc: "image url",
-      posterLandscapeSrc: "image url",
+      backgroundAudio: 'audio url',
+      posterSquareSrc: 'image url',
+      posterLandscapeSrc: 'image url',
       pages: [],
       bookend: {},
-      css: "",
+      css: '',
     },
     selected: {
       page: 0,

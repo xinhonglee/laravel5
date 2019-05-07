@@ -138,6 +138,7 @@
       autoPlay: {
         get () {
           if (!_.isNil(this.el && this.el.properties && this.el.properties.autoplay)) {
+            console.log("autoplay: " + this.el.properties.autoplay);
             return this.el.properties.autoplay;
           }
           return true;
@@ -151,6 +152,7 @@
       loop: {
         get () {
           if (!_.isNil(this.el && this.el.properties && this.el.properties.loop)) {
+            console.log("loop: " + this.el.properties.loop);
             return this.el.properties.loop;
           }
           return true;
