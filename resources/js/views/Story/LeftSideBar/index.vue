@@ -49,7 +49,7 @@
                @click="addLayer(index)"
                :key="index">
             <div class="layer-template-image"
-                 :style="{backgroundImage: 'url(' + template.image_url + ')'}">
+                 :style="{backgroundImage: 'url(' + template.icon + ')'}">
             </div>
             <p>{{ template.name }}</p>
           </div>

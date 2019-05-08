@@ -20,9 +20,12 @@
           <md-tab id="tab-story-url" md-label="URL">
             <story-url></story-url>
           </md-tab>
-          <md-tab id="tab-story-advertising" md-label="ADVERTISING">
-            <story-advertising></story-advertising>
+          <md-tab id="tab-story-bookend" md-label="BOOKEND">
+            <story-bookend></story-bookend>
           </md-tab>
+          <!--<md-tab id="tab-story-advertising" md-label="ADVERTISING">-->
+            <!--<story-advertising></story-advertising>-->
+          <!--</md-tab>-->
           <md-tab id="tab-story-analytics" md-label="ANALYTICS">
             <story-analytics></story-analytics>
           </md-tab>
@@ -57,6 +60,7 @@
   import StoryAnalytics from "./components/Settings/StoryAnalytics";
   import StoryUrl from "./components/Settings/StoryURL";
   import StoryCss from "./components/Settings/StroyCSS";
+  import StoryBookend from "./components/Settings/StoryBookend";
   import SavePageTemplate from "./components/SavePageTemplate";
 
   export default {
@@ -68,21 +72,14 @@
       StorySeo,
       StoryUrl,
       StoryCss,
+      StoryBookend,
       StoryRightSideBar,
       StoryLeftSideBar,
     },
     data () {
       return {
         settingDialog: false,
-        settings: {
-          backgroundAudio: '',
-          posterPortraitSrc: '',
-          posterSquareSrc: '',
-          posterLandscapeSrc: '',
-          publisher: '',
-          publisherLogoSrc: '',
-          supportsLandscape: true,
-        },
+        settings: {},
         saveTemplateDialog: false,
         prevPageSelected: 0,
         storyPageUrl: '',
@@ -145,7 +142,6 @@
       // story settings action emit receiver from Settings components on the right sidebar
       Vue.$on('story:settings', (data) => {
         this.settings = Object.assign(this.settings, data);
-        // this.$store.dispatch('saveAMPStory', { data: { ...this.settings }, publish: false });
       });
     },
     computed: {
