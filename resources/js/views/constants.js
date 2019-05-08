@@ -115,11 +115,24 @@ const animations = [
 
 const bookend = {
   shareProviders: [
-    {slug: 'twitter', name: 'Twitter', icon:  '/assets/bookend/twitter_black.svg' },
-    {slug: 'facebook', name: 'Facebook', icon:  '/assets/bookend/facebook_black.svg' },
+    {slug: 'twitter', name: 'Twitter', icon:  '/assets/bookend/twitter.png' },
+    {slug: 'facebook', name: 'Facebook', icon:  '/assets/bookend/facebook.png' },
+    {slug: 'linkedin', name: 'Linkedin', icon:  '/assets/bookend/linkedin.png' },
+    {slug: 'pinterest', name: 'Pinterest', icon:  '/assets/bookend/pinterest.png' },
+    {slug: 'gplus', name: 'G+', icon:  '/assets/bookend/gplus.png' },
+    {slug: 'tumblr', name: 'Tumblr', icon:  '/assets/bookend/tumblr.png' },
+    {slug: 'whatsapp', name: 'Whatsapp', icon:  '/assets/bookend/whatsapp.png' },
+    {slug: 'email', name: 'Email', icon:  '/assets/bookend/email.png' },
+    {slug: 'sms', name: 'SMS', icon:  '/assets/bookend/sms.png' },
+    {slug: 'line', name: 'LINE', icon:  '/assets/bookend/line.png' },
   ],
   components: [
-    {slug: 'heading', name: 'Heading', icon:  '/assets/bookend/facebook_black.svg'}
+    {slug: 'heading', name: 'Heading', icon:  '/assets/bookend/heading.png'},
+    {slug: 'small', name: 'Small', icon:  '/assets/bookend/small.png'},
+    {slug: 'landscape', name: 'Landscape', icon:  '/assets/bookend/landscape.png'},
+    {slug: 'portrait', name: 'Portrait', icon:  '/assets/bookend/portrait.png'},
+    {slug: 'cta-link', name: 'CTA', icon:  '/assets/bookend/cta.png'},
+    {slug: 'textbox', name: 'TextBox', icon:  '/assets/bookend/textbox.png'}
   ]
 };
 
