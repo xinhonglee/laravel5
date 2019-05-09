@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="video-edit">
     <b-row class="justify-content-center">
       <b-col md="7">
         <span>Video Description</span>
@@ -231,7 +231,5 @@
 </script>
 
 <style scoped>
-  p {
-    word-break: break-all;
-  }
+
 </style>

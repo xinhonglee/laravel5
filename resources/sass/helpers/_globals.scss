@@ -45,11 +45,18 @@ md-tabs.md-no-animation md-ink-bar {
   td, th {
     padding: 0.3rem 1rem;
   }
+  .table-actions span {
+    cursor: pointer;
+  }
 }
 
 .blockUI h1 {
   font-size: 30px;
   margin: 0;
+}
+
+.ck-editor {
+  width: 100% !important;
 }
 
 .code-editor {

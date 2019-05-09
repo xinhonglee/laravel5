@@ -1,7 +1,7 @@
 <template>
   <div class="page-layer">
     <div class="layer-template" :class="{ selected : isLayerSelected()}">
-      <img class="layer-template_icon" :src="getLayerTemplateImage(layer.template)" alt="No Icon"/>
+      <img class="layer-template_icon" :src="getLayerTemplateIcon(layer.template)" alt="No Icon"/>
       <div class="layer-template_name" @click="selectLayer">{{ getLayerTemplateName(layer.template)}} Template</div>
       <div class="btn-tools">
         <span @click="orderUpLayer"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
@@ -272,14 +272,14 @@
       },
 
       /**
-       * get Layer Template Image by slug
+       * get Layer Template Icon by slug
        *
        * @param slug
        * @returns {string}
        */
-      getLayerTemplateImage (slug) {
+      getLayerTemplateIcon (slug) {
         const template = utils.getLayerTemplate(slug);
-        return template ? template.image_url : '';
+        return template ? template.icon : '';
       },
 
       /**
