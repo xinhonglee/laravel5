@@ -1,6 +1,11 @@
+@import "story/left-sidebar";
+@import "story/right-sidebar";
+@import "story/bookend";
+@import "story/layer-templates-list";
+
 .story {
 
-  .story-slide-view {
+  &-slide_view {
     height: calc(100vh - #{$header-height});
     left: 0;
     position: absolute;
@@ -8,234 +13,12 @@
     width: 100%;
   }
 
-  .story-page-view {
+  &-page_view {
     background: $light-gray;
     height: $amp-height;
     margin: 0 auto;
     width: $amp-width;
   }
-
-  .ck-editor {
-    width: 100% !important;
-  }
 }
 
-.story-left-sidebar {
-  background: $light-gray;
-  border-top: 1px solid #8a8a8a;
-  height: calc(100vh - #{$header-height + $toolbar-height});
-  left: 0;
-  padding: 20px;
-  position: absolute;
-  top: 0;
-  width: $amp-sidebar-width;
-  z-index: 1;
 
-  .sidebar-header {
-    padding: 10px 0;
-
-    .title {
-      font-size: 1.5rem;
-      font-weight: 500;
-    }
-
-    .btn-more {
-      float: right;
-      cursor: pointer;
-    }
-
-    .page-tools {
-      background: white;
-      margin-top: 10px;
-      position: absolute;
-      padding: 10px;
-      right: 10px;
-      z-index: 100;
-      ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-      }
-      li {
-        padding: 5px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #eee;
-        }
-      }
-    }
-  }
-
-  .template-list {
-    margin-top: 20px;
-    margin-left: 19px;
-    max-height: calc(100vh - #{$header-height + $toolbar-height + 160px});
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    .page-layer {
-      position: relative;
-
-      &::before {
-        border-right: 3px dotted gray;
-        bottom: 0;
-        content: '';
-        display: block;
-        left: 4px;
-        position: absolute;
-        top: 0;
-        width: 5px;
-        z-index: -1;
-      }
-
-      .layer-template {
-        padding-right: 10px;
-        cursor: pointer;
-        background: $light-gray;
-
-        &.selected, &:hover {
-          .btn-tools {
-            display: block;
-            margin-top: 8px;
-          }
-        }
-
-        &.selected {
-          background-color: #ccdcec;
-        }
-        &:hover {
-          background-color: #d9d9d9;
-        }
-
-        img.layer-template_icon {
-          width: 15px;
-        }
-
-        &_name {
-          display: inline-block;
-          margin-left: 20px;
-          padding: 10px 0;
-        }
-      }
-
-      .layer-elements {
-        font-size: 13px;
-        margin-left: 60px;
-
-        .element-grid-area {
-          cursor: pointer;
-          padding: 10px;
-
-          &.selected, &:hover {
-            .btn-tools {
-              display: block;
-            }
-          }
-          &.selected {
-            background-color: #ccdcec;
-          }
-          &:hover {
-            background-color: #d9d9d9;
-          }
-        }
-
-        .element {
-          cursor: pointer;
-          margin-left: 10px;
-
-          &-type {
-            padding: 10px;
-            cursor: pointer;
-
-            &.selected, &:hover {
-              .btn-tools {
-                display: block;
-              }
-            }
-            &.selected {
-              background-color: #ccdcec;
-            }
-            &:hover {
-              background-color: #d9d9d9;
-            }
-
-            span.element-type_label {
-              min-width: 70px;
-              display: inline-block;
-              text-align: center;
-              padding: 0 10px;
-            }
-          }
-        }
-      }
-    }
-  }
-  .md-button {
-    height: 40px !important;
-    width: 40px !important;
-  }
-
-  .btn-tools {
-    float: right;
-    display: none;
-    cursor: pointer;
-  }
-}
-
-.story-right-sidebar {
-  background: $light-gray;
-  border-top: 1px solid #8a8a8a;
-  height: calc(100vh - #{$header-height + $toolbar-height});
-  right: 0;
-  padding: 20px;
-  position: absolute;
-  top: 0;
-  width: $amp-sidebar-width;
-  z-index: 1;
-
-  .md-content {
-    height: calc(100vh - #{$header-height + $toolbar-height} - 120px) !important;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-}
-
-.stories-list {
-  .md-table {
-    max-height: calc(100vh - 220px);
-    overflow: hidden;
-    overflow-y: auto;
-  }
-}
-
-.layer-templates-list {
-  display: flex;
-
-  .layer-template {
-    display: inline-block;
-    float: left;
-    width: 120px;
-    padding: 5px;
-    text-align: center;
-  }
-
-  .layer-template-image {
-    width: 100%;
-    height: 180px;
-    margin-bottom: 10px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .layer-template-image:hover {
-    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.2);
-  }
-}
-
-.table-responsive {
-  .table-actions span {
-    cursor: pointer;
-  }
-}

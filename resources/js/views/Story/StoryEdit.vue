@@ -1,7 +1,7 @@
 <template>
   <div>
     <story-left-side-bar></story-left-side-bar>
-    <div class="story-page-view md-elevation-3">
+    <div class="story-page_view md-elevation-3">
       <iframe id="story_page_view" width="100%" height="100%"
               style="visibility:hidden;" onload="this.style.visibility='visible';"
               allowtransparency="true"

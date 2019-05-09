@@ -5,7 +5,7 @@
       CREATE
     </md-button>
     <div class="table-responsive md-elevation-3">
-      <b-table striped hover show-empty small head-class="txHead" class="mb-0"
+      <b-table striped hover show-empty small head-class="txHead" class="dashboard-table mb-0"
                :current-page="currentPage" :per-page="perPage" :sort-by.sync="sortBy"
                :sort-desc.sync="sortDesc"  :items="searches" :fields="columns"
                @row-clicked="redirectToStory"

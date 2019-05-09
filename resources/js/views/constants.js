@@ -117,7 +117,7 @@ const bookend = {
   shareProviders: [
     {slug: 'twitter', name: 'Twitter', icon:  '/assets/bookend/twitter.png' },
     {slug: 'facebook', name: 'Facebook', icon:  '/assets/bookend/facebook.png' },
-    {slug: 'linkedin', name: 'Linkedin', icon:  '/assets/bookend/linkedin.png' },
+    {slug: 'youtube', name: 'Youtube', icon:  '/assets/bookend/youtube.png' },
     {slug: 'pinterest', name: 'Pinterest', icon:  '/assets/bookend/pinterest.png' },
     {slug: 'gplus', name: 'G+', icon:  '/assets/bookend/gplus.png' },
     {slug: 'tumblr', name: 'Tumblr', icon:  '/assets/bookend/tumblr.png' },

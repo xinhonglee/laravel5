@@ -27,6 +27,15 @@ const getGridArea = (slug) => {
   return null;
 };
 
+const getBookendShareProvider = (slug) => {
+  if(!_.isNil(slug)) {
+    return constants.bookend.shareProviders.find((share) => {
+      return share.slug === slug;
+    });
+  }
+  return null;
+};
+
 const isGridArea = (slug) => {
   return slug === 'thirds';
 };
@@ -56,6 +65,7 @@ export default {
   getLayerTemplate,
   getElement,
   getGridArea,
+  getBookendShareProvider,
   isGridArea,
   searchTable
 }

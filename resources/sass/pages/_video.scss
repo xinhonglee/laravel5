@@ -1,7 +1,5 @@
-.videos-list {
-  .md-table {
-    max-height: calc(100vh - 220px);
-    overflow: hidden;
-    overflow-y: auto;
+.video-edit {
+  p {
+    word-break: break-all;
   }
 }

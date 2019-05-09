@@ -1,7 +1,7 @@
 <template>
   <div class="story-left-sidebar md-elevation-3">
     <template v-if="story.data.pages.length > 0 && story.selected.page >= 0">
-      <div class="sidebar-header">
+      <div class="header">
         <span class="title">
           Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}
         </span>
@@ -43,12 +43,12 @@
     <md-dialog :md-active.sync="showDialog">
       <md-dialog-title>Add a new layer</md-dialog-title>
       <md-dialog-content>
-        <div class="layer-templates-list">
-          <div class="layer-template"
+        <div class="story-layer-templates_list">
+          <div class="template"
                v-for="(template, index) in layerTemplates"
                @click="addLayer(index)"
                :key="index">
-            <div class="layer-template-image"
+            <div class="template-image"
                  :style="{backgroundImage: 'url(' + template.icon + ')'}">
             </div>
             <p>{{ template.name }}</p>
