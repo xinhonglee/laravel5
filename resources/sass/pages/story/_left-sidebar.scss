@@ -1,6 +1,6 @@
 .story-left-sidebar {
   background: $light-gray;
-  border-top: 1px solid #8a8a8a;
+  border-top: 1px solid $light-black;
   height: calc(100vh - #{$header-height + $toolbar-height});
   left: 0;
   padding: 20px;
@@ -39,7 +39,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #eee;
+          background-color: $light-gray;
         }
       }
     }
@@ -80,10 +80,10 @@
         }
 
         &.selected {
-          background-color: #ccdcec;
+          background-color: $light-purple;
         }
         &:hover {
-          background-color: #d9d9d9;
+          background-color: $dark-gray;
         }
 
         img.layer-template_icon {
@@ -111,10 +111,10 @@
             }
           }
           &.selected {
-            background-color: #ccdcec;
+            background-color: $light-purple;
           }
           &:hover {
-            background-color: #d9d9d9;
+            background-color: $dark-gray;
           }
         }
 
@@ -132,10 +132,10 @@
               }
             }
             &.selected {
-              background-color: #ccdcec;
+              background-color: $light-purple;
             }
             &:hover {
-              background-color: #d9d9d9;
+              background-color: $dark-gray;
             }
 
             span.element-type_label {

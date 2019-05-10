@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <md-field>
-      <label>Width</label>
-      <md-input v-model="elementWidth"></md-input>
-    </md-field>
-    <md-field>
-      <label>Height</label>
-      <md-input v-model="elementHeight"></md-input>
-    </md-field>
-    <md-field>
-      <label>Layout</label>
-      <md-select v-model="elementLayout">
-        <md-option v-for="(opt, index) in layoutOptions" :value="opt.slug" :key="index">
-          {{ opt.name }}
-        </md-option>
-      </md-select>
-    </md-field>
-  </div>
+    <div>
+        <md-field>
+            <label>Width</label>
+            <md-input v-model="elementWidth"></md-input>
+        </md-field>
+        <md-field>
+            <label>Height</label>
+            <md-input v-model="elementHeight"></md-input>
+        </md-field>
+        <md-field>
+            <label>Layout</label>
+            <md-select v-model="elementLayout">
+                <md-option v-for="(opt, index) in layoutOptions" :value="opt.slug" :key="index">
+                    {{ opt.name }}
+                </md-option>
+            </md-select>
+        </md-field>
+    </div>
 </template>
 
 <script>

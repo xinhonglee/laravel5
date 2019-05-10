@@ -1,7 +1,7 @@
 <template>
-  <div>
-    No specification
-  </div>
+    <div>
+        No specification
+    </div>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 import constants from './constants';
 
 const getLayerTemplate = (slug) => {
-  if(!_.isNil(slug)) {
+  if (!_.isNil(slug)) {
     return constants.layerTemplates.find((template) => {
       return template.slug === slug;
     });
@@ -10,7 +10,7 @@ const getLayerTemplate = (slug) => {
 };
 
 const getElement = (slug) => {
-  if(!_.isNil(slug)) {
+  if (!_.isNil(slug)) {
     return constants.elementTypes.find((element) => {
       return element.slug === slug;
     });
@@ -19,7 +19,7 @@ const getElement = (slug) => {
 };
 
 const getGridArea = (slug) => {
-  if(!_.isNil(slug)) {
+  if (!_.isNil(slug)) {
     return constants.gridAreas.find((area) => {
       return area.slug === slug;
     });
@@ -28,7 +28,7 @@ const getGridArea = (slug) => {
 };
 
 const getBookendShareProvider = (slug) => {
-  if(!_.isNil(slug)) {
+  if (!_.isNil(slug)) {
     return constants.bookend.shareProviders.find((share) => {
       return share.slug === slug;
     });
@@ -49,12 +49,12 @@ const searchTable = (items, term) => {
     return items.filter(item => {
       let result = false;
       Object.keys(item).forEach((key) => {
-        if(toLower(item[key]).includes(toLower(term))) {
+        if (toLower(item[key]).includes(toLower(term))) {
           result = true;
           return true;
         }
       });
-     return result;
+      return result;
     })
   }
 

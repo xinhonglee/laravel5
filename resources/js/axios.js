@@ -6,7 +6,7 @@ const API_URL = '/api';
 let bearHeader = '';
 const token = store.state.token;
 if (token) {
-    bearHeader = 'Bearer ' + token;
+  bearHeader = 'Bearer ' + token;
 }
 
 export default axios.create({

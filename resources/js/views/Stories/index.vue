@@ -1,43 +1,43 @@
 <template>
-  <div class="stories-list">
-    <md-button class="md-raised md-primary mb-3 pr-2 ml-0" @click="redirectToCreateStory">
-      <md-icon>add</md-icon>
-      CREATE
-    </md-button>
-    <div class="table-responsive md-elevation-3">
-      <b-table striped hover show-empty small head-class="txHead" class="dashboard-table mb-0"
-               :current-page="currentPage" :per-page="perPage" :sort-by.sync="sortBy"
-               :sort-desc.sync="sortDesc"  :items="searches" :fields="columns"
-               @row-clicked="redirectToStory"
-      >
-        <template slot="tool" slot-scope="row">
-          <div class="table-actions">
-            <span>
-              <md-icon style="font-size:20px!important;">file_copy</md-icon>
-              <md-tooltip md-direction="top">Duplicate</md-tooltip>
-            </span>
-            <span @click="showRemoveStoryDialog(row.item)">
-              <md-icon>delete_outline</md-icon>
-              <md-tooltip md-direction="top">Remove</md-tooltip>
-            </span>
-          </div>
-        </template>
-      </b-table>
+    <div class="stories-list">
+        <md-button class="md-raised md-primary mb-3 pr-2 ml-0" @click="redirectToCreateStory">
+            <md-icon>add</md-icon>
+            CREATE
+        </md-button>
+        <div class="table-responsive md-elevation-3">
+            <b-table striped hover show-empty small head-class="txHead" class="dashboard-table mb-0"
+                     :current-page="currentPage" :per-page="perPage" :sort-by.sync="sortBy"
+                     :sort-desc.sync="sortDesc"  :items="searches" :fields="columns"
+                     @row-clicked="redirectToStory">
+                <template slot="tool" slot-scope="row">
+                    <div class="table-actions">
+                        <span>
+                          <md-icon style="font-size:20px!important;">file_copy</md-icon>
+                          <md-tooltip md-direction="top">Duplicate</md-tooltip>
+                        </span>
+                        <span @click="showRemoveStoryDialog(row.item)">
+                          <md-icon>delete_outline</md-icon>
+                          <md-tooltip md-direction="top">Remove</md-tooltip>
+                        </span>
+                    </div>
+                </template>
+            </b-table>
+        </div>
+        <div class="mt-4">
+            <div class="form-group float-left">
+                <b-form-select :options="pageOptions" v-model="perPage"/>
+            </div>
+            <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage"
+                          class="justify-content-center"/>
+        </div>
+        <md-dialog-confirm
+            :md-active.sync="showRemoveDialog"
+            md-title="Do you really want to remove this story?"
+            md-confirm-text="Ok"
+            md-cancel-text="Cancel"
+            @md-cancel="showRemoveDialog = false"
+            @md-confirm="removeStory"/>
     </div>
-    <div class="mt-4">
-      <div class="form-group float-left">
-        <b-form-select :options="pageOptions" v-model="perPage"/>
-      </div>
-      <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" class="justify-content-center"/>
-    </div>
-    <md-dialog-confirm
-      :md-active.sync="showRemoveDialog"
-      md-title="Do you really want to remove this story?"
-      md-confirm-text="Ok"
-      md-cancel-text="Cancel"
-      @md-cancel="showRemoveDialog = false"
-      @md-confirm="removeStory"/>
-  </div>
 </template>
 
 <script>

@@ -1,7 +1,8 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import { createDropdown, addToolbarToDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
-import {customStyles} from './utils';
+import { customStyles } from './utils';
+
 const CUSTOMSTYLE = 'customStyle';
 
 export default class CustomStyleUI extends Plugin {

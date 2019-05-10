@@ -41,7 +41,7 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {};
   state.story.data.css = (story && story.data.css) ? story.data.css : '';
 
-  if(!_.isNil(story.selected)) {
+  if (!_.isNil(story.selected)) {
     Vue.$store.dispatch('selectAMPStory', story.selected);
   }
 };
@@ -51,7 +51,7 @@ export const SAVE_AMP_STORY = (state, story) => {
   const data = {
     'id': (story && story.id) ? story.id : Vue.$store.state.story.id,
     'title': Vue.$store.state.app.title,
-    'slug' : (story && story.slug) ? story.slug : Vue.$store.state.story.slug,
+    'slug': (story && story.slug) ? story.slug : Vue.$store.state.story.slug,
     'data': {
       'background-audio': (story && story.data.backgroundAudio) ? story.data.backgroundAudio : storyData.backgroundAudio,
       'poster-portrait-src': (story && story.data.posterPortraitSrc) ? story.data.posterPortraitSrc : storyData.posterPortraitSrc,
@@ -69,7 +69,7 @@ export const SAVE_AMP_STORY = (state, story) => {
     Vue.block();
     if (!_.isNil(Vue.$store.state.story.id) && !Vue.$store.state.story.new) {
       Vue.$http.put(`/story/update`, data).then((response) => {
-        response.data = !_.isNil(story.selected) ? {...response.data, selected: story.selected} : response.data;
+        response.data = !_.isNil(story.selected) ? { ...response.data, selected: story.selected } : response.data;
         Vue.$store.dispatch('updateAMPStory', response.data);
         Vue.unBlock();
         Vue.alertBox({
@@ -82,7 +82,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       }).catch(Vue.handleClientError);
     } else {
       Vue.$http.post(`/story/create`, data).then((response) => {
-        response.data = !_.isNil(story.selected) ? {...response.data, selected: story.selected} : response.data;
+        response.data = !_.isNil(story.selected) ? { ...response.data, selected: story.selected } : response.data;
         Vue.$store.dispatch('updateAMPStory', response.data);
         Vue.$store.state.story.new = false;
         Vue.unBlock();
@@ -103,7 +103,7 @@ export const SAVE_AMP_STORY = (state, story) => {
       Vue.$store.state.story.new = true;
     }
     Vue.$http.post(`/story/redis/set`, data).then((response) => {
-      response.data = !_.isNil(story.selected) ? {...response.data, selected: story.selected} : response.data;
+      response.data = !_.isNil(story.selected) ? { ...response.data, selected: story.selected } : response.data;
       Vue.$store.dispatch('updateAMPStory', response.data);
     }, (error) => {
       console.log(error);
@@ -124,10 +124,10 @@ export const DELETE_AMP_STORY_REDIS = (state) => {
 };
 
 export const SELECT_AMP_STORY = (state, selected) => {
-  state.story.selected.page = !_.isNil(selected.page) ? selected.page: 0;
-  state.story.selected.layer = !_.isNil(selected.layer) ? selected.layer: -1;
-  state.story.selected.gridArea = !_.isNil(selected.gridArea) ? selected.gridArea: -1;
-  state.story.selected.element = !_.isNil(selected.element) ? selected.element: -1;
+  state.story.selected.page = !_.isNil(selected.page) ? selected.page : 0;
+  state.story.selected.layer = !_.isNil(selected.layer) ? selected.layer : -1;
+  state.story.selected.gridArea = !_.isNil(selected.gridArea) ? selected.gridArea : -1;
+  state.story.selected.element = !_.isNil(selected.element) ? selected.element : -1;
 };
 
 export const CLEAR_AMP_STORY = (state) => {
@@ -156,12 +156,12 @@ export const CLEAR_AMP_STORY = (state) => {
 
 export const FETCH_STORY_STYLE = (state) => {
   Vue.$http.get('/story/style').then((response) => {
-    
+
     // temporarily 
-    if(response.data && response.data.length === 0 && _.isNil(response.data[0].slug) ) {
+    if (response.data && response.data.length === 0 && _.isNil(response.data[0].slug)) {
       state.story.data.css = response.data[0].data;
     } else {
-      state.story.data.css = response.data.filter( style => {
+      state.story.data.css = response.data.filter(style => {
         return style.slug = 'setting'
       })[0].data;
     }

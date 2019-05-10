@@ -30,13 +30,11 @@
           twitter: false,
           youtube: false
         },
-        components: [
-
-        ]
+        components: []
       }
     },
     methods: {
-      getShareProviderIcon(slug) {
+      getShareProviderIcon (slug) {
         const share = utils.getBookendShareProvider(slug);
         return share ? share.icon : ''
       }

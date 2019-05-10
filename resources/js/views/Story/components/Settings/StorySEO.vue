@@ -1,55 +1,58 @@
 <template>
-  <div>
-    <div class="md-layout">
-      <div class="md-layout-item">
-        <p>Poster Portrait Image</p>
-        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_portrait_image">Select
-          a file
-        </button>
-      </div>
-      <div class="md-layout-item">
-        <img v-if="posterPortraitSrc" :src="posterPortraitSrc" class="attachment-image md-elevation-7"/>
-      </div>
+    <div>
+        <div class="md-layout">
+            <div class="md-layout-item">
+                <p>Poster Portrait Image</p>
+                <button type="button" class="md-button md-raised md-theme-default px-3"
+                        id="upload_poster_portrait_image">
+                    Select a file
+                </button>
+            </div>
+            <div class="md-layout-item">
+                <img v-if="posterPortraitSrc" :src="posterPortraitSrc" class="attachment-image md-elevation-7"/>
+            </div>
+        </div>
+        <div class="md-layout">
+            <div class="md-layout-item">
+                <p>Poster Square Image</p>
+                <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_square_image">
+                    Select a file
+                </button>
+            </div>
+            <div class="md-layout-item">
+                <img v-if="posterSquareSrc" :src="posterSquareSrc" class="attachment-image md-elevation-7"/>
+            </div>
+        </div>
+        <div class="md-layout">
+            <div class="md-layout-item">
+                <p>Poster Landscape Image</p>
+                <button type="button" class="md-button md-raised md-theme-default px-3"
+                        id="upload_poster_landscape_image">
+                    Select a file
+                </button>
+            </div>
+            <div class="md-layout-item">
+                <img v-if="posterLandscapeSrc" :src="posterLandscapeSrc" class="attachment-image md-elevation-7"/>
+            </div>
+        </div>
+        <md-switch v-model="supportsLandscape">Supports Landscape</md-switch>
+        <md-field>
+            <label>Publisher</label>
+            <md-input v-model="publisher"></md-input>
+        </md-field>
+        <div class="md-layout">
+            <div class="md-layout-item">
+                <p>Publisher Logo</p>
+                <button type="button" class="md-button md-raised md-theme-default px-3"
+                        id="upload_story_publisher_logo">
+                    Select a file
+                </button>
+            </div>
+            <div class="md-layout-item">
+                <img v-if="publisherLogoSrc" :src="publisherLogoSrc" class="attachment-image md-elevation-7"/>
+            </div>
+        </div>
     </div>
-    <div class="md-layout">
-      <div class="md-layout-item">
-        <p>Poster Square Image</p>
-        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_square_image">Select a
-          file
-        </button>
-      </div>
-      <div class="md-layout-item">
-        <img v-if="posterSquareSrc" :src="posterSquareSrc" class="attachment-image md-elevation-7"/>
-      </div>
-    </div>
-    <div class="md-layout">
-      <div class="md-layout-item">
-        <p>Poster Landscape Image</p>
-        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_poster_landscape_image">
-          Select a file
-        </button>
-      </div>
-      <div class="md-layout-item">
-        <img v-if="posterLandscapeSrc" :src="posterLandscapeSrc" class="attachment-image md-elevation-7"/>
-      </div>
-    </div>
-    <md-switch v-model="supportsLandscape">Supports Landscape</md-switch>
-    <md-field>
-      <label>Publisher</label>
-      <md-input v-model="publisher"></md-input>
-    </md-field>
-    <div class="md-layout">
-      <div class="md-layout-item">
-        <p>Publisher Logo</p>
-        <button type="button" class="md-button md-raised md-theme-default px-3" id="upload_story_publisher_logo">Select
-          a file
-        </button>
-      </div>
-      <div class="md-layout-item">
-        <img v-if="publisherLogoSrc" :src="publisherLogoSrc" class="attachment-image md-elevation-7"/>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -138,30 +141,30 @@
       }
     },
     watch: {
-      posterPortraitSrc(value) {
-          Vue.$emit('story:settings', { posterPortraitSrc: value });
+      posterPortraitSrc (value) {
+        Vue.$emit('story:settings', { posterPortraitSrc: value });
       },
-      posterSquareSrc(value) {
-          Vue.$emit('story:settings', { posterSquareSrc: value });
+      posterSquareSrc (value) {
+        Vue.$emit('story:settings', { posterSquareSrc: value });
       },
-      posterLandscapeSrc(value) {
-          Vue.$emit('story:settings', { posterLandscapeSrc: value });
+      posterLandscapeSrc (value) {
+        Vue.$emit('story:settings', { posterLandscapeSrc: value });
       },
-      supportsLandscape(value) {
-          Vue.$emit('story:settings', { supportsLandscape: value });
+      supportsLandscape (value) {
+        Vue.$emit('story:settings', { supportsLandscape: value });
       },
-      publisher(value) {
-          Vue.$emit('story:settings', { publisher: value });
+      publisher (value) {
+        Vue.$emit('story:settings', { publisher: value });
       },
-      publisherLogoSrc(value) {
-          Vue.$emit('story:settings', { publisherLogoSrc: value });
+      publisherLogoSrc (value) {
+        Vue.$emit('story:settings', { publisherLogoSrc: value });
       }
     }
   }
 </script>
 
 <style scoped>
-  .md-layout {
-    padding-bottom: 20px;
-  }
+    .md-layout {
+        padding-bottom: 20px;
+    }
 </style>

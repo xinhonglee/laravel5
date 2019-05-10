@@ -1,55 +1,57 @@
 <template>
-  <div class="container">
-    <b-row class="justify-content-center">
-      <b-col md="6">
-        <form novalidate class="md-layout" @submit.prevent="validateUser">
-          <md-card class="md-layout-item">
-            <md-card-header>
-              <div class="md-title">User Register</div>
-            </md-card-header>
-            <md-card-content>
-              <md-progress-bar md-mode="indeterminate" v-if="sending"/>
-              <md-field :class="getValidationClass('name')">
-                <label for="name">Name</label>
-                <md-input name="name" id="name" autocomplete="given-name" v-model="form.name"
-                          :disabled="sending"/>
-                <span class="md-error" v-if="!$v.form.name.required">The name is required</span>
-              </md-field>
-              <md-field :class="getValidationClass('email')">
-                <label for="email">Email</label>
-                <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email"
-                          :disabled="sending"/>
-                <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
-                <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
-              </md-field>
-              <md-field :class="getValidationClass('password')">
-                <label for="password">Password</label>
-                <md-input type="password" name="password" id="password" autocomplete="password" v-model="form.password"
-                          :disabled="sending"/>
-                <span class="md-error" v-if="!$v.form.password.required">The password is required</span>
-              </md-field>
-              <md-field :class="getValidationClass('c_password')">
-                <label for="c_password">Confirm Password</label>
-                <md-input type="password" name="c_password" id="c_password" autocomplete="c_password"
-                          v-model="form.c_password" :disabled="sending"/>
-                <span class="md-error" v-if="!$v.form.c_password.required">The confirm password is required</span>
-              </md-field>
-              <br>
-              <b-button variant="link" to="/auth/login" class="px-0">Login now</b-button>
-            </md-card-content>
-            <md-card-actions>
-              <md-button type="submit" class="md-raised md-primary" :disabled="sending">Register</md-button>
-            </md-card-actions>
-          </md-card>
-        </form>
-      </b-col>
-    </b-row>
-  </div>
+    <div class="container">
+        <b-row class="justify-content-center">
+            <b-col md="6">
+                <form novalidate class="md-layout" @submit.prevent="validateUser">
+                    <md-card class="md-layout-item">
+                        <md-card-header>
+                            <div class="md-title">User Register</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <md-progress-bar md-mode="indeterminate" v-if="sending"/>
+                            <md-field :class="getValidationClass('name')">
+                                <label for="name">Name</label>
+                                <md-input name="name" id="name" autocomplete="given-name" v-model="form.name"
+                                          :disabled="sending"/>
+                                <span class="md-error" v-if="!$v.form.name.required">The name is required</span>
+                            </md-field>
+                            <md-field :class="getValidationClass('email')">
+                                <label for="email">Email</label>
+                                <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email"
+                                          :disabled="sending"/>
+                                <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
+                                <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
+                            </md-field>
+                            <md-field :class="getValidationClass('password')">
+                                <label for="password">Password</label>
+                                <md-input type="password" name="password" id="password" autocomplete="password"
+                                          v-model="form.password"
+                                          :disabled="sending"/>
+                                <span class="md-error" v-if="!$v.form.password.required">The password is required</span>
+                            </md-field>
+                            <md-field :class="getValidationClass('c_password')">
+                                <label for="c_password">Confirm Password</label>
+                                <md-input type="password" name="c_password" id="c_password" autocomplete="c_password"
+                                          v-model="form.c_password" :disabled="sending"/>
+                                <span class="md-error" v-if="!$v.form.c_password.required">The confirm password is required</span>
+                            </md-field>
+                            <br>
+                            <b-button variant="link" to="/auth/login" class="px-0">Login now</b-button>
+                        </md-card-content>
+                        <md-card-actions>
+                            <md-button type="submit" class="md-raised md-primary" :disabled="sending">Register
+                            </md-button>
+                        </md-card-actions>
+                    </md-card>
+                </form>
+            </b-col>
+        </b-row>
+    </div>
 </template>
 
 <script>
   import { validationMixin } from 'vuelidate'
-  import {handleLogin} from "../../utils/auth";
+  import { handleLogin } from "../../utils/auth";
   import {
     required,
     email,

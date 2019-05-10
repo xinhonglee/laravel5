@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <md-field>
-      <label>Id</label>
-      <md-input v-model="elementId"></md-input>
-    </md-field>
-    <md-field>
-      <label>Class</label>
-      <md-input v-model="elementClass"></md-input>
-    </md-field>
-    <br>
-    <p style="color:#6d6d6d">Rich text</p>
-    <ckeditor :editor="editor" v-model="elementHtml" :config="editorConfig"></ckeditor>
-  </div>
+    <div>
+        <md-field>
+            <label>Id</label>
+            <md-input v-model="elementId"></md-input>
+        </md-field>
+        <md-field>
+            <label>Class</label>
+            <md-input v-model="elementClass"></md-input>
+        </md-field>
+        <br>
+        <p style="color:#6d6d6d">Rich text</p>
+        <ckeditor :editor="editor" v-model="elementHtml" :config="editorConfig"></ckeditor>
+    </div>
 </template>
 
 <script>

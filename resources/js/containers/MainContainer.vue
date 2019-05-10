@@ -1,26 +1,26 @@
 <template>
-  <div class="app">
-    <template v-if="showEditableHeader">
-      <app-editable-header></app-editable-header>
-    </template>
-    <template v-else>
-      <app-header></app-header>
-    </template>
-    <div class="app-body">
-      <template v-if="showAppFilter">
-        <app-filter></app-filter>
-      </template>
-      <template v-if="showAppToolbar">
-        <app-toolbar></app-toolbar>
-      </template>
-      <template v-if="showAppSidebar">
-        <app-sidebar></app-sidebar>
-      </template>
-      <div class="app-content" :class="showAppSidebar ? 'sidebar' : ''">
-        <router-view></router-view>
-      </div>
+    <div class="app">
+        <template v-if="showEditableHeader">
+            <app-editable-header></app-editable-header>
+        </template>
+        <template v-else>
+            <app-header></app-header>
+        </template>
+        <div class="app-body">
+            <template v-if="showAppFilter">
+                <app-filter></app-filter>
+            </template>
+            <template v-if="showAppToolbar">
+                <app-toolbar></app-toolbar>
+            </template>
+            <template v-if="showAppSidebar">
+                <app-sidebar></app-sidebar>
+            </template>
+            <div class="app-content" :class="showAppSidebar ? 'sidebar' : ''">
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>

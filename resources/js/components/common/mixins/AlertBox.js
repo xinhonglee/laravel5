@@ -1,6 +1,6 @@
 export default {
   methods: {
-    alertBox(options, callback) {
+    alertBox (options, callback) {
       if (typeof callback !== 'function') callback = null;
       let ops = Object.assign({}, options);
 
@@ -13,7 +13,7 @@ export default {
       }
 
     },
-    block() {
+    block () {
       $.blockUI({
         css: {
           border: 'none',
@@ -26,13 +26,13 @@ export default {
         }
       });
     },
-    handleClientError(error) {
+    handleClientError (error) {
       Vue.unBlock();
       console.log('Client error is : %O', error);
     },
-    handleServerErrorV2(response) {
+    handleServerErrorV2 (response) {
       let errorText = '';
-      if(typeof response.data === 'undefined' && typeof response.body === 'object') {
+      if (typeof response.data === 'undefined' && typeof response.body === 'object') {
         response.data = response.body;
       }
       if (response.data.hasOwnProperty('message') && typeof response.data.message === 'string') {
@@ -58,9 +58,9 @@ export default {
         type: 'error'
       });
     },
-    handleServerError(response) {
+    handleServerError (response) {
       let errorText = '';
-      if(typeof response.data === 'undefined' && typeof response.body === 'object') {
+      if (typeof response.data === 'undefined' && typeof response.body === 'object') {
         response.data = response.body;
       }
       if (response.data.hasOwnProperty('message') && typeof response.data.message === 'string') {
@@ -86,7 +86,7 @@ export default {
         type: 'error'
       });
     },
-    handleServerSuccess() {
+    handleServerSuccess () {
       Vue.unBlock();
       Vue.alertBox({
         title: 'Success',
@@ -94,19 +94,19 @@ export default {
         type: 'success'
       });
     },
-    setImageUrl(type) {
-      switch(type) {
+    setImageUrl (type) {
+      switch (type) {
         case 'success':
-          return  "/assets/ic-success.png";
+          return "/assets/ic-success.png";
           break;
         case 'error':
-          return  "/assets/ic-error.png";
+          return "/assets/ic-error.png";
           break;
         default:
           return false;
       }
     },
-    showPopup(type, message) {
+    showPopup (type, message) {
       this.alertBox({
         title: type.toUpperCase(),
         text: message,
@@ -114,7 +114,7 @@ export default {
       });
       Vue.unBlock();
     },
-    unBlock() {
+    unBlock () {
       $.unblockUI();
     },
   }
