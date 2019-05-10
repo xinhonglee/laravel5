@@ -33,7 +33,7 @@
                     </page-layer>
                 </template>
             </div>
-            <md-button class="md-fab md-primary" @click="showDialog = true">
+            <md-button class="btn-add-layer md-fab md-primary" @click="showDialog = true">
                 <md-icon>add</md-icon>
             </md-button>
         </template>

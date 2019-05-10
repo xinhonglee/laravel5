@@ -1,11 +1,11 @@
 .story-bookend {
-  &_share {
+  &_share-providers {
     padding: 0;
     margin: 0;
+    display: block;
     li {
       display: inline-block;
-      float: left;
-      padding-right: 10px;
+      padding-right: 12px;
 
       img {
         width: 30px;
@@ -14,7 +14,44 @@
 
       .md-checkbox {
         margin: 0;
+        top: 5px;
+        left: 3px;
       }
     }
   }
+
+  &_components {
+    display: flex;
+    .btn-add-component {
+      height: 40px !important;
+      width: 40px !important;
+    }
+    .content {
+      flex: 1;
+
+      ul.available-components {
+        padding-left: 20px;
+        margin: 0;
+        li {
+          list-style: none;
+          display: flex;
+          margin: 5px 0;
+
+          .component-icon {
+            width: 40px;
+            height: 40px;
+            background: $dark-gray;
+            border-radius: 50%;
+            margin-right: 10px;
+          }
+          .component-name {
+            padding: 10px;
+            background: $dark-gray;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+
 }
