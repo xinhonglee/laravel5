@@ -1,7 +1,8 @@
 <template>
-  <div class="amp-element" @click="addElement">
-    <md-icon>layers</md-icon> {{ elementName }}
-  </div>
+    <div class="amp-element" @click="addElement">
+        <md-icon>layers</md-icon>
+        {{ elementName }}
+    </div>
 </template>
 
 <script>
@@ -22,7 +23,7 @@
         const el = utils.getElement(this.slug);
         this.elementName = el ? el.name : '';
       },
-      addElement() {
+      addElement () {
         if (this.slug) {
           Vue.$emit("add:element", this.slug);
         }
@@ -37,13 +38,14 @@
 </script>
 
 <style scoped lang="scss">
-  .md-icon {
-    font-size: 15px !important;
-  }
-  .amp-element {
-    cursor: pointer;
-    &:hover {
-      background-color: #ccdcec;
+    .md-icon {
+        font-size: 15px !important;
     }
-  }
+
+    .amp-element {
+        cursor: pointer;
+        &:hover {
+            background-color: #ccdcec;
+        }
+    }
 </style>

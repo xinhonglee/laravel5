@@ -1,12 +1,12 @@
 <template>
-  
+
 </template>
 
 <script>
   export default {
     name: "analytics",
 
-    mounted() {
+    mounted () {
       this.$store.dispatch('updateAppTitle', 'Analytics');
     }
   }

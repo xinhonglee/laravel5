@@ -1,17 +1,17 @@
 <template>
-  <div class="admin">
-    <md-tabs>
-      <md-tab id="tab-posts" md-label="Users">
-        <user-management></user-management>
-      </md-tab>
-      <md-tab id="tab-videos" md-label="Videos">
-        Videos Management
-      </md-tab>
-      <md-tab id="tab-stories" md-label="Stories">
-        <story-management></story-management>
-      </md-tab>
-    </md-tabs>
-  </div>
+    <div class="admin">
+        <md-tabs>
+            <md-tab id="tab-posts" md-label="Users">
+                <user-management></user-management>
+            </md-tab>
+            <md-tab id="tab-videos" md-label="Videos">
+                Videos Management
+            </md-tab>
+            <md-tab id="tab-stories" md-label="Stories">
+                <story-management></story-management>
+            </md-tab>
+        </md-tabs>
+    </div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@
       StoryManagement,
       UserManagement
     },
-    mounted() {
+    mounted () {
       this.$store.dispatch('updateAppTitle', 'Admin');
     }
   }

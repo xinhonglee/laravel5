@@ -1,48 +1,73 @@
 <template>
-  <div class="page-layer">
-    <div class="layer-template" :class="{ selected : isLayerSelected()}">
-      <img class="layer-template_icon" :src="getLayerTemplateIcon(layer.template)" alt="No Icon"/>
-      <div class="layer-template_name" @click="selectLayer">{{ getLayerTemplateName(layer.template)}} Template</div>
-      <div class="btn-tools">
-        <span @click="orderUpLayer"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
-        <span @click="orderDownLayer"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
-        <span @click="removeLayer"><md-icon>delete_outline</md-icon></span>
-      </div>
-    </div>
-    <div class="layer-elements">
-      <template v-if="isGridArea(layer.template)">
-        <template v-for="(gridArea, gridIndex) of gridAreas">
-          <div class="element-grid-area" :class="{ selected : isGridAreaSelected(gridIndex)}"
-               @click="selectGridArea(gridIndex)" v-html="gridArea.name"></div>
-          <div class="element" v-if="element['grid-area'] === gridArea.slug"
-               v-for="(element, index) of layer.elements" :key="index">
-            <div class="element-type" :class="{ selected : isElementSelected(index)}">
-              [ <span class="element-type_label" @click="selectGridElement(gridIndex, index)">{{ getElementName(element.type)}}</span> ]
-              <div class="btn-tools">
-                <span @click="orderGridUpElement(gridIndex, index)"><md-icon style="transform: rotate(-90deg);">trending_flat</md-icon></span>
-                <span @click="orderGridDownElement(gridIndex, index)"><md-icon
-                  style="transform: rotate(90deg);">trending_flat</md-icon></span>
-                <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
-              </div>
+    <div class="page-layer">
+        <div class="layer-template" :class="{ selected : isLayerSelected()}">
+            <img class="layer-template_icon" :src="getLayerTemplateIcon(layer.template)" alt="No Icon"/>
+            <div class="layer-template_name" @click="selectLayer">
+                {{ getLayerTemplateName(layer.template)}} Template
             </div>
-          </div>
-        </template>
-      </template>
-      <template v-else>
-        <div class="element" v-for="(element, index) of layer.elements" :key="index">
-          <div class="element-type" :class="{ selected : isElementSelected(index)}">
-            [ <span class="element-type_label" @click="selectElement(index)">{{ getElementName(element.type)}}</span> ]
             <div class="btn-tools">
-              <span @click="orderUpElement(index)"><md-icon
-                style="transform: rotate(-90deg);">trending_flat</md-icon></span>
-              <span @click="orderDownElement(index)"><md-icon style="transform: rotate(90deg);">trending_flat</md-icon></span>
-              <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
+                <span @click="orderUpLayer">
+                    <md-icon style="transform: rotate(-90deg);">trending_flat</md-icon>
+                </span>
+                <span @click="orderDownLayer">
+                    <md-icon style="transform: rotate(90deg);">trending_flat</md-icon>
+                </span>
+                <span @click="removeLayer">
+                    <md-icon>delete_outline</md-icon>
+                </span>
             </div>
-          </div>
         </div>
-      </template>
+        <div class="layer-elements">
+            <template v-if="isGridArea(layer.template)">
+                <template v-for="(gridArea, gridIndex) of gridAreas">
+                    <div class="element-grid-area"
+                         :class="{ selected : isGridAreaSelected(gridIndex)}"
+                         @click="selectGridArea(gridIndex)" v-html="gridArea.name"></div>
+                    <div class="element" v-if="element['grid-area'] === gridArea.slug"
+                         v-for="(element, index) of layer.elements" :key="index">
+                        <div class="element-type" :class="{ selected : isElementSelected(index)}">
+                            [
+                            <span class="element-type_label" @click="selectGridElement(gridIndex, index)">
+                                {{ getElementName(element.type)}}
+                            </span>
+                            ]
+                            <div class="btn-tools">
+                                <span @click="orderGridUpElement(gridIndex, index)">
+                                    <md-icon style="transform: rotate(-90deg);">trending_flat</md-icon>
+                                </span>
+                                <span @click="orderGridDownElement(gridIndex, index)">
+                                    <md-icon style="transform: rotate(90deg);">trending_flat</md-icon>
+                                </span>
+                                <span @click="removeElement(index)"><md-icon>delete_outline</md-icon></span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template v-else>
+                <div class="element" v-for="(element, index) of layer.elements" :key="index">
+                    <div class="element-type" :class="{ selected : isElementSelected(index)}">
+                        [
+                        <span class="element-type_label"
+                              @click="selectElement(index)">{{ getElementName(element.type)}}
+                        </span>
+                        ]
+                        <div class="btn-tools">
+                            <span @click="orderUpElement(index)">
+                                <md-icon style="transform: rotate(-90deg);">trending_flat</md-icon>
+                            </span>
+                            <span @click="orderDownElement(index)">
+                                <md-icon style="transform: rotate(90deg);">trending_flat</md-icon>
+                            </span>
+                            <span @click="removeElement(index)">
+                                <md-icon>delete_outline</md-icon>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -157,7 +182,7 @@
         if (this.$store.state.story.selected.layer !== this.layerIndex) {
           return false;
         }
-        if (this.$store.state.story.selected.gridArea >= 0 ) {
+        if (this.$store.state.story.selected.gridArea >= 0) {
           return false;
         }
         if (this.$store.state.story.selected.element >= 0) {
@@ -172,7 +197,7 @@
        * @param index
        * @returns {boolean}
        */
-      isGridAreaSelected(index) {
+      isGridAreaSelected (index) {
         if (this.$store.state.story.selected.page !== this.pageIndex) {
           return false;
         }

@@ -1,46 +1,46 @@
 <template>
-  <div class="video-edit">
-    <b-row class="justify-content-center">
-      <b-col md="7">
-        <span>Video Description</span>
-        <md-field>
-          <md-icon class="mr-2">wrap_text</md-icon>
-          <md-textarea v-model="description" rows="5" :disabled="!editable"></md-textarea>
-        </md-field>
-        <span>Video Date</span>
-        <md-datepicker v-model="date" :disabled="!editable"/>
-        <span>Video Category</span>
-        <md-field>
-          <md-icon class="mr-2">category</md-icon>
-          <md-select v-model="video_category_id" name="category" id="category" :disabled="!editable">
-            <md-option v-for="(category, index) in video_categories" :value="category.id" :key="index">
-              {{ category.name }}
-            </md-option>
-          </md-select>
-        </md-field>
-        <b-row class="mt-5">
-          <b-col md="6">
-            <span class="label-poss-btn">Video File</span>
-            <button type="button" class="md-raised ml-5 px-3" id="upload_video">Select a file</button>
-            <div class="mt-4">
-              <p v-if="video_id"><strong>ID: &nbsp;&nbsp;&nbsp;{{ video_id }}</strong></p>
-              <p v-if="video_url"><strong>URL:</strong> {{ video_url }}</p>
-              <img v-if="videoVignette" class="md-elevation-3" :src="videoVignette"/>
-            </div>
-          </b-col>
-          <b-col md="6">
-            <span class="label-poss-btn">Cover File</span>
-            <button type="button" class="md-raised ml-5 px-3" id="upload_cover">Select a file</button>
-            <div class="mt-4">
-              <p v-if="cover_id"><strong>ID: &nbsp;&nbsp;&nbsp;{{ cover_id }}</strong></p>
-              <p v-if="cover_url"><strong>URL:</strong> {{ cover_url }}</p>
-              <img v-if="coverVignette" class="md-elevation-3" :src="coverVignette"/>
-            </div>
-          </b-col>
+    <div class="video-edit">
+        <b-row class="justify-content-center">
+            <b-col md="7">
+                <span>Video Description</span>
+                <md-field>
+                    <md-icon class="mr-2">wrap_text</md-icon>
+                    <md-textarea v-model="description" rows="5" :disabled="!editable"></md-textarea>
+                </md-field>
+                <span>Video Date</span>
+                <md-datepicker v-model="date" :disabled="!editable"/>
+                <span>Video Category</span>
+                <md-field>
+                    <md-icon class="mr-2">category</md-icon>
+                    <md-select v-model="video_category_id" name="category" id="category" :disabled="!editable">
+                        <md-option v-for="(category, index) in video_categories" :value="category.id" :key="index">
+                            {{ category.name }}
+                        </md-option>
+                    </md-select>
+                </md-field>
+                <b-row class="mt-5">
+                    <b-col md="6">
+                        <span class="label-poss-btn">Video File</span>
+                        <button type="button" class="md-raised ml-5 px-3" id="upload_video">Select a file</button>
+                        <div class="mt-4">
+                            <p v-if="video_id"><strong>ID: &nbsp;&nbsp;&nbsp;{{ video_id }}</strong></p>
+                            <p v-if="video_url"><strong>URL:</strong> {{ video_url }}</p>
+                            <img v-if="videoVignette" class="md-elevation-3" :src="videoVignette"/>
+                        </div>
+                    </b-col>
+                    <b-col md="6">
+                        <span class="label-poss-btn">Cover File</span>
+                        <button type="button" class="md-raised ml-5 px-3" id="upload_cover">Select a file</button>
+                        <div class="mt-4">
+                            <p v-if="cover_id"><strong>ID: &nbsp;&nbsp;&nbsp;{{ cover_id }}</strong></p>
+                            <p v-if="cover_url"><strong>URL:</strong> {{ cover_url }}</p>
+                            <img v-if="coverVignette" class="md-elevation-3" :src="coverVignette"/>
+                        </div>
+                    </b-col>
+                </b-row>
+            </b-col>
         </b-row>
-      </b-col>
-    </b-row>
-  </div>
+    </div>
 </template>
 
 <script>

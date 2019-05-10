@@ -1,86 +1,83 @@
 <template>
-  <div class="story-left-sidebar md-elevation-3">
-    <template v-if="story.data.pages.length > 0 && story.selected.page >= 0">
-      <div class="header">
-        <span class="title">
-          Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}
-        </span>
-        <span>
-
-        </span>
-        <div class="btn-more">
-          <span @click="showPageTools = !showPageTools"><md-icon>more_vert</md-icon></span>
-        </div>
-        <div class="page-tools md-elevation-3" v-if="showPageTools">
-          <ul>
-            <li @click="movePageToLeft">Move to Left</li>
-            <li @click="movePageToRight">Move to Right</li>
-          </ul>
-          <hr class="m-0">
-          <ul>
-            <li @click="duplicatePage">Duplicate</li>
-            <li @click="showRemovePageDialog=true">Remove</li>
-          </ul>
-        </div>
-      </div>
-      <md-divider></md-divider>
-      <div class="template-list">
-        <template v-if="story.data.pages[story.selected.page]">
-          <page-layer
-            v-for="(layer, index) of story.data.pages[story.selected.page].layers"
-            :layer="layer"
-            :layerIndex="index"
-            :pageIndex="story.selected.page"
-            :key="index"
-          >
-          </page-layer>
-        </template>
-      </div>
-      <md-button class="md-fab md-primary" @click="showDialog = true">
-        <md-icon>add</md-icon>
-      </md-button>
-    </template>
-    <md-dialog :md-active.sync="showDialog">
-      <md-dialog-title>Add a new layer</md-dialog-title>
-      <md-dialog-content>
-        <div class="story-layer-templates_list">
-          <div class="template"
-               v-for="(template, index) in layerTemplates"
-               @click="addLayer(index)"
-               :key="index">
-            <div class="template-image"
-                 :style="{backgroundImage: 'url(' + template.icon + ')'}">
+    <div class="story-left-sidebar md-elevation-3">
+        <template v-if="story.data.pages.length > 0 && story.selected.page >= 0">
+            <div class="header">
+                <span class="title">
+                  Page {{ story.selected.page + 1 }} of {{ story.data.pages.length }}
+                </span>
+                <div class="btn-more">
+                    <span @click="showPageTools = !showPageTools"><md-icon>more_vert</md-icon></span>
+                </div>
+                <div class="page-tools md-elevation-3" v-if="showPageTools">
+                    <ul>
+                        <li @click="movePageToLeft">Move to Left</li>
+                        <li @click="movePageToRight">Move to Right</li>
+                    </ul>
+                    <hr class="m-0">
+                    <ul>
+                        <li @click="duplicatePage">Duplicate</li>
+                        <li @click="showRemovePageDialog=true">Remove</li>
+                    </ul>
+                </div>
             </div>
-            <p>{{ template.name }}</p>
-          </div>
-        </div>
-      </md-dialog-content>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog = false">Close</md-button>
-      </md-dialog-actions>
-    </md-dialog>
-    <md-dialog-confirm
-      :md-active.sync="showRemovePageDialog"
-      md-title="Do you really want to remove this page?"
-      md-confirm-text="Ok"
-      md-cancel-text="Cancel"
-      @md-cancel="showRemovePageDialog = false"
-      @md-confirm="removePage"/>
-    <md-dialog-confirm
-      :md-active.sync="showRemoveLayerDialog"
-      md-title="Do you really want to remove this layer?"
-      md-confirm-text="Ok"
-      md-cancel-text="Cancel"
-      @md-cancel="showRemoveLayerDialog = false"
-      @md-confirm="removeLayer"/>
-    <md-dialog-confirm
-      :md-active.sync="showRemoveElementDialog"
-      md-title="Do you really want to remove this element?"
-      md-confirm-text="Ok"
-      md-cancel-text="Cancel"
-      @md-cancel="showRemoveElementDialog = false"
-      @md-confirm="removeElement"/>
-  </div>
+            <md-divider></md-divider>
+            <div class="template-list">
+                <template v-if="story.data.pages[story.selected.page]">
+                    <page-layer
+                        v-for="(layer, index) of story.data.pages[story.selected.page].layers"
+                        :layer="layer"
+                        :layerIndex="index"
+                        :pageIndex="story.selected.page"
+                        :key="index"
+                    >
+                    </page-layer>
+                </template>
+            </div>
+            <md-button class="md-fab md-primary" @click="showDialog = true">
+                <md-icon>add</md-icon>
+            </md-button>
+        </template>
+        <md-dialog :md-active.sync="showDialog">
+            <md-dialog-title>Add a new layer</md-dialog-title>
+            <md-dialog-content>
+                <div class="story-layer-templates_list">
+                    <div class="template"
+                         v-for="(template, index) in layerTemplates"
+                         @click="addLayer(index)"
+                         :key="index">
+                        <div class="template-image"
+                             :style="{backgroundImage: 'url(' + template.icon + ')'}">
+                        </div>
+                        <p>{{ template.name }}</p>
+                    </div>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions>
+                <md-button class="md-primary" @click="showDialog = false">Close</md-button>
+            </md-dialog-actions>
+        </md-dialog>
+        <md-dialog-confirm
+            :md-active.sync="showRemovePageDialog"
+            md-title="Do you really want to remove this page?"
+            md-confirm-text="Ok"
+            md-cancel-text="Cancel"
+            @md-cancel="showRemovePageDialog = false"
+            @md-confirm="removePage"/>
+        <md-dialog-confirm
+            :md-active.sync="showRemoveLayerDialog"
+            md-title="Do you really want to remove this layer?"
+            md-confirm-text="Ok"
+            md-cancel-text="Cancel"
+            @md-cancel="showRemoveLayerDialog = false"
+            @md-confirm="removeLayer"/>
+        <md-dialog-confirm
+            :md-active.sync="showRemoveElementDialog"
+            md-title="Do you really want to remove this element?"
+            md-confirm-text="Ok"
+            md-cancel-text="Cancel"
+            @md-cancel="showRemoveElementDialog = false"
+            @md-confirm="removeElement"/>
+    </div>
 </template>
 
 <script>
@@ -191,8 +188,8 @@
       /**
        * move page to left
        */
-      movePageToLeft() {
-        if(this.story.selected.page > 0) {
+      movePageToLeft () {
+        if (this.story.selected.page > 0) {
           const pages = Object.assign([], this.story.data.pages);
           const temp = pages[this.story.selected.page - 1];
           pages[this.story.selected.page - 1] = pages[this.story.selected.page];
@@ -212,8 +209,8 @@
       /**
        * move page to left
        */
-      movePageToRight() {
-        if((this.story.selected.page + 1) < this.story.data.pages.length) {
+      movePageToRight () {
+        if ((this.story.selected.page + 1) < this.story.data.pages.length) {
           const pages = Object.assign([], this.story.data.pages);
           const temp = pages[this.story.selected.page + 1];
           pages[this.story.selected.page + 1] = pages[this.story.selected.page];

@@ -19,7 +19,7 @@ import router from './router'
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 Vue.use(VueMaterial);
-Vue.use( CKEditor );
+Vue.use(CKEditor);
 Vue.use(TreeView)
 Vue.use(VueAnalytics, {
   id: 'UA-131939849-1',

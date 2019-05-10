@@ -1,20 +1,20 @@
 <template>
-  <div>
-    <md-field>
-      <label>Id</label>
-      <md-input v-model="elementId"></md-input>
-    </md-field>
-    <md-field>
-      <label>Class</label>
-      <md-input v-model="elementClass"></md-input>
-    </md-field>
-    <img v-if="elementSrc" :src="elementSrc" class="attachment-image md-elevation-7"/>
-    <br>
-    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
-            id="upload_property_audio">
-      Select an Audio
-    </button>
-  </div>
+    <div>
+        <md-field>
+            <label>Id</label>
+            <md-input v-model="elementId"></md-input>
+        </md-field>
+        <md-field>
+            <label>Class</label>
+            <md-input v-model="elementClass"></md-input>
+        </md-field>
+        <img v-if="elementSrc" :src="elementSrc" class="attachment-image md-elevation-7"/>
+        <br>
+        <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+                id="upload_property_audio">
+            Select an Audio
+        </button>
+    </div>
 </template>
 
 <script>
@@ -29,10 +29,10 @@
       }
     },
     methods: {
-      generateMediaLibraries() {
+      generateMediaLibraries () {
         const vm = this;
         cloudinary.createMediaLibrary(
-          {...vm.cloudinaryInfo},
+          { ...vm.cloudinaryInfo },
           {
             insertHandler: function (data) {
               let result = data.assets[0];

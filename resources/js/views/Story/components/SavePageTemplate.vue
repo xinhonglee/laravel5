@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <md-field>
-      <label>Template Name</label>
-      <md-input v-model="templateTitle"></md-input>
-    </md-field>
-    <div class="md-layout">
-      <div class="md-layout-item">
-        <p>Template Image</p>
-        <button type="button"
-                class="md-button md-raised md-theme-default px-3"
-                id="upload_page_template_image">Select a file
-        </button>
-      </div>
-      <div class="md-layout-item">
-        <img v-if="templateImageUrl" :src="templateImageUrl" class="attachment-image md-elevation-7"/>
-      </div>
+    <div>
+        <md-field>
+            <label>Template Name</label>
+            <md-input v-model="templateTitle"></md-input>
+        </md-field>
+        <div class="md-layout">
+            <div class="md-layout-item">
+                <p>Template Image</p>
+                <button type="button"
+                        class="md-button md-raised md-theme-default px-3"
+                        id="upload_page_template_image">Select a file
+                </button>
+            </div>
+            <div class="md-layout-item">
+                <img v-if="templateImageUrl" :src="templateImageUrl" class="attachment-image md-elevation-7"/>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>

@@ -6,13 +6,14 @@ export default class CustomStyle extends Plugin {
   /**
    * @inheritDoc
    */
-  static get requires() {
+  static get requires () {
     return [CustomStyleEditing, CustomStyleUI];
   }
+
   /**
    * @inheritDoc
    */
-  static get pluginName() {
+  static get pluginName () {
     return 'customStyle';
   }
 }

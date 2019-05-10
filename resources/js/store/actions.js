@@ -30,18 +30,18 @@ export const deleteAMPStoryFromRedis = ({ commit }) => {
   commit('DELETE_AMP_STORY_REDIS');
 };
 
-export const selectAMPStory = ({commit}, selected) => {
+export const selectAMPStory = ({ commit }, selected) => {
   commit('SELECT_AMP_STORY', selected);
 };
 
-export const clearAMPStory = ({commit}) => {
+export const clearAMPStory = ({ commit }) => {
   commit('CLEAR_AMP_STORY')
 };
 
-export const updateCloudinary = ({commit}, data) => {
+export const updateCloudinary = ({ commit }, data) => {
   commit('UPDATE_CLOUDINARY', data)
 };
 
-export const fetchStoryStyle = ({commit}) => {
+export const fetchStoryStyle = ({ commit }) => {
   commit('FETCH_STORY_STYLE')
 };

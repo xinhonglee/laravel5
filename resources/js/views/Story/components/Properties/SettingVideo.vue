@@ -1,30 +1,30 @@
 <template>
-  <div>
-    <md-field>
-      <label>Id</label>
-      <md-input v-model="elementId"></md-input>
-    </md-field>
-    <md-field>
-      <label>Class</label>
-      <md-input v-model="elementClass"></md-input>
-    </md-field>
-    <img v-if="elementSrcVignette" :src="elementSrcVignette" class="attachment-image md-elevation-7"/>
-    <br>
-    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
-            id="upload_property_video">
-      Select a Video
-    </button>
-    <br>
-    <md-switch v-model="autoPlay">Auto play</md-switch>
-    <br>
-    <md-switch v-model="loop">Loop</md-switch>
-    <img v-if="posterSrc" :src="posterSrc" class="attachment-image md-elevation-7"/>
-    <br>
-    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
-            id="upload_poster_video">
-      Select a Poster Image
-    </button>
-  </div>
+    <div>
+        <md-field>
+            <label>Id</label>
+            <md-input v-model="elementId"></md-input>
+        </md-field>
+        <md-field>
+            <label>Class</label>
+            <md-input v-model="elementClass"></md-input>
+        </md-field>
+        <img v-if="elementSrcVignette" :src="elementSrcVignette" class="attachment-image md-elevation-7"/>
+        <br>
+        <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+                id="upload_property_video">
+            Select a Video
+        </button>
+        <br>
+        <md-switch v-model="autoPlay">Auto play</md-switch>
+        <br>
+        <md-switch v-model="loop">Loop</md-switch>
+        <img v-if="posterSrc" :src="posterSrc" class="attachment-image md-elevation-7"/>
+        <br>
+        <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+                id="upload_poster_video">
+            Select a Poster Image
+        </button>
+    </div>
 </template>
 
 <script>
@@ -39,10 +39,10 @@
       }
     },
     methods: {
-      generateMediaLibraries() {
+      generateMediaLibraries () {
         const vm = this;
         cloudinary.createMediaLibrary(
-          {...vm.cloudinaryInfo},
+          { ...vm.cloudinaryInfo },
           {
             insertHandler: function (data) {
               let result = data.assets[0];
@@ -52,7 +52,7 @@
           document.getElementById("upload_property_video")
         );
         cloudinary.createMediaLibrary(
-          {...vm.cloudinaryInfo, "button_caption": "Select a Poster Image"},
+          { ...vm.cloudinaryInfo, "button_caption": "Select a Poster Image" },
           {
             insertHandler: function (data) {
               let result = data.assets[0];
@@ -109,7 +109,7 @@
           }
           return '';
         },
-        set(value) {
+        set (value) {
           if (this.elementSrc !== value)
             Vue.$emit('setting:properties', { properties: { src: value } });
         },
@@ -129,7 +129,7 @@
           }
           return '';
         },
-        set(value) {
+        set (value) {
           if (this.posterSrc !== value) {
             Vue.$emit('setting:properties', { properties: { poster: value } });
           }
@@ -142,7 +142,7 @@
           }
           return true;
         },
-        set(value) {
+        set (value) {
           if (this.autoPlay !== value) {
             Vue.$emit('setting:properties', { properties: { autoplay: value } });
           }
@@ -155,7 +155,7 @@
           }
           return true;
         },
-        set(value) {
+        set (value) {
           if (this.loop !== value) {
             Vue.$emit('setting:properties', { properties: { loop: value } });
           }

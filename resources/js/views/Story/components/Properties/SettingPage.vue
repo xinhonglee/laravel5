@@ -1,24 +1,24 @@
 <template>
-  <div>
-    <md-field>
-      <label>Id</label>
-      <md-input v-model="pageId"></md-input>
-    </md-field>
-    <md-field>
-      <label>Class</label>
-      <md-input v-model="pageClass"></md-input>
-    </md-field>
-    <md-field>
-      <label>Auto Advance After(s)</label>
-      <md-input v-model="autoAdvanceAfter"></md-input>
-    </md-field>
-    <img v-if="backgroundAudioVignette" :src="backgroundAudioVignette" class="attachment-image md-elevation-7"/>
-    <br>
-    <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
-            id="upload_back_audio_page">
-      Select an Audio
-    </button>
-  </div>
+    <div>
+        <md-field>
+            <label>Id</label>
+            <md-input v-model="pageId"></md-input>
+        </md-field>
+        <md-field>
+            <label>Class</label>
+            <md-input v-model="pageClass"></md-input>
+        </md-field>
+        <md-field>
+            <label>Auto Advance After(s)</label>
+            <md-input v-model="autoAdvanceAfter"></md-input>
+        </md-field>
+        <img v-if="backgroundAudioVignette" :src="backgroundAudioVignette" class="attachment-image md-elevation-7"/>
+        <br>
+        <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
+                id="upload_back_audio_page">
+            Select an Audio
+        </button>
+    </div>
 </template>
 
 <script>

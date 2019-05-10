@@ -1,26 +1,26 @@
 <template>
-  <div class="property-animation">
-    <md-field>
-      <label>Animation In</label>
-      <md-select v-model="animationIn">
-        <md-option v-for="(opt, index) in animations" :value="opt.slug" :key="index">
-          {{ opt.name }}
-        </md-option>
-      </md-select>
-    </md-field>
-    <md-field>
-      <label>Animation In Duration(s)</label>
-      <md-input v-model="animationInDuration"></md-input>
-    </md-field>
-    <md-field>
-      <label>Animation In Delay(s)</label>
-      <md-input v-model="animationInDelay"></md-input>
-    </md-field>
-    <md-field>
-      <label>Animation In After</label>
-      <md-input v-model="animationInAfter"></md-input>
-    </md-field>
-  </div>
+    <div class="property-animation">
+        <md-field>
+            <label>Animation In</label>
+            <md-select v-model="animationIn">
+                <md-option v-for="(opt, index) in animations" :value="opt.slug" :key="index">
+                    {{ opt.name }}
+                </md-option>
+            </md-select>
+        </md-field>
+        <md-field>
+            <label>Animation In Duration(s)</label>
+            <md-input v-model="animationInDuration"></md-input>
+        </md-field>
+        <md-field>
+            <label>Animation In Delay(s)</label>
+            <md-input v-model="animationInDelay"></md-input>
+        </md-field>
+        <md-field>
+            <label>Animation In After</label>
+            <md-input v-model="animationInAfter"></md-input>
+        </md-field>
+    </div>
 </template>
 
 <script>

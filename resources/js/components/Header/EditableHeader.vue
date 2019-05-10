@@ -1,25 +1,25 @@
 <template>
-  <header class="app-header navbar">
-    <b-link class="navbar-brand" to="/backoffice">
-      <img src="/assets/logo.png"/>
-    </b-link>
-    <div class="editable-header-title">
-      <input type="text" class="width-dynamic" v-model="title" :disabled="!editable">
-    </div>
-    <div class="editable-tools mr-3">
+    <header class="app-header navbar">
+        <b-link class="navbar-brand" to="/backoffice">
+            <img src="/assets/logo.png"/>
+        </b-link>
+        <div class="editable-header-title">
+            <input type="text" class="width-dynamic" v-model="title" :disabled="!editable">
+        </div>
+        <div class="editable-tools mr-3">
       <span class="icon-group">
           <span v-if="editable" @click="setting"><md-icon>settings</md-icon></span>
           <span v-if="editable" @click="publish"><md-icon>save</md-icon></span>
       </span>
-      <md-button class="md-raised" @click="toggleEdit">
-        <md-icon>{{ editable ? 'visibility' : 'edit' }}</md-icon>
-        {{ editable ? 'View' : 'Edit' }}
-      </md-button>
-    </div>
-    <b-navbar-nav class="ml-auto">
-      <HeaderDropdownAccnt/>
-    </b-navbar-nav>
-  </header>
+            <md-button class="md-raised" @click="toggleEdit">
+                <md-icon>{{ editable ? 'visibility' : 'edit' }}</md-icon>
+                {{ editable ? 'View' : 'Edit' }}
+            </md-button>
+        </div>
+        <b-navbar-nav class="ml-auto">
+            <HeaderDropdownAccnt/>
+        </b-navbar-nav>
+    </header>
 </template>
 
 <script>
@@ -34,7 +34,7 @@
     components: {
       HeaderDropdownAccnt
     },
-    mounted() {
+    mounted () {
       $.fn.textWidth = function (text, font) {
         if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
         $.fn.textWidth.fakeEl.text(text || this.val() || this.text() || this.attr('placeholder')).css('font', font || this.css('font'));

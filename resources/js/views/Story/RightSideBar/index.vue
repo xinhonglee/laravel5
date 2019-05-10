@@ -1,39 +1,39 @@
 <template>
-  <div class="story-right-sidebar md-elevation-3">
-    <template v-if="element && element.type">
-      <h4>{{ propertyName }} Properties</h4>
-      <md-divider></md-divider>
-      <div class="custom-tabs">
-        <div class="tab-buttons">
-          <md-button :class="{'md-primary' : isActive('settings')}"
-                     @click="activeTab='settings'">SETTINGS
-          </md-button>
-          <md-button v-if="element && element.type !== 'richtext'"
-                     :class="{'md-primary' : isActive('design')}"
-                     @click="activeTab='design'">
-            DESIGN
-          </md-button>
-          <md-button :class="{'md-primary' : isActive('animation')}"
-                     @click="activeTab='animation'">ANIMATION
-          </md-button>
-        </div>
-        <div class="tab-contents">
-          <property-settings v-if="isActive('settings')" :element="element"></property-settings>
-          <property-design v-if="isActive('design')" :element="element"></property-design>
-          <property-animation v-if="isActive('animation')" :element="element"></property-animation>
-        </div>
-      </div>
-    </template>
-    <template v-if="(layer && layer.template)">
-      <h4>New element</h4>
-      <md-divider></md-divider>
-      <element-list></element-list>
-    </template>
-    <template v-if="page">
-      <h4>Page Properties</h4>
-      <setting-page :page="page"></setting-page>
-    </template>
-  </div>
+    <div class="story-right-sidebar md-elevation-3">
+        <template v-if="element && element.type">
+            <h4>{{ propertyName }} Properties</h4>
+            <md-divider></md-divider>
+            <div class="custom-tabs">
+                <div class="tab-buttons">
+                    <md-button :class="{'md-primary' : isActive('settings')}"
+                               @click="activeTab='settings'">SETTINGS
+                    </md-button>
+                    <md-button v-if="element && element.type !== 'richtext'"
+                               :class="{'md-primary' : isActive('design')}"
+                               @click="activeTab='design'">
+                        DESIGN
+                    </md-button>
+                    <md-button :class="{'md-primary' : isActive('animation')}"
+                               @click="activeTab='animation'">ANIMATION
+                    </md-button>
+                </div>
+                <div class="tab-contents">
+                    <property-settings v-if="isActive('settings')" :element="element"></property-settings>
+                    <property-design v-if="isActive('design')" :element="element"></property-design>
+                    <property-animation v-if="isActive('animation')" :element="element"></property-animation>
+                </div>
+            </div>
+        </template>
+        <template v-if="(layer && layer.template)">
+            <h4>New element</h4>
+            <md-divider></md-divider>
+            <element-list></element-list>
+        </template>
+        <template v-if="page">
+            <h4>Page Properties</h4>
+            <setting-page :page="page"></setting-page>
+        </template>
+    </div>
 </template>
 
 <script>
@@ -113,10 +113,10 @@
       Vue.$on('add:element', (slug) => {
           const pages = Object.assign([], this.$store.state.story.data.pages);
           const selected = this.$store.state.story.selected;
-          let newElement = { type: slug, properties: {id: '', class: ''} };
+          let newElement = { type: slug, properties: { id: '', class: '' } };
 
           if (pages[selected.page].layers[selected.layer].template === 'thirds') {
-            if(selected.gridArea < 0) {
+            if (selected.gridArea < 0) {
               Vue.alertBox({
                 title: 'Warning',
                 text: "Please select one of 3 grid areas!",
@@ -147,7 +147,7 @@
     computed: {
       element () {
         const selected = this.$store.state.story.selected;
-        if ( selected.element >= 0 ) {
+        if (selected.element >= 0) {
           const el = this.$store.state.story.data.pages[selected.page].layers[selected.layer].elements[selected.element];
           this.propertyName = !_.isNil(el) ? this.getPropertyName(el.type) : null;
           return el;

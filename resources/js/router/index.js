@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {ifAuthenticated, ifNotAuthenticated} from '../utils/auth';
+import { ifAuthenticated, ifNotAuthenticated } from '../utils/auth';
 
 // Containers
 import MainContainer from '../containers/MainContainer';

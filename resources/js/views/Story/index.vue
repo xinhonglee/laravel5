@@ -1,12 +1,12 @@
 <template>
-  <div class="story">
-    <template v-if="editable">
-      <story-edit></story-edit>
-    </template>
-    <template v-else>
-      <story-view :slug="slug"></story-view>
-    </template>
-  </div>
+    <div class="story">
+        <template v-if="editable">
+            <story-edit></story-edit>
+        </template>
+        <template v-else>
+            <story-view :slug="slug"></story-view>
+        </template>
+    </div>
 </template>
 
 <script>
