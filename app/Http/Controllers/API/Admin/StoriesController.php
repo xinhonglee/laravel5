@@ -21,18 +21,18 @@ class StoriesController extends BaseController
         try {
 
             foreach ($request->all() as $slug => $data) {
-                $style = Style::where('slug', $slug);
-                if ($style) {
-                    $style->update([
-                        'data' => $data,
-                    ]);
-                } else {
+                $style = Style::where('slug', $slug)->first();
+                if (is_null($style)) {
                     Style::create(
                         [
                             'slug' => $slug,
                             'data' => $data
                         ]
                     );
+                } else {
+                    $style->update([
+                        'data' => $data,
+                    ]);
                 }
             }
             return $this->sendResponse(Style::all());

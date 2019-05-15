@@ -12,6 +12,7 @@ class Style extends Model
      * @var array
      */
     protected $fillable = [
-        'data'
+        'data',
+        'slug'
     ];
 }
