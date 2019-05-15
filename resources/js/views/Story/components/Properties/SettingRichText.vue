@@ -21,6 +21,7 @@
   import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
   import Heading from '@ckeditor/ckeditor5-heading/src/heading';
   import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+  import Font from '@ckeditor/ckeditor5-font/src/font';
   import CustomStyle from '../../../../components/common/CK5CustomStyle/customstyle';
 
   export default {
@@ -38,6 +39,7 @@
             Italic,
             Heading,
             Paragraph,
+            Font,
             CustomStyle
           ],
           toolbar: {
@@ -45,6 +47,8 @@
               'heading',
               'bold',
               'italic',
+              'fontSize',
+              'fontColor',
               'customStyle'
             ]
           }
