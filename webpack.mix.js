@@ -19,12 +19,15 @@ const CKERegex = {
 Mix.listen('configReady', webpackConfig => {
   const rules = webpackConfig.module.rules;
   const targetSVG = /(\.(png|jpe?g|gif|webp)$|^((?!font).)*\.svg$)/;
+  const targetFont = /(\.(woff2?|ttf|eot|otf)$|font.*\.svg$)/;
   const targetCSS = /\.css$/;
 
   // exclude CKE regex from mix's default rules
-  // if there's a better way to loop/change this, open to suggestions
   for (let rule of rules) {
     if (rule.test.toString() === targetSVG.toString()) {
+      rule.exclude = CKERegex.svg;
+    }
+    else if (rule.test.toString() === targetFont.toString()) {
       rule.exclude = CKERegex.svg;
     }
     else if (rule.test.toString() === targetCSS.toString()) {

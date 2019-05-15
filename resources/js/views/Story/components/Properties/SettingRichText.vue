@@ -33,6 +33,17 @@
       return {
         editor: ClassicEditor,
         editorConfig: {
+          fontSize: {
+            options: [
+              9,
+              11,
+              13,
+              'default',
+              17,
+              19,
+              21
+            ]
+          },
           plugins: [
             Essentials,
             Bold,
@@ -47,9 +58,11 @@
               'heading',
               'bold',
               'italic',
-              'fontSize',
+              '|',
               'fontColor',
-              'customStyle'
+              'fontSize',
+              '|',
+              'customStyle',
             ]
           }
         },
