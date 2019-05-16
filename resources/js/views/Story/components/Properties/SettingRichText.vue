@@ -10,7 +10,8 @@
         </md-field>
         <br>
         <p style="color:#6d6d6d">Rich text</p>
-        <ckeditor :editor="editor" v-model="elementHtml" :config="editorConfig"></ckeditor>
+        <ckeditor v-if="editorConfig.customStyle.options.length > 0" :editor="editor" v-model="elementHtml"
+                  :config="editorConfig"></ckeditor>
     </div>
 </template>
 
@@ -23,6 +24,7 @@
   import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
   import Font from '@ckeditor/ckeditor5-font/src/font';
   import CustomStyle from '../../../../components/common/CK5CustomStyle/customstyle';
+  import { customStyles } from '../../../../components/common/CK5CustomStyle/utils';
 
   export default {
     name: "setting-rich-text",
@@ -42,7 +44,10 @@
               17,
               19,
               21
-            ]
+            ],
+          },
+          customStyle: {
+            options: []
           },
           plugins: [
             Essentials,
@@ -67,6 +72,30 @@
           }
         },
       };
+    },
+    methods: {
+      loadStyle () {
+        this.$http.get('/story/style').then((response) => {
+          if (response.data.length > 0) {
+            const fRichTextStyles = response.data.filter(style => {
+              return style.slug === 'richtext'
+            });
+            if (fRichTextStyles.length > 0) {
+              const styles = JSON.parse(fRichTextStyles[0].data);
+              this.editorConfig.customStyle.options = styles.map(item => {
+                item.style = JSON.parse(item.style);
+                return item;
+              });
+            } else {
+              this.editorConfig.customStyle.options = customStyles;
+            }
+          }
+        }, (error) => {
+        }).catch(Vue.handleClientError);
+      },
+    },
+    mounted () {
+      this.loadStyle();
     },
     computed: {
       elementId: {

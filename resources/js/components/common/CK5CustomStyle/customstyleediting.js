@@ -12,15 +12,13 @@ export default class CustomStyleEditing extends Plugin {
   }
 
   init() {
-    const editor = this.editor;
-    const schema = editor.model.schema;
+    const editor = this.editor
     const enabledOptions = editor.config.get('customStyle.options');
-
-    schema.extend('$text', { allowAttributes: CUSTOMSTYLE });
     const definition = _buildDefinition(enabledOptions);
 
     editor.conversion.attributeToElement(definition);
     editor.commands.add(CUSTOMSTYLE, new CustomStyleCommand(editor));
+    editor.model.schema.extend('$text', { allowAttributes: CUSTOMSTYLE });
   }
 }
 
