@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.4.4",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@ckeditor/ckeditor5-basic-styles": "^11.1.0",
         "@ckeditor/ckeditor5-core": "^12.1.0",
         "@ckeditor/ckeditor5-dev-utils": "^12.0.1",
@@ -24,6 +25,7 @@
         "@ckeditor/ckeditor5-theme-lark": "^13.0.1",
         "@ckeditor/ckeditor5-ui": "^12.1.0",
         "@ckeditor/ckeditor5-utils": "^12.1.0",
+        "acorn": "^6.1.1",
         "axios": "^0.18",
         "babel-preset-latest-node": "^3.1.1",
         "block-ui": "^2.70.1",
@@ -62,6 +64,7 @@
         "vue-amp-shadow": "^1.0.5",
         "vue-json-tree-view": "^2.1.4",
         "vue-material": "^1.0.0-beta-10.2",
-        "vuelidate": "^0.7.4"
+        "vuelidate": "^0.7.4",
+        "webpack": "^4.28.4"
     }
 }

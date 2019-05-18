@@ -27,6 +27,10 @@ const getGridArea = (slug) => {
   return null;
 };
 
+const isGridArea = (slug) => {
+  return slug === 'thirds';
+};
+
 const getBookendShareProvider = (slug) => {
   if (!_.isNil(slug)) {
     return constants.bookend.shareProviders.find((share) => {
@@ -36,8 +40,13 @@ const getBookendShareProvider = (slug) => {
   return null;
 };
 
-const isGridArea = (slug) => {
-  return slug === 'thirds';
+const getBookendComponent = (slug) => {
+  if (!_.isNil(slug)) {
+    return constants.bookend.components.find((comp) => {
+      return comp.slug === slug;
+    });
+  }
+  return null;
 };
 
 const toLower = text => {
@@ -66,6 +75,7 @@ export default {
   getElement,
   getGridArea,
   getBookendShareProvider,
+  getBookendComponent,
   isGridArea,
   searchTable
 }

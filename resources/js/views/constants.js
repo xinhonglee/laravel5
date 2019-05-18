@@ -116,14 +116,13 @@ const bookend = {
   shareProviders: [
     { slug: 'twitter', name: 'Twitter', icon: '/assets/bookend/twitter.png' },
     { slug: 'facebook', name: 'Facebook', icon: '/assets/bookend/facebook.png' },
-    { slug: 'youtube', name: 'Youtube', icon: '/assets/bookend/youtube.png' },
     { slug: 'pinterest', name: 'Pinterest', icon: '/assets/bookend/pinterest.png' },
-    { slug: 'gplus', name: 'G+', icon: '/assets/bookend/gplus.png' },
+    { slug: 'gplus', name: 'G+', icon: '/assets/bookend/googleplus.png' },
     { slug: 'tumblr', name: 'Tumblr', icon: '/assets/bookend/tumblr.png' },
     { slug: 'whatsapp', name: 'Whatsapp', icon: '/assets/bookend/whatsapp.png' },
     { slug: 'email', name: 'Email', icon: '/assets/bookend/email.png' },
     { slug: 'sms', name: 'SMS', icon: '/assets/bookend/sms.png' },
-    { slug: 'line', name: 'LINE', icon: '/assets/bookend/line.png' },
+    { slug: 'line', name: 'LINE', icon: '/assets/bookend/line.png' }
   ],
   components: [
     { slug: 'heading', name: 'Heading', icon: '/assets/bookend/heading.png' },
