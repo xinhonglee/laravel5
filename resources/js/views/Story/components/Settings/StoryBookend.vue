@@ -7,12 +7,27 @@
             </li>
         </ul>
         <div class="clearfix"></div>
-        <dynamic-component :data="components" :type="type" :path="path"></dynamic-component>
         <div class="story-bookend_components mt-3" :class="{flex: components.length === 0}">
-            <div v-if="components.length > 0" class="components">
-                <div v-for="(comp, compIndex) of components" :index="compIndex">
-                    <div class="component-name">{{comp.name}}</div>
-                    <!--<dynamic-component :data="comp" :type="comp.slug" :path="path"></dynamic-component>-->
+            <div v-if="components.length > 0" class="components mb-3">
+                <div v-for="(comp, compIndex) of components" :index="compIndex"
+                     class="story-bookend_component">
+                    <div class="component-icon mt-3">
+                        <img :src="comp.icon"/>
+                    </div>
+                    <div class="component-content">
+                        <dynamic-bookend-component :type="getUcString(comp.slug)"/>
+                    </div>
+                    <div class="component-tools mt-3">
+                        <span @click="orderUpComponent(compIndex)">
+                            <md-icon style="transform: rotate(-90deg);">trending_flat</md-icon>
+                        </span>
+                        <span @click="orderDownComponent(compIndex)">
+                            <md-icon style="transform: rotate(90deg);">trending_flat</md-icon>
+                        </span>
+                        <span @click="removeComponent(compIndex)">
+                            <md-icon>delete_outline</md-icon>
+                        </span>
+                    </div>
                 </div>
             </div>
             <md-button class="btn-add-component md-fab md-primary" @click="addComponent">
@@ -33,15 +48,13 @@
 <script>
   import constants from '../../../constants';
   import utils from '../../../utils';
-  import DynamicComponent from "../DynamicComponent";
+  import DynamicBookendComponent from "../Bookend/DynamicBookendComponent";
 
   export default {
     name: "story-bookend",
-    components: { DynamicComponent },
+    components: { DynamicBookendComponent },
     data () {
       return {
-        path: 'Bookend',
-        type: 'heading',
         shareProviders: [
           { 'slug': 'facebook', 'value': false },
           { 'slug': 'twitter', 'value': false },
@@ -66,10 +79,19 @@
       removeComponent (index) {
         this.components.splice(index, 1);
       },
+      orderUpComponent(index) {
+
+      },
+      orderDownComponent (index) {
+
+      },
       getShareProviderIcon (slug) {
         const share = utils.getBookendShareProvider(slug);
         return share ? share.icon : ''
       },
+      getUcString (str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
     }
   }
 </script>

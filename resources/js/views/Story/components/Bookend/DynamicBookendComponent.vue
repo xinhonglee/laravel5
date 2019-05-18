@@ -1,10 +1,10 @@
 <template>
-    <component :is="component" :data="data" v-if="component" />
+    <component :is="component" v-if="component" />
 </template>
 <script>
   export default {
-    name: 'dynamic-component',
-    props: ['data', 'type', 'path'],
+    name: 'dynamic-bookend-component',
+    props: ['type'],
     data() {
       return {
         component: null,
@@ -15,7 +15,7 @@
         if (!this.type) {
           return null
         }
-        return () => import(`./Bookend/heading.vue`)
+        return () => import(`./${this.type}`)
       },
     },
     mounted() {
@@ -24,7 +24,7 @@
           this.component = () => this.loader()
         })
         .catch(() => {
-          this.component = () => import(`${this.path}/index`)
+          this.component = () => import(`../Default`)
         })
     },
   }

@@ -1,12 +1,10 @@
 <template>
-    <div>
-        heading
-    </div>
+    
 </template>
 
 <script>
   export default {
-    name: "bookend-heading"
+    name: "default-component"
   }
 </script>
 
