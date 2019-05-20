@@ -15,7 +15,9 @@
         if (!this.type) {
           return null
         }
-        return () => import(`./${this.type}`)
+        return () => import(
+          /* webpackMode: "eager" */
+          `./${this.type}`)
       },
     },
     mounted() {
