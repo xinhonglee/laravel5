@@ -24,7 +24,7 @@
                         <span v-if="isOrderDown(compIndex)" @click="orderDownComponent(compIndex)">
                             <md-icon style="transform: rotate(90deg);">trending_flat</md-icon>
                         </span>
-                        <span @click="removeComponent(compIndex)">
+                        <span @click="openRemoveDialog(compIndex)">
                             <md-icon>delete_outline</md-icon>
                         </span>
                     </div>
@@ -42,6 +42,13 @@
                 </li>
             </ul>
         </div>
+        <md-dialog-confirm
+            :md-active.sync="showRemoveDialog"
+            md-title="Do you really want to remove this component?"
+            md-confirm-text="Ok"
+            md-cancel-text="Cancel"
+            @md-cancel="showRemoveDialog = false"
+            @md-confirm="removeComponent"/>
     </div>
 </template>
 
@@ -69,6 +76,8 @@
         components: [],
         availableComponents: constants.bookend.components,
         renderComponents: true,
+        removeIndex: null,
+        showRemoveDialog: false,
       }
     },
     methods: {
@@ -86,11 +95,18 @@
         }
       },
       /**
-       * remove a component from bookend
-       * @param index
+       *  open remove dialog
        */
-      removeComponent (index) {
-        this.components.splice(index, 1);
+      openRemoveDialog(index) {
+        this.showRemoveDialog = true;
+        this.removeIndex = index;
+      },
+      /**
+       * remove a component from bookend
+       */
+      removeComponent () {
+        this.components.splice(this.removeIndex, 1);
+        this.showRemoveDialog = false;
       },
       /**
        * order up selected component
