@@ -38,7 +38,11 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.posterSquareSrc = (story && story.data['poster-square-src']) ? story.data['poster-square-src'] : '';
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
-  state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {};
+  state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {
+    bookendVersion: 'v1.0',
+    shareProviders: [],
+    components: []
+  };
   state.story.data.css = (story && story.data.css) ? story.data.css : '';
 
   if (!_.isNil(story.selected)) {

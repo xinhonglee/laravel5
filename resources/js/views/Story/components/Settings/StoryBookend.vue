@@ -15,7 +15,7 @@
                         <img :src="comp.icon"/>
                     </div>
                     <div class="component-content">
-                        <dynamic-bookend-component :type="getUcString(comp.slug)"/>
+                        <dynamic-bookend-component :data="bookend" :type="getUcString(comp.slug)"/>
                     </div>
                     <div class="component-tools mt-3">
                         <span v-if="isOrderUp(compIndex)" @click="orderUpComponent(compIndex)">
@@ -75,19 +75,58 @@
         ],
         components: [],
         availableComponents: constants.bookend.components,
-        renderComponents: true,
+        renderComponents: true, // force reload after changing components content
         removeIndex: null,
         showRemoveDialog: false,
       }
     },
     methods: {
       /**
+       *
+       */
+      serialize() {
+        // if(!_.isNil(this.bookendComponents)) {
+        //   this.renderComponents = false;
+        //   this.bookendComponents.forEach(comp => {
+        //     this.components.push(utils.getBookendComponent(comp.type));
+        //   });
+        //   this.$nextTick(() => {
+        //     this.renderComponents = true;
+        //   });
+        // }
+        // if(!_.isNil(this.bookendShareProviders)) {
+        //   this.bookendShareProviders.forEach(comp => {
+        //     const slug = (typeof comp === 'object') ? comp.provider : comp;
+        //     for (let prov of this.shareProviders) {
+        //       if (prov.slug === slug) {
+        //         prov.value = true;
+        //         break;
+        //       }
+        //     }
+        //   });
+        // }
+      },
+      /**
+       * set current bookend info temporarily before save
+       */
+      setBookend (data) {
+
+        if(data.type === 'component') {
+
+        }
+        if(data.type === 'provider') {
+
+        }
+      },
+      /**
        * add a component to bookend
        */
       addComponent () {
         if (this.components.length < this.availableComponents.length) {
-          for(let comb of this.availableComponents) {
-            if(this.components.filter(item => { return item.slug === comb.slug }).length === 0){
+          for (let comb of this.availableComponents) {
+            if (this.components.filter(item => {
+              return item.slug === comb.slug
+            }).length === 0) {
               this.components.push(comb);
               break;
             }
@@ -97,7 +136,7 @@
       /**
        *  open remove dialog
        */
-      openRemoveDialog(index) {
+      openRemoveDialog (index) {
         this.showRemoveDialog = true;
         this.removeIndex = index;
       },
@@ -112,7 +151,7 @@
        * order up selected component
        * @param index
        */
-      orderUpComponent(index) {
+      orderUpComponent (index) {
         this.renderComponents = false;
         const temp = this.components[index - 1];
         this.components[index - 1] = this.components[index];
@@ -156,7 +195,7 @@
        * @param index
        * @returns {boolean}
        */
-      isOrderUp(index) {
+      isOrderUp (index) {
         return this.components.length > 1 && index > 0;
       },
       /**
@@ -164,9 +203,27 @@
        * @param index
        * @returns {boolean}
        */
-      isOrderDown(index) {
+      isOrderDown (index) {
         return this.components.length > 1 && index < (this.components.length - 1);
       }
+    },
+    computed: {
+      bookend() {
+        if (!_.isNil(this.$store.state.story) &&
+          !_.isNil(this.$store.state.story.bookend)
+        ) {
+          return this.$store.state.story.bookend;
+        }
+        return null;
+      }
+    },
+    mounted() {
+      Vue.$on('story-bookend:settings', data => {
+        this.setBookend(data);
+      })
+    },
+    beforeDestroy() {
+      Vue.$off('story-bookend:settings');
     }
   }
 </script>

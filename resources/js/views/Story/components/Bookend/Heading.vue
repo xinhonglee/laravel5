@@ -10,10 +10,30 @@
 <script>
   export default {
     name: "bookend-heading",
-    data() {
+    props: ['data'],
+    data () {
       return {
         heading: ''
       }
+    },
+    mounted () {
+      if(!_.isNil(this.data) && !_.isNil(this.data.components)) {
+        const fData = this.data.components.filter(comp => comp.type === 'heading')
+        if(fData.length > 0) {
+          this.heading = fData.text;
+        }
+      }
+    },
+    watch: {
+      heading (value) {
+        Vue.$emit('story-bookend:settings', {
+          type: 'component',
+          data: {
+            'type': 'heading',
+            'text': value
+          }
+        });
+      },
     }
   }
 </script>

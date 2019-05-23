@@ -41,7 +41,11 @@ const notSyncedData = {
       posterSquareSrc: '',
       posterLandscapeSrc: '',
       pages: [],
-      bookend: {},
+      bookend: {
+        bookendVersion: 'v1.0',
+        shareProviders: [],
+        components: []
+      },
       css: '',
     },
     selected: {
