@@ -1,10 +1,13 @@
 <template>
-    <component :is="component" v-if="component" />
+    <component :data="data" :is="component" v-if="component" />
 </template>
 <script>
   export default {
     name: 'dynamic-bookend-component',
-    props: ['type'],
+    props: {
+      type: String,
+      data: Object
+    },
     data() {
       return {
         component: null,

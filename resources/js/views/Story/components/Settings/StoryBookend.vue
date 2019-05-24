@@ -8,23 +8,23 @@
         </ul>
         <div class="clearfix"></div>
         <div class="story-bookend_components mt-3" :class="{flex: components.length === 0}">
-            <div v-if="components.length > 0" class="components mb-3">
+            <div v-if="components.length > 0 && renderComponents" class="components mb-3">
                 <div v-for="(comp, compIndex) of components" :index="compIndex"
                      class="story-bookend_component">
                     <div class="component-icon mt-3">
                         <img :src="comp.icon"/>
                     </div>
                     <div class="component-content">
-                        <dynamic-bookend-component :type="getUcString(comp.slug)"/>
+                        <dynamic-bookend-component :data="bookend" :type="getUcString(comp.slug)"/>
                     </div>
                     <div class="component-tools mt-3">
-                        <span @click="orderUpComponent(compIndex)">
+                        <span v-if="isOrderUp(compIndex)" @click="orderUpComponent(compIndex)">
                             <md-icon style="transform: rotate(-90deg);">trending_flat</md-icon>
                         </span>
-                        <span @click="orderDownComponent(compIndex)">
+                        <span v-if="isOrderDown(compIndex)" @click="orderDownComponent(compIndex)">
                             <md-icon style="transform: rotate(90deg);">trending_flat</md-icon>
                         </span>
-                        <span @click="removeComponent(compIndex)">
+                        <span @click="openRemoveDialog(compIndex)">
                             <md-icon>delete_outline</md-icon>
                         </span>
                     </div>
@@ -42,6 +42,13 @@
                 </li>
             </ul>
         </div>
+        <md-dialog-confirm
+            :md-active.sync="showRemoveDialog"
+            md-title="Do you really want to remove this component?"
+            md-confirm-text="Ok"
+            md-cancel-text="Cancel"
+            @md-cancel="showRemoveDialog = false"
+            @md-confirm="removeComponent"/>
     </div>
 </template>
 
@@ -67,31 +74,156 @@
           { 'slug': 'line', 'value': false }
         ],
         components: [],
-        availableComponents: constants.bookend.components
+        availableComponents: constants.bookend.components,
+        renderComponents: true, // force reload after changing components content
+        removeIndex: null,
+        showRemoveDialog: false,
       }
     },
     methods: {
-      addComponent () {
-        if (this.components.length < this.availableComponents.length) {
-          this.components.push(this.availableComponents[this.components.length]);
+      /**
+       *
+       */
+      serialize() {
+        // if(!_.isNil(this.bookendComponents)) {
+        //   this.renderComponents = false;
+        //   this.bookendComponents.forEach(comp => {
+        //     this.components.push(utils.getBookendComponent(comp.type));
+        //   });
+        //   this.$nextTick(() => {
+        //     this.renderComponents = true;
+        //   });
+        // }
+        // if(!_.isNil(this.bookendShareProviders)) {
+        //   this.bookendShareProviders.forEach(comp => {
+        //     const slug = (typeof comp === 'object') ? comp.provider : comp;
+        //     for (let prov of this.shareProviders) {
+        //       if (prov.slug === slug) {
+        //         prov.value = true;
+        //         break;
+        //       }
+        //     }
+        //   });
+        // }
+      },
+      /**
+       * set current bookend info temporarily before save
+       */
+      setBookend (data) {
+
+        if(data.type === 'component') {
+
+        }
+        if(data.type === 'provider') {
+
         }
       },
-      removeComponent (index) {
-        this.components.splice(index, 1);
+      /**
+       * add a component to bookend
+       */
+      addComponent () {
+        if (this.components.length < this.availableComponents.length) {
+          for (let comb of this.availableComponents) {
+            if (this.components.filter(item => {
+              return item.slug === comb.slug
+            }).length === 0) {
+              this.components.push(comb);
+              break;
+            }
+          }
+        }
       },
-      orderUpComponent(index) {
-
+      /**
+       *  open remove dialog
+       */
+      openRemoveDialog (index) {
+        this.showRemoveDialog = true;
+        this.removeIndex = index;
       },
+      /**
+       * remove a component from bookend
+       */
+      removeComponent () {
+        this.components.splice(this.removeIndex, 1);
+        this.showRemoveDialog = false;
+      },
+      /**
+       * order up selected component
+       * @param index
+       */
+      orderUpComponent (index) {
+        this.renderComponents = false;
+        const temp = this.components[index - 1];
+        this.components[index - 1] = this.components[index];
+        this.components[index] = temp;
+        this.$nextTick(() => {
+          this.renderComponents = true;
+        });
+      },
+      /**
+       * order down selected component
+       * @param index
+       */
       orderDownComponent (index) {
-
+        this.renderComponents = false;
+        const temp = this.components[index + 1];
+        this.components[index + 1] = this.components[index];
+        this.components[index] = temp;
+        this.$nextTick(() => {
+          this.renderComponents = true;
+        });
       },
+      /**
+       * get share provider icon from given slug
+       * @param slug
+       * @returns {string}
+       */
       getShareProviderIcon (slug) {
         const share = utils.getBookendShareProvider(slug);
         return share ? share.icon : ''
       },
+      /**
+       * get UpperCase string from given string
+       * @param str
+       * @returns {string}
+       */
       getUcString (str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
+      },
+      /**
+       * Is OrderUp available
+       * @param index
+       * @returns {boolean}
+       */
+      isOrderUp (index) {
+        return this.components.length > 1 && index > 0;
+      },
+      /**
+       * Is OrderDown available
+       * @param index
+       * @returns {boolean}
+       */
+      isOrderDown (index) {
+        return this.components.length > 1 && index < (this.components.length - 1);
       }
+    },
+    computed: {
+      bookend() {
+        if (!_.isNil(this.$store.state.story) &&
+          !_.isNil(this.$store.state.story.bookend)
+        ) {
+          return this.$store.state.story.bookend;
+        }
+        return null;
+      }
+    },
+    mounted() {
+      Vue.$on('story-bookend:settings', data => {
+        this.setBookend(data);
+      })
+    },
+    beforeDestroy() {
+      Vue.$off('story-bookend:settings');
     }
   }
 </script>
