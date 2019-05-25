@@ -129,7 +129,7 @@ const bookend = {
     { slug: 'small', name: 'Small', icon: '/assets/bookend/small.png' },
     { slug: 'landscape', name: 'Landscape', icon: '/assets/bookend/landscape.png' },
     { slug: 'portrait', name: 'Portrait', icon: '/assets/bookend/portrait.png' },
-    { slug: 'cta', name: 'CTA', icon: '/assets/bookend/cta.png' },
+    { slug: 'cta-link', name: 'CTA', icon: '/assets/bookend/cta.png' },
     { slug: 'textbox', name: 'TextBox', icon: '/assets/bookend/textbox.png' }
   ]
 };

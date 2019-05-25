@@ -38,11 +38,14 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.posterSquareSrc = (story && story.data['poster-square-src']) ? story.data['poster-square-src'] : '';
   state.story.data.posterLandscapeSrc = (story && story.data['poster-landscape-src']) ? story.data['poster-landscape-src'] : '';
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
-  state.story.data.bookend = (story && story.data.bookend) ? story.data.bookend : {
+
+  // replace empty array with initial bookend data for already saved data
+  state.story.data.bookend = (story && story.data.bookend && story.data.bookend.length !== 0 ) ? story.data.bookend : {
     bookendVersion: 'v1.0',
     shareProviders: [],
     components: []
   };
+
   state.story.data.css = (story && story.data.css) ? story.data.css : '';
 
   if (!_.isNil(story.selected)) {
@@ -139,14 +142,19 @@ export const CLEAR_AMP_STORY = (state) => {
     id: null,
     data: {
       publisher: 'Publisher',
-      publisherLogoSrc: 'logo image url',
-      posterPortraitSrc: 'portrait poster image url',
+      publisherLogoSrc: '',
+      posterPortraitSrc: '',
       supportsLandscape: true,
-      backgroundAudio: 'audio url',
-      posterSquareSrc: 'image url',
-      posterLandscapeSrc: 'image url',
+      backgroundAudio: '',
+      posterSquareSrc: '',
+      posterLandscapeSrc: '',
       pages: [],
-      css: ''
+      css: '',
+      bookend: {
+        bookendVersion: 'v1.0',
+        shareProviders: [],
+        components: []
+      },
     },
     selected: {
       page: 0,

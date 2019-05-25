@@ -15,7 +15,8 @@
                         <img :src="comp.icon"/>
                     </div>
                     <div class="component-content">
-                        <dynamic-bookend-component :data="bookend" :type="getUcString(comp.slug)"/>
+                        <dynamic-bookend-component :data="$store.state.story.data.bookend"
+                                                   :type="getUcString(comp.slug)"/>
                     </div>
                     <div class="component-tools mt-3">
                         <span v-if="isOrderUp(compIndex)" @click="orderUpComponent(compIndex)">
@@ -78,45 +79,69 @@
         renderComponents: true, // force reload after changing components content
         removeIndex: null,
         showRemoveDialog: false,
+        temp: null
       }
     },
     methods: {
       /**
-       *
+       * initial loading
        */
-      serialize() {
-        // if(!_.isNil(this.bookendComponents)) {
-        //   this.renderComponents = false;
-        //   this.bookendComponents.forEach(comp => {
-        //     this.components.push(utils.getBookendComponent(comp.type));
-        //   });
-        //   this.$nextTick(() => {
-        //     this.renderComponents = true;
-        //   });
-        // }
-        // if(!_.isNil(this.bookendShareProviders)) {
-        //   this.bookendShareProviders.forEach(comp => {
-        //     const slug = (typeof comp === 'object') ? comp.provider : comp;
-        //     for (let prov of this.shareProviders) {
-        //       if (prov.slug === slug) {
-        //         prov.value = true;
-        //         break;
-        //       }
-        //     }
-        //   });
-        // }
+      serialize (data) {
+        if(!_.isNil(data.components)) {
+          this.renderComponents = false;
+          data.components.forEach(comp => {
+            this.components.push(utils.getBookendComponent(comp.type));
+          });
+          this.$nextTick(() => {
+            this.renderComponents = true;
+          });
+        }
+        if(!_.isNil(data.shareProviders)) {
+          data.shareProviders.forEach(comp => {
+            const slug = (typeof comp === 'object') ? comp.provider : comp;
+            const index = this.shareProviders.findIndex(provider => { return provider.slug === slug });
+            if(index >= 0) {
+              this.shareProviders[index].value = true;
+            }
+          });
+        }
       },
       /**
        * set current bookend info temporarily before save
        */
-      setBookend (data) {
+      setBookend (payload) {
+        this.temp = Object.assign({}, this.$store.state.story.data.bookend);
+        if (payload.type === 'component') {
+          const compIndex = this.temp.components.findIndex(item => {
+            return item.type === payload.data.type
+          });
 
-        if(data.type === 'component') {
-
+          if (compIndex >= 0) {
+            this.temp.components[compIndex] = payload.data;
+          } else {
+            this.temp.components.push(payload.data);
+          }
         }
-        if(data.type === 'provider') {
-
-        }
+        // if (payload.type === 'provider') {
+        //   const providerIndex = this.temp.shareProviders.findIndex(item => {
+        //     if ((typeof payload.data) === 'object' && (typeof item) === 'object') {
+        //       return item.provider === payload.data.provider;
+        //     }
+        //     if ((typeof payload.data) === 'string' && (typeof item) === 'string') {
+        //       return item === payload.data;
+        //     }
+        //     return false;
+        //   });
+        //
+        //   // if (providerIndex >= 0) {
+        //   //   this.temp.shareProviders[providerIndex] = payload.data;
+        //   // } else {
+        //   //   this.temp.shareProviders.push(payload.data);
+        //   // }
+        // }
+        Vue.$emit('story:settings', {
+          bookend: this.temp
+        });
       },
       /**
        * add a component to bookend
@@ -124,9 +149,7 @@
       addComponent () {
         if (this.components.length < this.availableComponents.length) {
           for (let comb of this.availableComponents) {
-            if (this.components.filter(item => {
-              return item.slug === comb.slug
-            }).length === 0) {
+            if (this.components.findIndex(item => item.slug === comb.slug) === -1) {
               this.components.push(comb);
               break;
             }
@@ -188,6 +211,7 @@
        * @returns {string}
        */
       getUcString (str) {
+        str = str.replace('-', '');
         return str.charAt(0).toUpperCase() + str.slice(1);
       },
       /**
@@ -207,22 +231,15 @@
         return this.components.length > 1 && index < (this.components.length - 1);
       }
     },
-    computed: {
-      bookend() {
-        if (!_.isNil(this.$store.state.story) &&
-          !_.isNil(this.$store.state.story.bookend)
-        ) {
-          return this.$store.state.story.bookend;
-        }
-        return null;
+    mounted () {
+      if (!_.isNil(this.$store.state.story) && !_.isNil(this.$store.state.story.data.bookend)) {
+        this.serialize(this.$store.state.story.data.bookend);
       }
-    },
-    mounted() {
       Vue.$on('story-bookend:settings', data => {
         this.setBookend(data);
       })
     },
-    beforeDestroy() {
+    beforeDestroy () {
       Vue.$off('story-bookend:settings');
     }
   }

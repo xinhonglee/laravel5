@@ -94,12 +94,7 @@
           data: {
             ...this.settings
           },
-          publish: false
-        });
-        Vue.alertBox({
-          title: 'Success',
-          text: "Successfully saved this settings!",
-          type: 'success'
+          publish: true
         });
         this.settingDialog = false;
       },
