@@ -30,9 +30,13 @@
             @include('story-page', ['page' => $page])
           @endif
         @endforeach
-        {{--@each('story-page', $story['pages'], 'page')--}}
-        {{--<amp-story-bookend src="{{ $story['bookend'] }}" layout="nodisplay">--}}
-        {{--</amp-story-bookend>--}}
+        @if(isset($story['bookend']))
+          <amp-story-bookend layout=nodisplay>
+            <script type="application/json">
+              {!! json_encode($story['bookend']) !!}
+            </script>
+          </amp-story-bookend>
+        @endif
     </amp-story>
   </body>
 </html>
