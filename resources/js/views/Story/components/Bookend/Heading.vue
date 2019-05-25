@@ -10,7 +10,9 @@
 <script>
   export default {
     name: "bookend-heading",
-    props: ['data'],
+    props: {
+      data: Object
+    },
     data () {
       return {
         heading: ''
@@ -18,9 +20,9 @@
     },
     mounted () {
       if(!_.isNil(this.data) && !_.isNil(this.data.components)) {
-        const fData = this.data.components.filter(comp => comp.type === 'heading')
+        const fData = this.data.components.filter(comp => comp.type === 'heading');
         if(fData.length > 0) {
-          this.heading = fData.text;
+          this.heading = fData[0].text;
         }
       }
     },

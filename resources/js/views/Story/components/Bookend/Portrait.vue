@@ -2,17 +2,17 @@
     <div>
         <md-field>
             <label>Title</label>
-            <md-input v-model="title" placeholder=""></md-input>
+            <md-input v-model="portrait.title" placeholder=""></md-input>
         </md-field>
         <md-field>
             <label>URL</label>
-            <md-input v-model="url" placeholder=""></md-input>
+            <md-input v-model="portrait.url" placeholder=""></md-input>
         </md-field>
         <md-field>
             <label>Category</label>
-            <md-input v-model="category" placeholder=""></md-input>
+            <md-input v-model="portrait.category" placeholder=""></md-input>
         </md-field>
-        <img v-if="image" :src="image" class="attachment-image md-elevation-7"/>
+        <img v-if="portrait.image" :src="portrait.image" class="attachment-image md-elevation-7"/>
         <br>
         <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
                 id="upload_story_bookend_portrait">
@@ -24,12 +24,17 @@
 <script>
   export default {
     name: "bookend-portrait",
+    props: {
+      data: Object
+    },
     data() {
       return {
-        title: '',
-        url: '',
-        image: '',
-        category: '',
+        portrait: {
+          title: '',
+          url: '',
+          image: '',
+          category: '',
+        },
         cloudinaryInfo: null
       }
     },
@@ -60,7 +65,33 @@
         multiple: false
       };
       this.generateMediaLibraries();
+      if(!_.isNil(this.data) && !_.isNil(this.data.components)) {
+        const fData = this.data.components.filter(comp => comp.type === 'portrait');
+        if(fData.length > 0) {
+          this.portrait.title = fData[0].title;
+          this.portrait.url = fData[0].url;
+          this.portrait.image = fData[0].image;
+          this.portrait.category = fData[0].category;
+        }
+      }
     },
+    watch: {
+      portrait: {
+        handler: function (data) {
+          Vue.$emit('story-bookend:settings', {
+            type: 'component',
+            data: {
+              'type': 'portrait',
+              'title': data.title,
+              'url': data.url,
+              'image': data.image,
+              'category': data.category
+            }
+          });
+        },
+        deep: true
+      }
+    }
   }
 </script>
 
