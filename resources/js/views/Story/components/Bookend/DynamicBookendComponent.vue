@@ -20,7 +20,7 @@
         }
         return () => import(
           /* webpackMode: "eager" */
-          `./${this.type}`)
+          `./components/${this.type}`)
       },
     },
     mounted() {

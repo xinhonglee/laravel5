@@ -122,23 +122,23 @@
             this.temp.components.push(payload.data);
           }
         }
-        // if (payload.type === 'provider') {
-        //   const providerIndex = this.temp.shareProviders.findIndex(item => {
-        //     if ((typeof payload.data) === 'object' && (typeof item) === 'object') {
-        //       return item.provider === payload.data.provider;
-        //     }
-        //     if ((typeof payload.data) === 'string' && (typeof item) === 'string') {
-        //       return item === payload.data;
-        //     }
-        //     return false;
-        //   });
-        //
-        //   // if (providerIndex >= 0) {
-        //   //   this.temp.shareProviders[providerIndex] = payload.data;
-        //   // } else {
-        //   //   this.temp.shareProviders.push(payload.data);
-        //   // }
-        // }
+        if (payload.type === 'provider') {
+          const providerIndex = this.temp.shareProviders.findIndex(item => {
+            if ((typeof payload.data) === 'object' && (typeof item) === 'object') {
+              return item.provider === payload.data.provider;
+            }
+            if ((typeof payload.data) === 'string' && (typeof item) === 'string') {
+              return item === payload.data;
+            }
+            return false;
+          });
+
+          if (providerIndex >= 0) {
+            this.temp.shareProviders[providerIndex] = payload.data;
+          } else {
+            this.temp.shareProviders.push(payload.data);
+          }
+        }
         Vue.$emit('story:settings', {
           bookend: this.temp
         });
@@ -231,6 +231,15 @@
         return this.components.length > 1 && index < (this.components.length - 1);
       }
     },
+    // watch: {
+    //   shareProviders: {
+    //
+    //     handler: function (data) {
+    //       this.setBookend();
+    //     },
+    //     deep: true
+    //   },
+    // },
     mounted () {
       if (!_.isNil(this.$store.state.story) && !_.isNil(this.$store.state.story.data.bookend)) {
         this.serialize(this.$store.state.story.data.bookend);
