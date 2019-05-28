@@ -6,6 +6,8 @@
                 <md-checkbox v-model="share.value" class="md-primary"></md-checkbox>
             </li>
         </ul>
+        <!--<share-providers :providers="shareProviders" :data="$store.state.story.data.bookend">-->
+        <!--</share-providers>-->
         <div class="clearfix"></div>
         <div class="story-bookend_components mt-3" :class="{flex: components.length === 0}">
             <div v-if="components.length > 0 && renderComponents" class="components mb-3">
@@ -57,14 +59,15 @@
   import constants from '../../../constants';
   import utils from '../../../utils';
   import DynamicBookendComponent from "../Bookend/DynamicBookendComponent";
+  import ShareProviders from "../Bookend/shareProviders/index";
 
   export default {
     name: "story-bookend",
-    components: { DynamicBookendComponent },
+    components: { ShareProviders, DynamicBookendComponent },
     data () {
       return {
         shareProviders: [
-          { 'slug': 'facebook', 'value': false },
+          // { 'slug': 'facebook', 'value': false },
           { 'slug': 'twitter', 'value': false },
           { 'slug': 'pinterest', 'value': false },
           { 'slug': 'gplus', 'value': false },
@@ -86,8 +89,8 @@
       /**
        * initial loading
        */
-      serialize (data) {
-        if(!_.isNil(data.components)) {
+      init (data) {
+        if (!_.isNil(data.components)) {
           this.renderComponents = false;
           data.components.forEach(comp => {
             this.components.push(utils.getBookendComponent(comp.type));
@@ -96,21 +99,49 @@
             this.renderComponents = true;
           });
         }
-        if(!_.isNil(data.shareProviders)) {
+        if (!_.isNil(data.shareProviders)) {
           data.shareProviders.forEach(comp => {
             const slug = (typeof comp === 'object') ? comp.provider : comp;
-            const index = this.shareProviders.findIndex(provider => { return provider.slug === slug });
-            if(index >= 0) {
+            const index = this.shareProviders.findIndex(provider => {
+              return provider.slug === slug
+            });
+            if (index >= 0) {
               this.shareProviders[index].value = true;
             }
           });
         }
+        this.temp = Object.assign({}, this.$store.state.story.data.bookend);
+      },
+      /**
+       * serialize Components and Providers
+       */
+      serialize () {
+        const results = {
+          bookendVersion: this.temp.bookendVersion,
+          components: [],
+          shareProviders: [],
+        };
+        if (!_.isNil(this.components)) {
+          this.components.forEach(comp => {
+            const index = this.temp.components.findIndex(item => item.type === comp.slug);
+            if (index >= 0) {
+              results.components.push(this.temp.components[index]);
+            }
+          });
+        }
+        if (!_.isNil(this.shareProviders)) {
+          this.shareProviders.forEach(comp => {
+            if(comp.value) {
+              results.shareProviders.push(comp.slug);
+            }
+          });
+        }
+        return results;
       },
       /**
        * set current bookend info temporarily before save
        */
       setBookend (payload) {
-        this.temp = Object.assign({}, this.$store.state.story.data.bookend);
         if (payload.type === 'component') {
           const compIndex = this.temp.components.findIndex(item => {
             return item.type === payload.data.type
@@ -139,8 +170,9 @@
             this.temp.shareProviders.push(payload.data);
           }
         }
+
         Vue.$emit('story:settings', {
-          bookend: this.temp
+          bookend: this.serialize()
         });
       },
       /**
@@ -169,6 +201,9 @@
       removeComponent () {
         this.components.splice(this.removeIndex, 1);
         this.showRemoveDialog = false;
+        Vue.$emit('story:settings', {
+          bookend: this.serialize()
+        });
       },
       /**
        * order up selected component
@@ -182,6 +217,9 @@
         this.$nextTick(() => {
           this.renderComponents = true;
         });
+        Vue.$emit('story:settings', {
+          bookend: this.serialize()
+        });
       },
       /**
        * order down selected component
@@ -194,6 +232,9 @@
         this.components[index] = temp;
         this.$nextTick(() => {
           this.renderComponents = true;
+        });
+        Vue.$emit('story:settings', {
+          bookend: this.serialize()
         });
       },
       /**
@@ -231,18 +272,19 @@
         return this.components.length > 1 && index < (this.components.length - 1);
       }
     },
-    // watch: {
-    //   shareProviders: {
-    //
-    //     handler: function (data) {
-    //       this.setBookend();
-    //     },
-    //     deep: true
-    //   },
-    // },
+    watch: {
+      shareProviders: {
+        handler: function (data) {
+          Vue.$emit('story:settings', {
+            bookend: this.serialize()
+          });
+        },
+        deep: true
+      },
+    },
     mounted () {
       if (!_.isNil(this.$store.state.story) && !_.isNil(this.$store.state.story.data.bookend)) {
-        this.serialize(this.$store.state.story.data.bookend);
+        this.init(this.$store.state.story.data.bookend);
       }
       Vue.$on('story-bookend:settings', data => {
         this.setBookend(data);

@@ -46,6 +46,12 @@ export const UPDATE_AMP_STORY = (state, story) => {
     components: []
   };
 
+  // state.story.data.bookend =  {
+  //   bookendVersion: 'v1.0',
+  //   shareProviders: [],
+  //   components: []
+  // };
+
   state.story.data.css = (story && story.data.css) ? story.data.css : '';
 
   if (!_.isNil(story.selected)) {
