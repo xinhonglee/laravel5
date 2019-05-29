@@ -23,6 +23,7 @@
   import Heading from '@ckeditor/ckeditor5-heading/src/heading';
   import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
   import Font from '@ckeditor/ckeditor5-font/src/font';
+  import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
   import CustomStyle from '../../../../components/common/CK5CustomStyle/customstyle';
   import { customStyles } from '../../../../components/common/CK5CustomStyle/utils';
 
@@ -52,6 +53,7 @@
           plugins: [
             Essentials,
             Bold,
+            Alignment,
             Italic,
             Heading,
             Paragraph,
@@ -63,6 +65,7 @@
               'heading',
               'bold',
               'italic',
+              'alignment',
               '|',
               'fontColor',
               'fontSize',
