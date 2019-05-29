@@ -35,19 +35,22 @@
       }
     },
     watch: {
-      cta (value) {
-        Vue.$emit('story-bookend:settings', {
-          type: 'component',
-          data: {
-            'type': 'cta-link',
-            'links': [
-              {
-                'text': value.text,
-                'url': value.url
-              }
-            ]
-          }
-        });
+      cta: {
+        handler: function (data) {
+          Vue.$emit('story-bookend:settings', {
+            type: 'component',
+            data: {
+              'type': 'cta-link',
+              'links': [
+                {
+                  'text': data.text,
+                  'url': data.url
+                }
+              ]
+            }
+          });
+        },
+        deep: true
       },
     }
   }

@@ -40,7 +40,8 @@ export const UPDATE_AMP_STORY = (state, story) => {
   state.story.data.pages = (story && story.data.pages) ? story.data.pages : [];
 
   // replace empty array with initial bookend data for already saved data
-  state.story.data.bookend = (story && story.data.bookend && story.data.bookend.length !== 0 ) ? story.data.bookend : {
+
+  state.story.data.bookend = (story && story.data.bookend && story.data.bookend.length !== 0) ? story.data.bookend : {
     bookendVersion: 'v1.0',
     shareProviders: [],
     components: []
@@ -174,8 +175,7 @@ export const CLEAR_AMP_STORY = (state) => {
 
 export const FETCH_STORY_STYLE = (state) => {
   Vue.$http.get('/story/style').then((response) => {
-
-    // temporarily 
+    // temporarily
     if (response.data && response.data.length === 0 && _.isNil(response.data[0].slug)) {
       state.story.data.css = response.data[0].data;
     } else {

@@ -12,6 +12,7 @@
             <label>Category</label>
             <md-input v-model="portrait.category" placeholder=""></md-input>
         </md-field>
+        <br>
         <img v-if="portrait.image" :src="portrait.image" class="attachment-image md-elevation-7"/>
         <br>
         <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
@@ -46,7 +47,7 @@
           {
             insertHandler: function (data) {
               let result = data.assets[0];
-              vm.image = result.secure_url.substr(0, result.secure_url.lastIndexOf(".")) + ".jpg";
+              vm.portrait.image = result.secure_url.substr(0, result.secure_url.lastIndexOf(".")) + ".jpg";
             }
           },
           document.getElementById("upload_story_bookend_portrait")

@@ -6,8 +6,8 @@
                 <md-checkbox v-model="share.value" class="md-primary"></md-checkbox>
             </li>
         </ul>
-        <!--<share-providers :providers="shareProviders" :data="$store.state.story.data.bookend">-->
-        <!--</share-providers>-->
+        <share-providers :providers="shareProviders" :data="$store.state.story.data.bookend">
+        </share-providers>
         <div class="clearfix"></div>
         <div class="story-bookend_components mt-3" :class="{flex: components.length === 0}">
             <div v-if="components.length > 0 && renderComponents" class="components mb-3">
@@ -66,17 +66,7 @@
     components: { ShareProviders, DynamicBookendComponent },
     data () {
       return {
-        shareProviders: [
-          // { 'slug': 'facebook', 'value': false },
-          { 'slug': 'twitter', 'value': false },
-          { 'slug': 'pinterest', 'value': false },
-          { 'slug': 'gplus', 'value': false },
-          { 'slug': 'tumblr', 'value': false },
-          { 'slug': 'whatsapp', 'value': false },
-          { 'slug': 'email', 'value': false },
-          { 'slug': 'sms', 'value': false },
-          { 'slug': 'line', 'value': false }
-        ],
+        shareProviders: constants.bookend.shareProviders,
         components: [],
         availableComponents: constants.bookend.components,
         renderComponents: true, // force reload after changing components content
@@ -121,18 +111,26 @@
           components: [],
           shareProviders: [],
         };
+
         if (!_.isNil(this.components)) {
           this.components.forEach(comp => {
-            const index = this.temp.components.findIndex(item => item.type === comp.slug);
-            if (index >= 0) {
-              results.components.push(this.temp.components[index]);
+            const fData = this.temp.components.filter(item => item.type === comp.slug);
+            if(fData.length > 0) {
+              results.components.push(fData[0]);
             }
           });
         }
+
         if (!_.isNil(this.shareProviders)) {
-          this.shareProviders.forEach(comp => {
-            if(comp.value) {
-              results.shareProviders.push(comp.slug);
+          this.shareProviders.forEach(provider => {
+            if(provider.value && !provider.required) {
+              results.shareProviders.push(provider.slug);
+            }
+            if(provider.value && provider.required) {
+              const fData = this.temp.shareProviders.filter(item => item.provider === provider.slug);
+              if(fData.length > 0) {
+                results.shareProviders.push(fData[0]);
+              }
             }
           });
         }
@@ -146,7 +144,6 @@
           const compIndex = this.temp.components.findIndex(item => {
             return item.type === payload.data.type
           });
-
           if (compIndex >= 0) {
             this.temp.components[compIndex] = payload.data;
           } else {
@@ -157,9 +154,6 @@
           const providerIndex = this.temp.shareProviders.findIndex(item => {
             if ((typeof payload.data) === 'object' && (typeof item) === 'object') {
               return item.provider === payload.data.provider;
-            }
-            if ((typeof payload.data) === 'string' && (typeof item) === 'string') {
-              return item === payload.data;
             }
             return false;
           });

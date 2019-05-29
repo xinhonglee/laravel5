@@ -12,6 +12,7 @@
             <label>Category</label>
             <md-input v-model="landscape.category" placeholder=""></md-input>
         </md-field>
+        <br>
         <img v-if="landscape.image" :src="landscape.image" class="attachment-image md-elevation-7"/>
         <br>
         <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
