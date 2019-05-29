@@ -35,7 +35,7 @@
                 <img v-if="posterLandscapeSrc" :src="posterLandscapeSrc" class="attachment-image md-elevation-7"/>
             </div>
         </div>
-        <md-switch v-model="supportsLandscape">Supports Landscape</md-switch>
+        <!--<md-switch v-model="supportsLandscape">Supports Landscape</md-switch>-->
         <md-field>
             <label>Publisher</label>
             <md-input v-model="publisher"></md-input>
