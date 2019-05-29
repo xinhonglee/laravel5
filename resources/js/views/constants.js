@@ -114,15 +114,15 @@ const animations = [
 
 const bookend = {
   shareProviders: [
-    { slug: 'twitter', name: 'Twitter', icon: '/assets/bookend/twitter.png' },
-    { slug: 'facebook', name: 'Facebook', icon: '/assets/bookend/facebook.png' },
-    { slug: 'pinterest', name: 'Pinterest', icon: '/assets/bookend/pinterest.png' },
-    { slug: 'gplus', name: 'G+', icon: '/assets/bookend/googleplus.png' },
-    { slug: 'tumblr', name: 'Tumblr', icon: '/assets/bookend/tumblr.png' },
-    { slug: 'whatsapp', name: 'Whatsapp', icon: '/assets/bookend/whatsapp.png' },
-    { slug: 'email', name: 'Email', icon: '/assets/bookend/email.png' },
-    { slug: 'sms', name: 'SMS', icon: '/assets/bookend/sms.png' },
-    { slug: 'line', name: 'LINE', icon: '/assets/bookend/line.png' }
+    { slug: 'twitter', name: 'Twitter', icon: '/assets/bookend/twitter.png', 'value': false, 'required': false },
+    { slug: 'facebook', name: 'Facebook', icon: '/assets/bookend/facebook.png', 'value': false, 'required': true },
+    { slug: 'pinterest', name: 'Pinterest', icon: '/assets/bookend/pinterest.png', 'value': false, 'required': false },
+    { slug: 'gplus', name: 'G+', icon: '/assets/bookend/googleplus.png', 'value': false, 'required': false },
+    { slug: 'tumblr', name: 'Tumblr', icon: '/assets/bookend/tumblr.png', 'value': false, 'required': false },
+    { slug: 'whatsapp', name: 'Whatsapp', icon: '/assets/bookend/whatsapp.png', 'value': false, 'required': false },
+    { slug: 'email', name: 'Email', icon: '/assets/bookend/email.png', 'value': false, 'required': false },
+    { slug: 'sms', name: 'SMS', icon: '/assets/bookend/sms.png', 'value': false, 'required': false },
+    { slug: 'line', name: 'LINE', icon: '/assets/bookend/line.png', 'value': false, 'required': false }
   ],
   components: [
     { slug: 'heading', name: 'Heading', icon: '/assets/bookend/heading.png' },
