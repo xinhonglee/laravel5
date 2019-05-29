@@ -111,14 +111,16 @@
           components: [],
           shareProviders: [],
         };
+
         if (!_.isNil(this.components)) {
           this.components.forEach(comp => {
             const fData = this.temp.components.filter(item => item.type === comp.slug);
-            if(fData.length >=0) {
+            if(fData.length > 0) {
               results.components.push(fData[0]);
             }
           });
         }
+
         if (!_.isNil(this.shareProviders)) {
           this.shareProviders.forEach(provider => {
             if(provider.value && !provider.required) {
@@ -126,7 +128,7 @@
             }
             if(provider.value && provider.required) {
               const fData = this.temp.shareProviders.filter(item => item.provider === provider.slug);
-              if(fData.length >=0) {
+              if(fData.length > 0) {
                 results.shareProviders.push(fData[0]);
               }
             }
@@ -142,7 +144,6 @@
           const compIndex = this.temp.components.findIndex(item => {
             return item.type === payload.data.type
           });
-
           if (compIndex >= 0) {
             this.temp.components[compIndex] = payload.data;
           } else {

@@ -26,12 +26,12 @@
       }
     },
     mounted () {
-      if(!_.isNil(this.data) && !_.isNil(this.data.shareProviders)) {
+      if (!_.isNil(this.data) && !_.isNil(this.data.shareProviders)) {
         const fData = this.data.shareProviders.filter(comp => {
           return (typeof comp === 'object') && comp.provider === 'facebook';
         });
-        if(fData.length > 0) {
-          this.facebook.app_id= fData[0].app_id;
+        if (fData.length > 0) {
+          this.facebook.app_id = fData[0].app_id;
         }
       }
     },

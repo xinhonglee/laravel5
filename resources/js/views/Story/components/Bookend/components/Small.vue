@@ -8,6 +8,7 @@
             <label>URL</label>
             <md-input v-model="small.url" placeholder=""></md-input>
         </md-field>
+        <br>
         <img v-if="small.image" :src="small.image" class="attachment-image md-elevation-7"/>
         <br>
         <button type="button" class="md-button md-raised md-theme-default px-3 ml-0"
