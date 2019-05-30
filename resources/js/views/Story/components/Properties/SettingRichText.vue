@@ -8,10 +8,15 @@
             <label>Class</label>
             <md-input v-model="elementClass"></md-input>
         </md-field>
+        <md-field>
+            <label>Position</label>
+            <md-input v-model="elementPosition"></md-input>
+        </md-field>
         <br>
         <p style="color:#6d6d6d">Rich text</p>
         <ckeditor v-if="editorConfig.customStyle.options.length > 0" :editor="editor" v-model="elementHtml"
                   :config="editorConfig"></ckeditor>
+
     </div>
 </template>
 
@@ -37,41 +42,14 @@
         editor: ClassicEditor,
         editorConfig: {
           fontSize: {
-            options: [
-              9,
-              11,
-              13,
-              'default',
-              17,
-              19,
-              21
-            ],
+            options: [9, 11, 13, 'default', 17, 19, 21],
           },
           customStyle: {
             options: []
           },
-          plugins: [
-            Essentials,
-            Bold,
-            Alignment,
-            Italic,
-            Heading,
-            Paragraph,
-            Font,
-            CustomStyle
-          ],
+          plugins: [Essentials, Bold, Alignment, Italic, Heading, Paragraph, Font, CustomStyle],
           toolbar: {
-            items: [
-              'heading',
-              'bold',
-              'italic',
-              'alignment',
-              '|',
-              'fontColor',
-              'fontSize',
-              '|',
-              'customStyle',
-            ]
+            items: ['heading', 'bold', 'italic', 'alignment', '|', 'fontColor', 'fontSize', '|', 'customStyle']
           }
         },
       };
@@ -135,6 +113,18 @@
         set: _.debounce(function (value) {
           if (this.elementHtml !== value)
             Vue.$emit('setting:properties', { properties: { html: value } });
+        }, 2000),
+      },
+      elementPosition: {
+        get () {
+          if (!_.isNil(this.el && this.el.properties && this.el.properties.position)) {
+            return this.el.properties.position;
+          }
+          return '';
+        },
+        set: _.debounce(function (value) {
+          if (this.elementPosition !== value)
+            Vue.$emit('setting:properties', { properties: { position: value } });
         }, 2000),
       },
     },
