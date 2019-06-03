@@ -88,7 +88,32 @@ const blankPageTemplate = {
       class: '',
       properties: {}
     },
+    margin: {
+      left: '',
+      right: '',
+      top: '',
+      bottom: ''
+    }
   }
+};
+
+const positions = {
+  'richtext': [
+    { slug: 'top', name: 'Top' },
+    { slug: 'middle', name: 'Middle' },
+    { slug: 'bottom', name: 'Bottom' },
+  ],
+  'img': [
+    { slug: 'top-left', name: 'Top Left' },
+    { slug: 'top-center', name: 'Top Center' },
+    { slug: 'top-right', name: 'Top Right' },
+    { slug: 'middle-left', name: 'Middle Left' },
+    { slug: 'middle-center', name: 'Middle Center' },
+    { slug: 'middle-right', name: 'Middle Right' },
+    { slug: 'bottom-left', name: 'Bottom Left' },
+    { slug: 'bottom-center', name: 'Bottom Center' },
+    { slug: 'bottom-right', name: 'Bottom Right' },
+  ],
 };
 
 const animations = [
@@ -143,5 +168,6 @@ export default {
   elementLayouts,
   blankPageTemplate,
   animations,
+  positions,
   bookend
 }
