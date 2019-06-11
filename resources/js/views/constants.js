@@ -117,6 +117,7 @@ const positions = {
 };
 
 const animations = [
+  { slug: '', name: "default" },
   { slug: 'drop', name: 'drop' },
   { slug: 'fade-in', name: 'fade-in' },
   { slug: 'fly-in-bottom', name: 'fly-in-bottom' },

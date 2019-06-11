@@ -1,4 +1,5 @@
 <amp-video
+    controls
     @if (!empty($element['id'])) id="{{ $element['id'] }}" @endif
     @if (!empty($properties['src'])) src="{{ $properties['src'] }}" @endif
     @if (!empty($properties['width'])) width="{{ $properties['width']}}" @endif

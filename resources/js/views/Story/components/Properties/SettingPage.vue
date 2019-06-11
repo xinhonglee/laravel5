@@ -9,7 +9,7 @@
             <md-input v-model="pageClass"></md-input>
         </md-field>
         <md-field>
-            <label>Auto Advance After(s)</label>
+            <label>Auto-Advance After</label>
             <md-input v-model="autoAdvanceAfter"></md-input>
         </md-field>
         <img v-if="backgroundAudioVignette" :src="backgroundAudioVignette" class="attachment-image md-elevation-7"/>

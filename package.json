@@ -61,11 +61,12 @@
     "dependencies": {
         "@ckeditor/ckeditor5-vue": "^1.0.0-beta.1",
         "install": "^0.12.2",
-        "npm": "^6.7.0",
         "vue-amp-shadow": "^1.0.5",
+        "vue-clock-picker": "0.4.2",
         "vue-json-tree-view": "^2.1.4",
         "vue-material": "^1.0.0-beta-10.2",
         "vuelidate": "^0.7.4",
+        "vuetify": "1.5.14",
         "webpack": "^4.28.4"
     }
 }

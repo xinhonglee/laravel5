@@ -58,6 +58,7 @@
           { key: 'title', label: 'Title', sortable: true },
           { key: 'owner', label: 'Owner', sortable: true },
           { key: 'last_update', label: 'Last Update', sortable: true },
+          { key: 'status', label: 'status', sortable: true },
           { key: 'tool', label: 'Actions', sortable: false },
         ],
         pageOptions: [10, 20, 50],

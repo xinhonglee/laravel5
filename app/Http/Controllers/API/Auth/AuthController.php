@@ -38,6 +38,7 @@ class AuthController extends BaseController
             'password' => 'required'
         ]);
 
+
         if ($validator->fails()) {
             return $this->sendValidationError($validator->errors());
         }
@@ -60,6 +61,7 @@ class AuthController extends BaseController
                         $tokenResult->token->expires_at
                     )->toDateTimeString(),
                 ]);
+
             } else {
                 return $this->sendUnauthorizedError();
             }
@@ -82,6 +84,9 @@ class AuthController extends BaseController
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
+
+        
+
         if ($validator->fails()) {
             return $this->sendValidationError($validator->errors());
         }

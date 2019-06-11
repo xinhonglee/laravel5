@@ -86,6 +86,9 @@ class FrontController extends Controller
       $suggestedVideos = Video::where('slug', '<>', $slug)->orderBy('date', 'desc')->limit(6)->get();
       return view('player', compact('video', 'suggestedVideos'));
     }
+
+
+
     public function getStoryBySlug(Request $request, $slug) {
       $dbStory = Story::where('slug', $slug)->first();
       if (is_null($dbStory)) {
@@ -98,6 +101,8 @@ class FrontController extends Controller
       $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
       return view('story', compact('story'));
     }
+
+    
     public function getStoryById(Request $request, $id) {
       try {
           $dbStory = json_decode(Redis::get('story:id:' . $id), true);
