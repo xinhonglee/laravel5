@@ -134,12 +134,28 @@ export default {
     },
     serializeStyle(data) {
       if (data.length > 0) {
+        const fPublisher = data.filter(style => {
+          return style.slug === "publisher";
+        });
+        const fpublisherLogoSrc = data.filter(style => {
+          return style.slug === "publisherLogoSrc";
+        });
+        
         const fSettings = data.filter(style => {
           return style.slug === "setting";
         });
         const fRichTextStyles = data.filter(style => {
           return style.slug === "richtext";
         });
+
+        if (fPublisher.length > 0) {
+          this.defaultPublisherName = fPublisher[0].data;
+        }
+        if (fpublisherLogoSrc.length > 0) {
+          this.publisherLogoSrc = fpublisherLogoSrc[0].data;
+        }
+
+
         if (fSettings.length > 0) {
           this.setting = fSettings[0].data;
         }
@@ -157,7 +173,9 @@ export default {
     saveStyle() {
       const data = {
         setting: this.setting,
-        richtext: JSON.stringify(this.richTextStyles)
+        richtext: JSON.stringify(this.richTextStyles),
+        publisher: this.defaultPublisherName,
+        publisherLogoSrc: this.publisherLogoSrc
       };
       Vue.block();
       this.$http

@@ -19,7 +19,6 @@ class StoriesController extends BaseController
     public function saveStyle(Request $request)
     {
         try {
-
             foreach ($request->all() as $slug => $data) {
                 $style = Style::where('slug', $slug)->first();
                 if (is_null($style)) {

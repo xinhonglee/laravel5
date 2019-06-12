@@ -1,7 +1,7 @@
 <template>
     <div class="code-editor">
         <div class="code-editor_index">
-            <div v-for="i in lines">{{i}}</div>
+            <div v-for="i in lines" :key="i">{{i}}</div>
         </div>
         <textarea v-model="css"></textarea>
     </div>

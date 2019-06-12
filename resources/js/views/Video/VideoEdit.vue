@@ -131,13 +131,6 @@ export default {
             this.description = data.description;
             this.date = (data.date.split(' '))[0];
             this.time = (data.date.split(' '))[1].substring(0,5);
-
-  
-console.log("////////")
-console.log(data.date)
-console.log("////////")
-
-
             this.video_id = data.video_id;
             this.video_url = data.video_url;
             this.cover_id = data.cover_id;
