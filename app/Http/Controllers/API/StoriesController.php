@@ -86,6 +86,7 @@ class StoriesController extends BaseController
             $insert = [
                 'title' => $input["title"],
                 'slug' => str_slug($input["title"], "-"),
+                'status' => $input["storyStatus"],
                 'user_id' => Auth::user()->id,
                 'start_publication_date' => new \DateTime(),
                 'end_publication_date' => new \DateTime(),
@@ -161,6 +162,12 @@ class StoriesController extends BaseController
         } catch (\Exception $exception) {
             return $this->sendInternalError($exception->getMessage());
         }
+    }
+
+
+    public function publish(Request $request)
+    {
+        //
     }
 
     /**

@@ -98,6 +98,7 @@
               'owner': story.user.name,
               'owner_id': story.user.id,
               'last_update': story.updated_at ? story.updated_at : '',
+              'status':story.status
             }
           });
           this.searches = this.stories;

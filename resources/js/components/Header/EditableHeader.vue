@@ -17,7 +17,7 @@
         <md-icon>save</md-icon>save
       </md-button>
 
-      <md-button class="md-raised" v-if="editable" @click="showPublishDiaglog()">
+      <md-button class="md-raised" v-if="editable && $route.name=='Story'" @click="showPublishDiaglog()">
         <md-icon>publish</md-icon>publish
       </md-button>
 
@@ -35,11 +35,8 @@
       <md-dialog-title>Publish ?</md-dialog-title>
       <md-dialog-content style="min-width: 500px;">
         <div style="height: 80px;">
-          <p v-if="!publishDialog.publishBtnPressed">
-            You're about to publish this story.
-            <br>Are you sure?
-          </p>
-          <p v-if="publishDialog.publishBtnPressed">The following must be provided:
+          <p v-if="$store.state.story.data.posterPortraitSrc=='' || $store.state.story.data.publisher=='' || $store.state.story.data.publisherLogoSrc==''">
+            The following must be provided:
             <ul>
               <li v-if="$store.state.story.data.posterPortraitSrc==''">
                 Poster portrait image
@@ -52,12 +49,21 @@
               </li>
             </ul>
           </p>
+          <p v-else>
+            You're about to publish this story.
+            <br>Are you sure?
+          </p>
         </div>
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="closePublishDiaglog()">cancel</md-button>
-        <md-button v-if="!publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">publish</md-button>
-        <md-button v-if="publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">next</md-button>
+        <md-button 
+          v-if="$store.state.story.data.posterPortraitSrc!='' && 
+                $store.state.story.data.publisher!='' && 
+                $store.state.story.data.publisherLogoSrc!=''" 
+          class="md-primary" @click="publishStory()">publish</md-button>
+        <!-- <md-button v-if="!publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">publish</md-button>
+        <md-button v-if="publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">next</md-button> -->
       </md-dialog-actions>
     </md-dialog>
   </header>
@@ -106,7 +112,6 @@ export default {
     initData(){
       this.publishDialog = {
         value: false,
-        publishBtnPressed:false
       }
     },
     showPublishDiaglog() {
@@ -117,14 +122,14 @@ export default {
       this.publishDialog.value = false;
     },
     publishStory() {
-      console.log(this.$store.state.story.data);
+      // console.log(this.$store.state.story.data);
 
-      if(this.$store.state.story.data.posterPortraitSrc=='' || this.$store.state.story.data.publisher=='' || this.$store.state.story.data.publisherLogoSrc==''){
-        this.publishDialog.publishBtnPressed=true;
-      }else{
-        this.closePublishDiaglog();
-        this.setting();
-      }
+      // if(this.$store.state.story.data.posterPortraitSrc=='' || this.$store.state.story.data.publisher=='' || this.$store.state.story.data.publisherLogoSrc==''){
+      //   this.publishDialog.publishBtnPressed=true;
+      // }else{
+      //   this.closePublishDiaglog();
+      //   this.setting();
+      // }
     },
     toggleEdit() {
       this.$store.dispatch("updateAppEditable", !this.editable);
@@ -153,6 +158,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

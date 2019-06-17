@@ -61,6 +61,8 @@ export const UPDATE_AMP_STORY = (state, story) => {
 };
 
 export const SAVE_AMP_STORY = (state, story) => {
+
+  
   const storyData = Vue.$store.state.story.data;
   const data = {
     'id': (story && story.id) ? story.id : Vue.$store.state.story.id,

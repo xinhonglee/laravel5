@@ -68,6 +68,8 @@ Route::group(['namespace' => 'API'], function () {
 
         Route::post('/create', 'StoriesController@create');
 
+        Route::post('/publish', 'StoriesController@publish');
+
         Route::put('/update', 'StoriesController@update');
 
         Route::post('/delete', 'StoriesController@delete');

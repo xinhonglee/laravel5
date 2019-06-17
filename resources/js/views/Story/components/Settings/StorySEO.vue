@@ -142,19 +142,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get("/story/style").then(
-      response => {
-        response.data.forEach(element => {
-          if (element.slug === "publisher" && element.data) {
-            this.publisher = element.data;
-          }
-          if (element.slug === "publisherLogoSrc" && element.data) {
-            this.publisherLogoSrc = element.data;
-          }
-        });
-      },
-      error => {}
-    );
+    
 
     if (this.$store.state.cloudinary) {
       this.cloudinaryInfo = {
@@ -177,9 +165,27 @@ export default {
       this.posterPortraitSrc = this.$store.state.story.data.posterPortraitSrc;
       this.posterSquareSrc = this.$store.state.story.data.posterSquareSrc;
       this.supportsLandscape = this.$store.state.story.data.supportsLandscape;
-      // this.publisherLogoSrc = this.$store.state.story.data.publisherLogoSrc;
+      this.publisherLogoSrc = this.$store.state.story.data.publisherLogoSrc;
       this.posterLandscapeSrc = this.$store.state.story.data.posterLandscapeSrc;
     }
+
+    this.$http.get("/story/style").then(
+      response => {
+        response.data.forEach(element => {
+          if (
+            element.slug === "publisher" &&
+            element.data &&
+            (this.publisher == "Publisher" || this.publisher.trim() == "")
+          ) {
+            this.publisher = element.data;
+          }
+          if (element.slug === "publisherLogoSrc" && element.data && this.publisherLogoSrc.trim()=="") {
+            this.publisherLogoSrc = element.data;
+          }
+        });
+      },
+      error => {}
+    );
   },
   watch: {
     posterPortraitSrc(value) {

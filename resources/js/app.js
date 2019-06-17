@@ -15,7 +15,6 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import TreeView from "vue-json-tree-view"
 import Vuetify from 'vuetify'
 
-
 import Index from './Index'
 import router from './router'
 

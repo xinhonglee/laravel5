@@ -8,13 +8,19 @@
       <label>Class</label>
       <md-input v-model="elementClass"></md-input>
     </md-field>
-    <md-field>
-      <label>Position</label>
-      <md-input v-model="elementPosition"></md-input>
-    </md-field>
     <br>
     <p style="color:#6d6d6d">Rich text</p>
-    <ckeditor
+
+    <!-- <md-field>
+        <label>Text position</label>
+        <md-select v-model="textPosition">
+            <md-option v-for="(opt, index) in positions" :value="opt.slug" :key="index">
+                {{ opt.name }}
+            </md-option>
+        </md-select>
+    </md-field> -->
+    <ckeditor 
+      style="background:red!important"
       v-if="editorConfig.customStyle.options.length > 0"
       :editor="editor"
       v-model="elementHtml"
@@ -34,6 +40,7 @@ import Font from "@ckeditor/ckeditor5-font/src/font";
 import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
 import CustomStyle from "../../../../components/common/CK5CustomStyle/customstyle";
 import { customStyles } from "../../../../components/common/CK5CustomStyle/utils";
+import { parse } from 'node-html-parser';
 
 export default {
   name: "setting-rich-text",
@@ -42,10 +49,16 @@ export default {
   },
   data() {
     return {
+      positions:[
+        { slug: 'top', name: 'Top' },
+        { slug: 'middle', name: 'Middle' },
+        { slug: 'bottom', name: 'Bottom' },
+      ],
+      textPosition:'top',
       editor: ClassicEditor,
       editorConfig: {
         fontSize: {
-          options: [9, 11, 13, "default", 17, 19, 21]
+          options: [9, 11, 13, "default", 17, 19, 21,23,25,27]
         },
         customStyle: {
           options: []
@@ -141,6 +154,34 @@ export default {
       },
       set: _.debounce(function(value) {
         if (this.elementHtml !== value)
+
+
+          // var richTextHTML = parse(this.elementHtml);
+          // console.log("-------------")
+          // console.log(richTextHTML.firstChild.attributes);
+          // console.log("-------------")
+          // if(richTextHTML.firstChild.rawAttrs.includes("right")){
+
+          // }else if(richTextHTML.firstChild.rawAttrs.includes("center")){
+
+          // }else if(richTextHTML.firstChild.rawAttrs.includes("justify")){
+
+          // }else{
+          //   if(this.textPosition==="top"){
+          //     richTextHTML.firstChild.attributes.style="position:absolute;top:0%;";
+          //   }else if(this.textPosition==="middle"){
+          //     richTextHTML.firstChild.attributes.style="position:absolute;top:50%;transform:translateY(-50%);";
+          //   }else if(this.textPosition==="bottom"){
+          //     richTextHTML.firstChild.attributes.style="position:absolute;top:100%;transform:translateY(-100%);";
+          //   }
+          // }
+          // console.log("**************")
+          // console.log(richTextHTML.firstChild.attributes);
+          // console.log(String(richTextHTML));
+          // console.log("**************")
+
+
+
           Vue.$emit("setting:properties", { properties: { html: value } });
       }, 2000)
     },
@@ -158,9 +199,18 @@ export default {
           Vue.$emit("setting:properties", { properties: { position: value } });
       }, 2000)
     }
-  }
+  },
+  // watch:{
+  //   textPosition(val){
+  //     if(val==="top"){
+  //       style = {"position":"absolute","top":"0%"}
+  //     }else if(val==="middle"){
+  //       style = {"position":"absolute","top":"50%","transform":"translateY(-50%)"}
+  //     }else if(val==="bottom"){
+  //       style = {"position":"absolute","top":"100%","transform":"translateY(-100%)"}
+  //     }
+  //   }
+  // }
+
 };
 </script>
-
-<style scoped>
-</style>

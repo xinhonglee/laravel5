@@ -16,6 +16,14 @@
                 </md-option>
             </md-select>
         </md-field>
+        <md-field>
+            <label>Position</label>
+            <md-select v-model="elementPosition">
+                <md-option v-for="(opt, index) in layoutPosition" :value="opt.slug" :key="index">
+                    {{ opt.name }}
+                </md-option>
+            </md-select>
+        </md-field>
     </div>
 </template>
 
@@ -30,6 +38,8 @@
     data () {
       return {
         layoutOptions: constants.elementLayouts,
+        layoutPosition: constants.positions.img,
+        elementPosition: ""
       }
     },
     computed: {
