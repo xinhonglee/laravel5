@@ -18,7 +18,7 @@
                 id="upload_back_audio_page">
             Select an Audio
         </button>
-        <h6 class="mt-5">Margin</h6>
+        <!-- <h6 class="mt-5">Margin</h6>
         <hr>
         <div class="margin-area">
             <div class="text-center">
@@ -41,7 +41,7 @@
                 <p>Bottom (%)</p>
                 <input type="text" v-model="marginBottom"/>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -143,58 +143,58 @@
           return '';
         },
       },
-      marginLeft: {
-        get () {
-          if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].left)) {
-            return this.page['margin'].left;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.marginLeft !== value) {
-            Vue.$emit('setting:page', { 'margin': { 'left': value } });
-          }
-        },
-      },
-      marginRight: {
-        get () {
-          if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].right)) {
-            return this.page['margin'].right;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.marginRight !== value) {
-            Vue.$emit('setting:page', { 'margin': { 'right': value } });
-          }
-        },
-      },
-      marginTop: {
-        get () {
-          if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].top)) {
-            return this.page['margin'].top;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.marginTop !== value) {
-            Vue.$emit('setting:page', { 'margin': { 'top': value } });
-          }
-        },
-      },
-      marginBottom: {
-        get () {
-          if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].bottom)) {
-            return this.page['margin'].bottom;
-          }
-          return '';
-        },
-        set (value) {
-          if (this.marginBottom !== value) {
-            Vue.$emit('setting:page', { 'margin': { 'bottom': value } });
-          }
-        },
-      },
+      // marginLeft: {
+      //   get () {
+      //     if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].left)) {
+      //       return this.page['margin'].left;
+      //     }
+      //     return '';
+      //   },
+      //   set (value) {
+      //     if (this.marginLeft !== value) {
+      //       Vue.$emit('setting:page', { 'margin': { 'left': value } });
+      //     }
+      //   },
+      // },
+      // marginRight: {
+      //   get () {
+      //     if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].right)) {
+      //       return this.page['margin'].right;
+      //     }
+      //     return '';
+      //   },
+      //   set (value) {
+      //     if (this.marginRight !== value) {
+      //       Vue.$emit('setting:page', { 'margin': { 'right': value } });
+      //     }
+      //   },
+      // },
+      // marginTop: {
+      //   get () {
+      //     if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].top)) {
+      //       return this.page['margin'].top;
+      //     }
+      //     return '';
+      //   },
+      //   set (value) {
+      //     if (this.marginTop !== value) {
+      //       Vue.$emit('setting:page', { 'margin': { 'top': value } });
+      //     }
+      //   },
+      // },
+      // marginBottom: {
+      //   get () {
+      //     if (!_.isNil(this.page && this.page['margin'] && this.page['margin'].bottom)) {
+      //       return this.page['margin'].bottom;
+      //     }
+      //     return '';
+      //   },
+      //   set (value) {
+      //     if (this.marginBottom !== value) {
+      //       Vue.$emit('setting:page', { 'margin': { 'bottom': value } });
+      //     }
+      //   },
+      // },
     }
   }
 </script>

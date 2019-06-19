@@ -11,14 +11,14 @@
     <br>
     <p style="color:#6d6d6d">Rich text</p>
 
-    <!-- <md-field>
+    <md-field>
         <label>Text position</label>
         <md-select v-model="textPosition">
             <md-option v-for="(opt, index) in positions" :value="opt.slug" :key="index">
                 {{ opt.name }}
             </md-option>
         </md-select>
-    </md-field> -->
+    </md-field>
     <ckeditor 
       style="background:red!important"
       v-if="editorConfig.customStyle.options.length > 0"
@@ -54,7 +54,6 @@ export default {
         { slug: 'middle', name: 'Middle' },
         { slug: 'bottom', name: 'Bottom' },
       ],
-      textPosition:'top',
       editor: ClassicEditor,
       editorConfig: {
         fontSize: {
@@ -143,6 +142,21 @@ export default {
           Vue.$emit("setting:properties", { class: value });
       }, 2000)
     },
+    textPosition:{
+      get() {
+        if (
+          !_.isNil(this.el && this.el.properties && this.el.properties.verticalPositioning)
+        ) {
+          return this.el.properties.verticalPositioning;
+        }
+        return "top";
+      },
+      set: _.debounce(function(value) {
+        if (this.textPosition !== value)
+          Vue.$emit("setting:properties", { properties: { verticalPositioning : value} });
+      }, 2000)
+    },
+
     elementHtml: {
       get() {
         if (
@@ -154,34 +168,6 @@ export default {
       },
       set: _.debounce(function(value) {
         if (this.elementHtml !== value)
-
-
-          // var richTextHTML = parse(this.elementHtml);
-          // console.log("-------------")
-          // console.log(richTextHTML.firstChild.attributes);
-          // console.log("-------------")
-          // if(richTextHTML.firstChild.rawAttrs.includes("right")){
-
-          // }else if(richTextHTML.firstChild.rawAttrs.includes("center")){
-
-          // }else if(richTextHTML.firstChild.rawAttrs.includes("justify")){
-
-          // }else{
-          //   if(this.textPosition==="top"){
-          //     richTextHTML.firstChild.attributes.style="position:absolute;top:0%;";
-          //   }else if(this.textPosition==="middle"){
-          //     richTextHTML.firstChild.attributes.style="position:absolute;top:50%;transform:translateY(-50%);";
-          //   }else if(this.textPosition==="bottom"){
-          //     richTextHTML.firstChild.attributes.style="position:absolute;top:100%;transform:translateY(-100%);";
-          //   }
-          // }
-          // console.log("**************")
-          // console.log(richTextHTML.firstChild.attributes);
-          // console.log(String(richTextHTML));
-          // console.log("**************")
-
-
-
           Vue.$emit("setting:properties", { properties: { html: value } });
       }, 2000)
     },

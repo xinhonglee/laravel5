@@ -62,8 +62,8 @@
                 $store.state.story.data.publisher!='' && 
                 $store.state.story.data.publisherLogoSrc!=''" 
           class="md-primary" @click="publishStory()">publish</md-button>
-        <!-- <md-button v-if="!publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">publish</md-button>
-        <md-button v-if="publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">next</md-button> -->
+          <md-button v-if="$store.state.story.data.posterPortraitSrc=='' || $store.state.story.data.publisher=='' || $store.state.story.data.publisherLogoSrc==''" class="md-primary" @click="closePublishDiaglog();setting()">next</md-button>
+        <!-- <md-button v-if="!publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">publish</md-button>-->
       </md-dialog-actions>
     </md-dialog>
   </header>
