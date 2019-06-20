@@ -41,23 +41,23 @@
       <div class="margin-area">
         <div class="text-center">
           <p>Top (%)</p>
-          <input type="text" v-model="marginTop" style="border: 1px solid #d9d9d9">
+          <input type="number" v-model="marginTop" style="border: 1px solid #d9d9d9">
         </div>
         <div class="clearfix"></div>
         <div class="text-center mt-2">
           <div class="float-left">
             <p>Left (%)</p>
-            <input type="text" v-model="marginLeft" style="border: 1px solid #d9d9d9">
+            <input type="number" v-model="marginLeft" style="border: 1px solid #d9d9d9">
           </div>
           <div class="float-right">
             <p>Right (%)</p>
-            <input type="text" v-model="marginRight" style="border: 1px solid #d9d9d9">
+            <input type="number" v-model="marginRight" style="border: 1px solid #d9d9d9">
           </div>
         </div>
         <div class="clearfix"></div>
         <div class="text-center mt-2">
           <p>Bottom (%)</p>
-          <input type="text" v-model="marginBottom" style="border: 1px solid #d9d9d9">
+          <input type="number" v-model="marginBottom" style="border: 1px solid #d9d9d9">
         </div>
       </div>
     </div>
@@ -138,6 +138,22 @@ export default {
         publish: false
       });
     });
+
+    // set page emit receiver from setting page Component
+    Vue.$on("setting:layer", data => {
+      const layer = _.merge(this.layer, data);
+      const pages = Object.assign([], this.$store.state.story.data.pages);
+      const selected = this.$store.state.story.selected;
+      pages[selected.page].layers[selected.layer] = layer;
+
+      this.$store.dispatch("saveAMPStory", {
+        data: {
+          pages: pages
+        },
+        publish: false
+      });
+    });
+
     // add element emit receiver from AMPElement Component
     Vue.$on("add:element", slug => {
       const pages = Object.assign([], this.$store.state.story.data.pages);
@@ -216,15 +232,18 @@ export default {
     marginLeft: {
       get() {
         if (
-          !_.isNil(this.page && this.page["margin"] && this.page["margin"].left)
+          !_.isNil(
+            this.layer && this.layer["margin"] && this.layer["margin"].left
+          )
         ) {
-          return this.page["margin"].left;
+          return this.layer["margin"].left;
         }
         return "";
       },
       set(value) {
         if (this.marginLeft !== value) {
-          Vue.$emit("setting:page", { margin: { left: value } });
+          // Vue.$emit("setting:page", { margin: { left: value } });
+          Vue.$emit("setting:layer", { margin: { left: value } });
         }
       }
     },
@@ -232,31 +251,35 @@ export default {
       get() {
         if (
           !_.isNil(
-            this.page && this.page["margin"] && this.page["margin"].right
+            this.layer && this.layer["margin"] && this.layer["margin"].right
           )
         ) {
-          return this.page["margin"].right;
+          return this.layer["margin"].right;
         }
         return "";
       },
       set(value) {
         if (this.marginRight !== value) {
-          Vue.$emit("setting:page", { margin: { right: value } });
+          // Vue.$emit("setting:page", { margin: { left: value } });
+          Vue.$emit("setting:layer", { margin: { right: value } });
         }
       }
     },
     marginTop: {
       get() {
         if (
-          !_.isNil(this.page && this.page["margin"] && this.page["margin"].top)
+          !_.isNil(
+            this.layer && this.layer["margin"] && this.layer["margin"].top
+          )
         ) {
-          return this.page["margin"].top;
+          return this.layer["margin"].top;
         }
         return "";
       },
       set(value) {
         if (this.marginTop !== value) {
-          Vue.$emit("setting:page", { margin: { top: value } });
+          // Vue.$emit("setting:page", { margin: { left: value } });
+          Vue.$emit("setting:layer", { margin: { top: value } });
         }
       }
     },
@@ -264,16 +287,17 @@ export default {
       get() {
         if (
           !_.isNil(
-            this.page && this.page["margin"] && this.page["margin"].bottom
+            this.layer && this.layer["margin"] && this.layer["margin"].bottom
           )
         ) {
-          return this.page["margin"].bottom;
+          return this.layer["margin"].bottom;
         }
         return "";
       },
       set(value) {
         if (this.marginBottom !== value) {
-          Vue.$emit("setting:page", { margin: { bottom: value } });
+          // Vue.$emit("setting:page", { margin: { left: value } });
+          Vue.$emit("setting:layer", { margin: { bottom: value } });
         }
       }
     }

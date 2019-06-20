@@ -8,6 +8,12 @@ const layerTemplates = [
       template: 'fill',
       styles: {},
       elements: [],
+      margin: {
+        left: '',
+        right: '',
+        top: '',
+        bottom: ''
+      }
     },
   },
   {
@@ -88,12 +94,6 @@ const blankPageTemplate = {
       class: '',
       properties: {}
     },
-    margin: {
-      left: '',
-      right: '',
-      top: '',
-      bottom: ''
-    }
   }
 };
 
