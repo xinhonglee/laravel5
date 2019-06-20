@@ -1,10 +1,12 @@
 <amp-story-grid-layer
-    style={{ 
-        "margin-top:" .$layer['margin']['top'] 
-        ."%;margin-right:" .$layer['margin']['right'] 
-        ."%;margin-bottom:" .$layer['margin']['bottom'] 
-        ."%;margin-left:" .$layer['margin']['left'] ."%;"
-    }}
+    @if (!empty($layer['margin']))
+        style={{ 
+            "margin-top:" . (isset($layer['margin']['top']) ? $layer['margin']['top'] : "0") ."%;". 
+            "margin-right:" . (isset($layer['margin']['right']) ? $layer['margin']['right'] : "0") ."%;". 
+            "margin-bottom:" . (isset($layer['margin']['bottom']) ? $layer['margin']['bottom'] : "0") ."%;". 
+            "margin-left:" . (isset($layer['margin']['left']) ? $layer['margin']['left'] : "0") ."%;"
+        }}
+    @endif
     @if (!empty($layer['template'])) template="{{ $layer['template'] }}" @endif
     >
     @foreach ($layer['elements'] as $element)
