@@ -151,7 +151,7 @@ const bookend = {
     { slug: 'line', name: 'LINE', icon: '/assets/bookend/line.png', 'value': false, 'required': false }
   ],
   components: [
-    { slug: 'heading', name: 'Heading', icon: '/assets/bookend/heading.png' },
+    { slug: 'heading', name: 'Heading', icon: '/assets/bookend/heading.png'}, //,id:Math.floor(Math.random() * 100)
     { slug: 'small', name: 'Small', icon: '/assets/bookend/small.png' },
     { slug: 'landscape', name: 'Landscape', icon: '/assets/bookend/landscape.png' },
     { slug: 'portrait', name: 'Portrait', icon: '/assets/bookend/portrait.png' },

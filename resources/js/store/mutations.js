@@ -97,7 +97,7 @@ export const SAVE_AMP_STORY = (state, story) => {
         console.log(error);
       }).catch(Vue.handleClientError);
     } else {
-      data.storyStatus="pending";
+      data.storyStatus="draft";
       Vue.$http.post(`/story/create`, data).then((response) => {
         response.data = !_.isNil(story.selected) ? { ...response.data, selected: story.selected } : response.data;
         Vue.$store.dispatch('updateAMPStory', response.data);

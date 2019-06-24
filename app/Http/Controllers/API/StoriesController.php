@@ -167,7 +167,29 @@ class StoriesController extends BaseController
 
     public function publish(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendValidationError($validator->errors());
+        }
+        try {
+            $input = $request->all();
+            $story = Story::where('id', $input["id"])
+                ->where('user_id', Auth::user()->id)
+                ->firstOrFail();
+
+        $story->update([
+            "status" => "published",
+        ]);
+
+        return $this->sendResponse($story);
+
+
+
+        } catch (\Exception $exception) {
+            return $this->sendInternalError($exception->getMessage());
+        }
     }
 
     /**

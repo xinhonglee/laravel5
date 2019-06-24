@@ -63,7 +63,6 @@
                 $store.state.story.data.publisherLogoSrc!=''" 
           class="md-primary" @click="publishStory()">publish</md-button>
           <md-button v-if="$store.state.story.data.posterPortraitSrc=='' || $store.state.story.data.publisher=='' || $store.state.story.data.publisherLogoSrc==''" class="md-primary" @click="closePublishDiaglog();setting()">next</md-button>
-        <!-- <md-button v-if="!publishDialog.publishBtnPressed" class="md-primary" @click="publishStory()">publish</md-button>-->
       </md-dialog-actions>
     </md-dialog>
   </header>
@@ -71,6 +70,7 @@
 
 <script>
 import HeaderDropdownAccnt from "./HeaderDropdownAccnt.vue";
+import { setTimeout } from 'timers';
 
 export default {
   name: "app-editable-header",
@@ -122,14 +122,17 @@ export default {
       this.publishDialog.value = false;
     },
     publishStory() {
-      // console.log(this.$store.state.story.data);
+      if(this.$route.params.id){
+        Vue.$http.post('/story/publish', {id:this.$route.params.id}).then((response) => {
+          this.closePublishDiaglog();
+          Vue.alertBox({
+          title: "Success",
+          text: "Successfully updated this video!",
+          type: "success"
+        });
+        });
+      }
 
-      // if(this.$store.state.story.data.posterPortraitSrc=='' || this.$store.state.story.data.publisher=='' || this.$store.state.story.data.publisherLogoSrc==''){
-      //   this.publishDialog.publishBtnPressed=true;
-      // }else{
-      //   this.closePublishDiaglog();
-      //   this.setting();
-      // }
     },
     toggleEdit() {
       this.$store.dispatch("updateAppEditable", !this.editable);
@@ -137,6 +140,18 @@ export default {
     publish() {
       console.log("[app:publish] action trigger ...");
       Vue.$emit("app:publish");
+      setTimeout(()=>{
+        if(this.$store.state.story.id){
+          this.$router.push({
+            params:{
+              id:this.$store.state.story.id
+            }
+          });
+          location.reload();
+        }
+},1000);
+
+
     },
     setting() {
       console.log("[app:setting] action trigger ...");

@@ -1,7 +1,7 @@
 <template>
     <div class="story-bookend">
         <ul class="story-bookend_share-providers">
-            <li v-for="(share, compIndex) of shareProviders" :index="compIndex">
+            <li v-for="(share, compIndex) of shareProviders" :index="compIndex" :key="compIndex">
                 <img :src="getShareProviderIcon(share.slug)"/>
                 <md-checkbox v-model="share.value" class="md-primary"></md-checkbox>
             </li>
@@ -11,7 +11,8 @@
         <div class="clearfix"></div>
         <div class="story-bookend_components mt-3" :class="{flex: components.length === 0}">
             <div v-if="components.length > 0 && renderComponents" class="components mb-3">
-                <div v-for="(comp, compIndex) of components" :index="compIndex"
+
+                <div v-for="(comp, compIndex) of components" :index="compIndex" :key="compIndex"
                      class="story-bookend_component">
                     <div class="component-icon mt-3">
                         <img :src="comp.icon"/>
@@ -32,18 +33,38 @@
                         </span>
                     </div>
                 </div>
+                
             </div>
-            <md-button class="btn-add-component md-fab md-primary" @click="addComponent">
+
+
+
+            <md-button class="btn-add-component md-fab md-primary" @click="showBookendComponents()">
+                <md-icon>add</md-icon>
+            </md-button>
+            <ul v-if="bookendComponentsDisplayed" class="available-components">
+              <li v-for="(comp, compIndex) of availableComponents" :index="compIndex" :key="compIndex" @click="addBookendComponent(comp)">
+                  <div class="component-icon">
+                      <img :src="comp.icon"/>
+                  </div>
+                  <div class="component-name">{{comp.name}}</div>
+              </li>
+            </ul>
+
+
+            <!-- <md-button class="btn-add-component md-fab md-primary" @click="addComponent">
                 <md-icon>add</md-icon>
             </md-button>
             <ul v-if="components.length === 0" class="available-components">
-                <li v-for="(comp, compIndex) of availableComponents" :index="compIndex">
+                <li v-for="(comp, compIndex) of availableComponents" :index="compIndex" :key="compIndex">
                     <div class="component-icon">
                         <img :src="comp.icon"/>
                     </div>
                     <div class="component-name">{{comp.name}}</div>
                 </li>
-            </ul>
+            </ul> -->
+
+
+
         </div>
         <md-dialog-confirm
             :md-active.sync="showRemoveDialog"
@@ -72,7 +93,8 @@
         renderComponents: true, // force reload after changing components content
         removeIndex: null,
         showRemoveDialog: false,
-        temp: null
+        temp: null,
+        bookendComponentsDisplayed:false
       }
     },
     methods: {
@@ -172,16 +194,34 @@
       /**
        * add a component to bookend
        */
-      addComponent () {
-        if (this.components.length < this.availableComponents.length) {
-          for (let comb of this.availableComponents) {
-            if (this.components.findIndex(item => item.slug === comb.slug) === -1) {
-              this.components.push(comb);
-              break;
-            }
-          }
-        }
+
+
+      showBookendComponents(){
+        this.bookendComponentsDisplayed=true;
       },
+      addBookendComponent(comp){
+        this.components.push(comp);
+        this.bookendComponentsDisplayed=false;
+      },
+
+
+
+      // addComponent () {
+      //   if (this.components.length < this.availableComponents.length) {
+      //     for (let comb of this.availableComponents) {
+
+      //       console.log(comb);
+
+      //       if (this.components.findIndex(item => item.slug === comb.slug) === -1) {
+      //         this.components.push(comb);
+      //         break;
+      //       }
+      //     }
+      //   }
+      // },
+
+
+
       /**
        *  open remove dialog
        */
