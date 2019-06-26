@@ -66,7 +66,29 @@
   </amp-carousel>
 </header>
 
+
+<h2 class="section">Stories</h2>
+
+  <amp-carousel height="700" layout="fixed-height" type="carousel" autoplay="" loop="">
+    
+    @foreach ($frontStories as $frontStorie)
+      <article style="padding-left:6.75vw;">
+        <a href="{{ "story/".$frontStorie->slug }}">
+          <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="819" height="819">
+        </amp-img></a>
+      </article>
+    @endforeach
+
+
+  </amp-carousel>
 <h2 class="section">A la une</h2>
+
+{{-- <div class="section">
+    @foreach ($frontStories as $frontStorie)
+      {{ $frontStories["title"] }}
+    @endforeach
+<div> --}}
+
 
 <section class="video-wall">
   <div class="clearfix">

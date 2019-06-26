@@ -101,6 +101,8 @@
       /**
        * initial loading
        */
+
+
       init (data) {
         if (!_.isNil(data.components)) {
           this.renderComponents = false;
@@ -124,9 +126,14 @@
         }
         this.temp = Object.assign({}, this.$store.state.story.data.bookend);
       },
+
+
+
       /**
        * serialize Components and Providers
        */
+
+
       serialize () {
         const results = {
           bookendVersion: this.temp.bookendVersion,
@@ -158,9 +165,13 @@
         }
         return results;
       },
+
+
       /**
        * set current bookend info temporarily before save
        */
+
+
       setBookend (payload) {
         if (payload.type === 'component') {
           const compIndex = this.temp.components.findIndex(item => {
@@ -191,27 +202,29 @@
           bookend: this.serialize()
         });
       },
+
+
       /**
        * add a component to bookend
        */
 
-
       showBookendComponents(){
         this.bookendComponentsDisplayed=true;
       },
-      addBookendComponent(comp){
-        this.components.push(comp);
-        this.bookendComponentsDisplayed=false;
-      },
 
+      
+      addBookendComponent(comp){
+        if(this.components.indexOf(comp)==-1){
+          this.components.push(comp);
+          this.bookendComponentsDisplayed=false;
+        }
+      },
 
 
       // addComponent () {
       //   if (this.components.length < this.availableComponents.length) {
       //     for (let comb of this.availableComponents) {
-
       //       console.log(comb);
-
       //       if (this.components.findIndex(item => item.slug === comb.slug) === -1) {
       //         this.components.push(comb);
       //         break;
@@ -219,7 +232,6 @@
       //     }
       //   }
       // },
-
 
 
       /**
