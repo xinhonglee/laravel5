@@ -22,16 +22,6 @@ class FrontController extends Controller
             $frontStories = [];
         }
 
-        // foreach($frontStories as $frontStorie){
-
-        //   die($frontStorie->data->{'poster-portrait-src'});
-          
-        //   // 
-
-
-
-        // }
-
         $totalVideoCount = Video::count();
         if ($page > 0) {
             $skip = $this->wallSize + ($page - 1) * $this->wallSize;
