@@ -32,7 +32,7 @@ class Story extends Model
 
     public function getISODateAttribute()
     {
-        return date('c', strtotime($this->date));
+        return date('c', strtotime($this->updated_at));
     }
 
     public function getDataAttribute($value){
