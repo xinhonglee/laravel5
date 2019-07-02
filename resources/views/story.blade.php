@@ -5,7 +5,7 @@
     <title>{{ $story['title'] }}</title>
 
     <link rel="canonical" href="{{ $story['slug'] }}">
-    
+
     <script type=application/ld+json>{
         "@context": "http://schema.org",
         "@type": "NewsArticle",
@@ -18,8 +18,8 @@
         "image": [
             "{{ $story['poster-portrait-src'] }}"
         ],
-        "datePublished": "{{$story->ISODate}}",
-        "dateModified": "{{$story->ISODate}}",
+        "datePublished": "{{ $story['date'] }}",
+        "dateModified": "{{ $story['date'] }}",
         "publisher": {
             "@type": "Organization",
             "name": "Loopsider",
