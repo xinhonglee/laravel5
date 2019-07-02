@@ -17,7 +17,7 @@ class FrontController extends Controller
         $page = (int) $page;
 
         // Get published Stories
-        $frontStories = Story::where('status', 'published')->get();
+        $frontStories = Story::where('status', 'publish')->get();
         if (is_null($frontStories)) {
             $frontStories = [];
         }
