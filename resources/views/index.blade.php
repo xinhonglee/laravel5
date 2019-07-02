@@ -67,28 +67,22 @@
 </header>
 
 
-@if (sizeof($frontStories)>0)
+@if (count($frontStories)>0)
   <h2 class="section">Stories</h2>
   <amp-carousel height="700" layout="fixed-height" type="carousel" autoplay="" loop="">
     @foreach ($frontStories as $frontStorie)
+      @if ($frontStorie->data->{'poster-portrait-src'})
       <article style="padding-left:6.75vw;">
-        <a href="{{ "story/".$frontStorie->slug }}">
+        <a href="{{ "story/".$frontStorie->slug }}" target="_blank">
           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="819" height="819">
         </amp-img></a>
       </article>
+      @endif
     @endforeach
   </amp-carousel>
 @endif
 
-
   <h2 class="section">A la une</h2>
-
-{{-- <div class="section">
-    @foreach ($frontStories as $frontStorie)
-      {{ $frontStories["title"] }}
-    @endforeach
-<div> --}}
-
 
 <section class="video-wall">
   <div class="clearfix">
