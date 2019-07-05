@@ -153,7 +153,6 @@ class StoriesController extends BaseController
         try {
             $input = $request->all();
             $story = Story::where('id', $input["id"])
-                ->where('user_id', Auth::user()->id)
                 ->firstOrFail();
 
             $result = $story->delete();
@@ -175,7 +174,6 @@ class StoriesController extends BaseController
         try {
             $input = $request->all();
             $story = Story::where('id', $input["id"])
-                ->where('user_id', Auth::user()->id)
                 ->firstOrFail();
 
         $story->update([
