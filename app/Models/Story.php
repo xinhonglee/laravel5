@@ -27,7 +27,7 @@ class Story extends Model
      * @var array
      */
     protected $attributes = [
-        'status' => 'publish',
+        'status' => 'draft',
      ];
 
     public function getISODateAttribute()

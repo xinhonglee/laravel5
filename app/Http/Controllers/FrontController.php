@@ -113,6 +113,7 @@ class FrontController extends Controller
         $story = [
             "title" => $dbStory["title"],
             "slug" => $dbStory["slug"],
+            "date" => $dbStory->ISODate
         ];
         $story = array_merge($story, json_decode(json_encode($dbStory["data"]), true));
         return view('story', compact('story'));
