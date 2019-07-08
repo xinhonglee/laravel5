@@ -39,6 +39,7 @@ import Paragraph from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import Font from "@ckeditor/ckeditor5-font/src/font";
 import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
 import CustomStyle from "../../../../components/common/CK5CustomStyle/customstyle";
+import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
 import { customStyles } from "../../../../components/common/CK5CustomStyle/utils";
 import { parse } from 'node-html-parser';
 
@@ -70,7 +71,8 @@ export default {
           Heading,
           Paragraph,
           Font,
-          CustomStyle
+          CustomStyle,
+          RemoveFormat,
         ],
         toolbar: {
           items: [
@@ -82,7 +84,8 @@ export default {
             "fontColor",
             "fontSize",
             "|",
-            "customStyle"
+            "customStyle",
+            "removeFormat"
           ]
         }
       }
