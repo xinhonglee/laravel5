@@ -68,52 +68,49 @@
 
 
 @if (count($frontStories)>0)
-  <h2 class="section">Stories</h2>
-  
-  <div class="poss-amp-carousel__lg" style="display:block;">
-    <amp-carousel height="717" layout="fixed-height" type="carousel" autoplay="" loop="" class="poss-amp-carousel">
-      @foreach ($frontStories as $frontStorie)
-        <article class="slide" style="margin-right:12px;overflow: scroll;">
-          <a href="{{ "story/".$frontStorie->slug }}">
-            <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="431" height="717">
-              <div class="caption">
-                <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
-                  {{$frontStorie->ISODate}}
-                </amp-timeago>
-                <h2>{{$frontStorie->title}}</h2>
-              </div>
-            </amp-img>
-          </a>
-        </article>
-      @endforeach
-    </amp-carousel>
-  </div>
+ <h2 class="section">Stories</h2>
 
-  <div class="poss-amp-carousel__sm">
-    <amp-carousel height="249" layout="fixed-height" type="carousel" autoplay="" loop="" class="poss-amp-carousel">
-      @foreach ($frontStories as $frontStorie)
-        <article class="slide" style="margin-right:2px">
-          <a href="{{ "story/".$frontStorie->slug }}">
-            <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="149" height="249">
-              <div class="caption">
-                <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
-                  {{$frontStorie->ISODate}}
-                </amp-timeago>
-                <h2>{{$frontStorie->title}}</h2>
-              </div>
-            </amp-img>
-          </a>
-        </article>
-      @endforeach
-    </amp-carousel>
-  </div>
+ <div class="poss-amp-carousel__lg" style="display:block;">
+   <amp-carousel height="717" layout="fixed-height" type="carousel" autoplay="" loop="" class="poss-amp-carousel">
+     @foreach ($frontStories as $frontStorie)
+       <article class="slide" style="margin-right:12px;overflow: scroll;">
+         <a href="{{ "story/".$frontStorie->slug }}" target="_blank">
+           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="431" height="717">
+             <div class="caption">
+               <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
+                 {{$frontStorie->ISODate}}
+               </amp-timeago>
+               <h2>{{$frontStorie->title}}</h2>
+             </div>
+           </amp-img>
+         </a>
+       </article>
+     @endforeach
+   </amp-carousel>
+ </div>
+
+ <div class="poss-amp-carousel__sm">
+   <amp-carousel height="249" layout="fixed-height" type="carousel" autoplay="" loop="" class="poss-amp-carousel">
+     @foreach ($frontStories as $frontStorie)
+       <article class="slide" style="margin-right:2px">
+         <a href="{{ "story/".$frontStorie->slug }}" target="_blank">
+           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="149" height="249">
+             <div class="caption">
+               <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
+                 {{$frontStorie->ISODate}}
+               </amp-timeago>
+               <h2>{{$frontStorie->title}}</h2>
+             </div>
+           </amp-img>
+         </a>
+       </article>
+     @endforeach
+   </amp-carousel>
+ </div>
 
 @endif
 
-
-<h2 class="section">A la une</h2>
-
-
+  <h2 class="section">A la une</h2>
 
 <section class="video-wall">
   <div class="clearfix">
@@ -126,9 +123,9 @@
           <amp-img src="{{$videos[$i]->cover}}" width="819" height="819" layout="responsive" class="cover"></amp-img>
           <div class="caption">
             <amp-timeago layout="fixed" width="300" class="time"
-    height="25"
-    datetime="{{$videos[$i]->ISODate}}"
-    locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
+              height="25"
+              datetime="{{$videos[$i]->ISODate}}"
+              locale="fr">{{$videos[$i]->ISODate}}</amp-timeago>
             <h2 class="small">{{$videos[$i]->title}}</h2>
           </div>
 		  <div class="btn"></div>
@@ -276,9 +273,6 @@
     @endif
   </div>
 </section>
-
-
-
 @if ($hasMorePages)
 <section class="more">
   <a href="/videos/" class="">Toutes les vidéos</a>
