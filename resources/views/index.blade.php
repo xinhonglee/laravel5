@@ -70,7 +70,7 @@
 @if (count($frontStories)>0)
  <h2 class="section">Stories</h2>
 
- <div class="poss-amp-carousel__lg" style="display:block;">
+ <div class="poss-amp-carousel__lg">
    <amp-carousel height="717" layout="fixed-height" type="carousel" autoplay="" loop="" class="poss-amp-carousel">
      @foreach ($frontStories as $frontStorie)
        <article class="slide" style="margin-right:12px;overflow: scroll;">
