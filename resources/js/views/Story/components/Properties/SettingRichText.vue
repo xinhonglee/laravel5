@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import Essentials from "@ckeditor/ckeditor5-essentials/src/essentials";
 import Bold from "@ckeditor/ckeditor5-basic-styles/src/bold";
@@ -39,7 +40,6 @@ import Paragraph from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import Font from "@ckeditor/ckeditor5-font/src/font";
 import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
 import CustomStyle from "../../../../components/common/CK5CustomStyle/customstyle";
-import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
 import { customStyles } from "../../../../components/common/CK5CustomStyle/utils";
 import { parse } from 'node-html-parser';
 
