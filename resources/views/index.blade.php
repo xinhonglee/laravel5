@@ -75,7 +75,7 @@
      @foreach ($frontStories as $frontStorie)
        <article class="slide" style="margin-right:12px;overflow: scroll;">
          <a href="{{ "story/".$frontStorie->slug }}" target="_blank">
-           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="431" height="717">
+           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="431" height="717" style="position:relative;z-index:50">
              <div class="caption">
                <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
                  {{$frontStorie->ISODate}}
@@ -94,7 +94,7 @@
      @foreach ($frontStories as $frontStorie)
        <article class="slide" style="margin-right:2px">
          <a href="{{ "story/".$frontStorie->slug }}" target="_blank">
-           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="149" height="249">
+           <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="149" height="249" style="position:relative;z-index:50">
              <div class="caption">
                <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
                  {{$frontStorie->ISODate}}
