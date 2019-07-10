@@ -250,8 +250,8 @@
 			<p>Directeur de la rédaction</p>
 		  </div>
 		  <div class="col col-6 sm-col sm-col-3 px2 photo">
-			<amp-img src="/assets/daphnee.png" width="540" height="670" layout="responsive"></amp-img>
-			<h4>Daphnée Denis</h4>
+			<amp-img src="/assets/camille.png" width="540" height="670" layout="responsive"></amp-img>
+			<h4>Camille Christophel</h4>
 			<p>Rédactrice en chef</p>
 		  </div>
 		  <div class="col col-6 sm-col sm-col-3 px2 photo">
