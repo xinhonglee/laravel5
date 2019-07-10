@@ -10,9 +10,9 @@
 
 <article class="content">
   <h4>Loopsider</h4>
-  <p>16, rue de la Fontaine au Roi
+  <p>71 rue du Faubourg-Saint-Martin
   <br />
-  75011 Paris
+  75010 Paris
   <br />
   France</p>
 
