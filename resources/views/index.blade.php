@@ -96,10 +96,10 @@
          <a href="{{ "story/".$frontStorie->slug }}" target="_blank">
            <amp-img src="{{ $frontStorie->data->{'poster-portrait-src'} }}" width="149" height="249" style="position:relative;z-index:50">
              <div class="caption">
-               <amp-timeago layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
+               <amp-timeago style="font-size:12px" layout="fixed" width="300" class="time" height="25" datetime="{{$frontStorie->ISODate}}" locale="fr">
                  {{$frontStorie->ISODate}}
                </amp-timeago>
-               <h2>{{$frontStorie->title}}</h2>
+               <h2 style="font-size:20px;line-height:24px;">{{$frontStorie->title}}</h2>
              </div>
            </amp-img>
          </a>
