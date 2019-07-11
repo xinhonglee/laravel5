@@ -29,6 +29,16 @@
 		            "width": 210,
 		            "height": 210
             }
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Loopsider",
+            "logo": {
+                "@type": "ImageObject",
+		            "url": "{{ URL::to('/') }}/assets/logo.png",
+		            "width": 210,
+		            "height": 210
+            }
         }
     }</script>
     @endif
